@@ -80,6 +80,7 @@
 		E1CCD0F629BEF69200E6DD35 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				E1CCD11929C03FC300E6DD35 /* images */,
 				E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */,
 				E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */,
 				E1CCD0FD29BEF69200E6DD35 /* Main.storyboard */,
@@ -89,6 +90,13 @@
 				E1CCD11729C0174000E6DD35 /* GoogleService-Info.plist */,
 			);
 			path = Wallet;
+			sourceTree = "<group>";
+		};
+		E1CCD11929C03FC300E6DD35 /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
