@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DAE3CA43F2D211997B367A5B /* Pods_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */; };
 		E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */; };
 		E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */; };
-		E1CCD0FC29BEF69200E6DD35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0FB29BEF69200E6DD35 /* ViewController.swift */; };
 		E1CCD0FF29BEF69200E6DD35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD0FD29BEF69200E6DD35 /* Main.storyboard */; };
 		E1CCD10129BEF69300E6DD35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD10029BEF69300E6DD35 /* Assets.xcassets */; };
 		E1CCD10429BEF69300E6DD35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD10229BEF69300E6DD35 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E1CCD0F429BEF69200E6DD35 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E1CCD0FB29BEF69200E6DD35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E1CCD0FE29BEF69200E6DD35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1CCD10029BEF69300E6DD35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1CCD10329BEF69300E6DD35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1CCD10529BEF69300E6DD35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E35AE98E5D4F75E2B9A86246 /* Pods-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.debug.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAE3CA43F2D211997B367A5B /* Pods_Wallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		72F4ACED673B02409D9F9BEF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E35AE98E5D4F75E2B9A86246 /* Pods-Wallet.debug.xcconfig */,
+				ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CF37D78A261119C867F7AA41 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E1CCD0EB29BEF69200E6DD35 = {
 			isa = PBXGroup;
 			children = (
 				E1CCD0F629BEF69200E6DD35 /* Wallet */,
 				E1CCD0F529BEF69200E6DD35 /* Products */,
+				72F4ACED673B02409D9F9BEF /* Pods */,
+				CF37D78A261119C867F7AA41 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +81,6 @@
 			children = (
 				E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */,
 				E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */,
-				E1CCD0FB29BEF69200E6DD35 /* ViewController.swift */,
 				E1CCD0FD29BEF69200E6DD35 /* Main.storyboard */,
 				E1CCD10029BEF69300E6DD35 /* Assets.xcassets */,
 				E1CCD10229BEF69300E6DD35 /* LaunchScreen.storyboard */,
@@ -74,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1CCD10829BEF69300E6DD35 /* Build configuration list for PBXNativeTarget "Wallet" */;
 			buildPhases = (
+				891B4A208970B5AC745E8141 /* [CP] Check Pods Manifest.lock */,
 				E1CCD0F029BEF69200E6DD35 /* Sources */,
 				E1CCD0F129BEF69200E6DD35 /* Frameworks */,
 				E1CCD0F229BEF69200E6DD35 /* Resources */,
+				30B78C3E6BBA81651EA31FA4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,12 +157,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		30B78C3E6BBA81651EA31FA4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wallet/Pods-Wallet-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Wallet/Pods-Wallet-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wallet/Pods-Wallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		891B4A208970B5AC745E8141 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Wallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E1CCD0F029BEF69200E6DD35 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1CCD0FC29BEF69200E6DD35 /* ViewController.swift in Sources */,
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
 			);
@@ -282,6 +347,7 @@
 		};
 		E1CCD10929BEF69300E6DD35 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E35AE98E5D4F75E2B9A86246 /* Pods-Wallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -309,6 +375,7 @@
 		};
 		E1CCD10A29BEF69300E6DD35 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
