@@ -13,6 +13,7 @@
 		E1CCD0FF29BEF69200E6DD35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD0FD29BEF69200E6DD35 /* Main.storyboard */; };
 		E1CCD10129BEF69300E6DD35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD10029BEF69300E6DD35 /* Assets.xcassets */; };
 		E1CCD10429BEF69300E6DD35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD10229BEF69300E6DD35 /* LaunchScreen.storyboard */; };
+		E1CCD11829C0174000E6DD35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD11729C0174000E6DD35 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		E1CCD10029BEF69300E6DD35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1CCD10329BEF69300E6DD35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1CCD10529BEF69300E6DD35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1CCD11729C0174000E6DD35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E35AE98E5D4F75E2B9A86246 /* Pods-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.debug.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -46,7 +48,6 @@
 				E35AE98E5D4F75E2B9A86246 /* Pods-Wallet.debug.xcconfig */,
 				ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -85,6 +86,7 @@
 				E1CCD10029BEF69300E6DD35 /* Assets.xcassets */,
 				E1CCD10229BEF69300E6DD35 /* LaunchScreen.storyboard */,
 				E1CCD10529BEF69300E6DD35 /* Info.plist */,
+				E1CCD11729C0174000E6DD35 /* GoogleService-Info.plist */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -150,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1CCD10429BEF69300E6DD35 /* LaunchScreen.storyboard in Resources */,
+				E1CCD11829C0174000E6DD35 /* GoogleService-Info.plist in Resources */,
 				E1CCD10129BEF69300E6DD35 /* Assets.xcassets in Resources */,
 				E1CCD0FF29BEF69200E6DD35 /* Main.storyboard in Resources */,
 			);
