@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		263A883E29C6A38E0011C183 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A883D29C6A38E0011C183 /* Storyboard.swift */; };
+		263A884029C6A39A0011C183 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A883F29C6A39A0011C183 /* Const.swift */; };
+		263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A884329C6AA3D0011C183 /* TelVerifyViewController.swift */; };
+		264512D229C694AA0088E17A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D129C694AA0088E17A /* LogInViewController.swift */; };
+		264512D629C695C20088E17A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D529C695C20088E17A /* AuthViewModel.swift */; };
+		264512D829C695E80088E17A /* DBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D729C695E80088E17A /* DBViewModel.swift */; };
+		264512DA29C6964D0088E17A /* RegExModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D929C6964D0088E17A /* RegExModel.swift */; };
+		264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512DC29C697A10088E17A /* TabBarViewController.swift */; };
 		DAE3CA43F2D211997B367A5B /* Pods_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */; };
 		E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */; };
 		E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */; };
@@ -17,6 +25,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		263A883D29C6A38E0011C183 /* Storyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Storyboard.swift; path = ../Storyboard.swift; sourceTree = "<group>"; };
+		263A883F29C6A39A0011C183 /* Const.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Const.swift; path = ../Const.swift; sourceTree = "<group>"; };
+		263A884329C6AA3D0011C183 /* TelVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelVerifyViewController.swift; sourceTree = "<group>"; };
+		264512D029C61A090088E17A /* Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wallet.entitlements; sourceTree = "<group>"; };
+		264512D129C694AA0088E17A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		264512D529C695C20088E17A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		264512D729C695E80088E17A /* DBViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBViewModel.swift; sourceTree = "<group>"; };
+		264512D929C6964D0088E17A /* RegExModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegExModel.swift; sourceTree = "<group>"; };
+		264512DC29C697A10088E17A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		E1CCD0F429BEF69200E6DD35 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +59,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		263A883C29C6A37A0011C183 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				263A883F29C6A39A0011C183 /* Const.swift */,
+				263A883D29C6A38E0011C183 /* Storyboard.swift */,
+			);
+			name = Resources;
+			path = ../../../../../../.Trash/Resources;
+			sourceTree = "<group>";
+		};
+		264512CF29C5B8770088E17A /* Login&SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				263A883C29C6A37A0011C183 /* Resources */,
+				264512D329C695A50088E17A /* ViewModel */,
+				264512D129C694AA0088E17A /* LogInViewController.swift */,
+				263A884329C6AA3D0011C183 /* TelVerifyViewController.swift */,
+			);
+			path = "Login&SignIn";
+			sourceTree = "<group>";
+		};
+		264512D329C695A50088E17A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				264512D529C695C20088E17A /* AuthViewModel.swift */,
+				264512D729C695E80088E17A /* DBViewModel.swift */,
+				264512D929C6964D0088E17A /* RegExModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		264512DB29C697250088E17A /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				264512DC29C697A10088E17A /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		72F4ACED673B02409D9F9BEF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +136,9 @@
 		E1CCD0F629BEF69200E6DD35 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				264512D029C61A090088E17A /* Wallet.entitlements */,
+				264512DB29C697250088E17A /* TabBar */,
+				264512CF29C5B8770088E17A /* Login&SignIn */,
 				E1CCD11929C03FC300E6DD35 /* images */,
 				E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */,
 				E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */,
@@ -215,8 +274,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				264512D629C695C20088E17A /* AuthViewModel.swift in Sources */,
+				263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */,
+				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
+				264512DA29C6964D0088E17A /* RegExModel.swift in Sources */,
+				263A883E29C6A38E0011C183 /* Storyboard.swift in Sources */,
+				264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */,
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
+				264512D229C694AA0088E17A /* LogInViewController.swift in Sources */,
+				263A884029C6A39A0011C183 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,8 +429,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Wallet/Wallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B575A5584Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -390,8 +459,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Wallet/Wallet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B575A5584Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Wallet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
