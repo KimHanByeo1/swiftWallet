@@ -45,16 +45,12 @@ class MainSelectModel {
             })
             
     }
-}
-
-class MainSearchSelectModel {
-    var delegate: QueryModelProtocol!
-    let db = Firestore.firestore()
     
-    func downloadItems() {
+    func searchItems(_ title: String) {
         var locations: [MainModel] = []
         
-        db.collection("product")
+        db.collection("product").whereField("pTitle", in: [title])
+            .order(by: "pTime", descending: true)
             .getDocuments(completion: {(querySnapShot, err)in
                 if let err = err{
                     print("error getting documents : \(err)")
@@ -78,6 +74,5 @@ class MainSearchSelectModel {
                     self.delegate.itemDownLoaded(items: locations)
                 }
             })
-            
     }
 }
