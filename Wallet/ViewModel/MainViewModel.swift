@@ -49,8 +49,8 @@ class MainSelectModel {
     func searchItems(_ title: String) {
         var locations: [MainModel] = []
         
-        db.collection("product").whereField("pTitle", in: [title])
-            .order(by: "pTime", descending: true)
+        db.collection("product").whereField("pTitle", isEqualTo: title)
+//            .order(by: "pTime", descending: true)
             .getDocuments(completion: {(querySnapShot, err)in
                 if let err = err{
                     print("error getting documents : \(err)")

@@ -12,6 +12,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainTV: UITableView!
     
     var dataSource: [MainModel] = []
+    var filteredDataSource: [MainModel] = []
 
     var isEditMode: Bool {
         let searchController = navigationItem.searchController
@@ -20,32 +21,18 @@ class MainViewController: UIViewController {
         return isActive && isSearchBarHasText
     }
 
-//    lazy var tableView: UITableView = {
-//        let view = mainTV!
-//        view.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
-//        view.delegate = self
-//        view.dataSource = self
-//        view.keyboardDismissMode = .onDrag
-//
-//        return view
-//    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        view.addSubview(tableView)
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-//        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+//        view.addSubview(mainTV)
+//        mainTV.translatesAutoresizingMaskIntoConstraints = false
         mainTV.delegate = self
         mainTV.dataSource = self
         setupSearchController()
+        selectData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        selectData()
     }
     
     func selectData(){
@@ -74,8 +61,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return isEditMode ? filteredDataSource.count : dataSource.count
-        return dataSource.count
+        return isEditMode ? filteredDataSource.count : dataSource.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,10 +72,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         let dateViewModel = DateViewModel()
         
-        cell.lblTitle.text = dataSource[indexPath.row].pTitle
+        cell.lblTitle.text = isEditMode ? filteredDataSource[indexPath.row].pTitle : dataSource[indexPath.row].pTitle
         
         // url 비동기 통신
-        if let imageURL = URL(string: dataSource[indexPath.row].imageURL) {
+        if let imageURL = isEditMode ? URL(string: filteredDataSource[indexPath.row].imageURL) : URL(string: dataSource[indexPath.row].imageURL) {
             URLSession.shared.dataTask(with: imageURL) { data, response, error in
                 if let data = data, let image = UIImage(data: data) {
                     DispatchQueue.main.async {
@@ -99,8 +85,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             }.resume()
         }
         
-        cell.lblBrandAndTime.text = dataSource[indexPath.row].pBrand + " · " + dateViewModel.DateCount(dataSource[indexPath.row].pTime)
-        cell.lblPrice.text = numberFormatter.string(from: NSNumber(value: Int(dataSource[indexPath.row].pPrice)!))! + " 원"
+        cell.lblBrandAndTime.text = isEditMode ? filteredDataSource[indexPath.row].pBrand + " · " + dateViewModel.DateCount(filteredDataSource[indexPath.row].pTime) : dataSource[indexPath.row].pBrand + " · " + dateViewModel.DateCount(dataSource[indexPath.row].pTime)
+        cell.lblPrice.text = isEditMode ? numberFormatter.string(from: NSNumber(value: Int(filteredDataSource[indexPath.row].pPrice)!))! + " 원" : numberFormatter.string(from: NSNumber(value: Int(dataSource[indexPath.row].pPrice)!))! + " 원"
         
         return cell
     }
@@ -116,8 +102,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 extension MainViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
-        let MainSelectModel = MainSelectModel()
-        MainSelectModel.searchItems(text)
+        filteredDataSource = dataSource.filter { $0.pTitle.localizedCaseInsensitiveContains(text) }
         mainTV.reloadData()
     }
 }
