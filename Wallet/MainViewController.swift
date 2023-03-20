@@ -29,10 +29,10 @@ class MainViewController: UIViewController {
         mainTV.delegate = self
         mainTV.dataSource = self
         setupSearchController()
-        selectData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        selectData()
     }
     
     func selectData(){
