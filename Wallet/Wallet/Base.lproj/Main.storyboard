@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tl6-M0-y5q">
-            <objects>
-                <viewController id="H3K-FN-ydK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lBc-QH-5r2">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="d4H-wP-rVi"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="GN0-xA-CJd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XNd-X0-1wG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4594.6564885496182" y="772.53521126760563"/>
-        </scene>
         <!--Add View Controller-->
         <scene sceneID="6mG-MY-V27">
             <objects>
@@ -406,12 +390,41 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="H3K-FN-ydK" kind="relationship" relationship="rootViewController" id="QSc-MN-Vkq"/>
+                        <segue destination="Fkf-nh-rFb" kind="relationship" relationship="rootViewController" id="ssG-w1-g3f"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4sD-gX-iio" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3667.9389312977096" y="772.53521126760563"/>
+        </scene>
+        <!--Users Table View Controller-->
+        <scene sceneID="Tvl-tu-ghp">
+            <objects>
+                <tableViewController id="Fkf-nh-rFb" customClass="UsersTableViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ur6-Ex-5y0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tE1-an-IWy">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tE1-an-IWy" id="0RE-1G-XnV">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Fkf-nh-rFb" id="uJ1-U3-qUR"/>
+                            <outlet property="delegate" destination="Fkf-nh-rFb" id="Jez-jl-8dq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ODx-ke-XWB"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Op-QP-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4595" y="773"/>
         </scene>
         <!--내정보-->
         <scene sceneID="nWH-HC-S2C">
