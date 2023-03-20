@@ -24,8 +24,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        view.addSubview(mainTV)
-//        mainTV.translatesAutoresizingMaskIntoConstraints = false
         mainTV.delegate = self
         mainTV.dataSource = self
         setupSearchController()

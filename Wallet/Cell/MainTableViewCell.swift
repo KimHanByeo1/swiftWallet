@@ -27,7 +27,7 @@ class MainTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imgView.layer.cornerRadius = imgView.frame.height / 10
+        imgView.layer.cornerRadius = imgView.frame.height / 8
         imgView.layer.borderWidth = 0
         imgView.layer.borderColor = UIColor.clear.cgColor
         // 뷰의 경계에 맞춰준다
