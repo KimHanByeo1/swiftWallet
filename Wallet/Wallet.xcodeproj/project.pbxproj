@@ -45,6 +45,10 @@
 		E1CCD19029C80B6500E6DD35 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18F29C80B6500E6DD35 /* DetailViewController.swift */; };
 		E1CCD19329C80B8500E6DD35 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD19229C80B8500E6DD35 /* DetailViewModel.swift */; };
 		E1CCD19629C80D6600E6DD35 /* ProductDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD19529C80D6600E6DD35 /* ProductDetailModel.swift */; };
+		E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD1A929C8D14500E6DD35 /* userLikeModel.swift */; };
+		E1CCD1AC29C8D15100E6DD35 /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD1AB29C8D15100E6DD35 /* LikeModel.swift */; };
+		E1CCD1AE29C8D17900E6DD35 /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD1AD29C8D17900E6DD35 /* LikeViewModel.swift */; };
+		E1CCD1B029C8D18600E6DD35 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD1AF29C8D18600E6DD35 /* UserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +94,10 @@
 		E1CCD18F29C80B6500E6DD35 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		E1CCD19229C80B8500E6DD35 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		E1CCD19529C80D6600E6DD35 /* ProductDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailModel.swift; sourceTree = "<group>"; };
+		E1CCD1A929C8D14500E6DD35 /* userLikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userLikeModel.swift; sourceTree = "<group>"; };
+		E1CCD1AB29C8D15100E6DD35 /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
+		E1CCD1AD29C8D17900E6DD35 /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
+		E1CCD1AF29C8D18600E6DD35 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		E35AE98E5D4F75E2B9A86246 /* Pods-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.debug.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,6 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				E1CCD19229C80B8500E6DD35 /* DetailViewModel.swift */,
+				E1CCD1AD29C8D17900E6DD35 /* LikeViewModel.swift */,
+				E1CCD1AF29C8D18600E6DD35 /* UserViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -343,6 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				E1CCD19529C80D6600E6DD35 /* ProductDetailModel.swift */,
+				E1CCD1A929C8D14500E6DD35 /* userLikeModel.swift */,
+				E1CCD1AB29C8D15100E6DD35 /* LikeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -463,7 +475,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				BC1E7D9F29C85D010093830C /* FCollectionReference.swift in Sources */,
 				16920C8129C85A0B006887CE /* DateViewModel.swift in Sources */,
 				264512D629C695C20088E17A /* AuthViewModel.swift in Sources */,
@@ -475,8 +486,11 @@
 				16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */,
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
 				16920C7929C828B0006887CE /* MainModel.swift in Sources */,
+				E1CCD1AE29C8D17900E6DD35 /* LikeViewModel.swift in Sources */,
 				E1CCD18929C6D59000E6DD35 /* Flask.swift in Sources */,
+				E1CCD1AC29C8D15100E6DD35 /* LikeModel.swift in Sources */,
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
+				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
 				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
 				E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */,
 				16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */,
@@ -489,6 +503,7 @@
 				BC1E7D8429C84D310093830C /* Sender.swift in Sources */,
 				263A884E29C729BE0011C183 /* SignInViewController.swift in Sources */,
 				264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */,
+				E1CCD1B029C8D18600E6DD35 /* UserViewModel.swift in Sources */,
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
 				BC1E7D9829C854280093830C /* User.swift in Sources */,
 				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
@@ -497,7 +512,6 @@
 				BC1E7D9D29C85B110093830C /* FirebaseUserListener.swift in Sources */,
 				16920C7D29C82B9F006887CE /* MainViewModel.swift in Sources */,
 				16920C7129C80BCE006887CE /* MainViewController.swift in Sources */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

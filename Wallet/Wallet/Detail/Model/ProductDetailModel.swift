@@ -15,9 +15,11 @@ class ProductDetailModel {
     var pSize: String
     var pImageURL: String
     var pContent: String
-    var pPrice: Int
+    var pPrice: String
+    var pTitle: String
+    var pTime: String
     
-    init(pBrand: String, pColor: String, pName: String, pMaterial: String, pSize: String, pImageURL: String, pContent: String, pPrice: Int) {
+    init(pBrand: String, pColor: String, pName: String, pMaterial: String, pSize: String, pImageURL: String, pContent: String, pPrice: String, pTitle: String, pTime: String) {
         self.pBrand = pBrand
         self.pColor = pColor
         self.pName = pName
@@ -26,5 +28,7 @@ class ProductDetailModel {
         self.pImageURL = pImageURL
         self.pContent = pContent
         self.pPrice = pPrice
+        self.pTitle = pTitle
+        self.pTime = pTime
     }
 }
