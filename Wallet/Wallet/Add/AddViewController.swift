@@ -22,6 +22,7 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     @IBOutlet weak var lblColor: UILabel! // 상품 색상
     @IBOutlet weak var lblSize: UILabel! // 상품 사이즈
     
+    @IBOutlet weak var tfTitle: UITextField! // 제목
     @IBOutlet weak var tfName: UITextField! // 상품 이름
     @IBOutlet weak var tfPrice: UITextField! // 상품 가격
     @IBOutlet weak var tvContent: UITextView! // 상품 설명
@@ -63,11 +64,13 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         tfName.layer.borderWidth = 1
         tfPrice.layer.borderWidth = 1
         tvContent.layer.borderWidth = 1
+        tfTitle.layer.borderWidth = 1
         
 //      텍스트 필드 테두리 색상 설정
         tfName.layer.borderColor = UIColor.lightGray.cgColor
         tfPrice.layer.borderColor = UIColor.lightGray.cgColor
         tvContent.layer.borderColor = UIColor.lightGray.cgColor
+        tfTitle.layer.borderColor = UIColor.lightGray.cgColor
         
 //      기본 이미지 설정
         imageView.image = UIImage(named: "basicImage")
@@ -77,7 +80,7 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
 //  Placeholder 설정
     func textViewDidEndEditing(_ textView: UITextView) {
         if tvContent.text.isEmpty {
-            tvContent.text =  "상품 설명"
+            tvContent.text =  "상품설명"
             tvContent.textColor = UIColor.lightGray
         }
     }
@@ -104,6 +107,7 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         guard let wName = tfName.text else {return}
         guard let wPrice = tfPrice.text else {return}
         guard let wContent = tvContent.text else {return}
+        guard let wTitle = tfTitle.text else {return}
         
         if !wName.trimmingCharacters(in: .whitespaces).isEmpty{
             let prModel = ProductRegisterModel()
@@ -115,7 +119,8 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 wName: wName,
                 wPrice: wPrice,
                 wContent: wContent,
-                image: StaticModel.downURL)
+                image: StaticModel.downURL,
+                wTitle: wTitle)
 
             if result{
                 let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다.", preferredStyle: .alert)
