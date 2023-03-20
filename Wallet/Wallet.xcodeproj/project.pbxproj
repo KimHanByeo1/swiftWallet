@@ -21,6 +21,15 @@
 		E1CCD10129BEF69300E6DD35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD10029BEF69300E6DD35 /* Assets.xcassets */; };
 		E1CCD10429BEF69300E6DD35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD10229BEF69300E6DD35 /* LaunchScreen.storyboard */; };
 		E1CCD11829C0174000E6DD35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CCD11729C0174000E6DD35 /* GoogleService-Info.plist */; };
+		E1CCD17C29C6D52500E6DD35 /* WalletSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD17B29C6D52500E6DD35 /* WalletSelectViewModel.swift */; };
+		E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD17D29C6D54000E6DD35 /* WalletSelectModel.swift */; };
+		E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD17F29C6D55200E6DD35 /* ProductRegisterModel.swift */; };
+		E1CCD18229C6D55F00E6DD35 /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18129C6D55F00E6DD35 /* JsonModel.swift */; };
+		E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18329C6D56A00E6DD35 /* DBModel.swift */; };
+		E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18629C6D58500E6DD35 /* FirebaseStorageFunc.swift */; };
+		E1CCD18929C6D59000E6DD35 /* Flask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18829C6D59000E6DD35 /* Flask.swift */; };
+		E1CCD18B29C6D5A400E6DD35 /* staticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18A29C6D5A400E6DD35 /* staticModel.swift */; };
+		E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18C29C6D60100E6DD35 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +51,15 @@
 		E1CCD10329BEF69300E6DD35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1CCD10529BEF69300E6DD35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1CCD11729C0174000E6DD35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E1CCD17B29C6D52500E6DD35 /* WalletSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSelectViewModel.swift; sourceTree = "<group>"; };
+		E1CCD17D29C6D54000E6DD35 /* WalletSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSelectModel.swift; sourceTree = "<group>"; };
+		E1CCD17F29C6D55200E6DD35 /* ProductRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRegisterModel.swift; sourceTree = "<group>"; };
+		E1CCD18129C6D55F00E6DD35 /* JsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
+		E1CCD18329C6D56A00E6DD35 /* DBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBModel.swift; sourceTree = "<group>"; };
+		E1CCD18629C6D58500E6DD35 /* FirebaseStorageFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageFunc.swift; sourceTree = "<group>"; };
+		E1CCD18829C6D59000E6DD35 /* Flask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flask.swift; sourceTree = "<group>"; };
+		E1CCD18A29C6D5A400E6DD35 /* staticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staticModel.swift; sourceTree = "<group>"; };
+		E1CCD18C29C6D60100E6DD35 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		E35AE98E5D4F75E2B9A86246 /* Pods-Wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.debug.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +142,7 @@
 		E1CCD0F629BEF69200E6DD35 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				E1CCD17729C6D4DA00E6DD35 /* Add */,
 				264512D029C61A090088E17A /* Wallet.entitlements */,
 				264512DB29C697250088E17A /* TabBar */,
 				264512CF29C5B8770088E17A /* Login&SignIn */,
@@ -144,6 +163,54 @@
 			children = (
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		E1CCD17729C6D4DA00E6DD35 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				E1CCD17A29C6D51400E6DD35 /* ViewModel */,
+				E1CCD17929C6D50D00E6DD35 /* Model */,
+				E1CCD17829C6D50000E6DD35 /* staticModel */,
+				E1CCD18C29C6D60100E6DD35 /* AddViewController.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		E1CCD17829C6D50000E6DD35 /* staticModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1CCD18A29C6D5A400E6DD35 /* staticModel.swift */,
+			);
+			path = staticModel;
+			sourceTree = "<group>";
+		};
+		E1CCD17929C6D50D00E6DD35 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E1CCD18529C6D57500E6DD35 /* Functions */,
+				E1CCD17D29C6D54000E6DD35 /* WalletSelectModel.swift */,
+				E1CCD17F29C6D55200E6DD35 /* ProductRegisterModel.swift */,
+				E1CCD18129C6D55F00E6DD35 /* JsonModel.swift */,
+				E1CCD18329C6D56A00E6DD35 /* DBModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E1CCD17A29C6D51400E6DD35 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E1CCD17B29C6D52500E6DD35 /* WalletSelectViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E1CCD18529C6D57500E6DD35 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				E1CCD18629C6D58500E6DD35 /* FirebaseStorageFunc.swift */,
+				E1CCD18829C6D59000E6DD35 /* Flask.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,11 +332,20 @@
 				264512D629C695C20088E17A /* AuthViewModel.swift in Sources */,
 				263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */,
 				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
+				E1CCD18B29C6D5A400E6DD35 /* staticModel.swift in Sources */,
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
+				E1CCD18929C6D59000E6DD35 /* Flask.swift in Sources */,
+				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
+				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
+				E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */,
+				E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */,
+				E1CCD18229C6D55F00E6DD35 /* JsonModel.swift in Sources */,
+				E1CCD17C29C6D52500E6DD35 /* WalletSelectViewModel.swift in Sources */,
 				264512DA29C6964D0088E17A /* RegExModel.swift in Sources */,
 				263A884E29C729BE0011C183 /* SignInViewController.swift in Sources */,
 				264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */,
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
+				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
 				264512D229C694AA0088E17A /* LogInViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
