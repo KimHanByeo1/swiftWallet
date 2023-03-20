@@ -19,7 +19,7 @@ class MainSelectModel {
     func downloadItems() {
         var locations: [MainModel] = []
         
-        db.collection("product")
+        db.collection("product").order(by: "pTime", descending: true)
             .getDocuments(completion: {(querySnapShot, err)in
                 if let err = err{
                     print("error getting documents : \(err)")

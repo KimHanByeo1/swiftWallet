@@ -82,7 +82,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! MainTableViewCell
         
-        let url = URL(string: dataSource.first!.imageURL)
+        let url = URL(string: dataSource[indexPath.row].imageURL)
         let data = try? Data(contentsOf: url!)
         
         let numberFormatter = NumberFormatter()
