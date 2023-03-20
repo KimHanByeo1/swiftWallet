@@ -137,7 +137,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func SinginButton(_ sender: UIButton) {
         
-        
+        // 예시 - login 화면 tabBar화면들로 전환
+        let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
+        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") as! TelVerifyViewController
+        self.transition2(from: vc1, to: vc2)
         
 //        if let viewController = storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") {
 //            self.navigationController?.pushViewController(viewController, animated: true)
@@ -145,14 +148,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         
         
-        let signupFirstStoryboard = UIStoryboard(name: Const.Storyboard.Name.signUpFirst, bundle: nil)
 
-                guard let TelVerifyViewController = signupFirstStoryboard.instantiateViewController(withIdentifier: Const.ViewController.identifier.signUpFirst) as? TelVerifyViewController else { return }
-
-                self.navigationController?.pushViewController(TelVerifyViewController, animated: true)
-            
-        
-        
             
         
     }
@@ -212,16 +208,24 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         toVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         toVC.didMove(toParent: fromVC)
     }
+    
+    
+    
+    // login에서 회원가입으로 직접 전환하는 함수
+    func transition2(from fromViewController: UIViewController, to toViewController: UIViewController) {
+        
+        let fromVC = self // 현재 View Controller
+        let toVC = storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") as! UIViewController // 전환할 View Controller
 
-
-}
-
-extension Const {
-
-    struct ViewController {
-
-        struct identifier {
-            static let signUpFirst = "TelVerifyViewController"
-        }
+        fromVC.addChild(toVC)
+        fromVC.view.addSubview(toVC.view)
+        toVC.view.frame = fromVC.view.bounds
+        toVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        toVC.didMove(toParent: fromVC)
     }
+
+
+
 }
+
+
