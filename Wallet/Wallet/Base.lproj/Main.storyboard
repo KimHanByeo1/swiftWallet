@@ -72,15 +72,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" systemColor="systemIndigoColor"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AJH-9c-PPp">
-                                <rect key="frame" x="137" y="751" width="129" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="등록하기"/>
-                                <connections>
-                                    <action selector="btnProductRegister:" destination="48f-Es-9hk" eventType="touchUpInside" id="z2P-4d-wGp"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L2m-0D-TLm">
                                 <rect key="frame" x="28" y="479" width="345" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -105,7 +96,13 @@
                         <viewLayoutGuide key="safeArea" id="oAF-T9-dcV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ECK-tS-mPK"/>
+                    <navigationItem key="navigationItem" id="ECK-tS-mPK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="IbT-pR-IFo">
+                            <connections>
+                                <action selector="btnProductRegister:" destination="48f-Es-9hk" id="A5T-mL-gEH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="gpG-8T-ZQW" id="bAC-FY-URc"/>
                         <outlet property="indicator" destination="E8U-Xg-BqW" id="0IX-Cj-rdF"/>
@@ -218,6 +215,7 @@
                                             <outlet property="lblBrandAndTime" destination="mxi-PD-Brf" id="f3i-vM-DQU"/>
                                             <outlet property="lblPrice" destination="H4Y-Fi-fD1" id="Z6X-xM-lJs"/>
                                             <outlet property="lblTitle" destination="ldx-yQ-nz3" id="Mim-AB-6Ag"/>
+                                            <segue destination="3Cp-j8-oGp" kind="show" identifier="sgProductDetail" id="AZj-J2-z8y"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -253,66 +251,86 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ivb-Z1-qkj">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="275"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nIR-KW-BJb">
+                                <rect key="frame" x="0.0" y="103" width="393" height="275"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXI-jc-IZp">
-                                <rect key="frame" x="16" y="355" width="361" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCO-q6-Dkk">
+                                <rect key="frame" x="16" y="458" width="361" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xin-Rm-qcv">
-                                <rect key="frame" x="16" y="395" width="361" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id6-5b-bwt">
+                                <rect key="frame" x="16" y="498" width="361" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3gs-2t-oYV">
-                                <rect key="frame" x="16" y="424" width="361" height="142"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owP-26-YGM">
-                                <rect key="frame" x="16" y="582" width="361" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ProductName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hfu-vz-1Pp">
+                                <rect key="frame" x="16" y="429" width="361" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ProductName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B5-19-2Fw">
-                                <rect key="frame" x="16" y="326" width="361" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NickName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ic5-Aq-QYt">
+                                <rect key="frame" x="16" y="400" width="92" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NickName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jqm-hr-H1f">
-                                <rect key="frame" x="16" y="297" width="92" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bvT-nd-BrQ">
+                                <rect key="frame" x="16" y="527" width="361" height="108"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jth-aX-lxa">
+                                <rect key="frame" x="110" y="722" width="131" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaR-GA-C4y">
+                                <rect key="frame" x="298" y="728" width="83" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="채팅하기"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra7-sL-xRs">
+                                <rect key="frame" x="16" y="714" width="80" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="like1" title="Button">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="btnLike:" destination="3Cp-j8-oGp" eventType="touchUpInside" id="Qkb-FN-B7p"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="flo-zG-rcm"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="eNu-RF-UCR"/>
                     <connections>
-                        <outlet property="imageView" destination="ivb-Z1-qkj" id="Tfv-iO-twD"/>
-                        <outlet property="lblBrand" destination="owP-26-YGM" id="1xS-TQ-M3s"/>
-                        <outlet property="lblNickName" destination="jqm-hr-H1f" id="QT5-Rp-3Di"/>
-                        <outlet property="lblProductName" destination="9B5-19-2Fw" id="GSw-fS-Ug6"/>
-                        <outlet property="lblTime" destination="xin-Rm-qcv" id="szL-qA-aPv"/>
-                        <outlet property="lblTitle" destination="pXI-jc-IZp" id="pT7-fD-tTJ"/>
-                        <outlet property="tvContent" destination="3gs-2t-oYV" id="wj3-xJ-jnl"/>
+                        <outlet property="btnLikeText" destination="ra7-sL-xRs" id="0sp-V3-kzL"/>
+                        <outlet property="imageView" destination="nIR-KW-BJb" id="vQr-hV-iZ7"/>
+                        <outlet property="lblBrandNTime" destination="Id6-5b-bwt" id="J5P-4i-4lf"/>
+                        <outlet property="lblContent" destination="bvT-nd-BrQ" id="wpT-sD-2pi"/>
+                        <outlet property="lblNickName" destination="ic5-Aq-QYt" id="i0V-Nu-KIB"/>
+                        <outlet property="lblPrice" destination="Jth-aX-lxa" id="IVR-Pv-i34"/>
+                        <outlet property="lblProductName" destination="Hfu-vz-1Pp" id="l9w-zR-3ia"/>
+                        <outlet property="lblTitle" destination="xCO-q6-Dkk" id="9hS-ng-xYs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1c-vF-d1F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -674,6 +692,7 @@
         <image name="category" width="24" height="24"/>
         <image name="chat" width="24" height="24"/>
         <image name="home" width="24" height="24"/>
+        <image name="like1" width="48" height="48"/>
         <image name="mypage" width="24" height="24"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

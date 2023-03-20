@@ -95,6 +95,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
+    
+    // 수정 페이지로 데이터 보내기 위함
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+  
+        if segue.identifier == "sgProductDetail"{
+                let cell = sender as! UITableViewCell
+                let indexPath = self.mainTV.indexPath(for: cell)
+                let detailView = segue.destination as! DetailViewController
+                
+                detailView.imageURL = dataSource[indexPath!.row].imageURL
+            }
+            
+        }
+    
 }
 
 extension MainViewController: UISearchResultsUpdating {

@@ -98,7 +98,10 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         showAlert()
     }
     // 입력한 상세정보들 Firebase에 등록
-    @IBAction func btnProductRegister(_ sender: UIButton) {
+    @IBAction func btnProductRegister(_ sender: UIBarButtonItem) {
+        
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = formatter.string(from: currentDate)
         
         guard let wBrand = lblBrand.text else {return}
         guard let wMaterial = lblMaterial.text else {return}
@@ -120,7 +123,8 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 wPrice: wPrice,
                 wContent: wContent,
                 image: StaticModel.downURL,
-                wTitle: wTitle)
+                wTitle: wTitle,
+                wTime: dateString)
 
             if result{
                 let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다.", preferredStyle: .alert)
@@ -140,9 +144,6 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
             //위에 정의한 것 최종적으로 show
             present(resultAlert, animated: true)
         }
-        
-        
-        
     }
     
     
