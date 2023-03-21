@@ -434,7 +434,13 @@
                             <outlet property="delegate" destination="Fkf-nh-rFb" id="Jez-jl-8dq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ODx-ke-XWB"/>
+                    <navigationItem key="navigationItem" id="ODx-ke-XWB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nD4-Hn-UaF">
+                            <connections>
+                                <action selector="btnTest:" destination="Fkf-nh-rFb" id="SJN-m0-MyS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Op-QP-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

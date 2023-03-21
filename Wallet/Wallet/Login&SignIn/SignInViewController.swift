@@ -226,7 +226,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             }
         
         firebaseDB = Database.database().reference()
-        firebaseDB.child("user").setValue(["email":emailTextField.text!.trimmingCharacters(in: .whitespaces) , "name": nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
+        firebaseDB.child("users").setValue(["email":emailTextField.text!.trimmingCharacters(in: .whitespaces) , "name": nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
         }
         
      
