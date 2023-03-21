@@ -7,7 +7,7 @@
 
 import UIKit
 import FirebaseAuth
-
+import FirebaseDatabase
 
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
@@ -20,15 +20,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordStatusBar: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
     
-    
-    
     let passwordCheckDelay = 0.01 // 비밀번호 확인 대기 시간 (초)
         
     var passwordTimer: Timer? // 비밀번호 확인 타이머
     
-    
-    
-    
+    // Firebase Database(Real-time 연결)
+    var firebaseDB: DatabaseReference!
     
     // firebase auth
     let authViewModel = AuthViewModel()
@@ -227,6 +224,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             }
+        
+        firebaseDB = Database.database().reference()
+        firebaseDB.child("user").setValue(["email":emailTextField.text!.trimmingCharacters(in: .whitespaces) , "name": nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
         }
         
      
