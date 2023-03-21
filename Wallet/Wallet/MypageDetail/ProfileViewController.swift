@@ -29,13 +29,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do any additional setup after loading the view.
         tfNickname.text = nickname
         downURL = profileimage
+        
 
         displayImage()
         
-        var imageView = profileImage
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector(("imageTapped:")))
-        imageView!.isUserInteractionEnabled = true
-        imageView?.addGestureRecognizer(tapGestureRecognizer)
+//        var imageView = profileImage
+//        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector(("imageTapped:")))
+//        imageView!.isUserInteractionEnabled = true
+//        imageView?.addGestureRecognizer(tapGestureRecognizer)
 
     }
     
@@ -67,6 +68,21 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         photoAlert.addAction(cancelAction)
         
         present(photoAlert, animated: true, completion: nil)
+    }
+    
+    // Photo Library에서 사진 가져오기(함수 이름만 입력하면 준비된 함수임). Print해보면 위치를 알 수 있음.
+    // photo Library에서 사진 획득시 image 를 FireStorage에 등록한다.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            profileImage.image = image
+        }
+        
+//        // image 삭제
+//        deleteImage(name: image)?
+//        // image 등록
+//        insertImage(name: tfName.text!)
+//        dismiss(animated: true, completion: nil)
+        
     }
 
     /*
