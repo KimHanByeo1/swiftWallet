@@ -22,9 +22,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     var downURL: String = ""
     
     let imagePicker: UIImagePickerController! = UIImagePickerController() // UIImagePickerController의 인스턴스 변수 생성
-        var captureImage: UIImage! // 촬영을 하거나 포토 라이브러리에서 불러온 사진을 저장할 변수
+    var captureImage: UIImage! // 촬영을 하거나 포토 라이브러리에서 불러온 사진을 저장할 변수
 //        var videoURL: URL! // 녹화한 비디오의 URL을 저장할 변수
-        var flagImageSave = false // 이미지 저장 여뷰를 나타낼 변수
+    var flagImageSave = false // 이미지 저장 여뷰를 나타낼 변수
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,28 +37,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         
 //        displayImage()
         
-        var imageView = profileImage
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector(("imageTapped:")))
-        imageView!.isUserInteractionEnabled = true
-        imageView?.addGestureRecognizer(tapGestureRecognizer)
+        let imageView = profileImage
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+            imageView?.isUserInteractionEnabled = true
+            imageView?.addGestureRecognizer(tap)
         
     }
     
-    func displayImage(){
-        let storage = Storage.storage()
-        let httpsReference = storage.reference(forURL: profileimage)
-        
-        httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-            if let error = error {
-                print("Error : \(error)")
-            } else {
-                //              self.profileimage.image = UIImage(data: data!)
-            }
-        }
-    }
-    
-    func imageTapped(img: AnyObject)
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+        // Your action
         if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
                   flagImageSave = false
                   
@@ -72,6 +62,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
               else{
                   myAlert("Photo album inaccessable", message: "Application cannot access the photo album.")
               }
+    }
+    func displayImage(){
+        let storage = Storage.storage()
+        let httpsReference = storage.reference(forURL: profileimage)
+        
+        httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("Error : \(error)")
+            } else {
+                //              self.profileimage.image = UIImage(data: data!)
+            }
+        }
     }
     
     func myAlert(_ title : String, message : String){
