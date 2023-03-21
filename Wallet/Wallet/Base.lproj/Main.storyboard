@@ -640,6 +640,7 @@
                     </view>
                     <connections>
                         <outlet property="emailField" destination="vfb-Qd-Ynv" id="eKM-03-xTH"/>
+                        <outlet property="lblLoginButton" destination="z04-cd-xnV" id="cKU-WR-3dc"/>
                         <outlet property="passwordField" destination="uYV-iY-F0F" id="UY5-Dn-TN5"/>
                     </connections>
                 </viewController>
