@@ -224,10 +224,10 @@
                         <viewLayoutGuide key="safeArea" id="hyo-6t-w1h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="top" secondItem="hyo-6t-w1h" secondAttribute="top" id="IXe-Sf-f3h"/>
-                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="bottom" secondItem="hyo-6t-w1h" secondAttribute="bottom" id="Imy-ZG-cqH"/>
-                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="leading" secondItem="fcb-wq-B0y" secondAttribute="leadingMargin" id="YvK-34-q8d"/>
-                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="trailing" secondItem="fcb-wq-B0y" secondAttribute="trailingMargin" id="hSL-b0-NO7"/>
+                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="top" secondItem="hyo-6t-w1h" secondAttribute="top" id="266-fy-EXy"/>
+                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="leading" secondItem="hyo-6t-w1h" secondAttribute="leading" constant="16" id="4Kn-5p-jT6"/>
+                            <constraint firstItem="hyo-6t-w1h" firstAttribute="trailing" secondItem="Taz-iw-7Gr" secondAttribute="trailing" constant="16" id="VbQ-XH-Dcn"/>
+                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="bottom" secondItem="hyo-6t-w1h" secondAttribute="bottom" id="WNF-H5-HHn"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="중고 지갑" id="YJy-Yz-xO8">
@@ -291,28 +291,24 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jth-aX-lxa">
-                                <rect key="frame" x="110" y="722" width="131" height="47"/>
+                                <rect key="frame" x="110" y="760" width="131" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LaR-GA-C4y">
-                                <rect key="frame" x="298" y="728" width="83" height="35"/>
+                                <rect key="frame" x="289" y="766" width="83" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="채팅하기"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ra7-sL-xRs">
-                                <rect key="frame" x="16" y="714" width="80" height="62"/>
+                                <rect key="frame" x="16" y="752" width="80" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="like1" title="Button">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
+                                <buttonConfiguration key="configuration" style="filled" image="like1"/>
                                 <connections>
                                     <action selector="btnLike:" destination="3Cp-j8-oGp" eventType="touchUpInside" id="Qkb-FN-B7p"/>
                                 </connections>
@@ -730,7 +726,7 @@
         <image name="category" width="24" height="24"/>
         <image name="chat" width="24" height="24"/>
         <image name="home" width="24" height="24"/>
-        <image name="like1" width="48" height="48"/>
+        <image name="like1" width="28" height="28"/>
         <image name="mypage" width="24" height="24"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
