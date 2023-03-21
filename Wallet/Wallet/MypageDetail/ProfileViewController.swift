@@ -34,16 +34,20 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         tfNickname.text = nickname
         downURL = profileimage
         
-        
 //        displayImage()
         
+        //이미지 뷰 클릭시 앨범으로
         let imageView = profileImage
         let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
             imageView?.isUserInteractionEnabled = true
             imageView?.addGestureRecognizer(tap)
         
+        profileImage.clipsToBounds = true //이미지 뷰 동그랗게
+//        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        
     }
     
+    //image tap
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
         let tappedImage = tapGestureRecognizer.view as! UIImageView
@@ -63,6 +67,8 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                   myAlert("Photo album inaccessable", message: "Application cannot access the photo album.")
               }
     }
+    
+    
     func displayImage(){
         let storage = Storage.storage()
         let httpsReference = storage.reference(forURL: profileimage)
@@ -75,6 +81,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
         }
     }
+    
     
     func myAlert(_ title : String, message : String){
            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
