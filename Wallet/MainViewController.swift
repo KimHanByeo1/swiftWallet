@@ -100,7 +100,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-  
+        self.hidesBottomBarWhenPushed = true
         if segue.identifier == "sgProductDetail"{
                 let cell = sender as! UITableViewCell
                 let indexPath = self.mainTV.indexPath(for: cell)
