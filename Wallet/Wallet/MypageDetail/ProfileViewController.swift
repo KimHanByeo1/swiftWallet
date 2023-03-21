@@ -9,7 +9,7 @@ import UIKit
 import FirebaseStorage
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var profileImage: UIImageView!
     
     @IBOutlet weak var tfNickname: UITextField!
@@ -20,80 +20,76 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     let picker = UIImagePickerController()
     var downURL: String = ""
-
-
+    
+    let imagePicker: UIImagePickerController! = UIImagePickerController() // UIImagePickerController의 인스턴스 변수 생성
+        var captureImage: UIImage! // 촬영을 하거나 포토 라이브러리에서 불러온 사진을 저장할 변수
+//        var videoURL: URL! // 녹화한 비디오의 URL을 저장할 변수
+        var flagImageSave = false // 이미지 저장 여뷰를 나타낼 변수
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
-
+        
         // Do any additional setup after loading the view.
         tfNickname.text = nickname
         downURL = profileimage
         
-
-        displayImage()
         
-//        var imageView = profileImage
-//        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector(("imageTapped:")))
-//        imageView!.isUserInteractionEnabled = true
-//        imageView?.addGestureRecognizer(tapGestureRecognizer)
-
+//        displayImage()
+        
+        var imageView = profileImage
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector(("imageTapped:")))
+        imageView!.isUserInteractionEnabled = true
+        imageView?.addGestureRecognizer(tapGestureRecognizer)
+        
     }
     
     func displayImage(){
         let storage = Storage.storage()
         let httpsReference = storage.reference(forURL: profileimage)
-
+        
         httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-          if let error = error {
-              print("Error : \(error)")
-          } else {
-//              self.profileimage.image = UIImage(data: data!)
-          }
+            if let error = error {
+                print("Error : \(error)")
+            } else {
+                //              self.profileimage.image = UIImage(data: data!)
+            }
         }
     }
     
     func imageTapped(img: AnyObject)
     {
-        let photoAlert = UIAlertController(title: "사진 가져오기", message: "Photo Library에서 사진을 가져 옵니다.", preferredStyle: UIAlertController.Style.actionSheet) // Alert가 화면 밑에서 돌출
-        
-        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-            self.picker.sourceType = .photoLibrary
-            self.present(self.picker, animated: false, completion: nil) // animated: true로 해서 차이점을 확인해 보세요!
-        })
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        photoAlert.addAction(okAction)
-        photoAlert.addAction(cancelAction)
-        
-        present(photoAlert, animated: true, completion: nil)
+        if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
+                  flagImageSave = false
+                  
+                  imagePicker.delegate = self
+                  imagePicker.sourceType = .photoLibrary
+                  imagePicker.mediaTypes = ["public.image"]
+                  imagePicker.allowsEditing = true
+                  
+                  present(imagePicker, animated: true, completion: nil)
+              }
+              else{
+                  myAlert("Photo album inaccessable", message: "Application cannot access the photo album.")
+              }
     }
     
-    // Photo Library에서 사진 가져오기(함수 이름만 입력하면 준비된 함수임). Print해보면 위치를 알 수 있음.
-    // photo Library에서 사진 획득시 image 를 FireStorage에 등록한다.
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            profileImage.image = image
-        }
-        
-//        // image 삭제
-//        deleteImage(name: image)?
-//        // image 등록
-//        insertImage(name: tfName.text!)
-//        dismiss(animated: true, completion: nil)
-        
-    }
-
+    func myAlert(_ title : String, message : String){
+           let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+           let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+           alert.addAction(action)
+           self.present(alert, animated: true, completion: nil)
+       }
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
