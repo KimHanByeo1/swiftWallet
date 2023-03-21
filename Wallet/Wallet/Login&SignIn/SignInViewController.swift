@@ -212,6 +212,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     
                     self.transition(from: vc1, to: vc2)
                     
+                    // Firebase Real-time 연동 소스
                     self.firebaseDB = Database.database().reference()
                     self.firebaseDB.child("users").child(user.user.uid).setValue(["name": self.nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
                 } else {
