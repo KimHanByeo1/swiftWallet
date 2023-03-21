@@ -162,7 +162,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         // 예시 - login 화면 tabBar화면들로 전환
         let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") as! TelVerifyViewController
+        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
         self.transition2(from: vc1, to: vc2)
         
 //        if let viewController = storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") {
@@ -238,7 +238,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     func transition2(from fromViewController: UIViewController, to toViewController: UIViewController) {
         
         let fromVC = self // 현재 View Controller
-        let toVC = storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") as! UIViewController // 전환할 View Controller
+        let toVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController // 전환할 View Controller
 
         fromVC.addChild(toVC)
         fromVC.view.addSubview(toVC.view)
