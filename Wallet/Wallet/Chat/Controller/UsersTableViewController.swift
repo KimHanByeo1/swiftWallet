@@ -35,29 +35,29 @@ class UsersTableViewController: UITableViewController {
     }
     
     
-    @IBAction func btnTest(_ sender: UIBarButtonItem) {
-        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-          // 1
-          guard
-            let textField = alert.textFields?.first,
-            let text = textField.text,
-            let user = self.user
-          else { return }
-          
-          // 2
-          let groceryItem = GroceryItem(
-            name: text,
-            addedByUser: user.email,
-            completed: false)
-
-          // 3
-          let groceryItemRef = self.ref.child(text.lowercased())
-
-          // 4
-          groceryItemRef.setValue(groceryItem.toAnyObject())
-        }
-
-    }
+//    @IBAction func btnTest(_ sender: UIBarButtonItem) {
+//        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+//          // 1
+//          guard
+//            let textField = alert.textFields?.first,
+//            let text = textField.text,
+//            let user = self.user
+//          else { return }
+//
+//          // 2
+//          let groceryItem = GroceryItem(
+//            name: text,
+//            addedByUser: user.email,
+//            completed: false)
+//
+//          // 3
+//          let groceryItemRef = self.ref.child(text.lowercased())
+//
+//          // 4
+//          groceryItemRef.setValue(groceryItem.toAnyObject())
+//        }
+//
+//    }
     
 
     // MARK: - Table view data source
