@@ -34,7 +34,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     let authViewModel = AuthViewModel()
     
     // firebase cloud(닉네임 및 전화번호)
-    let dbViewModel = DBViewModel()
+    let dbViewModel = ViewModelDB()
     
     //정규식
     let userModel = RegExModel()

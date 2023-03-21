@@ -18,7 +18,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     let authViewModel = AuthViewModel()
     let regExModel = RegExModel()
-    let dbModel = DBViewModel()
+    let dbModel = ViewModelDB()
     
     
     override func viewDidLoad() {
