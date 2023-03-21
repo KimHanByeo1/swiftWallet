@@ -61,7 +61,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isEditMode ? filteredDataSource.count : dataSource.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mainCell", for: indexPath) as! MainTableViewCell
         
@@ -88,11 +88,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
@@ -100,15 +100,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        self.hidesBottomBarWhenPushed = true
         if segue.identifier == "sgProductDetail"{
-            let cell = sender as! UITableViewCell
-            let indexPath = self.mainTV.indexPath(for: cell)
-            let detailView = segue.destination as! DetailViewController
+                let cell = sender as! UITableViewCell
+                let indexPath = self.mainTV.indexPath(for: cell)
+                let detailView = segue.destination as! DetailViewController
+                
+                detailView.imageURL = dataSource[indexPath!.row].imageURL
+            }
             
-            detailView.imageURL = dataSource[indexPath!.row].imageURL
         }
-        
-    }
     
 }
 
