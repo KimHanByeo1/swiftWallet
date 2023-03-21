@@ -667,7 +667,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="PvR-1w-oKh">
-                        <barButtonItem key="rightBarButtonItem" image="setting" landscapeImage="setting" id="faC-Op-iyI"/>
+                        <barButtonItem key="rightBarButtonItem" image="setting" landscapeImage="setting" id="faC-Op-iyI">
+                            <connections>
+                                <segue destination="CYW-fr-kzS" kind="show" id="Zlp-uI-b6I"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="MyPageTableView" destination="Z0e-c9-SIw" id="3cx-Kc-bEI"/>
@@ -675,7 +679,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qFw-mZ-Fog" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4562.5954198473282" y="1467.605633802817"/>
+            <point key="canvasLocation" x="4595" y="1453"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="MWa-6V-0ec">
@@ -923,7 +927,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L21-cL-Awx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mypage" translatesAutoresizingMaskIntoConstraints="NO" id="L21-cL-Awx">
                                 <rect key="frame" x="132" y="150" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -931,6 +935,7 @@
                         <viewLayoutGuide key="safeArea" id="YuE-LW-Njr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="kaF-IU-wFe"/>
                     <connections>
                         <outlet property="profileImage" destination="L21-cL-Awx" id="Vyn-aq-Tan"/>
                         <outlet property="tfNickname" destination="vQQ-uy-9vK" id="YGw-to-CGi"/>
@@ -938,7 +943,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHZ-El-TQi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6127" y="1468"/>
+            <point key="canvasLocation" x="5535" y="1453"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemPurpleColor"/>

@@ -29,12 +29,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Do any additional setup after loading the view.
         tfNickname.text = nickname
         downURL = profileimage
+        
 
         displayImage()
         
-//        let tapGesture = UITapGestureRecognizer(target: self, action: touchToPickPhoto())
-//        profileImage.addGestureRecognizer(tapGesture)
-//        profileImage.isUserInteractionEnabled
+//        var imageView = profileImage
+//        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector(("imageTapped:")))
+//        imageView!.isUserInteractionEnabled = true
+//        imageView?.addGestureRecognizer(tapGestureRecognizer)
 
     }
     
@@ -51,8 +53,36 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    func touchToPickPhoto() {
-      //code
+    func imageTapped(img: AnyObject)
+    {
+        let photoAlert = UIAlertController(title: "사진 가져오기", message: "Photo Library에서 사진을 가져 옵니다.", preferredStyle: UIAlertController.Style.actionSheet) // Alert가 화면 밑에서 돌출
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+            self.picker.sourceType = .photoLibrary
+            self.present(self.picker, animated: false, completion: nil) // animated: true로 해서 차이점을 확인해 보세요!
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        photoAlert.addAction(okAction)
+        photoAlert.addAction(cancelAction)
+        
+        present(photoAlert, animated: true, completion: nil)
+    }
+    
+    // Photo Library에서 사진 가져오기(함수 이름만 입력하면 준비된 함수임). Print해보면 위치를 알 수 있음.
+    // photo Library에서 사진 획득시 image 를 FireStorage에 등록한다.
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            profileImage.image = image
+        }
+        
+//        // image 삭제
+//        deleteImage(name: image)?
+//        // image 등록
+//        insertImage(name: tfName.text!)
+//        dismiss(animated: true, completion: nil)
+        
     }
 
     /*
