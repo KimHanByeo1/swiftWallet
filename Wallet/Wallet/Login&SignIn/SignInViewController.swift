@@ -49,41 +49,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 
         // 초기 statusBar 설정
         passwordStatusBar.text = "비밀번호를 입력하세요"
-        lblSignupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
     }
-    
-    @objc private func signupButtonTapped(){
-        guard let email = emailTextField.text, let password = passwordTextField.text, let nickname = nicknameTextField.text else{return}
-        
-        // Firebase Login
-        
-//        DatabaseManager.shared.userExists(with: email, completion: {[weak self] exists in
-//            guard let strongSelf = self else{
-//                return
-//            }
-//
-//            guard !exists else{
-//                // user already exists
-//                return
-//            }
-//
-//
-//    }
-                                          
-          FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {[weak self] authResult, error in
-              guard let strongSelf = self else{
-                  return
-              }
-              
-              guard authResult != nil, error == nil else{
-                  print("Error creating user")
-                  return
-              }
-              
-              DatabaseManager.shared.insertUser(with: ChatAppUser(name: nickname, emailAddress: email))
-          })
-      }
-    
     
     // UITextFieldDelegate 메서드
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -245,6 +211,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
                     
                     self.transition(from: vc1, to: vc2)
+                    
+                    self.firebaseDB = Database.database().reference()
+                    self.firebaseDB.child("users").child(user.user.uid).setValue(["name": self.nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
                 } else {
                     
                     print("Sign In Failed. \(error.debugDescription)")
@@ -259,8 +228,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             }
             }
         
-        firebaseDB = Database.database().reference()
-        firebaseDB.child("users").setValue(["email":emailTextField.text!.trimmingCharacters(in: .whitespaces) , "name": nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
+       
         }
         
      
