@@ -21,6 +21,8 @@
 		264512DA29C6964D0088E17A /* RegExModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D929C6964D0088E17A /* RegExModel.swift */; };
 		264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512DC29C697A10088E17A /* TabBarViewController.swift */; };
 		A08A51DF29C9477500D995A9 /* MypageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51DE29C9477500D995A9 /* MypageDetailViewController.swift */; };
+		A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */; };
+		A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */; };
 		BC1E7D8429C84D310093830C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D8329C84D310093830C /* Sender.swift */; };
 		BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9529C853C20093830C /* UsersTableViewController.swift */; };
 		BC1E7D9829C854280093830C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9729C854280093830C /* User.swift */; };
@@ -54,7 +56,7 @@
 
 /* Begin PBXFileReference section */
 		16920C6E29C80BAF006887CE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Wallet/Main/MainViewController.swift; sourceTree = "<group>"; };
 		16920C7529C8278D006887CE /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		16920C7829C828B0006887CE /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		16920C7C29C82B9F006887CE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -69,6 +71,8 @@
 		264512DC29C697A10088E17A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A08A51DE29C9477500D995A9 /* MypageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageDetailViewController.swift; sourceTree = "<group>"; };
+		A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQueryModel.swift; sourceTree = "<group>"; };
+		A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDBModel.swift; sourceTree = "<group>"; };
 		ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		BC1E7D8329C84D310093830C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		BC1E7D9529C853C20093830C /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +138,8 @@
 				16920C7C29C82B9F006887CE /* MainViewModel.swift */,
 				16920C8029C85A0B006887CE /* DateViewModel.swift */,
 			);
-			path = ViewModel;
+			name = ViewModel;
+			path = Wallet/Main/ViewModel;
 			sourceTree = "<group>";
 		};
 		16920C7229C82770006887CE /* Cell */ = {
@@ -142,7 +147,8 @@
 			children = (
 				16920C7529C8278D006887CE /* MainTableViewCell.swift */,
 			);
-			path = Cell;
+			name = Cell;
+			path = Wallet/Main/Cell;
 			sourceTree = "<group>";
 		};
 		16920C7729C8289F006887CE /* Model */ = {
@@ -150,7 +156,8 @@
 			children = (
 				16920C7829C828B0006887CE /* MainModel.swift */,
 			);
-			path = Model;
+			name = Model;
+			path = Wallet/Main/Model;
 			sourceTree = "<group>";
 		};
 		264512CF29C5B8770088E17A /* Login&SignIn */ = {
@@ -204,6 +211,8 @@
 		A08A51E029C9478F00D995A9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */,
+				A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -518,6 +527,7 @@
 				E1CCD1AC29C8D15100E6DD35 /* LikeModel.swift in Sources */,
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
+				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
 				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
 				E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */,
 				16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */,
@@ -535,6 +545,7 @@
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
 				BC1E7D9829C854280093830C /* User.swift in Sources */,
 				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
+				A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */,
 				BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */,
 				264512D229C694AA0088E17A /* LogInViewController.swift in Sources */,
 				BC1E7D9D29C85B110093830C /* FirebaseUserListener.swift in Sources */,
