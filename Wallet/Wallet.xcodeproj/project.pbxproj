@@ -54,7 +54,7 @@
 
 /* Begin PBXFileReference section */
 		16920C6E29C80BAF006887CE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
-		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Wallet/Main/MainViewController.swift; sourceTree = "<group>"; };
 		16920C7529C8278D006887CE /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		16920C7829C828B0006887CE /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		16920C7C29C82B9F006887CE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
@@ -134,7 +134,8 @@
 				16920C7C29C82B9F006887CE /* MainViewModel.swift */,
 				16920C8029C85A0B006887CE /* DateViewModel.swift */,
 			);
-			path = ViewModel;
+			name = ViewModel;
+			path = Wallet/Main/ViewModel;
 			sourceTree = "<group>";
 		};
 		16920C7229C82770006887CE /* Cell */ = {
@@ -142,7 +143,8 @@
 			children = (
 				16920C7529C8278D006887CE /* MainTableViewCell.swift */,
 			);
-			path = Cell;
+			name = Cell;
+			path = Wallet/Main/Cell;
 			sourceTree = "<group>";
 		};
 		16920C7729C8289F006887CE /* Model */ = {
@@ -150,7 +152,8 @@
 			children = (
 				16920C7829C828B0006887CE /* MainModel.swift */,
 			);
-			path = Model;
+			name = Model;
+			path = Wallet/Main/Model;
 			sourceTree = "<group>";
 		};
 		264512CF29C5B8770088E17A /* Login&SignIn */ = {
