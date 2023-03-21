@@ -13,6 +13,10 @@
 		16920C7929C828B0006887CE /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7829C828B0006887CE /* MainModel.swift */; };
 		16920C7D29C82B9F006887CE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7C29C82B9F006887CE /* MainViewModel.swift */; };
 		16920C8129C85A0B006887CE /* DateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C8029C85A0B006887CE /* DateViewModel.swift */; };
+		260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FD37629C95E910085A7F3 /* ProfileTableViewCell.swift */; };
+		260FD37B29C95EB50085A7F3 /* PayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FD37A29C95EB50085A7F3 /* PayTableViewCell.swift */; };
+		260FD37D29C95EC00085A7F3 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FD37C29C95EC00085A7F3 /* MenuTableViewCell.swift */; };
+		260FD37F29C95ED20085A7F3 /* MyPageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260FD37E29C95ED20085A7F3 /* MyPageTableViewController.swift */; };
 		263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A884329C6AA3D0011C183 /* TelVerifyViewController.swift */; };
 		263A884E29C729BE0011C183 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263A884D29C729BE0011C183 /* SignInViewController.swift */; };
 		264512D229C694AA0088E17A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D129C694AA0088E17A /* LogInViewController.swift */; };
@@ -61,6 +65,10 @@
 		16920C7829C828B0006887CE /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		16920C7C29C82B9F006887CE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		16920C8029C85A0B006887CE /* DateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewModel.swift; sourceTree = "<group>"; };
+		260FD37629C95E910085A7F3 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		260FD37A29C95EB50085A7F3 /* PayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayTableViewCell.swift; sourceTree = "<group>"; };
+		260FD37C29C95EC00085A7F3 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		260FD37E29C95ED20085A7F3 /* MyPageTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTableViewController.swift; sourceTree = "<group>"; };
 		263A884329C6AA3D0011C183 /* TelVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelVerifyViewController.swift; sourceTree = "<group>"; };
 		263A884D29C729BE0011C183 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		264512D029C61A090088E17A /* Wallet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Wallet.entitlements; sourceTree = "<group>"; };
@@ -158,6 +166,25 @@
 			);
 			name = Model;
 			path = Wallet/Main/Model;
+			sourceTree = "<group>";
+		};
+		260FD37429C95E250085A7F3 /* MyPages */ = {
+			isa = PBXGroup;
+			children = (
+				260FD37529C95E830085A7F3 /* Cell */,
+				260FD37E29C95ED20085A7F3 /* MyPageTableViewController.swift */,
+			);
+			path = MyPages;
+			sourceTree = "<group>";
+		};
+		260FD37529C95E830085A7F3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				260FD37629C95E910085A7F3 /* ProfileTableViewCell.swift */,
+				260FD37A29C95EB50085A7F3 /* PayTableViewCell.swift */,
+				260FD37C29C95EC00085A7F3 /* MenuTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		264512CF29C5B8770088E17A /* Login&SignIn */ = {
@@ -298,6 +325,7 @@
 		E1CCD0F629BEF69200E6DD35 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				260FD37429C95E250085A7F3 /* MyPages */,
 				A08A51DD29C9472100D995A9 /* MypageDetail */,
 				16920C6C29C80B74006887CE /* Main */,
 				BC1E7D8129C84D0A0093830C /* Chat */,
@@ -515,6 +543,7 @@
 				16920C8129C85A0B006887CE /* DateViewModel.swift in Sources */,
 				264512D629C695C20088E17A /* AuthViewModel.swift in Sources */,
 				263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */,
+				260FD37B29C95EB50085A7F3 /* PayTableViewCell.swift in Sources */,
 				E1CCD19629C80D6600E6DD35 /* ProductDetailModel.swift in Sources */,
 				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
 				E1CCD19329C80B8500E6DD35 /* DetailViewModel.swift in Sources */,
@@ -527,8 +556,10 @@
 				E1CCD1AC29C8D15100E6DD35 /* LikeModel.swift in Sources */,
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
+				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,
 				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
 				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
+				260FD37F29C95ED20085A7F3 /* MyPageTableViewController.swift in Sources */,
 				E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */,
 				16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */,
 				E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */,
@@ -545,6 +576,7 @@
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
 				BC1E7D9829C854280093830C /* User.swift in Sources */,
 				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
+				260FD37D29C95EC00085A7F3 /* MenuTableViewCell.swift in Sources */,
 				A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */,
 				BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */,
 				264512D229C694AA0088E17A /* LogInViewController.swift in Sources */,
