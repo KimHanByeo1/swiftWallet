@@ -26,15 +26,26 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         emailField.text = "aaa@aaa.aaa"
         passwordField.text = "aaaaaa"
     }
     
-//    @objc private func loginButtonTapped(){
-//        guard let email = emailField.text!, let
-//    }
+    @objc private func loginButtonTapped(){
+        guard let email = emailField.text, let password = passwordField.text else{return}
+        
+        // Firebase Login
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {authResult, error in
+            guard let result = authResult, error == nil else{
+                print("Failed to login user with email : \(email)")
+                return
+            }
+            
+            let user = result.user
+            print("Logged in User : \(user)")
+        })
+    }
     
     @IBAction func loginButton(_ sender: UIButton) {
         

@@ -19,6 +19,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordConfirmTextField: UITextField!
     @IBOutlet weak var passwordStatusBar: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var lblSignupButton: UIButton!
     
     let passwordCheckDelay = 0.01 // 비밀번호 확인 대기 시간 (초)
         
@@ -48,8 +49,23 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                 
         // 초기 statusBar 설정
         passwordStatusBar.text = "비밀번호를 입력하세요"
+        lblSignupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
     }
     
+    @objc private func signupButtonTapped(){
+        guard let email = emailTextField.text, let password = passwordTextField.text, let nickname = nicknameTextField.text else{return}
+        
+        // Firebase Login
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+            guard let result = authResult, error == nil else{
+                print("Error creating user")
+                return
+            }
+            
+            let user =  result.user
+            print("Created User: \(user)")
+        })
+    }
     
     // UITextFieldDelegate 메서드
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
