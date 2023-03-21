@@ -49,7 +49,7 @@ class MyPageTableViewController: UITableViewController {
                     // cell 구성
                 cell.nickname.text = "nickname"
                 cell.email.text = "email@email.email"
-                cell.profileImage.image = UIImage(named: "mypage")
+                cell.profileImage.image = UIImage(named: "face")
                     return cell
                 } else if indexPath.section == 1 {
                     // payCell 반환
@@ -67,19 +67,19 @@ class MyPageTableViewController: UITableViewController {
                     // cell 구성
                     switch indexPath.row {
                     case 0:
-                        cell.menuImage.image = UIImage(named: "like2")
+                        cell.menuImage.image = UIImage(named: "heart")
                         cell.menuLabel.text = "관심목록"
     //                    cell.menuGoBtn
                     case 1:
-                        cell.menuImage.image = UIImage(named: "like1")
+                        cell.menuImage.image = UIImage(named: "list")
                         cell.menuLabel.text = "판매내역"
     //                    cell.menuGoBtn
                     case 2:
-                        cell.menuImage.image = UIImage(named: "like1")
+                        cell.menuImage.image = UIImage(named: "shop")
                         cell.menuLabel.text = "구매내역"
     //                    cell.menuGoBtn
                     case 3:
-                        cell.menuImage.image = UIImage(named: "like1")
+                        cell.menuImage.image = UIImage(named: "fullheart")
                         cell.menuLabel.text = "몰라"
     //                    cell.menuGoBtn
                     default:
