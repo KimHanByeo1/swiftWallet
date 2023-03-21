@@ -22,9 +22,6 @@ class UsersTableViewController: UITableViewController {
         
         tableView.tableFooterView = UIView()
         
-        let email = defaults.string(forKey: "email")
-        let nickname = defaults.string(forKey: "nickname")
-        
         downloadUsers()
 
         // Uncomment the following line to preserve selection between presentations
