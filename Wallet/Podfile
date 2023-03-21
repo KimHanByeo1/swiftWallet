@@ -17,6 +17,4 @@ target 'Wallet' do
   pod 'JGProgressHUD'
   pod 'RealmSwift'
   pod 'SDWebImage'
-  pod 'SnapKit'
-  pod 'Then'
 end

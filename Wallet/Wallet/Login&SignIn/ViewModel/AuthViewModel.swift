@@ -14,7 +14,7 @@ class AuthViewModel : NSObject {
     var currentUser: String?
     var nickname: String?
     
-    let dbModel = ViewModelDB()
+    let dbModel = DBViewModel()
    
     
     func logIn(email: String, password: String, completion: @escaping (Bool) -> Void) {
