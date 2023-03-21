@@ -57,27 +57,33 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
         // Firebase Login
         
-        DatabaseManager.shared.userExists(with: email, completion: {[weak self] exists in
-            guard let strongSelf = self else{
-                return
-            }
-            
-            guard !exists else{
-                // user already exists
-                return
-            }
-            
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {[weak self] authResult, error in
-                
-                guard authResult != nil, error == nil else{
-                    print("Error creating user")
-                    return
-                }
-                
-                DatabaseManager.shared.insertUser(with: ChatAppUser(name: nickname, emailAddress: email))
-            })
-        })
-    }
+//        DatabaseManager.shared.userExists(with: email, completion: {[weak self] exists in
+//            guard let strongSelf = self else{
+//                return
+//            }
+//
+//            guard !exists else{
+//                // user already exists
+//                return
+//            }
+//
+//
+//    }
+                                          
+          FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {[weak self] authResult, error in
+              guard let strongSelf = self else{
+                  return
+              }
+              
+              guard authResult != nil, error == nil else{
+                  print("Error creating user")
+                  return
+              }
+              
+              DatabaseManager.shared.insertUser(with: ChatAppUser(name: nickname, emailAddress: email))
+          })
+      }
+    
     
     // UITextFieldDelegate 메서드
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
