@@ -20,7 +20,6 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     @IBOutlet weak var lblContent: UILabel! // 선택한 상품 상세 내용
     @IBOutlet weak var lblPrice: UILabel! // 선택한 상품 가격
     @IBOutlet weak var btnLikeText: UIButton! // 찜 이미지 변경을 위한 변수
-    @IBOutlet weak var userImageView: UIImageView!
     
     var imageURL = "" // MainController에서 넘겨준 imageURL 값 받는 변수
     var like = "" // 찜 여부 확인 0,1
@@ -48,7 +47,7 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         
     }
     
-    // quertModel.downloadItems#imageLiteral(resourceName: "simulator_screenshot_F61D50BF-27DF-470E-8417-6BF159C1B941.png")
+    // quertModel.downloadItems
     func itemDownLoaded(items: [ProductDetailModel]) {
         
         productDetailStore = items
@@ -76,7 +75,7 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
             }.resume()
         }
         
-        lblNickName.text = defaults.string(forKey: "nickname")!
+        lblNickName.text = "판매자: \(defaults.string(forKey: "nickname")!)"
         lblProductName.text = "상품명: \(productDetailStore.first!.pName)"
         lblTitle.text = productDetailStore.first?.pTitle
         lblBrandNTime.text = "\(productDetailStore.first!.pBrand) · \(minute)분전"
