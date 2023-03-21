@@ -7,7 +7,7 @@
 
 import FirebaseFirestore
 
-class DBViewModel : NSObject {
+class ViewModelDB : NSObject {
     
 
     
