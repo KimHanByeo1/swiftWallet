@@ -27,7 +27,16 @@ class ProfileTableViewCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-//        profileImage.contentMode =
+        super.layoutSubviews()
+        
+        // border 깎기
+        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        profileImage.clipsToBounds = true
+        
+        // Add a stroke to the image
+//            profileImage.layer.borderWidth = 1.0
+//            profileImage.layer.borderColor = UIColor.black.cgColor
+        
     }
 
 }
