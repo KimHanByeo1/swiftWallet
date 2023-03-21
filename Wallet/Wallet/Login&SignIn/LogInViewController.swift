@@ -15,6 +15,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var lblLoginButton: UIButton!
     
     let authViewModel = AuthViewModel()
     let regExModel = RegExModel()
@@ -25,7 +26,15 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
+        emailField.text = "aaa@aaa.aaa"
+        passwordField.text = "aaaaaa"
     }
+    
+//    @objc private func loginButtonTapped(){
+//        guard let email = emailField.text!, let
+//    }
     
     @IBAction func loginButton(_ sender: UIButton) {
         
