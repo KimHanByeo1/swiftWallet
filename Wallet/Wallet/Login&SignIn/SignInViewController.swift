@@ -56,17 +56,26 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailTextField.text, let password = passwordTextField.text, let nickname = nicknameTextField.text else{return}
         
         // Firebase Login
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {[weak self] authResult, error in
+        
+        DatabaseManager.shared.userExists(with: email, completion: {[weak self] exists in
             guard let strongSelf = self else{
                 return
             }
-            guard let result = authResult, error == nil else{
-                print("Error creating user")
+            
+            guard !exists else{
+                // user already exists
                 return
             }
             
-            let user =  result.user
-            print("Created User: \(user)")
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {[weak self] authResult, error in
+                
+                guard authResult != nil, error == nil else{
+                    print("Error creating user")
+                    return
+                }
+                
+                DatabaseManager.shared.insertUser(with: ChatAppUser(name: nickname, emailAddress: email))
+            })
         })
     }
     
