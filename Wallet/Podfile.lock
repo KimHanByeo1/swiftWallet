@@ -803,8 +803,6 @@ PODS:
   - SDWebImage (5.15.5):
     - SDWebImage/Core (= 5.15.5)
   - SDWebImage/Core (5.15.5)
-  - SnapKit (5.6.0)
-  - Then (3.0.0)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -817,8 +815,6 @@ DEPENDENCIES:
   - MessageKit
   - RealmSwift
   - SDWebImage
-  - SnapKit
-  - Then
 
 SPEC REPOS:
   trunk:
@@ -853,8 +849,6 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SDWebImage
-    - SnapKit
-    - Then
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -888,9 +882,7 @@ SPEC CHECKSUMS:
   Realm: 9c5fc6f8f5cb70b299f2e3064d2b9f6cb0f1523d
   RealmSwift: 7be7bb45911c16400dd1bfce3a01764ecb4cae7a
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
-  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
-  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
-  
-PODFILE CHECKSUM: a68e35f414b45e325baa31cacfa6228ab28dadfc
+
+PODFILE CHECKSUM: 7fc32b6d523f51ac2439e45c4ae22149fa5632f3
 
 COCOAPODS: 1.12.0
