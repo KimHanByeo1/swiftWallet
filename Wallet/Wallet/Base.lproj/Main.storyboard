@@ -246,7 +246,7 @@
         <!--Detail View Controller-->
         <scene sceneID="p17-Ie-wvm">
             <objects>
-                <viewController id="3Cp-j8-oGp" customClass="DetailViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="3Cp-j8-oGp" customClass="DetailViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Ix-z7-l1n">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
