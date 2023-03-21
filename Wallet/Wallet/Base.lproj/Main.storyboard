@@ -785,6 +785,7 @@
                     <connections>
                         <outlet property="emailStatusBar" destination="f0D-9h-d9f" id="oDG-wm-vUO"/>
                         <outlet property="emailTextField" destination="T0O-oo-m5h" id="u2q-tj-8Ka"/>
+                        <outlet property="lblSignupButton" destination="OjH-mN-x53" id="pag-Kc-Eec"/>
                         <outlet property="nicknameTextField" destination="WXf-Fy-leP" id="IH6-zk-St4"/>
                         <outlet property="passwordConfirmTextField" destination="1TX-cL-aAX" id="CqQ-0a-m8g"/>
                         <outlet property="passwordStatusBar" destination="uWj-qJ-l0t" id="7WU-qb-gEp"/>
