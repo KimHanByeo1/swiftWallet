@@ -812,10 +812,10 @@
             </objects>
             <point key="canvasLocation" x="-1596" y="1051"/>
         </scene>
-        <!--Mypage Detail View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="LU6-lb-zJy">
             <objects>
-                <viewController id="CYW-fr-kzS" customClass="MypageDetailViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="CYW-fr-kzS" customClass="ProfileViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MoT-Jo-e9P">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -842,8 +842,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
-                        <outlet property="ProfileImage" destination="L21-cL-Awx" id="IiE-aT-zqi"/>
-                        <outlet property="tfNickName" destination="vQQ-uy-9vK" id="Wk0-6E-daX"/>
+                        <outlet property="profileImage" destination="L21-cL-Awx" id="Vyn-aq-Tan"/>
+                        <outlet property="tfNickname" destination="vQQ-uy-9vK" id="YGw-to-CGi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHZ-El-TQi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
