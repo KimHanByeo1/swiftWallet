@@ -36,7 +36,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         guard let email = emailField.text, let password = passwordField.text else{return}
         
         // Firebase Login
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {authResult, error in
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {[weak self] authResult, error in
+            guard let strongSelf = self else{
+                return
+            }
             guard let result = authResult, error == nil else{
                 print("Failed to login user with email : \(email)")
                 return
