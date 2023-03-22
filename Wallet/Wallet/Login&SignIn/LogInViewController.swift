@@ -33,8 +33,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-//        emailField.text = "aaa@aaa.aaa"
-//        passwordField.text = "aaaaaa"
+        emailField.text = "aaa@aaa.aaa"
+        passwordField.text = "aaaaaa"
     }
     
     @objc private func loginButtonTapped(){
