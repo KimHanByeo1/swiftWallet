@@ -15,6 +15,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var tfMessage: UITextField!
     
+    
+    
     // 채팅 대상 uid
     public var destinationUid:String?
     
@@ -31,10 +33,15 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         checkChatRoom()
     }
     
+    
+    @IBAction func btnSendmessage(_ sender: UIButton) {
+        
+    }
+    
     // Chatting Room 생성
     @objc func createRoom(){
         let createRoomInfo:Dictionary<String,Any> = [
-            "user":[
+            "users":[
                 uid!: true,
                 destinationUid!:true
             ]
@@ -112,4 +119,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     */
 
+}
+
+class MyMessageCell:UITableViewCell{
+    
+}
+
+class DestinationMessageCell:UITableViewCell{
+    
 }
