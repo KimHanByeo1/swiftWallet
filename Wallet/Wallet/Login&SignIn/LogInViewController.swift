@@ -17,6 +17,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var lblLoginButton: UIButton!
     
+    
+    @IBOutlet weak var emailCheck: UILabel!
+    @IBOutlet weak var passwordCheck: UILabel!
+    
+    
     let authViewModel = AuthViewModel()
     let regExModel = RegExModel()
     let dbModel = DBViewModel()
@@ -28,8 +33,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-        emailField.text = "aaa@aaa.aaa"
-        passwordField.text = "aaaaaa"
+//        emailField.text = "aaa@aaa.aaa"
+//        passwordField.text = "aaaaaa"
     }
     
     @objc private func loginButtonTapped(){
@@ -63,17 +68,16 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             if let removable = self.view.viewWithTag(100) {
                 removable.removeFromSuperview()
             }
+            emailField.text = ""
         }else {
             shakeTextField(textField: emailField)
-            let emailLabel = UILabel(frame: CGRect(x: 68, y: 350, width: 279, height: 45))
-            emailLabel.text = "이메일을 확인해 주세요"
-            emailLabel.textColor = UIColor.red
-            emailLabel.tag = 100
+            
+            emailCheck.text = "이메일을 확인해 주세요"
             
             // 잘못 입력하면 텍스트 비워줌
             emailField.text = ""
             
-            self.view.addSubview(emailLabel)
+           
             
         } // 이메일 입력오류
         
@@ -82,18 +86,17 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             if let removable = self.view.viewWithTag(101) {
                 removable.removeFromSuperview()
             }
+            passwordCheck.text = ""
         }
         else{
             shakeTextField(textField: passwordField)
-            let passwordLabel = UILabel(frame: CGRect(x: 68, y: 435, width: 279, height: 45))
-            passwordLabel.text = "비밀번호을 확인해 주세요"
-            passwordLabel.textColor = UIColor.red
-            passwordLabel.tag = 101
+            passwordCheck.text = "비밀번호을 확인해 주세요"
+            
             
             //잘못입력하면 텍스트 비워줌
             passwordField.text = ""
             
-            self.view.addSubview(passwordLabel)
+            
         } // 비밀번호 입력 오류
         
         
@@ -108,15 +111,17 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                         Firestore.firestore().collection("users").document(uid).getDocument { [self] (snapshot, error) in
                             if let data = snapshot?.data() {
                                 let nickname = data["nickname"] as? String ?? ""
-                                let phone = data["phone"] as? String ?? ""
+                                let profileImage = data["profileImage"] as? String ?? ""
                                 
                                 
                                 
                                 
-                                
-                                //UserDefaults를 위한 세팅(alike sharedPreferences)
-                                dbModel.saveUserInfo(email: email, nickname: nickname, phone: phone)
-                                
+                                if profileImage.isEmpty{
+                                    //UserDefaults를 위한 세팅(alike sharedPreferences)
+                                    dbModel.saveUserInfo(email: email, nickname: nickname, profileImage: nil)
+                                }else{
+                                    dbModel.saveUserInfo(email: email, nickname: nickname, profileImage: profileImage)
+                                }
                                 
                                 
                                 
