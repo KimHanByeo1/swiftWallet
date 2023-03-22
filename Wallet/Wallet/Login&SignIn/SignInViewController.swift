@@ -199,7 +199,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     
                     self.dismiss(animated: true)
                     print("Sign In Success!")
-                    self.dbViewModel.createUser(uid: user.user.uid, email: email, nickname: nickname)
+                    self.dbViewModel.createUser(uid: user.user.uid, email: email, nickname: nickname, image: nil)
                     
                     let resultAlert = UIAlertController(title: "알림", message: "회원가입 성공!", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "네 알겠습니다.", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
