@@ -214,7 +214,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     
                     // Firebase Real-time 연동 소스
                     self.firebaseDB = Database.database().reference()
-                    self.firebaseDB.child("users").setValue(["email": self.emailTextField.text?.trimmingCharacters(in: .whitespaces) , "name": self.nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
+                    self.firebaseDB.child("users").child(user.user.uid).setValue(["email": self.emailTextField.text?.trimmingCharacters(in: .whitespaces) , "name": self.nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
                 } else {
                     
                     print("Sign In Failed. \(error.debugDescription)")
