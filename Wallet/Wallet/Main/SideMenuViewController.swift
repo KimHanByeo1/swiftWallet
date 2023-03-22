@@ -21,7 +21,9 @@ class SideMenuViewController: UIViewController {
         sidemenuTV.dataSource = self
     }
     
-
+    func postBrandNotification(brandName: String) {
+        NotificationCenter.default.post(name: NSNotification.Name("BrandDidSelect"), object: self, userInfo: ["brandName": brandName])
+    }
 }
 
 extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
@@ -42,10 +44,12 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let brandName = self.brandName[indexPath.row]
+        postBrandNotification(brandName: brandName)
+        dismiss(animated: true, completion: nil)
     }
     
-    // 수정 페이지로 데이터 보내기 위함
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    }
     
 }
