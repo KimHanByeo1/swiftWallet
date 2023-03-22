@@ -7,7 +7,9 @@
 
 import UIKit
 
+@objcMembers
 class UserInfo: NSObject {
     var name:String?
     var email:String?
+    var uid:String?
 }

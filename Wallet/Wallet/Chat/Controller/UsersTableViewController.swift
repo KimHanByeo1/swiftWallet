@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SnapKit
+import Firebase
 import FirebaseDatabase
 
 class UsersTableViewController: UITableViewController {
@@ -17,7 +19,35 @@ class UsersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        Database.database().reference().child("users").observe(DataEventType.value, with: {snapshot in
+            
+            self.array.removeAll()
+            
+            let myUid = Auth.auth().currentUser?.uid
+            
+            for child in snapshot.children{
+                let fchild = child as! DataSnapshot
+                let userInfo = UserInfo()
+                userInfo.setValuesForKeys(fchild.value as! [String:Any])
+                
+                if userInfo.uid == myUid{
+                    continue
+                }
+                
+                self.array.append(userInfo)
+                
+                print(fchild.value as! [String:Any])
+            }
+            
+            DispatchQueue.main.async{
+                self.userTableView.reloadData()
+            }
+            
+            print(self.array)
+        })
+        
+        userTableView.rowHeight = 124
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,17 +59,19 @@ class UsersTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return array.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! UserTableViewCell
+        
+        cell.lblUserName.text = array[indexPath.row].name
         
         return cell
     }
@@ -79,14 +111,21 @@ class UsersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+       
+        let vc = segue.destination as! ChatViewController
+        
+        let cell = sender as! UserTableViewCell
+        let indexpath = userTableView.indexPath(for: cell)
+        
+        vc.destinationUid = array[indexpath!.row].uid
     }
-    */
+    
 
 }
