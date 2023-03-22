@@ -32,6 +32,8 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>앨범 접근 허용</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

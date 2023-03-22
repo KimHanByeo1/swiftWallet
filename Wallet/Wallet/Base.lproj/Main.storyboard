@@ -136,6 +136,81 @@
             </objects>
             <point key="canvasLocation" x="4594.6564885496182" y="1452.8169014084508"/>
         </scene>
+        <!--Side Menu View Controller-->
+        <scene sceneID="dtl-c8-THw">
+            <objects>
+                <viewController storyboardIdentifier="SideMenuViewController" modalPresentationStyle="formSheet" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Eon-oJ-dkm" customClass="SideMenuViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eJW-aj-MH8">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="X0p-yb-wGh">
+                                <rect key="frame" x="0.0" y="132" width="393" height="637"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="sideCell" rowHeight="85" id="Jms-L4-73Q" customClass="SideMenuTableViewCell" customModule="Wallet" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jms-L4-73Q" id="Ok9-B5-MqU" customClass="SideMenuTableViewCell" customModule="Wallet" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="브랜드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRT-fM-HUn">
+                                                    <rect key="frame" x="20" y="25" width="353" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="lblBrand" destination="VRT-fM-HUn" id="7l1-OV-E10"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="브랜드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0o-29-LL3">
+                                <rect key="frame" x="96" y="74" width="75" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5aC-P9-Tya"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5ln-f5-Ham"/>
+                    <connections>
+                        <outlet property="sidemenuTV" destination="X0p-yb-wGh" id="IIJ-xY-Q4g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hp-Wa-Qlo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2750.3816793893129" y="-1227.4647887323945"/>
+        </scene>
+        <!--Custom Side Menu Navigation-->
+        <scene sceneID="FQv-ua-OOL">
+            <objects>
+                <navigationController id="du7-HP-sY0" customClass="CustomSideMenuNavigation" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1jc-ea-WB6"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="l9Z-2R-5No">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Eon-oJ-dkm" kind="relationship" relationship="rootViewController" id="kwX-ZJ-qZA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="obF-pE-swd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1815" y="-1227"/>
+        </scene>
         <!--중고 지갑-->
         <scene sceneID="695-H3-2YI">
             <objects>
@@ -144,8 +219,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Taz-iw-7Gr">
-                                <rect key="frame" x="16" y="103" width="361" height="666"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Taz-iw-7Gr">
+                                <rect key="frame" x="16" y="0.0" width="361" height="852"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="mainCell" rowHeight="156" id="SZ0-4X-Onw" customClass="MainTableViewCell" customModule="Wallet" customModuleProvider="target">
@@ -221,18 +297,15 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="hyo-6t-w1h"/>
+                        <viewLayoutGuide key="safeArea" id="sVh-Z7-IzQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="top" secondItem="hyo-6t-w1h" secondAttribute="top" id="266-fy-EXy"/>
-                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="leading" secondItem="hyo-6t-w1h" secondAttribute="leading" constant="16" id="4Kn-5p-jT6"/>
-                            <constraint firstItem="hyo-6t-w1h" firstAttribute="trailing" secondItem="Taz-iw-7Gr" secondAttribute="trailing" constant="16" id="VbQ-XH-Dcn"/>
-                            <constraint firstItem="Taz-iw-7Gr" firstAttribute="bottom" secondItem="hyo-6t-w1h" secondAttribute="bottom" id="WNF-H5-HHn"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="중고 지갑" id="YJy-Yz-xO8">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="category" id="xru-AN-yfO">
                             <color key="tintColor" systemColor="tertiaryLabelColor"/>
+                            <connections>
+                                <segue destination="du7-HP-sY0" kind="presentation" id="FkT-lX-Pwn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -331,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1c-vF-d1F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3667.9389312977096" y="-568.30985915492965"/>
+            <point key="canvasLocation" x="4127" y="-568"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="tF5-5F-OBC">
@@ -360,6 +433,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2UD-CP-uok" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="홈" image="home" landscapeImage="home" largeContentSizeImage="home" id="iaA-lY-B35"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="gqS-b6-ReX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tbx-HK-Xqs">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

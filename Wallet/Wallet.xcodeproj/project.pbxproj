@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1610E93029C9A41500824E49 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */; };
+		1610E93229C9A43800824E49 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E93129C9A43800824E49 /* SideMenuViewController.swift */; };
+		1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */; };
 		16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C6E29C80BAF006887CE /* SearchViewModel.swift */; };
 		16920C7129C80BCE006887CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7029C80BCE006887CE /* MainViewController.swift */; };
 		16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7529C8278D006887CE /* MainTableViewCell.swift */; };
@@ -55,6 +58,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
+		1610E93129C9A43800824E49 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		16920C6E29C80BAF006887CE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Wallet/Main/MainViewController.swift; sourceTree = "<group>"; };
 		16920C7529C8278D006887CE /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -126,6 +132,8 @@
 				16920C7229C82770006887CE /* Cell */,
 				16920C6D29C80B96006887CE /* ViewModel */,
 				16920C7029C80BCE006887CE /* MainViewController.swift */,
+				1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */,
+				1610E93129C9A43800824E49 /* SideMenuViewController.swift */,
 			);
 			name = Main;
 			path = ..;
@@ -146,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				16920C7529C8278D006887CE /* MainTableViewCell.swift */,
+				1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */,
 			);
 			name = Cell;
 			path = Wallet/Main/Cell;
@@ -512,8 +521,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC1E7D9F29C85D010093830C /* FCollectionReference.swift in Sources */,
+				1610E93029C9A41500824E49 /* CustomSideMenuNavigation.swift in Sources */,
 				16920C8129C85A0B006887CE /* DateViewModel.swift in Sources */,
 				264512D629C695C20088E17A /* AuthViewModel.swift in Sources */,
+				1610E93229C9A43800824E49 /* SideMenuViewController.swift in Sources */,
 				263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */,
 				E1CCD19629C80D6600E6DD35 /* ProductDetailModel.swift in Sources */,
 				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
@@ -521,6 +532,7 @@
 				E1CCD18B29C6D5A400E6DD35 /* staticModel.swift in Sources */,
 				16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */,
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
+				1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */,
 				16920C7929C828B0006887CE /* MainModel.swift in Sources */,
 				E1CCD1AE29C8D17900E6DD35 /* LikeViewModel.swift in Sources */,
 				E1CCD18929C6D59000E6DD35 /* Flask.swift in Sources */,

@@ -803,6 +803,7 @@ PODS:
   - SDWebImage (5.15.5):
     - SDWebImage/Core (= 5.15.5)
   - SDWebImage/Core (5.15.5)
+  - SideMenu (6.5.0)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -815,6 +816,7 @@ DEPENDENCIES:
   - MessageKit
   - RealmSwift
   - SDWebImage
+  - SideMenu
 
 SPEC REPOS:
   trunk:
@@ -849,6 +851,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SDWebImage
+    - SideMenu
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -882,7 +885,8 @@ SPEC CHECKSUMS:
   Realm: 9c5fc6f8f5cb70b299f2e3064d2b9f6cb0f1523d
   RealmSwift: 7be7bb45911c16400dd1bfce3a01764ecb4cae7a
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 7fc32b6d523f51ac2439e45c4ae22149fa5632f3
+PODFILE CHECKSUM: 92ba6fed3fc858f643a721cf435db26a95b6971d
 
 COCOAPODS: 1.12.0
