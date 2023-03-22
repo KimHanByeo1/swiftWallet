@@ -18,6 +18,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
 //    var email = ""
 //    var nickname = ""
+    var documentId = ""
     var profileimage = ""
     
     let picker = UIImagePickerController()
@@ -26,13 +27,18 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     // 사용자 정보 sharedpreference
     let defaults = UserDefaults.standard
     
+    let imagePicker: UIImagePickerController! = UIImagePickerController() // UIImagePickerController의 인스턴스 변수 생성
+    var captureImage: UIImage! // 촬영을 하거나 포토 라이브러리에서 불러온 사진을 저장할 변수
+//        var videoURL: URL! // 녹화한 비디오의 URL을 저장할 변수
+    var flagImageSave = false // 이미지 저장 여뷰를 나타낼 변수
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
 
         // Do any additional setup after loading the view.
         
-        displayImage()
+//        displayImage()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         imgView.isUserInteractionEnabled = true
@@ -63,7 +69,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        _ = tapGestureRecognizer.view as! UIImageView
 
         // Your action
         let photoAlert = UIAlertController(title: "사진 가져오기", message: "Photo Library에서 사진을 가져 옵니다.", preferredStyle: UIAlertController.Style.actionSheet) // Alert가 화면 밑에서 돌출
@@ -84,10 +90,13 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     @IBAction func btnUpdate(_ sender: UIBarButtonItem) {
         guard let email = tfEmail.text else {return}
         guard let nickname = tfName.text else {return}
-        let image = downURL
+        print("email : \(email)")
+        print("nickname : \(nickname)")
+        print("image : \(self.downURL)")
+        //        let image = downURL
         
-        let updateModel = ProfileUpdataModel()
-        let result = updateModel.ProfileUpdataItems(email: email, nickname: nickname, profileImage: image)
+        let profileupdatamodel = ProfileUpdataModel()
+        let result = profileupdatamodel.ProfileUpdataItems(documentId: documentId, email: email, nickname: nickname, profileImage: self.downURL)
         
         if result == true{
             let resultAlert = UIAlertController(title: "완료", message: "수정이 되었습니다.", preferredStyle: UIAlertController.Style.alert)
@@ -102,6 +111,59 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             resultAlert.addAction(onAction)
             present(resultAlert, animated: true, completion: nil)
         }
+    }
+    
+    
+    //이미지 보여주고 문자열로 바꾸기
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
+        if mediaType.isEqual(to: "public.image" as String){
+            captureImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+            if flagImageSave{
+                UIImageWriteToSavedPhotosAlbum(captureImage, self, nil, nil)
+            }
+            imgView.image = captureImage
+            print("image.Image : \(String(describing: captureImage))")
+        }
+        insertImage(name: tfName.text!)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    //이미지 문자로 변경
+    func insertImage(name: String){
+        let storageRef = Storage.storage().reference()
+
+        // File located on disk
+        let image = imgView.image!
+        print(image)
+        guard let imageData = image.jpegData(compressionQuality: 0.4) else { return }
+        print("imageData: \(imageData)")
+        // Create a reference to the file you want to upload
+        let imageRef = storageRef.child("images/\(name).jpg")
+        print("imageRef : \(imageRef)")
+
+        // Meta data
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+
+        // Upload the file to the path "images/rivers.jpg"
+        imageRef.putData(imageData, metadata: metadata) { metadata, error in
+            guard metadata != nil else {
+            print("Error : putfile")
+            return
+          }
+          // You can also access to download URL after upload.
+            imageRef.downloadURL { (url, error) in
+            guard let downloadURL = url else {
+              print("Error : DownloadURL")
+              return
+            }
+              self.downURL = "\(downloadURL)"
+                print("imageURL : \(self.downURL)")
+          }
+        }
+        print("--- Completed to insert a image ----")
+
     }
     
     /*
