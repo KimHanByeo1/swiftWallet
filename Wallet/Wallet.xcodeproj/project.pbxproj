@@ -63,8 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
-		1610E93129C9A43800824E49 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSideMenuNavigation.swift; path = Wallet/Main/CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
+		1610E93129C9A43800824E49 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SideMenuViewController.swift; path = Wallet/Main/SideMenuViewController.swift; sourceTree = "<group>"; };
 		1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		16920C6E29C80BAF006887CE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Wallet/Main/MainViewController.swift; sourceTree = "<group>"; };
