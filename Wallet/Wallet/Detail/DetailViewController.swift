@@ -69,7 +69,7 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         
         let dateViewModel = DateViewModel()
         
-        lblNickName.text = "판매자: \(defaults.string(forKey: "nickname")!)"
+        lblNickName.text = "\(defaults.string(forKey: "nickname")!)"
         lblProductName.text = "상품명: \(productDetailStore.first!.pName)"
         lblTitle.text = productDetailStore.first?.pTitle
         lblBrandNTime.text = "\(productDetailStore.first!.pBrand) · \(dateViewModel.DateCount(productDetailStore.first!.pTime))"
