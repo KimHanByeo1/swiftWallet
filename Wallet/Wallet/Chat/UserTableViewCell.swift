@@ -8,7 +8,10 @@
 import UIKit
 
 class UserTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var lblUserName: UILabel!
+    @IBOutlet weak var lblLastMessage: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
