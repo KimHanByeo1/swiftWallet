@@ -30,6 +30,8 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     @IBOutlet weak var tvDetailContent: UITextView!
     @IBOutlet weak var indicator: UIActivityIndicatorView! // 예측 데이터 가져올 때 화면 동작 멈추게 할 indicatorView
     
+    var keyHeight: CGFloat? = nil // 키보드 높이를 저장할 변수
+    
     let currentDate = Date() // Firebase storage에 이미지 등록할 때 '현재 시간.jpg'로 저장하기 위한 생성자
     let formatter = DateFormatter()
     
@@ -46,6 +48,11 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // NotificationCenter에 옵저버를 추가하여 앱 내에서 발생하는 Action을 컨트롤 한다.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+
         self.photo.delegate = self
         self.view.bringSubviewToFront(self.indicator)
         self.indicator.isHidden = true // 첫 화면에선 버퍼링 안보이게 숨기기
@@ -79,23 +86,11 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         
 //      기본 이미지 설정
         imageView.image = UIImage(named: "basicImage")
-
-    }
-    
-//  Placeholder 설정
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if tvContent.text.isEmpty {
-            tvContent.text =  "상품설명"
-            tvContent.textColor = UIColor.lightGray
-        }
-    }
-//  텍스트 필드 클릭 시 널 값으로 초기화
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if tvContent.textColor == UIColor.lightGray {
-            tvContent.text = nil
-            tvContent.textColor = UIColor.black
-        }
-    }
+        
+//      tvDetailContent 입력 못하게 막기
+        tvDetailContent.isEditable = false
+        
+    } // viewDidLoad
     
 //  ==================== Button Start ====================
     // 앨범에서 이미지 가져오기
@@ -119,6 +114,26 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     }
     
 //  ==================== Button End ======================
+    
+    deinit {
+        // Notification 해제
+        NotificationCenter.default.removeObserver(self)
+    } // deinit
+    
+//  Placeholder 설정
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if tvContent.text.isEmpty {
+            tvContent.text =  "상품설명"
+            tvContent.textColor = UIColor.lightGray
+        }
+    } // textViewDidEndEditing
+//  텍스트 필드 클릭 시 널 값으로 초기화
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if tvContent.textColor == UIColor.lightGray {
+            tvContent.text = nil
+            tvContent.textColor = UIColor.black
+        }
+    } // textViewDidBeginEditing
     
     func insertAction() {
         
@@ -160,6 +175,10 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 
                 resultAlert.addAction(onAction)
                 present(resultAlert, animated: true)
+                
+                if let tabbarController = self.tabBarController {
+                    tabbarController.selectedIndex = 0
+                }
             }
         } else {
             let resultAlert = UIAlertController(title: "Error", message: "상품 사진을 등록해주세요.", preferredStyle: .alert)
@@ -236,6 +255,26 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         tvDetailContent.text = walletStore.first!.wDetailContent as String
         
     } // itemDownLoaded
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRect.height
+            
+            // 키보드 높이만큼 뷰를 올립니다.
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.frame.origin.y = -keyboardHeight
+            })
+        }
+    }
+
+    @objc func keyboardWillHide(notification: Notification) {
+        // 뷰를 원래 위치로 내립니다.
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.frame.origin.y = 0
+        })
+    }
+
     
 } // End
 
