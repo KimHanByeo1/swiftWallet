@@ -18,4 +18,5 @@ target 'Wallet' do
   pod 'RealmSwift'
   pod 'SDWebImage'
   pod 'SideMenu'
+  pod 'SnapKit'
 end
