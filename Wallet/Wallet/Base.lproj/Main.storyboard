@@ -578,7 +578,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="124" id="tE1-an-IWy" customClass="UserTableViewCell" customModule="Wallet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="chatCell" rowHeight="124" id="tE1-an-IWy" customClass="UserTableViewCell" customModule="Wallet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tE1-an-IWy" id="0RE-1G-XnV">
@@ -604,6 +604,7 @@
                                 <connections>
                                     <outlet property="lblLastMessage" destination="ePS-qJ-56u" id="XSM-dn-0XN"/>
                                     <outlet property="lblUserName" destination="c7W-jw-dMo" id="75O-e8-AHF"/>
+                                    <segue destination="fve-qq-riZ" kind="show" id="kxw-oQ-KvS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -620,6 +621,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Op-QP-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4594.6564885496182" y="772.53521126760563"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="ibs-ev-6xP">
+            <objects>
+                <viewController id="fve-qq-riZ" customClass="ChatViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Po4-GD-v9N">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-dD-7zJ">
+                                <rect key="frame" x="328" y="734" width="53.666666666666686" height="34"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="전송"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Fs-4J-r6K">
+                                <rect key="frame" x="30" y="734" width="290" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="aUU-Nr-h1U"/>
+                                    <constraint firstAttribute="width" constant="290" id="tpO-H9-bqD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mm2-PD-oy1">
+                                <rect key="frame" x="0.0" y="103" width="393" height="631"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="messageCell" id="Ur3-C5-Wyt">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ur3-C5-Wyt" id="hlN-SJ-wJr">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fve-qq-riZ" id="WJ8-Zb-ehU"/>
+                                    <outlet property="delegate" destination="fve-qq-riZ" id="eyQ-ix-8Qy"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GeA-qq-yfZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="jJ6-dD-7zJ" firstAttribute="leading" secondItem="6Fs-4J-r6K" secondAttribute="trailing" constant="8" symbolic="YES" id="4zI-hb-zKN"/>
+                            <constraint firstItem="Mm2-PD-oy1" firstAttribute="top" secondItem="GeA-qq-yfZ" secondAttribute="top" id="BL4-XI-JQ3"/>
+                            <constraint firstItem="Mm2-PD-oy1" firstAttribute="trailing" secondItem="GeA-qq-yfZ" secondAttribute="trailing" id="Enm-Bc-Nbk"/>
+                            <constraint firstItem="6Fs-4J-r6K" firstAttribute="top" secondItem="jJ6-dD-7zJ" secondAttribute="top" id="L62-Oy-yvC"/>
+                            <constraint firstItem="6Fs-4J-r6K" firstAttribute="top" secondItem="GeA-qq-yfZ" secondAttribute="top" constant="631" id="MnT-x9-a4i"/>
+                            <constraint firstItem="6Fs-4J-r6K" firstAttribute="leading" secondItem="GeA-qq-yfZ" secondAttribute="leading" constant="30" id="OR1-3l-a0l"/>
+                            <constraint firstItem="jJ6-dD-7zJ" firstAttribute="top" secondItem="Mm2-PD-oy1" secondAttribute="bottom" id="deF-jx-V36"/>
+                            <constraint firstItem="6Fs-4J-r6K" firstAttribute="centerY" secondItem="jJ6-dD-7zJ" secondAttribute="centerY" id="fcS-IN-usk"/>
+                            <constraint firstItem="Mm2-PD-oy1" firstAttribute="leading" secondItem="GeA-qq-yfZ" secondAttribute="leading" id="hzh-hq-MOA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Z2a-d4-0Lv"/>
+                    <connections>
+                        <outlet property="btnSend" destination="jJ6-dD-7zJ" id="x7R-Vs-OW6"/>
+                        <outlet property="tableview" destination="Mm2-PD-oy1" id="cX7-9Z-R6q"/>
+                        <outlet property="tfMessage" destination="6Fs-4J-r6K" id="CZ1-N0-38m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZE5-1m-Dyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5533.5877862595416" y="772.53521126760563"/>
         </scene>
         <!--내정보-->
         <scene sceneID="nWH-HC-S2C">
