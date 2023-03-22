@@ -14,9 +14,10 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     
     @IBOutlet weak var imageView: UIImageView! // 이미지
     @IBOutlet weak var lblNickName: UILabel! // 유저 닉네임
-    @IBOutlet weak var lblProductName: UILabel! // 선택한 상품 이름
     @IBOutlet weak var lblTitle: UILabel! // 선택한 상품 제목
+    @IBOutlet weak var lblProductName: UILabel! // 선택한 상품 이름
     @IBOutlet weak var lblBrandNTime: UILabel! // 선택한 상품 브랜드 및 끌올 시간
+    @IBOutlet weak var lblDetailContent: UILabel!
     @IBOutlet weak var lblContent: UILabel! // 선택한 상품 상세 내용
     @IBOutlet weak var lblPrice: UILabel! // 선택한 상품 가격
     @IBOutlet weak var btnLikeText: UIButton! // 찜 이미지 변경을 위한 변수
@@ -55,15 +56,6 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        
-        let date1 = formatter.date(from: formatter.string(from: currentDate))! // 현재 날짜 Date 객체로 변환
-        let date2 = formatter.date(from: productDetailStore.first!.pTime)! // DB에서 가져온 날짜 Date 객체로 변환
-        
-        let calendar = Calendar.current // 현재 달력 객체 생성
-        let components = calendar.dateComponents([.hour, .minute, .second], from: date2, to: date1) // 두 날짜 사이의 차이 계산
-        let minute = components.minute ?? 0 // 분 차이
-        
         // url 비동기 통신
         if let imageURL = URL(string: items.first!.pImageURL) {
             URLSession.shared.dataTask(with: imageURL) { data, response, error in
@@ -75,12 +67,15 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
             }.resume()
         }
         
+        let dateViewModel = DateViewModel()
+        
         lblNickName.text = "판매자: \(defaults.string(forKey: "nickname")!)"
         lblProductName.text = "상품명: \(productDetailStore.first!.pName)"
         lblTitle.text = productDetailStore.first?.pTitle
-        lblBrandNTime.text = "\(productDetailStore.first!.pBrand) · \(minute)분전"
+        lblBrandNTime.text = "\(productDetailStore.first!.pBrand) · \(dateViewModel.DateCount(productDetailStore.first!.pTime))"
         lblContent.text = productDetailStore.first?.pContent
         lblPrice.text = "\(numberFormatter.string(from: NSNumber(value: Int(productDetailStore.first!.pPrice)!)) ?? "")원"
+        lblDetailContent.text = productDetailStore.first?.pDetailContent
         
     }
     

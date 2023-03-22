@@ -14,13 +14,14 @@ class WalletSelectModel {
     var wColor: String // 상품 색상
     var wName: String // 상품 이름
     var wMaterial: String // 상품 소재
+    var wDetailContent: String
     
     var wLength: Int // 길이
     var wHeight: Int // 높이
     var wWidth: Double // 너비
     var wCode: Int // 상품 코드
     
-    init(wBrand: String, wColor: String, wName: String, wMaterial: String, wLength: Int, wHeight: Int, wWidth: Double, wCode: Int) {
+    init(wBrand: String, wColor: String, wName: String, wMaterial: String, wLength: Int, wHeight: Int, wWidth: Double, wCode: Int, wDetailContent: String) {
         self.wBrand = wBrand
         self.wColor = wColor
         self.wName = wName
@@ -29,6 +30,7 @@ class WalletSelectModel {
         self.wHeight = wHeight
         self.wWidth = wWidth
         self.wCode = wCode
+        self.wDetailContent = wDetailContent
     }
     
 }
