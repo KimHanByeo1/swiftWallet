@@ -124,13 +124,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             if filteredDataSource[indexPath.row].pState == "0" {
                 lblStateText = "판매중"
             } else {
-                lblStateText = "구매완료"
+                lblStateText = "판매완료"
+                cell.lblState.textColor = UIColor.red
             }
         } else {
             if dataSource[indexPath.row].pState == "0" {
                 lblStateText = "판매중"
             } else {
-                lblStateText = "구매완료"
+                lblStateText = "판매완료"
+                cell.lblState.textColor = UIColor.red
             }
         }
         
