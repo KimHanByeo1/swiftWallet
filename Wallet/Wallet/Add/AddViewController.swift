@@ -27,6 +27,7 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     @IBOutlet weak var tfPrice: UITextField! // 상품 가격
     @IBOutlet weak var tvContent: UITextView! // 상품 설명
     @IBOutlet weak var imageView: UIImageView! // 상품 이미지
+    @IBOutlet weak var tvDetailContent: UITextView!
     @IBOutlet weak var indicator: UIActivityIndicatorView! // 예측 데이터 가져올 때 화면 동작 멈추게 할 indicatorView
     
     let currentDate = Date() // Firebase storage에 이미지 등록할 때 '현재 시간.jpg'로 저장하기 위한 생성자
@@ -59,18 +60,22 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
 //      Text View Placeholder 설정
         tvContent.text = "상품 설명"
         tvContent.textColor = UIColor.lightGray
+        tvDetailContent.text = "상품 상세설명"
+        tvDetailContent.textColor = UIColor.lightGray
         
 //      텍스트 필드 테두리 두께 설정
         tfName.layer.borderWidth = 1
         tfPrice.layer.borderWidth = 1
         tvContent.layer.borderWidth = 1
         tfTitle.layer.borderWidth = 1
+        tvDetailContent.layer.borderWidth = 1
         
 //      텍스트 필드 테두리 색상 설정
         tfName.layer.borderColor = UIColor.lightGray.cgColor
         tfPrice.layer.borderColor = UIColor.lightGray.cgColor
         tvContent.layer.borderColor = UIColor.lightGray.cgColor
         tfTitle.layer.borderColor = UIColor.lightGray.cgColor
+        tvDetailContent.layer.borderColor = UIColor.lightGray.cgColor
         
 //      기본 이미지 설정
         imageView.image = UIImage(named: "basicImage")
@@ -102,6 +107,23 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = formatter.string(from: currentDate)
+        let image = imageView.image!
+        let fsFunc = FirebaseStorageFunc()
+        
+        // Storage에 이미지 넣고 URL 값 반환받기
+        fsFunc.insertImage(name: dateString, image: image)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.insertAction()
+        }
+    }
+    
+//  ==================== Button End ======================
+    
+    func insertAction() {
+        
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = formatter.string(from: currentDate)
         
         guard let wBrand = lblBrand.text else {return}
         guard let wMaterial = lblMaterial.text else {return}
@@ -111,8 +133,10 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         guard let wPrice = tfPrice.text else {return}
         guard let wContent = tvContent.text else {return}
         guard let wTitle = tfTitle.text else {return}
+        guard let wDetailContent = tvDetailContent.text else {return}
         
         if !wName.trimmingCharacters(in: .whitespaces).isEmpty{
+            
             let prModel = ProductRegisterModel()
             let result = prModel.insesrtItems(
                 wBrand: wBrand,
@@ -124,30 +148,29 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 wContent: wContent,
                 image: StaticModel.downURL,
                 wTitle: wTitle,
-                wTime: dateString)
-
+                wTime: dateString,
+                wDetailContent: wDetailContent
+            )
+            
             if result{
                 let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다.", preferredStyle: .alert)
                 let onAction = UIAlertAction(title: "OK", style: .default,handler: {ACTION in
                     self.navigationController?.popViewController(animated: true)
                 })
-
+                
                 resultAlert.addAction(onAction)
                 present(resultAlert, animated: true)
             }
         } else {
             let resultAlert = UIAlertController(title: "Error", message: "상품 사진을 등록해주세요.", preferredStyle: .alert)
             let onAction = UIAlertAction(title: "OK", style: .cancel)
-
+            
             resultAlert.addAction(onAction)
-
+            
             //위에 정의한 것 최종적으로 show
             present(resultAlert, animated: true)
         }
     }
-    
-    
-//  ==================== Button End ======================
     
     func showAlert() {
         let alert = UIAlertController(title: "Select One", message: nil, preferredStyle: .actionSheet)
@@ -210,6 +233,7 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         lblSize.text = "길이 \(walletStore.first!.wLength as Int)cm X 높이 \(walletStore.first!.wHeight as Int)cm X 너비 : \(walletStore.first!.wWidth as Double)cm"
         lblColor.text = "색상 : \(walletStore.first!.wColor as String)"
         lblMaterial.text = "소재 : \(walletStore.first!.wMaterial as String)"
+        tvDetailContent.text = walletStore.first!.wDetailContent as String
         
     } // itemDownLoaded
     
@@ -221,10 +245,6 @@ extension AddViewController {
     
     // MARK: [사진, 비디오 선택을 했을 때 호출되는 메소드]
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateString = formatter.string(from: currentDate)
-
-        let image = imageView.image!
 
         let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
         if mediaType.isEqual(to: "public.image" as String){
@@ -239,10 +259,6 @@ extension AddViewController {
                 imageData = (img as? UIImage)!.jpegData(compressionQuality: 0.5) as NSData? // jpeg 압축 품질 설정
             }
         }
-        let fsFunc = FirebaseStorageFunc()
-
-        // FirebaseStorageFunc Folder
-        fsFunc.insertImage(name: dateString, image: image)
         // 이미지 피커 닫기
         self.dismiss(animated: true, completion: nil)
 

@@ -28,10 +28,30 @@ class MainViewController: UIViewController {
         mainTV.delegate = self
         mainTV.dataSource = self
         setupSearchController()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleBrandNotification(_:)), name: NSNotification.Name("BrandDidSelect"), object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         selectData()
+    }
+    
+    @objc func handleBrandNotification(_ notification: Notification) {
+        guard let brandName = notification.userInfo?["brandName"] as? String else { return }
+        let MainSelectModel = MainSelectModel()
+        if brandName == "전체 (ALL)" {
+            selectData()
+        } else {
+            var brand: String = ""
+            if brandName == "구찌 (GUCCI)" {
+                brand = "구찌"
+            } else {
+                brand = "루이비통"
+            }
+            MainSelectModel.delegate = self
+            MainSelectModel.searchDownloadItems(brand)
+        }
+        mainTV.setContentOffset(CGPoint.zero, animated: true)
     }
     
     func selectData(){
@@ -40,6 +60,18 @@ class MainViewController: UIViewController {
         MainSelectModel.downloadItems()
         mainTV.reloadData()
     }
+    
+    @IBAction func btnSideMenu(_ sender: UIBarButtonItem) {
+        //스토리보드
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //사이드메뉴 뷰컨트롤러 객체 생성
+        let sideMenuViewController: SideMenuViewController = storyboard.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
+        //커스텀 네비게이션이랑 사이드메뉴 뷰컨트롤러 연결
+        let menu = CustomSideMenuNavigation(rootViewController: sideMenuViewController)
+        //보여주기
+        present(menu, animated: true, completion: nil)
+    }
+    
     
     private func setupSearchController() {
 
@@ -87,6 +119,27 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.lblBrandAndTime.text = isEditMode ? filteredDataSource[indexPath.row].pBrand + " · " + dateViewModel.DateCount(filteredDataSource[indexPath.row].pTime) : dataSource[indexPath.row].pBrand + " · " + dateViewModel.DateCount(dataSource[indexPath.row].pTime)
         cell.lblPrice.text = isEditMode ? numberFormatter.string(from: NSNumber(value: Int(filteredDataSource[indexPath.row].pPrice)!))! + " 원" : numberFormatter.string(from: NSNumber(value: Int(dataSource[indexPath.row].pPrice)!))! + " 원"
         
+        var lblStateText: String = "판매중"
+        if isEditMode {
+            if filteredDataSource[indexPath.row].pState == "0" {
+                lblStateText = "판매중"
+                cell.lblState.textColor = UIColor.green
+            } else {
+                lblStateText = "판매완료"
+                cell.lblState.textColor = UIColor.red
+            }
+        } else {
+            if dataSource[indexPath.row].pState == "0" {
+                lblStateText = "판매중"
+                cell.lblState.textColor = UIColor.green
+            } else {
+                lblStateText = "판매완료"
+                cell.lblState.textColor = UIColor.red
+            }
+        }
+        
+        cell.lblState.text = lblStateText
+        
         return cell
     }
 
@@ -127,4 +180,23 @@ extension MainViewController: QueryModelProtocol {
         self.mainTV.reloadData()
     }
 
+}
+
+extension MainViewController: SideMenuNavigationControllerDelegate {
+    
+    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
+        print("SideMenu Appearing! (animated: \(animated))")
+    }
+
+    func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
+        print("SideMenu Appeared! (animated: \(animated))")
+    }
+
+    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
+        print("SideMenu Disappearing! (animated: \(animated))")
+    }
+
+    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
+        print("SideMenu Disappeared! (animated: \(animated))")
+    }
 }
