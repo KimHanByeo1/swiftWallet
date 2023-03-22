@@ -27,9 +27,10 @@
 		264512D829C695E80088E17A /* DBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D729C695E80088E17A /* DBViewModel.swift */; };
 		264512DA29C6964D0088E17A /* RegExModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D929C6964D0088E17A /* RegExModel.swift */; };
 		264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512DC29C697A10088E17A /* TabBarViewController.swift */; };
+		A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032A8B529CAA88C006328C9 /* ProfileViewController.swift */; };
+		A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E176129CA947300652C22 /* ProfileUpdateModel.swift */; };
 		A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */; };
 		A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */; };
-		A08A51F529C9812800D995A9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51F429C9812800D995A9 /* ProfileViewController.swift */; };
 		BC1E7D8429C84D310093830C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D8329C84D310093830C /* Sender.swift */; };
 		BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9529C853C20093830C /* UsersTableViewController.swift */; };
 		BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9929C856440093830C /* UserTableViewCell.swift */; };
@@ -84,9 +85,10 @@
 		264512D929C6964D0088E17A /* RegExModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegExModel.swift; sourceTree = "<group>"; };
 		264512DC29C697A10088E17A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A032A8B529CAA88C006328C9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A06E176129CA947300652C22 /* ProfileUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateModel.swift; sourceTree = "<group>"; };
 		A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQueryModel.swift; sourceTree = "<group>"; };
 		A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDBModel.swift; sourceTree = "<group>"; };
-		A08A51F429C9812800D995A9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		BC1E7D8329C84D310093830C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		BC1E7D9529C853C20093830C /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
@@ -240,7 +242,7 @@
 			children = (
 				A08A51E129C947A000D995A9 /* ViewModel */,
 				A08A51E029C9478F00D995A9 /* Model */,
-				A08A51F429C9812800D995A9 /* ProfileViewController.swift */,
+				A032A8B529CAA88C006328C9 /* ProfileViewController.swift */,
 			);
 			path = MypageDetail;
 			sourceTree = "<group>";
@@ -250,6 +252,7 @@
 			children = (
 				A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */,
 				A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */,
+				A06E176129CA947300652C22 /* ProfileUpdateModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -555,7 +558,6 @@
 				263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */,
 				260FD37B29C95EB50085A7F3 /* PayTableViewCell.swift in Sources */,
 				E1CCD19629C80D6600E6DD35 /* ProductDetailModel.swift in Sources */,
-				A08A51F529C9812800D995A9 /* ProfileViewController.swift in Sources */,
 				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
 				E1CCD19329C80B8500E6DD35 /* DetailViewModel.swift in Sources */,
 				E1CCD18B29C6D5A400E6DD35 /* staticModel.swift in Sources */,
@@ -570,6 +572,7 @@
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
 				BC1E7DA229C98A180093830C /* DatabaseManager.swift in Sources */,
 				BC1E7DA429C98BA30093830C /* ChatAppUser.swift in Sources */,
+				A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */,
 				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,
 				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
 				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
@@ -585,6 +588,7 @@
 				BC1E7D8429C84D310093830C /* Sender.swift in Sources */,
 				263A884E29C729BE0011C183 /* SignInViewController.swift in Sources */,
 				264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */,
+				A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */,
 				E1CCD1B029C8D18600E6DD35 /* UserViewModel.swift in Sources */,
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
 				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
