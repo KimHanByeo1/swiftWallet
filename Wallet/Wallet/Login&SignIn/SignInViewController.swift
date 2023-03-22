@@ -19,6 +19,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordConfirmTextField: UITextField!
     @IBOutlet weak var passwordStatusBar: UILabel!
     @IBOutlet weak var nicknameTextField: UITextField!
+    @IBOutlet weak var lblSignupButton: UIButton!
     
     let passwordCheckDelay = 0.01 // 비밀번호 확인 대기 시간 (초)
         
@@ -49,7 +50,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         // 초기 statusBar 설정
         passwordStatusBar.text = "비밀번호를 입력하세요"
     }
-    
     
     // UITextFieldDelegate 메서드
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -211,6 +211,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
                     
                     self.transition(from: vc1, to: vc2)
+                    
+                    // Firebase Real-time 연동 소스
+                    self.firebaseDB = Database.database().reference()
+                    self.firebaseDB.child("users").child(user.user.uid).setValue(["name": self.nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
                 } else {
                     
                     print("Sign In Failed. \(error.debugDescription)")
@@ -225,8 +229,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             }
             }
         
-        firebaseDB = Database.database().reference()
-        firebaseDB.child("user").setValue(["email":emailTextField.text!.trimmingCharacters(in: .whitespaces) , "name": nicknameTextField.text!.trimmingCharacters(in: .whitespaces)])
+       
         }
         
      

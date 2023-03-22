@@ -6,10 +6,16 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class UsersTableViewController: UITableViewController {
     
+    let ref = Database.database().reference(withPath: "users")
+    var refObservers: [DatabaseHandle] = []
+    
     var allUser : [User] = []
+    
+    let defaults = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +30,32 @@ class UsersTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    
+//    @IBAction func btnTest(_ sender: UIBarButtonItem) {
+//        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+//          // 1
+//          guard
+//            let textField = alert.textFields?.first,
+//            let text = textField.text,
+//            let user = self.user
+//          else { return }
+//
+//          // 2
+//          let groceryItem = GroceryItem(
+//            name: text,
+//            addedByUser: user.email,
+//            completed: false)
+//
+//          // 3
+//          let groceryItemRef = self.ref.child(text.lowercased())
+//
+//          // 4
+//          groceryItemRef.setValue(groceryItem.toAnyObject())
+//        }
+//
+//    }
+    
 
     // MARK: - Table view data source
 
@@ -56,6 +88,8 @@ class UsersTableViewController: UITableViewController {
     }
     
 
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -15,6 +15,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var lblLoginButton: UIButton!
     
     let authViewModel = AuthViewModel()
     let regExModel = RegExModel()
@@ -25,6 +26,28 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        
+        emailField.text = "aaa@aaa.aaa"
+        passwordField.text = "aaaaaa"
+    }
+    
+    @objc private func loginButtonTapped(){
+        guard let email = emailField.text, let password = passwordField.text else{return}
+        
+        // Firebase Login
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {[weak self] authResult, error in
+            guard let strongSelf = self else{
+                return
+            }
+            guard let result = authResult, error == nil else{
+                print("Failed to login user with email : \(email)")
+                return
+            }
+            
+            let user = result.user
+            print("Logged in User : \(user)")
+        })
     }
     
     @IBAction func loginButton(_ sender: UIButton) {
@@ -139,7 +162,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         // 예시 - login 화면 tabBar화면들로 전환
         let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") as! TelVerifyViewController
+        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
         self.transition2(from: vc1, to: vc2)
         
 //        if let viewController = storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") {
@@ -215,7 +238,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     func transition2(from fromViewController: UIViewController, to toViewController: UIViewController) {
         
         let fromVC = self // 현재 View Controller
-        let toVC = storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") as! UIViewController // 전환할 View Controller
+        let toVC = storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController // 전환할 View Controller
 
         fromVC.addChild(toVC)
         fromVC.view.addSubview(toVC.view)
