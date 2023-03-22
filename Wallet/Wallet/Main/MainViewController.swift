@@ -123,6 +123,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if isEditMode {
             if filteredDataSource[indexPath.row].pState == "0" {
                 lblStateText = "판매중"
+                cell.lblState.textColor = UIColor.green
             } else {
                 lblStateText = "판매완료"
                 cell.lblState.textColor = UIColor.red
@@ -130,6 +131,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             if dataSource[indexPath.row].pState == "0" {
                 lblStateText = "판매중"
+                cell.lblState.textColor = UIColor.green
             } else {
                 lblStateText = "판매완료"
                 cell.lblState.textColor = UIColor.red
