@@ -488,19 +488,39 @@
         <!--Users Table View Controller-->
         <scene sceneID="Tvl-tu-ghp">
             <objects>
-                <tableViewController id="Fkf-nh-rFb" customClass="UsersTableViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Fkf-nh-rFb" customClass="UsersTableViewController" customModule="Wallet" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Ur6-Ex-5y0">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tE1-an-IWy">
-                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="124" id="tE1-an-IWy" customClass="UserTableViewCell" customModule="Wallet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="124"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tE1-an-IWy" id="0RE-1G-XnV">
-                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="124"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7W-jw-dMo">
+                                            <rect key="frame" x="142" y="11" width="231" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePS-qJ-56u">
+                                            <rect key="frame" x="142" y="52" width="231" height="55"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="lblLastMessage" destination="ePS-qJ-56u" id="XSM-dn-0XN"/>
+                                    <outlet property="lblUserName" destination="c7W-jw-dMo" id="75O-e8-AHF"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -508,17 +528,14 @@
                             <outlet property="delegate" destination="Fkf-nh-rFb" id="Jez-jl-8dq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="ODx-ke-XWB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="nD4-Hn-UaF">
-                            <connections>
-                                <action selector="btnTest:" destination="Fkf-nh-rFb" id="SJN-m0-MyS"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="ODx-ke-XWB"/>
+                    <connections>
+                        <outlet property="userTableView" destination="Ur6-Ex-5y0" id="Dt4-df-K3O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Op-QP-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4595" y="773"/>
+            <point key="canvasLocation" x="4594.6564885496182" y="772.53521126760563"/>
         </scene>
         <!--내정보-->
         <scene sceneID="nWH-HC-S2C">

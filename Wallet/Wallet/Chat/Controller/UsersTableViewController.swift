@@ -10,19 +10,13 @@ import FirebaseDatabase
 
 class UsersTableViewController: UITableViewController {
     
-    let ref = Database.database().reference(withPath: "users")
-    var refObservers: [DatabaseHandle] = []
+    var array:[UserInfo] = []
     
-    var allUser : [User] = []
+    @IBOutlet var userTableView: UITableView!
     
-    let defaults = UserDefaults.standard
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView()
-        
-        downloadUsers()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -31,32 +25,6 @@ class UsersTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    
-//    @IBAction func btnTest(_ sender: UIBarButtonItem) {
-//        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-//          // 1
-//          guard
-//            let textField = alert.textFields?.first,
-//            let text = textField.text,
-//            let user = self.user
-//          else { return }
-//
-//          // 2
-//          let groceryItem = GroceryItem(
-//            name: text,
-//            addedByUser: user.email,
-//            completed: false)
-//
-//          // 3
-//          let groceryItemRef = self.ref.child(text.lowercased())
-//
-//          // 4
-//          groceryItemRef.setValue(groceryItem.toAnyObject())
-//        }
-//
-//    }
-    
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,29 +34,15 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return allUser.count
+        return 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! UserTableViewCell
-
-        let user = allUser[indexPath.row]
         
         return cell
     }
-    
-    func downloadUsers(){
-        FirebaseUserListener.shared.downloadAllUsersFromFirebase { (users) in
-            self.allUser = users
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-
-    
     
     /*
     // Override to support conditional editing of the table view.
