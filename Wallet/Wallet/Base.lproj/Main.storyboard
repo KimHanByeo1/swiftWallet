@@ -1063,14 +1063,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efn-1H-Y36">
-                                <rect key="frame" x="16" y="320" width="361" height="21"/>
+                                <rect key="frame" x="16" y="370" width="361" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vQQ-uy-9vK">
-                                <rect key="frame" x="16" y="371" width="361" height="34"/>
+                                <rect key="frame" x="16" y="421" width="361" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -1079,19 +1079,32 @@
                                 <rect key="frame" x="132" y="150" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ars-6B-L5h">
+                                <rect key="frame" x="74" y="269" width="244" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YuE-LW-Njr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kaF-IU-wFe"/>
+                    <navigationItem key="navigationItem" id="kaF-IU-wFe">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="bce-I8-l3u">
+                            <connections>
+                                <action selector="btnUpdate:" destination="CYW-fr-kzS" id="aqF-qQ-jFc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="profileImage" destination="L21-cL-Awx" id="Vyn-aq-Tan"/>
-                        <outlet property="tfNickname" destination="vQQ-uy-9vK" id="YGw-to-CGi"/>
+                        <outlet property="imgView" destination="L21-cL-Awx" id="eYr-As-wRI"/>
+                        <outlet property="tfEmail" destination="ars-6B-L5h" id="28a-FS-sW7"/>
+                        <outlet property="tfName" destination="vQQ-uy-9vK" id="aqE-m2-cRj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHZ-El-TQi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5535" y="1453"/>
+            <point key="canvasLocation" x="5388.5496183206105" y="1452.8169014084508"/>
         </scene>
     </scenes>
     <color key="tintColor" systemColor="systemPurpleColor"/>
