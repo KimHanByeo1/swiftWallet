@@ -11,4 +11,5 @@ import UIKit
 class UserInfo: NSObject {
     var name:String?
     var email:String?
+    var uid:String?
 }

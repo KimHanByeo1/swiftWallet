@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Firebase
 import FirebaseDatabase
 
 class UsersTableViewController: UITableViewController {
@@ -19,13 +20,20 @@ class UsersTableViewController: UITableViewController {
         super.viewDidLoad()
         
         Database.database().reference().child("users").observe(DataEventType.value, with: {snapshot in
+            
             self.array.removeAll()
+            
+            let myUid = Auth.auth().currentUser?.uid
             
             for child in snapshot.children{
                 let fchild = child as! DataSnapshot
                 let userInfo = UserInfo()
-                
                 userInfo.setValuesForKeys(fchild.value as! [String:Any])
+                
+                if userInfo.uid == myUid{
+                    continue
+                }
+                
                 self.array.append(userInfo)
                 
                 print(fchild.value as! [String:Any])
@@ -37,6 +45,8 @@ class UsersTableViewController: UITableViewController {
             
             print(self.array)
         })
+        
+        userTableView.rowHeight = 124
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -101,14 +111,21 @@ class UsersTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+       
+        let vc = segue.destination as! ChatViewController
+        
+        let cell = sender as! UserTableViewCell
+        let indexpath = userTableView.indexPath(for: cell)
+        
+        vc.destinationUid = array[indexpath!.row].uid
     }
-    */
+    
 
 }

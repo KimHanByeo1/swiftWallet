@@ -794,6 +794,7 @@ PODS:
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
+  - ObjectMapper (4.2.0)
   - PromisesObjC (2.2.0)
   - Realm (10.37.0):
     - Realm/Headers (= 10.37.0)
@@ -815,6 +816,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - JGProgressHUD
   - MessageKit
+  - ObjectMapper
   - RealmSwift
   - SDWebImage
   - SideMenu
@@ -849,6 +851,7 @@ SPEC REPOS:
     - Libuv-gRPC
     - MessageKit
     - nanopb
+    - ObjectMapper
     - PromisesObjC
     - Realm
     - RealmSwift
@@ -884,6 +887,7 @@ SPEC CHECKSUMS:
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   Realm: 9c5fc6f8f5cb70b299f2e3064d2b9f6cb0f1523d
   RealmSwift: 7be7bb45911c16400dd1bfce3a01764ecb4cae7a
@@ -891,6 +895,6 @@ SPEC CHECKSUMS:
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: e402d11f16cdbe419e2a9e5196fdbc8b5184eb5b
+PODFILE CHECKSUM: 56b6d9f18ead93c3f688c152c5f2041cfb830735
 
 COCOAPODS: 1.12.0
