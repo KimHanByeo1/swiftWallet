@@ -119,7 +119,7 @@ class UsersTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
        
-        let vc = segue.destination as! ChatViewController
+        let vc = segue.destination as! NewChatViewController
         
         let cell = sender as! UserTableViewCell
         let indexpath = userTableView.indexPath(for: cell)

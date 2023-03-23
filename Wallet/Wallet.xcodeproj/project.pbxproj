@@ -37,6 +37,7 @@
 		BC1E7DAB29CA9D8C0093830C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */; };
 		BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAC29CAAB450093830C /* ChatViewController.swift */; };
 		BC1E7DAF29CAAF5A0093830C /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */; };
+		BC8129A229CBFE4100FD1399 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */; };
 		DAE3CA43F2D211997B367A5B /* Pods_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */; };
 		E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */; };
 		E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */; };
@@ -96,6 +97,7 @@
 		BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		BC1E7DAC29CAAB450093830C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		E1CCD0F429BEF69200E6DD35 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 			children = (
 				BC1E7D9529C853C20093830C /* UsersTableViewController.swift */,
 				BC1E7DAC29CAAB450093830C /* ChatViewController.swift */,
+				BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -563,8 +566,6 @@
 				E1CCD1AC29C8D15100E6DD35 /* LikeModel.swift in Sources */,
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
-				BC1E7DA229C98A180093830C /* DatabaseManager.swift in Sources */,
-				BC1E7DA429C98BA30093830C /* ChatAppUser.swift in Sources */,
 				A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */,
 				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,
 				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
@@ -573,6 +574,7 @@
 				E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */,
 				16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */,
 				E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */,
+				BC8129A229CBFE4100FD1399 /* NewChatViewController.swift in Sources */,
 				E1CCD19029C80B6500E6DD35 /* DetailViewController.swift in Sources */,
 				E1CCD18229C6D55F00E6DD35 /* JsonModel.swift in Sources */,
 				BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */,
