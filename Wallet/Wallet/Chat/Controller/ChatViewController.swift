@@ -20,6 +20,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     // 채팅 대상 uid
     public var destinationUid:String?
     
+    var currentUser = UserDefaults.standard.string(forKey: "email")
+    
     var uid:String?
     var chatRoomUid:String?
     
@@ -42,8 +44,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func createRoom(){
         let createRoomInfo:Dictionary<String,Any> = [
             "users":[
-                uid!: true,
-                destinationUid!:true
+                "from": currentUser,
+                "to": destinationUid
             ]
         ]
         
@@ -67,7 +69,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func checkChatRoom(){
-        Database.database().reference().child("chatrooms").queryOrdered(byChild: "users/"+uid!).queryEqual(toValue: true).observeSingleEvent(of: DataEventType.value, with: {datasnapshot in
+        Database.database().reference().child("chatrooms").queryOrdered(byChild: "users/to").queryEqual(toValue: destinationUid).observeSingleEvent(of: DataEventType.value, with: {datasnapshot in
             for item in datasnapshot.children.allObjects as! [DataSnapshot]{
                 
                 if let chatRoomdic = item.value as? [String:AnyObject]{

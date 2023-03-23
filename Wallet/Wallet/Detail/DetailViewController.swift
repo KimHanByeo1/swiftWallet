@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class DetailViewController: UIViewController, DetailModelProtocal, UserModelProtocal, SelectDocIdModelProtocal {
     
@@ -21,6 +22,7 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     @IBOutlet weak var lblContent: UILabel! // 선택한 상품 상세 내용
     @IBOutlet weak var lblPrice: UILabel! // 선택한 상품 가격
     @IBOutlet weak var btnLikeText: UIButton! // 찜 이미지 변경을 위한 변수
+    @IBOutlet weak var chat: UIButton!
     
     var imageURL = "" // MainController에서 넘겨준 imageURL 값 받는 변수
     var like = "" // 찜 여부 확인 0,1
@@ -35,6 +37,13 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     let uid = Auth.auth().currentUser!.uid // 로그인 한 유저의 DocId 가져오기
     let likeVM = LikeViewModel() // 여러개의 function에서 사용하기위해 전역변수로 생성
     
+    var userNickName: String?
+    var userEmail: String?
+    
+    let firebaseDB = Database.database().reference()
+    var chatRoomUid:String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let quertModel = SelectDetailData()
@@ -46,6 +55,48 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         userModel.downloadUser(imageURL: imageURL, uid: uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
         quertModel.downloadItems(imageURL: imageURL) // 유저가 선택한 상품의 상세정보 Select
         
+        
+        
+    }
+    
+    
+    @IBAction func goChating(_ sender: UIButton) {
+       createRoom()
+    }
+    
+    @objc func createRoom(){
+        let createRoomInfo:Dictionary<String,Any> = [
+            "users":[
+                "from": defaults.string(forKey: "email"),
+                "to": userEmail
+            ]
+        ]
+        
+        if chatRoomUid == nil{
+            // 방 생성 코드
+            Database.database().reference().child("chatrooms").childByAutoId().setValue(createRoomInfo, withCompletionBlock: {(err, ref) in
+                if err == nil{
+                    self.checkChatRoom()
+                }
+            })
+        }else{
+            
+        }
+    }
+    
+    func checkChatRoom(){
+        Database.database().reference().child("chatrooms").queryOrdered(byChild: "users/to").queryEqual(toValue: userEmail).observeSingleEvent(of: DataEventType.value, with: {datasnapshot in
+            for item in datasnapshot.children.allObjects as! [DataSnapshot]{
+                
+                if let chatRoomdic = item.value as? [String:AnyObject]{
+                    
+                    let chatModel = ChatModel(JSON: chatRoomdic)
+                    if chatModel?.users[self.userNickName!]==true{
+                        self.chatRoomUid = item.key
+                    }
+                }
+            }
+        })
     }
     
     // quertModel.downloadItems
@@ -69,13 +120,23 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         
         let dateViewModel = DateViewModel()
         
-        lblNickName.text = "\(defaults.string(forKey: "nickname")!)"
+        lblNickName.text = productDetailStore.first?.userNickName
         lblProductName.text = "상품명: \(productDetailStore.first!.pName)"
         lblTitle.text = productDetailStore.first?.pTitle
         lblBrandNTime.text = "\(productDetailStore.first!.pBrand) · \(dateViewModel.DateCount(productDetailStore.first!.pTime))"
         lblContent.text = productDetailStore.first?.pContent
         lblPrice.text = "\(numberFormatter.string(from: NSNumber(value: Int(productDetailStore.first!.pPrice)!)) ?? "")원"
         lblDetailContent.text = productDetailStore.first?.pDetailContent
+        
+        userNickName = productDetailStore.first?.userNickName
+        userEmail = productDetailStore.first?.userEmail
+        
+        if productDetailStore.first?.pState == "1" {
+            chat.titleLabel?.text = "판매완료"
+            chat.isEnabled = false
+        } else {
+            chat.titleLabel?.text = "채팅하기"
+        }
         
     }
     

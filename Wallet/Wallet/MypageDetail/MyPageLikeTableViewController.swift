@@ -18,64 +18,35 @@ class MyPageLikeTableViewController: UITableViewController {
     var likeCode: [String] = []
     var likeProduct: [LikeProductModel] = []
     
-    
-    
 
-    
-//    var codes: AnyObject?
     let uid = Auth.auth().currentUser!.uid
     
     
     let likecodeDB = LikeCodeDB()
     let productModel = LikeCodeDB()
     
+    let userModel = UserLikeData()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-     
-       
-       
-
-        
-        
         likecodeDB.delegate = self
         productModel.delegate = self
+        
+        //userModel.downloadUser(imageURL: imageURL, uid: uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
   
     }
 
     // MARK: - Table view data source
     
     override func viewWillAppear(_ animated: Bool) {
-        
-//        quertModel.delegate = self
+
         productModel.downloadItems(uid: uid)
-        
-//        likecodeDB.bringProducts(code: likeCode)
-        
+   
     }
     
-//    func reloadAction(){
-////        let queryModel = LikeCodeDB()
-//
-//        likecodeDB.delegate = self
-//
-//        likecodeDB.downloadItems(uid: uid)
-//        likecodeDB.bringProducts(code: likeCode)
-//        tvTable.reloadData()
-//        print("reloadaction")
-//        //print(queryModel)
-//        print(likeCode)
-//    }
 
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -89,28 +60,44 @@ class MyPageLikeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myLikeCell", for: indexPath) as! MyPageLikeTableViewCell
-
+    
+        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        let dateViewModel = DateViewModel()
+        
+        
         // Configure the cell...
-        cell.pPrice.text = likeProduct[indexPath.row].pPrice
+        cell.pPrice.text = numberFormatter.string(from: NSNumber(value: Int(likeProduct[indexPath.row].pPrice)!))! + " 원"
         cell.pTitle.text = likeProduct[indexPath.row].pTitle
-        cell.pBrand.text = likeProduct[indexPath.row].pBrand
+        cell.pBrand.text = likeProduct[indexPath.row].pBrand + " · " + dateViewModel.DateCount(likeProduct[indexPath.row].pTime)
 
         
-        
-        let storage = Storage.storage()
-        let httpsReference = storage.reference(forURL: likeProduct[indexPath.row].imageURL)
-                                               
-        httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-          if let error = error {
-              print("Error : \(error)")
-          } else {
-              cell.pImage.image = UIImage(data: data!)
-          }
+        // url 비동기 통신
+        if let imageURL = URL(string: likeProduct[indexPath.row].imageURL) {
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.pImage.image = image
+                    }
+                }
+            }.resume()
         }
         
-        //cell.pImage.image = UIImage(named: "face")
-        
+        var lblStateText: String = "판매중"
 
+        if likeProduct[indexPath.row].pState == "0" {
+            lblStateText = "판매중"
+            cell.lblState.textColor = UIColor.green
+        } else {
+            lblStateText = "판매완료"
+            cell.lblState.textColor = UIColor.red
+        }
+        
+        
+        cell.lblState.text = lblStateText
+        
         
         return cell
     }
@@ -178,5 +165,5 @@ extension MyPageLikeTableViewController: LikeCodeDBProtocol{
         likeProduct = products
         self.tvTable.reloadData()
     }
-}
 
+}
