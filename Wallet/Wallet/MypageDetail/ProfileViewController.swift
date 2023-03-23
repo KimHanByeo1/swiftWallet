@@ -8,9 +8,11 @@
 import UIKit
 import FirebaseStorage
 import Firebase
+import FirebaseAuth
 
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfileQueryModelProtocol {
+    
 
     @IBOutlet weak var imgView: UIImageView!
     
@@ -18,10 +20,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     
     @IBOutlet weak var tfName: UITextField!
     
-//    var email = ""
-//    var nickname = ""
-//    var documentId = ""
-    var profileimage = ""
+    //    var email = ""
+        var nickname = ""
+    //    var documentId = ""
+        var image = ""
     
     let picker = UIImagePickerController()
     var downURL: String = ""
@@ -34,44 +36,77 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
 //        var videoURL: URL! // 녹화한 비디오의 URL을 저장할 변수
     var flagImageSave = false // 이미지 저장 여뷰를 나타낼 변수
     
+    let user = Auth.auth().currentUser
+    var profileDBModel: [ProfileDBModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.delegate = self
-
+        
+        tfEmail.isUserInteractionEnabled = false
+        
+        let profileQueryModel = ProfileQueryModel()
+        profileQueryModel.delegate = self
+        profileQueryModel.downloadItems(email: user!.email!)
+        
         // Do any additional setup after loading the view.
-        
-        displayImage()
-        
+                
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         imgView.isUserInteractionEnabled = true
         imgView.addGestureRecognizer(tapGestureRecognizer)
+        imgView.layer.cornerRadius = imgView.frame.width / 2
         
-        let email = defaults.string(forKey: "email")
-        let nickname = defaults.string(forKey: "nickname")
+//        tfName.text = nickname
+//        downURL = image
         
-        tfEmail.text = email
-        tfEmail.isUserInteractionEnabled = false
-        tfName.text = nickname
-        downURL = profileimage
+//        displayImage()
 
     }
     
-    func displayImage(){
-        let storage = Storage.storage()
-        let httpsReference = storage.reference(forURL: profileimage)
-                                               
-        httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-          if let error = error {
-              print("Error : \(error)")
-          } else {
-              self.imgView.image = UIImage(data: data!)
-          }
+    func itemDownloaded(items: [ProfileDBModel]) {
+        print("1")
+        profileDBModel = items
+        
+        // url 비동기 통신
+        if let imageURL = URL(string: items.first!.profileimage) {
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.imgView.image = image
+                    }
+                }
+            }.resume()
         }
+        
+        downURL = profileDBModel.first!.profileimage
+        
+        print("itemDownloaded: ", downURL)
+        
+        tfName.text = profileDBModel.first!.nickname
+        tfEmail.text = profileDBModel.first!.email
+        print("1 end")
 
+        
     }
+    
+//    func displayImage(){
+//        let storage = Storage.storage()
+//        let httpsReference = storage.reference(forURL: profileimage)
+//
+//        httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//          if let error = error {
+//              print("Error : \(error)")
+//          } else {
+//              self.imgView.image = UIImage(data: data!)
+//          }
+//        }
+//
+//    }
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        print("2")
+
         _ = tapGestureRecognizer.view as! UIImageView
 
         // Your action
@@ -88,11 +123,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         photoAlert.addAction(cancelAction)
         
         present(photoAlert, animated: true, completion: nil)
+        print("2 end")
     }
     
     
     //이미지 보여주고 문자열로 바꾸기
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("3")
+
         let mediaType = info[UIImagePickerController.InfoKey.mediaType] as! NSString
         if mediaType.isEqual(to: "public.image" as String){
             captureImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
@@ -104,15 +142,20 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
         insertImage(name: tfName.text!)
         self.dismiss(animated: true, completion: nil)
+        print("3 end")
+
     }
     
     //이미지 문자로 변경
     func insertImage(name: String){
+        
+        print("4")
+
         let storageRef = Storage.storage().reference()
 
         // File located on disk
         let image = imgView.image!
-        print(image)
+        
         guard let imageData = image.jpegData(compressionQuality: 0.4) else { return }
         print("imageData: \(imageData)")
         // Create a reference to the file you want to upload
@@ -140,39 +183,39 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             }
           }
           print("--- Completed to insert a image ----")
+        print("4 end")
 
     }
     
     @IBAction func btnUpdate(_ sender: UIBarButtonItem) {
-        print(">>>>> \(downURL)")
+        print("5")
+
         guard let email = tfEmail.text else {return}
                guard let nickname = tfName.text else {return}
-               let user = Auth.auth().currentUser
                guard let uid = user?.uid else {
                    return
                }
-               
-               print("email : \(email)")
-               print("nickname : \(nickname)")
-               print("image : \(downURL)")
-               //        let image = downURL
-               
-               let profileupdatamodel = ProfileUpdataModel()
-               let result = profileupdatamodel.ProfileUpdataItems(documentId: uid, email: email, nickname: nickname, profileImage:downURL)
-               
-               if result == true{
-                   let resultAlert = UIAlertController(title: "완료", message: "수정이 되었습니다.", preferredStyle: UIAlertController.Style.alert)
-                   let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
-                       self.navigationController?.popViewController(animated: true) // 현재화면 Close
-                   })
-                   resultAlert.addAction(onAction)
-                   present(resultAlert, animated: true, completion: nil)
-               }else{
-                   let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
-                   let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-                   resultAlert.addAction(onAction)
-                   present(resultAlert, animated: true, completion: nil)
-               }
+            
+            let profileupdatamodel = ProfileUpdataModel()
+        print("5 update")
+
+            let result = profileupdatamodel.ProfileUpdataItems(documentId: uid, email: email, nickname: nickname, profileImage: self.downURL)
+            
+            if result {
+                let resultAlert = UIAlertController(title: "완료", message: "수정이 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {ACTION in
+                    self.navigationController?.popViewController(animated: true) // 현재화면 Close
+                })
+                resultAlert.addAction(onAction)
+                self.present(resultAlert, animated: true, completion: nil)
+                
+            } else {
+                let resultAlert = UIAlertController(title: "실패", message: "에러가 발생 되었습니다.", preferredStyle: UIAlertController.Style.alert)
+                let onAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                resultAlert.addAction(onAction)
+                self.present(resultAlert, animated: true, completion: nil)
+            }
+        print("5end")
     }
     
     /*

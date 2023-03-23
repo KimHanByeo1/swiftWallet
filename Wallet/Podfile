@@ -12,6 +12,7 @@ target 'Wallet' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Database'
 
   pod 'MessageKit'
   pod 'JGProgressHUD'
