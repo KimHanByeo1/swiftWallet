@@ -37,6 +37,7 @@
 		A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E176129CA947300652C22 /* ProfileUpdateModel.swift */; };
 		A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */; };
 		A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */; };
+		A0F0BBF429CC3FEE00D596BD /* MyPageProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */; };
 		BC1E7D8429C84D310093830C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D8329C84D310093830C /* Sender.swift */; };
 		BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9529C853C20093830C /* UsersTableViewController.swift */; };
 		BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9929C856440093830C /* UserTableViewCell.swift */; };
@@ -102,6 +103,7 @@
 		A06E176129CA947300652C22 /* ProfileUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateModel.swift; sourceTree = "<group>"; };
 		A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQueryModel.swift; sourceTree = "<group>"; };
 		A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDBModel.swift; sourceTree = "<group>"; };
+		A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileDBModel.swift; sourceTree = "<group>"; };
 		ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		BC1E7D8329C84D310093830C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		BC1E7D9529C853C20093830C /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 		260FD37429C95E250085A7F3 /* MyPages */ = {
 			isa = PBXGroup;
 			children = (
+				A0F0BBF029CC3F6C00D596BD /* Model */,
 				260FD37529C95E830085A7F3 /* Cell */,
 				260FD37E29C95ED20085A7F3 /* MyPageTableViewController.swift */,
 			);
@@ -287,6 +290,14 @@
 				265806E129CAFB1A0049703D /* LikeCodeModel.swift */,
 				265806E829CB2B9F0049703D /* LikeProductModel.swift */,
 				A06E176129CA947300652C22 /* ProfileUpdateModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A0F0BBF029CC3F6C00D596BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -572,7 +583,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC1E7D9F29C85D010093830C /* FCollectionReference.swift in Sources */,
 				265806E229CAFB1A0049703D /* LikeCodeModel.swift in Sources */,
 				1610E93029C9A41500824E49 /* CustomSideMenuNavigation.swift in Sources */,
 				16920C8129C85A0B006887CE /* DateViewModel.swift in Sources */,
@@ -597,8 +607,6 @@
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
 				265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */,
-				BC1E7DA229C98A180093830C /* DatabaseManager.swift in Sources */,
-				BC1E7DA429C98BA30093830C /* ChatAppUser.swift in Sources */,
 				A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */,
 				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,
 				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
@@ -615,6 +623,7 @@
 				E1CCD17C29C6D52500E6DD35 /* WalletSelectViewModel.swift in Sources */,
 				264512DA29C6964D0088E17A /* RegExModel.swift in Sources */,
 				BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */,
+				A0F0BBF429CC3FEE00D596BD /* MyPageProfileDBModel.swift in Sources */,
 				BC1E7D8429C84D310093830C /* Sender.swift in Sources */,
 				263A884E29C729BE0011C183 /* SignInViewController.swift in Sources */,
 				264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */,

@@ -1,0 +1,22 @@
+//
+//  MyPageProfileDBModel.swift
+//  Wallet
+//
+//  Created by 안수빈 on 2023/03/23.
+//
+
+import Foundation
+
+struct MyPageProfileDBModel{
+    var documentId: String
+    var nickname:String
+    var email:String
+    var profileimage:String
+    
+    init(documentId: String, nickname: String, email: String, profileimage: String) {
+        self.documentId = documentId
+        self.nickname = nickname
+        self.email = email
+        self.profileimage = profileimage
+    }
+}
