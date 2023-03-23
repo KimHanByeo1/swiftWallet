@@ -11,7 +11,7 @@ import Firebase
 class ProductRegisterModel {
     
     let db = Firestore.firestore()
-    func insesrtItems(wBrand: String, wMaterial: String, wColor: String, wSize: String, wName: String, wPrice: String, wContent: String, image: String, wTitle: String, wTime: String, wDetailContent: String, userEmail: String, userNickName: String) -> Bool{
+    func insesrtItems(wBrand: String, wMaterial: String, wColor: String, wSize: String, wName: String, wPrice: String, wContent: String, image: String, wTitle: String, wTime: String, wDetailContent: String) -> Bool{
         var status: Bool = true
         
         db.collection("product").addDocument(data: [
@@ -26,9 +26,7 @@ class ProductRegisterModel {
             "pTitle": wTitle,
             "pTime": wTime,
             "pState": "0",
-            "pDetailContent": wDetailContent,
-            "userEmail": userEmail,
-            "userNickName": userNickName
+            "pDetailContent": wDetailContent
         ]){error in
             if error != nil{
                 status = false
