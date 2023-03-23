@@ -706,7 +706,7 @@
         <!--New Chat View Controller-->
         <scene sceneID="ggh-GP-koD">
             <objects>
-                <viewController id="BLy-cP-rcz" customClass="NewChatViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="BLy-cP-rcz" customClass="NewChatViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PJl-k3-2DY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
