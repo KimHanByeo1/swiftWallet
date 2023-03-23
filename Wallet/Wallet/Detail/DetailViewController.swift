@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class DetailViewController: UIViewController, DetailModelProtocal, UserModelProtocal, SelectDocIdModelProtocal {
     
@@ -39,6 +40,10 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     var userNickName: String?
     var userEmail: String?
     
+    let firebaseDB = Database.database().reference()
+    var chatRoomUid:String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let quertModel = SelectDetailData()
@@ -50,10 +55,48 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         userModel.downloadUser(imageURL: imageURL, uid: uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
         quertModel.downloadItems(imageURL: imageURL) // 유저가 선택한 상품의 상세정보 Select
         
+        
+        
     }
     
     
     @IBAction func goChating(_ sender: UIButton) {
+       createRoom()
+    }
+    
+    @objc func createRoom(){
+        let createRoomInfo:Dictionary<String,Any> = [
+            "users":[
+                "from": defaults.string(forKey: "email"),
+                "to": userEmail
+            ]
+        ]
+        
+        if chatRoomUid == nil{
+            // 방 생성 코드
+            Database.database().reference().child("chatrooms").childByAutoId().setValue(createRoomInfo, withCompletionBlock: {(err, ref) in
+                if err == nil{
+                    self.checkChatRoom()
+                }
+            })
+        }else{
+            
+        }
+    }
+    
+    func checkChatRoom(){
+        Database.database().reference().child("chatrooms").queryOrdered(byChild: "users/to").queryEqual(toValue: userEmail).observeSingleEvent(of: DataEventType.value, with: {datasnapshot in
+            for item in datasnapshot.children.allObjects as! [DataSnapshot]{
+                
+                if let chatRoomdic = item.value as? [String:AnyObject]{
+                    
+                    let chatModel = ChatModel(JSON: chatRoomdic)
+                    if chatModel?.users[self.userNickName!]==true{
+                        self.chatRoomUid = item.key
+                    }
+                }
+            }
+        })
     }
     
     // quertModel.downloadItems
