@@ -19,11 +19,8 @@ class ProductDetailModel {
     var pTitle: String
     var pTime: String
     var pDetailContent: String
-    var pState: String
-    var userNickName: String
-    var userEmail: String
     
-    init(pBrand: String, pColor: String, pName: String, pMaterial: String, pSize: String, pImageURL: String, pContent: String, pPrice: String, pTitle: String, pTime: String, pDetailContent: String, pState: String, userNickName: String, userEmail: String) {
+    init(pBrand: String, pColor: String, pName: String, pMaterial: String, pSize: String, pImageURL: String, pContent: String, pPrice: String, pTitle: String, pTime: String, pDetailContent: String) {
         self.pBrand = pBrand
         self.pColor = pColor
         self.pName = pName
@@ -35,9 +32,5 @@ class ProductDetailModel {
         self.pTitle = pTitle
         self.pTime = pTime
         self.pDetailContent = pDetailContent
-        self.pState = pState
-        self.userNickName = userNickName
-        self.userEmail = userEmail
     }
-    
 }

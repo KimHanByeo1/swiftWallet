@@ -14,7 +14,6 @@ import UIKit
 import Photos
 import FirebaseStorage
 import MobileCoreServices
-import FirebaseAuth
 
 class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -46,9 +45,6 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     
     var imageData : NSData? = nil
     let photo = UIImagePickerController() // 앨범 이동
-    
-    let email = Auth.auth().currentUser!.email // 로그인 한 유저의 이메일 가져오기
-    var currentUserName = UserDefaults.standard.string(forKey: "nickname")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,25 +164,21 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 image: StaticModel.downURL,
                 wTitle: wTitle,
                 wTime: dateString,
-                wDetailContent: wDetailContent,
-                userEmail: email!,
-                userNickName: currentUserName!
+                wDetailContent: wDetailContent
             )
             
             if result{
                 let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다.", preferredStyle: .alert)
                 let onAction = UIAlertAction(title: "OK", style: .default,handler: {ACTION in
                     self.navigationController?.popViewController(animated: true)
-                    
-                    if let tabbarController = self.tabBarController {
-                        tabbarController.selectedIndex = 0
-                    }
-                    self.resetField()
                 })
                 
                 resultAlert.addAction(onAction)
                 present(resultAlert, animated: true)
                 
+                if let tabbarController = self.tabBarController {
+                    tabbarController.selectedIndex = 0
+                }
             }
         } else {
             let resultAlert = UIAlertController(title: "Error", message: "상품 사진을 등록해주세요.", preferredStyle: .alert)
@@ -197,19 +189,6 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
             //위에 정의한 것 최종적으로 show
             present(resultAlert, animated: true)
         }
-    }
-    
-    func resetField() {
-        lblSize.text = ""
-        lblBrand.text = ""
-        lblColor.text = ""
-        lblMaterial.text = ""
-        tfPrice.text = ""
-        tfTitle.text = ""
-        tfName.text = ""
-        tvContent.text = ""
-        tvDetailContent.text = ""
-        imageView.image = UIImage(named: "basicImage")
     }
     
     func showAlert() {
