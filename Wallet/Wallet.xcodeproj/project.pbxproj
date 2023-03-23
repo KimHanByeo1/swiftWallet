@@ -27,6 +27,12 @@
 		264512D829C695E80088E17A /* DBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D729C695E80088E17A /* DBViewModel.swift */; };
 		264512DA29C6964D0088E17A /* RegExModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512D929C6964D0088E17A /* RegExModel.swift */; };
 		264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 264512DC29C697A10088E17A /* TabBarViewController.swift */; };
+		265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265806D529CAA97F0049703D /* MyPageLikeTableViewCell.swift */; };
+		265806E029CAF9AD0049703D /* MyPageLikeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265806DF29CAF9AD0049703D /* MyPageLikeTableViewController.swift */; };
+		265806E229CAFB1A0049703D /* LikeCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265806E129CAFB1A0049703D /* LikeCodeModel.swift */; };
+		265806E729CAFBF20049703D /* LikeCodeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265806E629CAFBF20049703D /* LikeCodeDB.swift */; };
+		265806E929CB2B9F0049703D /* LikeProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265806E829CB2B9F0049703D /* LikeProductModel.swift */; };
+		2669F79429CC14F5007D3407 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669F79329CC14F5007D3407 /* FirstViewController.swift */; };
 		A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032A8B529CAA88C006328C9 /* ProfileViewController.swift */; };
 		A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E176129CA947300652C22 /* ProfileUpdateModel.swift */; };
 		A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */; };
@@ -37,6 +43,7 @@
 		BC1E7DAB29CA9D8C0093830C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */; };
 		BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAC29CAAB450093830C /* ChatViewController.swift */; };
 		BC1E7DAF29CAAF5A0093830C /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */; };
+		BC8129A229CBFE4100FD1399 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */; };
 		DAE3CA43F2D211997B367A5B /* Pods_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */; };
 		E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */; };
 		E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */; };
@@ -84,6 +91,12 @@
 		264512D729C695E80088E17A /* DBViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBViewModel.swift; sourceTree = "<group>"; };
 		264512D929C6964D0088E17A /* RegExModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegExModel.swift; sourceTree = "<group>"; };
 		264512DC29C697A10088E17A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		265806D529CAA97F0049703D /* MyPageLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageLikeTableViewCell.swift; sourceTree = "<group>"; };
+		265806DF29CAF9AD0049703D /* MyPageLikeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageLikeTableViewController.swift; sourceTree = "<group>"; };
+		265806E129CAFB1A0049703D /* LikeCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCodeModel.swift; sourceTree = "<group>"; };
+		265806E629CAFBF20049703D /* LikeCodeDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeCodeDB.swift; sourceTree = "<group>"; };
+		265806E829CB2B9F0049703D /* LikeProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeProductModel.swift; sourceTree = "<group>"; };
+		2669F79329CC14F5007D3407 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A032A8B529CAA88C006328C9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A06E176129CA947300652C22 /* ProfileUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateModel.swift; sourceTree = "<group>"; };
@@ -96,6 +109,7 @@
 		BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		BC1E7DAC29CAAB450093830C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		E1CCD0F429BEF69200E6DD35 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +219,7 @@
 				264512D129C694AA0088E17A /* LogInViewController.swift */,
 				263A884329C6AA3D0011C183 /* TelVerifyViewController.swift */,
 				263A884D29C729BE0011C183 /* SignInViewController.swift */,
+				2669F79329CC14F5007D3407 /* FirstViewController.swift */,
 			);
 			path = "Login&SignIn";
 			sourceTree = "<group>";
@@ -227,6 +242,22 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		265806D429CAA9610049703D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				265806D529CAA97F0049703D /* MyPageLikeTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		265806E529CAFBE20049703D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				265806E629CAFBF20049703D /* LikeCodeDB.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		72F4ACED673B02409D9F9BEF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -239,8 +270,10 @@
 		A08A51DD29C9472100D995A9 /* MypageDetail */ = {
 			isa = PBXGroup;
 			children = (
-				A08A51E129C947A000D995A9 /* ViewModel */,
+				265806E529CAFBE20049703D /* ViewModel */,
+				265806D429CAA9610049703D /* Cell */,
 				A08A51E029C9478F00D995A9 /* Model */,
+				265806DF29CAF9AD0049703D /* MyPageLikeTableViewController.swift */,
 				A032A8B529CAA88C006328C9 /* ProfileViewController.swift */,
 			);
 			path = MypageDetail;
@@ -251,16 +284,11 @@
 			children = (
 				A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */,
 				A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */,
+				265806E129CAFB1A0049703D /* LikeCodeModel.swift */,
+				265806E829CB2B9F0049703D /* LikeProductModel.swift */,
 				A06E176129CA947300652C22 /* ProfileUpdateModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		A08A51E129C947A000D995A9 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		BC1E7D8129C84D0A0093830C /* Chat */ = {
@@ -296,6 +324,7 @@
 			children = (
 				BC1E7D9529C853C20093830C /* UsersTableViewController.swift */,
 				BC1E7DAC29CAAB450093830C /* ChatViewController.swift */,
+				BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -543,6 +572,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC1E7D9F29C85D010093830C /* FCollectionReference.swift in Sources */,
+				265806E229CAFB1A0049703D /* LikeCodeModel.swift in Sources */,
 				1610E93029C9A41500824E49 /* CustomSideMenuNavigation.swift in Sources */,
 				16920C8129C85A0B006887CE /* DateViewModel.swift in Sources */,
 				264512D629C695C20088E17A /* AuthViewModel.swift in Sources */,
@@ -554,7 +585,9 @@
 				E1CCD19329C80B8500E6DD35 /* DetailViewModel.swift in Sources */,
 				BC1E7DAF29CAAF5A0093830C /* ChatModel.swift in Sources */,
 				E1CCD18B29C6D5A400E6DD35 /* staticModel.swift in Sources */,
+				265806E029CAF9AD0049703D /* MyPageLikeTableViewController.swift in Sources */,
 				16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */,
+				265806E729CAFBF20049703D /* LikeCodeDB.swift in Sources */,
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
 				1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */,
 				16920C7929C828B0006887CE /* MainModel.swift in Sources */,
@@ -563,6 +596,7 @@
 				E1CCD1AC29C8D15100E6DD35 /* LikeModel.swift in Sources */,
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
+				265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */,
 				BC1E7DA229C98A180093830C /* DatabaseManager.swift in Sources */,
 				BC1E7DA429C98BA30093830C /* ChatAppUser.swift in Sources */,
 				A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */,
@@ -573,6 +607,8 @@
 				E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */,
 				16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */,
 				E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */,
+				2669F79429CC14F5007D3407 /* FirstViewController.swift in Sources */,
+				BC8129A229CBFE4100FD1399 /* NewChatViewController.swift in Sources */,
 				E1CCD19029C80B6500E6DD35 /* DetailViewController.swift in Sources */,
 				E1CCD18229C6D55F00E6DD35 /* JsonModel.swift in Sources */,
 				BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */,
@@ -588,6 +624,7 @@
 				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
 				260FD37D29C95EC00085A7F3 /* MenuTableViewCell.swift in Sources */,
 				A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */,
+				265806E929CB2B9F0049703D /* LikeProductModel.swift in Sources */,
 				BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */,
 				264512D229C694AA0088E17A /* LogInViewController.swift in Sources */,
 				16920C7D29C82B9F006887CE /* MainViewModel.swift in Sources */,

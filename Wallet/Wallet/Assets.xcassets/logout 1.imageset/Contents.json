@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "arrow.png",
+      "filename" : "baseline_logout_black_24dp.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,12 +12,12 @@
           "value" : "dark"
         }
       ],
-      "filename" : "baseline_chevron_right_white_24dp.png",
+      "filename" : "baseline_logout_white_24dp.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "arrow 1.png",
+      "filename" : "baseline_logout_black_24dp 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
@@ -28,7 +28,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "baseline_chevron_right_white_24dp 1.png",
+      "filename" : "baseline_logout_white_24dp 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
