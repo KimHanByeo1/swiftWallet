@@ -13,6 +13,9 @@ class PayTableViewCell: UITableViewCell {
     @IBOutlet weak var balance: UILabel!
     @IBOutlet weak var backView: UIView!
     
+    
+    @IBOutlet weak var views: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,9 +37,10 @@ class PayTableViewCell: UITableViewCell {
             backView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMaxXMaxYCorner] // set the desired corners to round
             
             // Add any other customization as needed
-            backView.layer.borderWidth = 1.0
+        backView.layer.borderWidth = 0.2
             backView.layer.borderColor = UIColor.lightGray.cgColor
-        backView.backgroundColor = .white
+//        views.backgroundColor = .white
+//        backView.backgroundColor = .white
         
     }
 }
