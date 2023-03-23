@@ -15,6 +15,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var btnSend: UIButton!
     @IBOutlet weak var tfMessage: UITextField!
     
+    
+    
     // 채팅 대상 uid
     public var destinationUid:String?
     
@@ -22,7 +24,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var chatRoomUid:String?
     
     var comments:[ChatModel.Comment] = []
-    var userInfo:UserInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,8 +58,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         }else{
             let value: Dictionary<String,Any> = [
-                    "from":uid!,
-                    "to": destinationUid!,
+                    "uid":uid!,
                     "message": tfMessage.text!.trimmingCharacters(in: .whitespaces)
             ]
             
@@ -76,18 +76,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
                     if chatModel?.users[self.destinationUid!]==true{
                         self.chatRoomUid = item.key
                         self.btnSend.isEnabled = true
-                        self.getDestinationInfo()
+                        self.getMessageList()
                     }
                 }
             }
-        })
-    }
-    
-    func getDestinationInfo(){
-        Database.database().reference().child("users").child(self.destinationUid!).observeSingleEvent(of: DataEventType.value, with: {datasnapshot in
-            self.userInfo = UserInfo()
-            self.userInfo?.setValuesForKeys(datasnapshot.value as! [String:Any])
-            self.getMessageList()
         })
     }
     
@@ -109,24 +101,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let view = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath)
+        view.textLabel?.text = self.comments[indexPath.row].message
         
-        if self.comments[indexPath.row].uid == uid{
-            let view = tableView.dequeueReusableCell(withIdentifier: "myMessageCell", for: indexPath) as! MyMessageCell
-            view.lblMessage.text = self.comments[indexPath.row].message
-            view.lblMessage.numberOfLines = 0
-            return view
-        }else{
-            let view = tableView.dequeueReusableCell(withIdentifier: "destinationMessageCell", for: indexPath) as! DestinationMessageCell
-            view.lblUserName.text = userInfo?.name
-            view.lblDestinationMessage.text = self.comments[indexPath.row].message
-            view.lblDestinationMessage.numberOfLines = 0
-            return view
-        }
-        return UITableViewCell()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return view
+        
     }
     
     
@@ -143,11 +122,9 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
 }
 
 class MyMessageCell:UITableViewCell{
-    @IBOutlet weak var lblMessage: UILabel!
+    
 }
 
 class DestinationMessageCell:UITableViewCell{
-    @IBOutlet weak var lblDestinationMessage: UILabel!
-    @IBOutlet weak var imgProfile: UIImageView!
-    @IBOutlet weak var lblUserName: UILabel!
+    
 }
