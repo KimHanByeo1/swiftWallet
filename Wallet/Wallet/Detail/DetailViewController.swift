@@ -21,6 +21,7 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     @IBOutlet weak var lblContent: UILabel! // 선택한 상품 상세 내용
     @IBOutlet weak var lblPrice: UILabel! // 선택한 상품 가격
     @IBOutlet weak var btnLikeText: UIButton! // 찜 이미지 변경을 위한 변수
+    @IBOutlet weak var btnChat: UIButton!
     
     var imageURL = "" // MainController에서 넘겨준 imageURL 값 받는 변수
     var like = "" // 찜 여부 확인 0,1
@@ -31,6 +32,9 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     var productDetailStore: [ProductDetailModel] = []
     var userLikeModel: [UserLikeModel] = []
     var likeModel: [LikeModel] = []
+    
+    var userNickName: String?
+    var userEmail: String?
     
     let uid = Auth.auth().currentUser!.uid // 로그인 한 유저의 DocId 가져오기
     let likeVM = LikeViewModel() // 여러개의 function에서 사용하기위해 전역변수로 생성
@@ -48,10 +52,18 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         
     }
     
+    
+    @IBAction func goChating(_ sender: UIButton) {
+        //
+    }
+    
     // quertModel.downloadItems
     func itemDownLoaded(items: [ProductDetailModel]) {
         
         productDetailStore = items
+        
+        userEmail = productDetailStore.first?.userEmail
+        userNickName = productDetailStore.first?.userNickName
         
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
@@ -76,6 +88,13 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         lblContent.text = productDetailStore.first?.pContent
         lblPrice.text = "\(numberFormatter.string(from: NSNumber(value: Int(productDetailStore.first!.pPrice)!)) ?? "")원"
         lblDetailContent.text = productDetailStore.first?.pDetailContent
+        
+        if productDetailStore.first?.pState == "0" {
+            btnChat.setTitle("채팅하기", for: .normal)
+        } else {
+            btnChat.setTitle("판매완료", for: .normal)
+            btnChat.isEnabled = false
+        }
         
     }
     
