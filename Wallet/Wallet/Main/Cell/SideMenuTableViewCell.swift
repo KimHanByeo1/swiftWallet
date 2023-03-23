@@ -1,16 +1,15 @@
 //
-//  UserTableViewCell.swift
+//  SideMenuTableViewCell.swift
 //  Wallet
 //
-//  Created by 예띤 on 2023/03/20.
+//  Created by Jeong Yun Hyeon on 2023/03/21.
 //
 
 import UIKit
 
-class UserTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var lblUserName: UILabel!
-    @IBOutlet weak var lblLastMessage: UILabel!
+class SideMenuTableViewCell: UITableViewCell {
+
+    @IBOutlet weak var lblBrand: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

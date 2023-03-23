@@ -28,9 +28,11 @@ class ProfileQueryModel{
                     for document in querySnapshot!.documents{
                         guard let data = document.data()["email"] else { return }
                         print("\(document.documentID) => \(data)")
-                        let query = ProfileDBModel(nickname: document.data()["nickname"] as! String,
-                                                   email: document.documentID,
-                                                   profileimage: document.data()["profileimage"] as! String)
+                        let query = ProfileDBModel(documentId: document.documentID,
+                                                   nickname: document.data()["nickname"] as! String,
+                                                   email: document.data()["email"] as! String,
+                                                   profileimage: document.data()["profileimage"] as! String
+                        )
                         print(query)
                         locations.append(query)
                     }

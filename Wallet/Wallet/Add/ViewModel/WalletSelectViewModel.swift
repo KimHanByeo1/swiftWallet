@@ -42,7 +42,8 @@ class SelectData {
                             wLength: document.data()["wLength"] as! Int,
                             wHeight: document.data()["wHeight"] as! Int,
                             wWidth: document.data()["wWidth"] as! Double,
-                            wCode: document.data()["wCode"] as! Int)
+                            wCode: document.data()["wCode"] as! Int,
+                            wDetailContent: document.data()["wDetailContent"] as! String)
                         
                         locations.append(query)
                     }

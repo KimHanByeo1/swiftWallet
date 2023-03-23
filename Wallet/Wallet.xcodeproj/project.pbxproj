@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1610E93029C9A41500824E49 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */; };
+		1610E93229C9A43800824E49 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E93129C9A43800824E49 /* SideMenuViewController.swift */; };
+		1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */; };
 		16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C6E29C80BAF006887CE /* SearchViewModel.swift */; };
 		16920C7129C80BCE006887CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7029C80BCE006887CE /* MainViewController.swift */; };
 		16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7529C8278D006887CE /* MainTableViewCell.swift */; };
@@ -30,17 +33,17 @@
 		265806E729CAFBF20049703D /* LikeCodeDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265806E629CAFBF20049703D /* LikeCodeDB.swift */; };
 		265806E929CB2B9F0049703D /* LikeProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265806E829CB2B9F0049703D /* LikeProductModel.swift */; };
 		2669F79429CC14F5007D3407 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669F79329CC14F5007D3407 /* FirstViewController.swift */; };
+		A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032A8B529CAA88C006328C9 /* ProfileViewController.swift */; };
+		A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E176129CA947300652C22 /* ProfileUpdateModel.swift */; };
 		A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */; };
 		A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */; };
-		A08A51F529C9812800D995A9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51F429C9812800D995A9 /* ProfileViewController.swift */; };
 		BC1E7D8429C84D310093830C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D8329C84D310093830C /* Sender.swift */; };
 		BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9529C853C20093830C /* UsersTableViewController.swift */; };
-		BC1E7D9829C854280093830C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9729C854280093830C /* User.swift */; };
 		BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9929C856440093830C /* UserTableViewCell.swift */; };
-		BC1E7D9D29C85B110093830C /* FirebaseUserListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9C29C85B110093830C /* FirebaseUserListener.swift */; };
-		BC1E7D9F29C85D010093830C /* FCollectionReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9E29C85D010093830C /* FCollectionReference.swift */; };
-		BC1E7DA229C98A180093830C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DA129C98A180093830C /* DatabaseManager.swift */; };
-		BC1E7DA429C98BA30093830C /* ChatAppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DA329C98BA30093830C /* ChatAppUser.swift */; };
+		BC1E7DAB29CA9D8C0093830C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */; };
+		BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAC29CAAB450093830C /* ChatViewController.swift */; };
+		BC1E7DAF29CAAF5A0093830C /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */; };
+		BC8129A229CBFE4100FD1399 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */; };
 		DAE3CA43F2D211997B367A5B /* Pods_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */; };
 		E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */; };
 		E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */; };
@@ -67,6 +70,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSideMenuNavigation.swift; path = Wallet/Main/CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
+		1610E93129C9A43800824E49 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SideMenuViewController.swift; path = Wallet/Main/SideMenuViewController.swift; sourceTree = "<group>"; };
+		1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		16920C6E29C80BAF006887CE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Wallet/Main/MainViewController.swift; sourceTree = "<group>"; };
 		16920C7529C8278D006887CE /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,18 +98,18 @@
 		265806E829CB2B9F0049703D /* LikeProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeProductModel.swift; sourceTree = "<group>"; };
 		2669F79329CC14F5007D3407 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A032A8B529CAA88C006328C9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A06E176129CA947300652C22 /* ProfileUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateModel.swift; sourceTree = "<group>"; };
 		A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQueryModel.swift; sourceTree = "<group>"; };
 		A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDBModel.swift; sourceTree = "<group>"; };
-		A08A51F429C9812800D995A9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		BC1E7D8329C84D310093830C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		BC1E7D9529C853C20093830C /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
-		BC1E7D9729C854280093830C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BC1E7D9929C856440093830C /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		BC1E7D9C29C85B110093830C /* FirebaseUserListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserListener.swift; sourceTree = "<group>"; };
-		BC1E7D9E29C85D010093830C /* FCollectionReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FCollectionReference.swift; sourceTree = "<group>"; };
-		BC1E7DA129C98A180093830C /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		BC1E7DA329C98BA30093830C /* ChatAppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppUser.swift; sourceTree = "<group>"; };
+		BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		BC1E7DAC29CAAB450093830C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		E1CCD0F429BEF69200E6DD35 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +156,8 @@
 				16920C7229C82770006887CE /* Cell */,
 				16920C6D29C80B96006887CE /* ViewModel */,
 				16920C7029C80BCE006887CE /* MainViewController.swift */,
+				1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */,
+				1610E93129C9A43800824E49 /* SideMenuViewController.swift */,
 			);
 			name = Main;
 			path = ..;
@@ -170,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				16920C7529C8278D006887CE /* MainTableViewCell.swift */,
+				1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */,
 			);
 			name = Cell;
 			path = Wallet/Main/Cell;
@@ -206,7 +215,6 @@
 		264512CF29C5B8770088E17A /* Login&SignIn */ = {
 			isa = PBXGroup;
 			children = (
-				BC1E7DA029C98A020093830C /* Resources */,
 				264512D329C695A50088E17A /* ViewModel */,
 				264512D129C694AA0088E17A /* LogInViewController.swift */,
 				263A884329C6AA3D0011C183 /* TelVerifyViewController.swift */,
@@ -265,8 +273,8 @@
 				265806E529CAFBE20049703D /* ViewModel */,
 				265806D429CAA9610049703D /* Cell */,
 				A08A51E029C9478F00D995A9 /* Model */,
-				A08A51F429C9812800D995A9 /* ProfileViewController.swift */,
 				265806DF29CAF9AD0049703D /* MyPageLikeTableViewController.swift */,
+				A032A8B529CAA88C006328C9 /* ProfileViewController.swift */,
 			);
 			path = MypageDetail;
 			sourceTree = "<group>";
@@ -278,6 +286,7 @@
 				A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */,
 				265806E129CAFB1A0049703D /* LikeCodeModel.swift */,
 				265806E829CB2B9F0049703D /* LikeProductModel.swift */,
+				A06E176129CA947300652C22 /* ProfileUpdateModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -285,7 +294,6 @@
 		BC1E7D8129C84D0A0093830C /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				BC1E7D9B29C85AF80093830C /* FirebaseHelper */,
 				BC1E7D9429C853A60093830C /* Controller */,
 				BC1E7D8529C84E6D0093830C /* Model */,
 				BC1E7D8229C84D1A0093830C /* Resources */,
@@ -305,8 +313,8 @@
 		BC1E7D8529C84E6D0093830C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BC1E7D9729C854280093830C /* User.swift */,
-				BC1E7DA329C98BA30093830C /* ChatAppUser.swift */,
+				BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */,
+				BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,25 +323,10 @@
 			isa = PBXGroup;
 			children = (
 				BC1E7D9529C853C20093830C /* UsersTableViewController.swift */,
+				BC1E7DAC29CAAB450093830C /* ChatViewController.swift */,
+				BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		BC1E7D9B29C85AF80093830C /* FirebaseHelper */ = {
-			isa = PBXGroup;
-			children = (
-				BC1E7D9C29C85B110093830C /* FirebaseUserListener.swift */,
-				BC1E7D9E29C85D010093830C /* FCollectionReference.swift */,
-			);
-			path = FirebaseHelper;
-			sourceTree = "<group>";
-		};
-		BC1E7DA029C98A020093830C /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				BC1E7DA129C98A180093830C /* DatabaseManager.swift */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		CF37D78A261119C867F7AA41 /* Frameworks */ = {
@@ -581,19 +574,22 @@
 			files = (
 				BC1E7D9F29C85D010093830C /* FCollectionReference.swift in Sources */,
 				265806E229CAFB1A0049703D /* LikeCodeModel.swift in Sources */,
+				1610E93029C9A41500824E49 /* CustomSideMenuNavigation.swift in Sources */,
 				16920C8129C85A0B006887CE /* DateViewModel.swift in Sources */,
 				264512D629C695C20088E17A /* AuthViewModel.swift in Sources */,
+				1610E93229C9A43800824E49 /* SideMenuViewController.swift in Sources */,
 				263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */,
 				260FD37B29C95EB50085A7F3 /* PayTableViewCell.swift in Sources */,
 				E1CCD19629C80D6600E6DD35 /* ProductDetailModel.swift in Sources */,
-				A08A51F529C9812800D995A9 /* ProfileViewController.swift in Sources */,
 				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
 				E1CCD19329C80B8500E6DD35 /* DetailViewModel.swift in Sources */,
+				BC1E7DAF29CAAF5A0093830C /* ChatModel.swift in Sources */,
 				E1CCD18B29C6D5A400E6DD35 /* staticModel.swift in Sources */,
 				265806E029CAF9AD0049703D /* MyPageLikeTableViewController.swift in Sources */,
 				16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */,
 				265806E729CAFBF20049703D /* LikeCodeDB.swift in Sources */,
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
+				1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */,
 				16920C7929C828B0006887CE /* MainModel.swift in Sources */,
 				E1CCD1AE29C8D17900E6DD35 /* LikeViewModel.swift in Sources */,
 				E1CCD18929C6D59000E6DD35 /* Flask.swift in Sources */,
@@ -603,6 +599,7 @@
 				265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */,
 				BC1E7DA229C98A180093830C /* DatabaseManager.swift in Sources */,
 				BC1E7DA429C98BA30093830C /* ChatAppUser.swift in Sources */,
+				A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */,
 				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,
 				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
 				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
@@ -611,25 +608,27 @@
 				16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */,
 				E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */,
 				2669F79429CC14F5007D3407 /* FirstViewController.swift in Sources */,
+				BC8129A229CBFE4100FD1399 /* NewChatViewController.swift in Sources */,
 				E1CCD19029C80B6500E6DD35 /* DetailViewController.swift in Sources */,
 				E1CCD18229C6D55F00E6DD35 /* JsonModel.swift in Sources */,
 				BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */,
 				E1CCD17C29C6D52500E6DD35 /* WalletSelectViewModel.swift in Sources */,
 				264512DA29C6964D0088E17A /* RegExModel.swift in Sources */,
+				BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */,
 				BC1E7D8429C84D310093830C /* Sender.swift in Sources */,
 				263A884E29C729BE0011C183 /* SignInViewController.swift in Sources */,
 				264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */,
+				A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */,
 				E1CCD1B029C8D18600E6DD35 /* UserViewModel.swift in Sources */,
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
-				BC1E7D9829C854280093830C /* User.swift in Sources */,
 				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
 				260FD37D29C95EC00085A7F3 /* MenuTableViewCell.swift in Sources */,
 				A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */,
 				265806E929CB2B9F0049703D /* LikeProductModel.swift in Sources */,
 				BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */,
 				264512D229C694AA0088E17A /* LogInViewController.swift in Sources */,
-				BC1E7D9D29C85B110093830C /* FirebaseUserListener.swift in Sources */,
 				16920C7D29C82B9F006887CE /* MainViewModel.swift in Sources */,
+				BC1E7DAB29CA9D8C0093830C /* UserInfo.swift in Sources */,
 				16920C7129C80BCE006887CE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

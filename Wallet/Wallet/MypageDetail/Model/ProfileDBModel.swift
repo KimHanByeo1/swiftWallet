@@ -8,11 +8,13 @@
 import Foundation
 
 struct ProfileDBModel{
+    var documentId: String
     var nickname:String
     var email:String
     var profileimage:String
     
-    init(nickname: String, email: String, profileimage: String) {
+    init(documentId: String, nickname: String, email: String, profileimage: String) {
+        self.documentId = documentId
         self.nickname = nickname
         self.email = email
         self.profileimage = profileimage
