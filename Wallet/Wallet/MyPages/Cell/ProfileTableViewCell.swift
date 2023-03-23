@@ -26,17 +26,25 @@ class ProfileTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        // border 깎기
+//        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+//        profileImage.clipsToBounds = true
+//
+//        // Add a stroke to the image
+////            profileImage.layer.borderWidth = 1.0
+////            profileImage.layer.borderColor = UIColor.black.cgColor
+//
+//    }
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        // border 깎기
-        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        profileImage.layer.borderWidth = 0
+        profileImage.layer.borderColor = UIColor.clear.cgColor
+        // 뷰의 경계에 맞춰준다
         profileImage.clipsToBounds = true
-        
-        // Add a stroke to the image
-//            profileImage.layer.borderWidth = 1.0
-//            profileImage.layer.borderColor = UIColor.black.cgColor
-        
     }
 
 }

@@ -1,62 +1,81 @@
 //
-//  UsersTableViewController.swift
+//  MyPageLikeTableViewController.swift
 //  Wallet
 //
-//  Created by 예띤 on 2023/03/20.
+//  Created by Anna Kim on 2023/03/22.
 //
 
 import UIKit
-import SnapKit
 import Firebase
-import FirebaseDatabase
+import FirebaseStorage
 
-class UsersTableViewController: UITableViewController {
+class MyPageLikeTableViewController: UITableViewController {
+
     
-    var array:[UserInfo] = []
+    @IBOutlet var tvTable: UITableView!
     
-    @IBOutlet var userTableView: UITableView!
+    //like collection의 code 담는 곳
+    var likeCode: [String] = []
+    var likeProduct: [LikeProductModel] = []
+    
+    
+    
+
+    
+//    var codes: AnyObject?
+    let uid = Auth.auth().currentUser!.uid
+    
+    
+    let likecodeDB = LikeCodeDB()
+    let productModel = LikeCodeDB()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Database.database().reference().child("users").observe(DataEventType.value, with: {snapshot in
-            
-            self.array.removeAll()
-            
-            let myUid = Auth.auth().currentUser?.uid
-            
-            for child in snapshot.children{
-                let fchild = child as! DataSnapshot
-                let userInfo = UserInfo()
-                userInfo.setValuesForKeys(fchild.value as! [String:Any])
-                
-                if userInfo.uid == myUid{
-                    continue
-                }
-                
-                self.array.append(userInfo)
-                
-                print(fchild.value as! [String:Any])
-            }
-            
-            DispatchQueue.main.async{
-                self.userTableView.reloadData()
-            }
-            
-            print(self.array)
-        })
         
-        userTableView.rowHeight = 124
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+     
+       
+       
+
+        
+        
+        likecodeDB.delegate = self
+        productModel.delegate = self
+  
+    }
+
+    // MARK: - Table view data source
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+//        quertModel.delegate = self
+        productModel.downloadItems(uid: uid)
+        
+//        likecodeDB.bringProducts(code: likeCode)
+        
     }
     
-    // MARK: - Table view data source
+//    func reloadAction(){
+////        let queryModel = LikeCodeDB()
+//
+//        likecodeDB.delegate = self
+//
+//        likecodeDB.downloadItems(uid: uid)
+//        likecodeDB.bringProducts(code: likeCode)
+//        tvTable.reloadData()
+//        print("reloadaction")
+//        //print(queryModel)
+//        print(likeCode)
+//    }
 
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -64,18 +83,39 @@ class UsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return array.count
+        return likeProduct.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! UserTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myLikeCell", for: indexPath) as! MyPageLikeTableViewCell
+
+        // Configure the cell...
+        cell.pPrice.text = likeProduct[indexPath.row].pPrice
+        cell.pTitle.text = likeProduct[indexPath.row].pTitle
+        cell.pBrand.text = likeProduct[indexPath.row].pBrand
+
         
-        cell.lblUserName.text = array[indexPath.row].name
+        
+        let storage = Storage.storage()
+        let httpsReference = storage.reference(forURL: likeProduct[indexPath.row].imageURL)
+                                               
+        httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+          if let error = error {
+              print("Error : \(error)")
+          } else {
+              cell.pImage.image = UIImage(data: data!)
+          }
+        }
+        
+        //cell.pImage.image = UIImage(named: "face")
+        
+
         
         return cell
     }
     
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -111,21 +151,32 @@ class UsersTableViewController: UITableViewController {
     }
     */
 
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-       
-        let vc = segue.destination as! NewChatViewController
-        
-        let cell = sender as! UserTableViewCell
-        let indexpath = userTableView.indexPath(for: cell)
-        
-        vc.destinationUid = array[indexpath!.row].uid
     }
+    */
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 156
+    }
 
 }
+
+
+extension MyPageLikeTableViewController: LikeCodeDBProtocol{
+    func itemDownloaded(items: [String]) {
+        likeCode = items
+        self.tvTable.reloadData()
+        likecodeDB.bringProducts(code: likeCode)
+    }
+    func itemBring(products: [LikeProductModel]) {
+        likeProduct = products
+        self.tvTable.reloadData()
+    }
+}
+
