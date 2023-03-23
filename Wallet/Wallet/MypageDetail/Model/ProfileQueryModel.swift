@@ -15,25 +15,25 @@ protocol ProfileQueryModelProtocol{
 class ProfileQueryModel{
     var delegate: ProfileQueryModelProtocol!
     let db = Firestore.firestore()
-
     
-    func downloadItems(email: String) {
+    func downloadItems(){
         var locations: [ProfileDBModel] = []
         
         db.collection("users")
-            .whereField("email", isEqualTo: email)
-            .getDocuments(completion: {(querySnapshot, err) in
+            .order(by: "email").getDocuments(completion: {(querySnapshot, err) in
                 if let err = err{
                     print("Error getting documents : \(err)")
                 }else{
                     print("Data is downloaded.")
                     for document in querySnapshot!.documents{
+                        guard let data = document.data()["email"] else { return }
+                        print("\(document.documentID) => \(data)")
                         let query = ProfileDBModel(documentId: document.documentID,
                                                    nickname: document.data()["nickname"] as! String,
                                                    email: document.data()["email"] as! String,
-                                                   profileimage: document.data()["profileImage"] as! String
+                                                   profileimage: document.data()["profileimage"] as! String
                         )
-                        
+                        print(query)
                         locations.append(query)
                     }
                     DispatchQueue.main.async {
