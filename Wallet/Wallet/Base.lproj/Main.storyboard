@@ -508,6 +508,9 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="채팅하기"/>
+                                        <connections>
+                                            <action selector="goChating:" destination="q6t-D8-jLh" eventType="touchUpInside" id="Pqd-lC-XQm"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-jT-Vbx">
                                         <rect key="frame" x="0.0" y="-5" width="393" height="2"/>
@@ -553,6 +556,7 @@
                     <size key="freeformSize" width="393" height="1101"/>
                     <connections>
                         <outlet property="btnLikeText" destination="fzG-xf-Yjq" id="bbu-eJ-kDt"/>
+                        <outlet property="chat" destination="xCJ-ha-9eX" id="weF-iL-ckk"/>
                         <outlet property="imageView" destination="TTt-K8-NNY" id="BuU-fu-hCq"/>
                         <outlet property="lblBrandNTime" destination="xYI-Xo-YZm" id="xwu-sy-g17"/>
                         <outlet property="lblContent" destination="hYU-8K-cqy" id="ac4-by-tYY"/>

@@ -40,7 +40,10 @@ class SelectDetailData {
                                                        pPrice: document.data()["pPrice"] as! String,
                                                        pTitle: document.data()["pTitle"] as! String,
                                                        pTime: document.data()["pTime"] as! String,
-                                                       pDetailContent: document.data()["pDetailContent"] as! String
+                                                       pDetailContent: document.data()["pDetailContent"] as! String,
+                                                       pState: document.data()["pState"] as! String,
+                                                       userEmail: document.data()["userEmail"] as! String,
+                                                       userNickName: document.data()["userNickName"] as! String
                                                     )
                             
                         locations.append(query)
