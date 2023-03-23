@@ -20,8 +20,9 @@ struct LikeProductModel {
     var pSize: String
     var pTime: String
     var pTitle: String
+    var pState: String
     
-    init(imageURL: String, pBrand: String, pColor: String, pContent: String, pDetailContent: String, pMaterial: String, pName: String, pPrice: String, pSize: String, pTime: String, pTitle: String) {
+    init(imageURL: String, pBrand: String, pColor: String, pContent: String, pDetailContent: String, pMaterial: String, pName: String, pPrice: String, pSize: String, pTime: String, pTitle: String, pState: String) {
         self.imageURL = imageURL
         self.pBrand = pBrand
         self.pColor = pColor
@@ -33,6 +34,7 @@ struct LikeProductModel {
         self.pSize = pSize
         self.pTime = pTime
         self.pTitle = pTitle
+        self.pState = pState
     }
     
     

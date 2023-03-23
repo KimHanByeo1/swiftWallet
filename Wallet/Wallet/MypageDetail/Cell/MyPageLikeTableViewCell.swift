@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Foundation
+
+
 
 class MyPageLikeTableViewCell: UITableViewCell {
 
@@ -15,8 +18,11 @@ class MyPageLikeTableViewCell: UITableViewCell {
     @IBOutlet weak var pBrand: UILabel!
     @IBOutlet weak var pPrice: UILabel!
     
+    @IBOutlet weak var likeButton: UIButton!
     
+    @IBOutlet weak var lblState: UILabel!
     
+
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,15 +33,26 @@ class MyPageLikeTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+        
         // Configure the view for the selected state
     }
     
-//    override func layoutSubviews() {
-//        pImage.layer.cornerRadius = pImage.frame.height / 8
-//        pImage.layer.borderWidth = 0
-//        pImage.layer.borderColor = UIColor.clear.cgColor
-//        // 뷰의 경계에 맞춰준다
-//        pImage.clipsToBounds = true
-//    }
+    override func layoutSubviews() {
+        pImage.layer.cornerRadius = pImage.frame.height / 8
+        pImage.layer.borderWidth = 0
+        pImage.layer.borderColor = UIColor.clear.cgColor
+        // 뷰의 경계에 맞춰준다
+        pImage.clipsToBounds = true
+        
+        
+    }
+    
+    
 
+    @IBAction func likeButton(_ sender: UIButton) {
+        
+        
+    }
+    
+    
 }

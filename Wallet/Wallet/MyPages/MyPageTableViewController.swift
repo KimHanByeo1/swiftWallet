@@ -107,7 +107,7 @@ class MyPageTableViewController: UITableViewController {
     //                    cell.menuGoBtn
                     case 3:
                         cell.menuImage.image = UIImage(named: "fullheart")
-                        cell.menuLabel.text = "몰라"
+                        cell.menuLabel.text = "등록된 상품"
     //                    cell.menuGoBtn
                     default:
                         break
