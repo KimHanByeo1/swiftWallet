@@ -12,7 +12,7 @@ class ProfileUpdataModel{
     
     let db = Firestore.firestore()
 
-    func ProfileUpdataItems(documentId : String, email : String, nickname : String, profileImage : String) -> Bool{
+    func ProfileUpdataItems(documentId: String, email : String, nickname : String, profileImage : String) -> Bool{
         var status: Bool = true
 
         db.collection("users").document(documentId).updateData([
