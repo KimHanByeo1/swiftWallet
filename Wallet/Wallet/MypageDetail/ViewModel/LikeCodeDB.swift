@@ -73,7 +73,8 @@ class LikeCodeDB{
                                                          pPrice: document.data()["pPrice"] as! String,
                                                          pSize: document.data()["pSize"] as! String,
                                                          pTime: document.data()["pTime"] as! String,
-                                                         pTitle: document.data()["pTitle"] as! String)
+                                                         pTitle: document.data()["pTitle"] as! String,
+                                                         pState: document.data()["pState"] as! String)
                             locations.append(query)
                         }
                         DispatchQueue.main.async {

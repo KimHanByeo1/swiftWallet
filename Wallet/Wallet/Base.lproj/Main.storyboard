@@ -157,22 +157,6 @@
             </objects>
             <point key="canvasLocation" x="5345.801526717557" y="22.535211267605636"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="G6M-rU-Zq0">
-            <objects>
-                <viewController id="ebe-7n-ave" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OHi-KW-Y61">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="mUM-i7-Chj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="V6w-m4-iSf"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="un6-8I-rsm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4594.6564885496182" y="1452.8169014084508"/>
-        </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="dtl-c8-THw">
             <objects>
@@ -1155,10 +1139,10 @@
             </objects>
             <point key="canvasLocation" x="4594.6564885496182" y="1452.8169014084508"/>
         </scene>
-        <!--My Page Like Table View Controller-->
+        <!--관심 목록-->
         <scene sceneID="kA0-RB-KlV">
             <objects>
-                <tableViewController storyboardIdentifier="MyPageLikeController" id="U1c-hK-y4m" customClass="MyPageLikeTableViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyPageLikeController" hidesBottomBarWhenPushed="YES" id="U1c-hK-y4m" customClass="MyPageLikeTableViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="in4-z1-y8W">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1175,30 +1159,50 @@
                                             <rect key="frame" x="20" y="22" width="134" height="128"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b39-9I-jNv">
-                                            <rect key="frame" x="162" y="22" width="159" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b39-9I-jNv">
+                                            <rect key="frame" x="162" y="22" width="163" height="42"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZs-8T-Sgn">
-                                            <rect key="frame" x="162" y="76" width="159" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="브랜드 · 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZs-8T-Sgn">
+                                            <rect key="frame" x="162" y="72" width="163" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="가격" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcy-gs-lRe">
+                                            <rect key="frame" x="162" y="92" width="163" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcy-gs-lRe">
-                                            <rect key="frame" x="162" y="129" width="159" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="판매중" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="whD-zK-fju">
+                                            <rect key="frame" x="162" y="121" width="189" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" name="outgoingMessageBackground"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kw4-zc-87M">
+                                            <rect key="frame" x="336" y="36" width="15" height="15"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="clicklike">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                            </buttonConfiguration>
+                                            <connections>
+                                                <action selector="likeButton:" destination="22P-J0-2LW" eventType="touchUpInside" id="Gps-Sb-MMe"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="lblState" destination="whD-zK-fju" id="hxc-ns-Sas"/>
+                                    <outlet property="likeButton" destination="kw4-zc-87M" id="bR0-JU-tAO"/>
                                     <outlet property="pBrand" destination="IZs-8T-Sgn" id="JQH-28-Ypx"/>
                                     <outlet property="pImage" destination="RPL-8a-Sya" id="ztY-62-eLh"/>
                                     <outlet property="pPrice" destination="hcy-gs-lRe" id="2qE-O2-U2r"/>
@@ -1211,7 +1215,7 @@
                             <outlet property="delegate" destination="U1c-hK-y4m" id="ubc-oY-sqO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="3kT-1h-M8x"/>
+                    <navigationItem key="navigationItem" title="관심 목록" id="3kT-1h-M8x"/>
                     <connections>
                         <outlet property="tvTable" destination="in4-z1-y8W" id="RAy-EK-maP"/>
                     </connections>
@@ -1568,6 +1572,7 @@
         <image name="arrow" width="24" height="24"/>
         <image name="category" width="24" height="24"/>
         <image name="chat" width="24" height="24"/>
+        <image name="clicklike" width="21" height="21"/>
         <image name="face" width="332" height="332"/>
         <image name="home" width="24" height="24"/>
         <image name="like1" width="28" height="28"/>
