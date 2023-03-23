@@ -21,16 +21,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailCheck: UILabel!
     @IBOutlet weak var passwordCheck: UILabel!
     
-    //자동 로그인 switch
-    @IBOutlet weak var autoLogin: UISwitch!
-    
-    
     
     let authViewModel = AuthViewModel()
     let regExModel = RegExModel()
     let dbModel = DBViewModel()
-    let defaults = UserDefaults.standard
-    
     
     
     override func viewDidLoad() {
@@ -39,74 +33,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-        
-//
-        // 자동 로그인 기능 추가
-            if let email = defaults.string(forKey: "email"), let password = defaults.string(forKey: "password") {
-                login(email: email, password: password)
-            }
-        
         emailField.text = "aaa@aaa.aaa"
         passwordField.text = "aaaaaa"
-        
-        autoLogin.isOn = false
-        
-    }
-    
-    private func login(email: String, password: String) {
-        authViewModel.logIn(email: email, password: password) { [self] (success) in
-            if success {
-                // Handle successful login
-                print("로그인 성공")
-                print(email)
-                let uid = Auth.auth().currentUser?.uid ?? ""
-                
-                    Firestore.firestore().collection("users").document(uid).getDocument { [self] (snapshot, error) in
-                        if let data = snapshot?.data() {
-                            let nickname = data["nickname"] as? String ?? ""
-                            let profileImage = data["profileImage"] as? String ?? ""
-                            
-                            
-                            
-                            
-                            if profileImage.isEmpty{
-                                //UserDefaults를 위한 세팅(alike sharedPreferences)
-                                dbModel.saveUserInfo(email: email, nickname: nickname, profileImage: nil)
-                            }else{
-                                dbModel.saveUserInfo(email: email, nickname: nickname, profileImage: profileImage)
-                            }
-                            
-                            
-                           
-
-                            
-                            // 예시 - login 화면 tabBar화면들로 전환
-//                            let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
-//                            let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
-//                            self.transition(from: vc1, to: vc2)
-//
-                            print(nickname)
-                            
-                        } else {
-                            // Handle error
-                            print("Error getting user document: \(error?.localizedDescription ?? "")")
-                        }
-                    }
-                
-                
-            } else {
-                // Handle failed login
-                print("로그인 실패")
-                shakeTextField(textField: emailField)
-                shakeTextField(textField: passwordField)
-                let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 610, width: 279, height: 45))
-                loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
-                loginFailLabel.textColor = UIColor.red
-                loginFailLabel.tag = 102
-                
-                self.view.addSubview(loginFailLabel)
-            }
-        }
     }
     
     @objc private func loginButtonTapped(){
@@ -196,13 +124,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                                 }
                                 
                                 
-                                if autoLogin.isOn == true {
-                                    let dataSave = UserDefaults.standard
-                                    dataSave.setValue(email, forKey: "email")
-                                    dataSave.setValue(password, forKey: "password")
-                                    UserDefaults.standard.synchronize()
-                                }
-
+                                
                                 
                                 // 예시 - login 화면 tabBar화면들로 전환
                                 let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
@@ -252,17 +174,14 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 //            self.navigationController?.pushViewController(viewController, animated: true)
 //        }
         
-     
+        
+        
+
+            
         
     }
     
     
-    @IBAction func autoLoginSwitchValueChanged(_ sender: UISwitch) {
-        
-        print(autoLogin.isOn)
-        UserDefaults.standard.set(sender.isOn, forKey: "autoLogin")
-            UserDefaults.standard.synchronize()
-    }
     
     
     

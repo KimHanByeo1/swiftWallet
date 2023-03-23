@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseStorage
 
 class MyPageTableViewController: UITableViewController {
 
@@ -14,10 +13,6 @@ class MyPageTableViewController: UITableViewController {
     @IBOutlet var MyPageTableView: UITableView!
     
     
-    let defaults = UserDefaults.standard
-    var nickname = ""
-    var email = ""
-    var image = ""
     
     override func viewDidLoad() {
             super.viewDidLoad()
@@ -27,11 +22,6 @@ class MyPageTableViewController: UITableViewController {
 
             // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
             // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        nickname = defaults.string(forKey: "nickname")!
-        email = defaults.string(forKey: "email")!
-        image = defaults.string(forKey: "profileImage") ?? ""
-        print("image")
-        print(image)
         }
 
         // MARK: - Table view data source
@@ -57,26 +47,9 @@ class MyPageTableViewController: UITableViewController {
                     // profileCell 반환
                     let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileTableViewCell
                     // cell 구성
-                cell.nickname.text = nickname
-                cell.email.text = email
-                
-                
-                if image == "" {
-                    cell.profileImage.image = UIImage(named: "face")
-                } else {
-                    let storage = Storage.storage()
-                    let httpsReference = storage.reference(forURL: image)
-                    
-                    httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                        if let error = error {
-                            print("Error : \(error)")
-                        }else {
-                            cell.profileImage.image = UIImage(data: data!)
-                        }
-                    }
-                }
-                
-                
+                cell.nickname.text = "nickname"
+                cell.email.text = "email@email.email"
+                cell.profileImage.image = UIImage(named: "face")
                     return cell
                 } else if indexPath.section == 1 {
                     // payCell 반환
@@ -134,27 +107,6 @@ class MyPageTableViewController: UITableViewController {
         }
 
         
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 {
-                if indexPath.row == 0 {
-                    // Instantiate and present the first view controller
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "MyPageLikeController") as! MyPageLikeTableViewController
-                    navigationController?.pushViewController(vc, animated: true)
-                    print("pop")
-                    print(vc)
-                } else if indexPath.row == 1 {
-                    // Instantiate and present the second view controller
-//                    let vc = SecondViewController()
-//                    navigationController?.pushViewController(vc, animated: true)
-                }
-                // You can add more conditions to handle other cells in this section
-            }
- 
-
-        
-    }
         /*
         // Override to support conditional editing of the table view.
         override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -199,17 +151,5 @@ class MyPageTableViewController: UITableViewController {
             // Pass the selected object to the new view controller.
         }
         */
-    // login에서 회원가입으로 직접 전환하는 함수
-    func transition(from fromViewController: UIViewController, to toViewController: UIViewController) {
-        
-        let fromVC = self // 현재 View Controller
-        let toVC = storyboard?.instantiateViewController(withIdentifier: "MyPageLikeController") as! MyPageLikeTableViewController // 전환할 View Controller
 
-        fromVC.addChild(toVC)
-        fromVC.view.addSubview(toVC.view)
-        toVC.view.frame = fromVC.view.bounds
-        toVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        toVC.didMove(toParent: fromVC)
-    }
-    
     }
