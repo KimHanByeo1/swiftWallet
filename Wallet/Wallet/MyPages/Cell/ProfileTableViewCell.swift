@@ -19,9 +19,14 @@ class ProfileTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 //        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        
+        // imageView Tap
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController())
+//        profileImage.isUserInteractionEnabled = true
+//        profileImage.addGestureRecognizer(tapGestureRecognizer)
 
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
