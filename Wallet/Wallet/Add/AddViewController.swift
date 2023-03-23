@@ -14,6 +14,7 @@ import UIKit
 import Photos
 import FirebaseStorage
 import MobileCoreServices
+import FirebaseAuth
 
 class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -45,6 +46,9 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     
     var imageData : NSData? = nil
     let photo = UIImagePickerController() // 앨범 이동
+    
+    let email = Auth.auth().currentUser?.email
+    let nickName = UserDefaults.standard.string(forKey: "nickname")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -164,7 +168,9 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 image: StaticModel.downURL,
                 wTitle: wTitle,
                 wTime: dateString,
-                wDetailContent: wDetailContent
+                wDetailContent: wDetailContent,
+                nickName: nickName!,
+                email: email!
             )
             
             if result{
