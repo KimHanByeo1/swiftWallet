@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseFirestore
 
 class DetailViewController: UIViewController, DetailModelProtocal, UserModelProtocal, SelectDocIdModelProtocal {
     
@@ -40,8 +41,9 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     var userNickName: String?
     var userEmail: String?
     
-    let firebaseDB = Database.database().reference()
+    let firebaseDB = Firestore.firestore()
     var chatRoomUid:String?
+    var check:Int?
     
     
     override func viewDidLoad() {
@@ -55,49 +57,115 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         userModel.downloadUser(imageURL: imageURL, uid: uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
         quertModel.downloadItems(imageURL: imageURL) // 유저가 선택한 상품의 상세정보 Select
         
-        
+        // 채팅내역이 있는지 확인
+        check = checkChatRoom()
         
     }
-    
     
     @IBAction func goChating(_ sender: UIButton) {
-       createRoom()
-    }
-    
-    @objc func createRoom(){
-        let createRoomInfo:Dictionary<String,Any> = [
-            "users":[
-                "from": defaults.string(forKey: "email"),
-                "to": userEmail
-            ]
-        ]
-        
-        if chatRoomUid == nil{
-            // 방 생성 코드
-            Database.database().reference().child("chatrooms").childByAutoId().setValue(createRoomInfo, withCompletionBlock: {(err, ref) in
-                if err == nil{
-                    self.checkChatRoom()
-                }
-            })
-        }else{
-            
+        if check == 0 {
+            createRoom()
         }
     }
     
-    func checkChatRoom(){
-        Database.database().reference().child("chatrooms").queryOrdered(byChild: "users/to").queryEqual(toValue: userEmail).observeSingleEvent(of: DataEventType.value, with: {datasnapshot in
-            for item in datasnapshot.children.allObjects as! [DataSnapshot]{
+    // 채팅 여부 확인
+    func checkChatRoom() -> Int{
+        
+        firebaseDB.collection("chatrooms").getDocuments(completion: {(querySnapShot, err) in
+            
+            for doc in querySnapShot!.documents{
                 
-                if let chatRoomdic = item.value as? [String:AnyObject]{
-                    
-                    let chatModel = ChatModel(JSON: chatRoomdic)
-                    if chatModel?.users[self.userNickName!]==true{
-                        self.chatRoomUid = item.key
-                    }
+                guard let first = doc.data()["first"] as? String, let second = doc.data()["second"] as? String else{return}
+                
+                print(first, second)
+                print(self.defaults.string(forKey: "email")!)
+                print(self.userEmail!)
+                
+                if (first == self.defaults.string(forKey: "email")! && second == self.userEmail!) ||
+                    (first == self.userEmail!) && second == self.defaults.string(forKey: "email")!{
+                    self.check = 1
+                    break
+                }else{
+                    self.check = 0
                 }
             }
         })
+        return check ?? 0
     }
+    
+    // 채팅방 생성
+    func createRoom(){
+        
+        firebaseDB.collection("chatrooms").addDocument(data: [
+            "first" : defaults.string(forKey: "email")!,
+            "second" : userEmail!
+        ])
+        
+//        let createRoomInfo:Dictionary<String,Any> = [
+//            "users":[
+//                "from": defaults.string(forKey: "email"),
+//                "to": userEmail
+//            ]
+//        ]
+        
+//        if chatRoomUid == nil{
+//            // 방 생성 코드
+//            Database.database().reference().child("chatrooms").childByAutoId().setValue(, withCompletionBlock: {(err, ref) in
+//                if err == nil{
+////                    self.checkChatRoom()
+//                }
+//            })
+//        }else{
+//
+//        }
+        
+        
+    }
+    
+//    func checkChatRoom(){
+//        Database.database().reference().child("chatrooms").queryOrdered(byChild: "users/to").queryEqual(toValue: userEmail).observeSingleEvent(of: DataEventType.value, with: {datasnapshot in
+//
+//            print(datasnapshot.children.allObjects as! [DataSnapshot])
+//
+//            for item in datasnapshot.children.allObjects as! [DataSnapshot]{
+//
+//                if let chatRoomdic = item.value as? [String:AnyObject]{
+//                    print(chatRoomdic["users"])
+//
+//                    var chatInfo : [ChatInfo] = []
+//
+////                    let chatModel = ChatModel(JSON: chatRoomdic)
+////                    if chatModel?.users["from"] == userEmail{
+////                        self.chatRoomUid = item.key
+////                    }
+//                }
+//            }
+//        })
+//    }
+    
+    
+//        firebaseDB.child("chatrooms").observe(.value, with: {snapshot in
+//
+//            let chatDic = snapshot.value as? [String:Any] ?? [:]
+//            for (key, value) in chatDic{
+//                print(value)
+//            }
+
+//            for item in datasnapshot.children.allObjects as! [DataSnapshot]{
+//
+//                if let chatRoomdic = item.value as? [String:AnyObject]{
+//                    print(chatRoomdic["users"])
+//
+//                    var chatInfo : [ChatInfo] = []
+//
+////                    let chatModel = ChatModel(JSON: chatRoomdic)
+////                    if chatModel?.users["from"] == userEmail{
+////                        self.chatRoomUid = item.key
+////                    }
+//                }
+//            }
+//        })
+
     
     // quertModel.downloadItems
     func itemDownLoaded(items: [ProductDetailModel]) {
