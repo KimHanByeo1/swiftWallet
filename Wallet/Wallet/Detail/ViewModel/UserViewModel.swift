@@ -38,6 +38,8 @@ class UserLikeData {
                             like: document.data()["like"] as! String
                         )
                         locations.append(query)
+                        print("likess")
+                        print(locations)
                     }
                     self.delegate.userItemDownLoaded(items: locations)
                 }

@@ -29,10 +29,10 @@ class LikeCodeDB{
                 if let err = err{
                     print("Error getting documents : \(err)")
                 }else{
-                    print("Data is downloaded.")
+                    
                     for document in querySnapshot!.documents{
                         guard let data = document.data()["code"] else { return }
-                        print("\(document.documentID) => \(data)")
+                        
                         let query = document.data()["code"] as! String
                         locations.append(query)
                     }
@@ -48,21 +48,19 @@ class LikeCodeDB{
     
     func bringProducts(code: [String]) {
         var locations: [LikeProductModel] = []
-        print(code)
+        
         for i in code {
-            print("codie")
-            print(i)
+            
             db.collection("product")
                 .whereField("imageURL", isEqualTo: i)
                 .getDocuments(completion: {(querySnapshot, err) in
                     if let err = err{
                         print("Error getting documents : \(err)")
                     }else{
-                        print("Data is downloaded.")
+                        
                         for document in querySnapshot!.documents{
                             guard let data = document.data()["imageURL"] else { return }
-                            print("\(document.documentID) => \(data)")
-                            print("여기")
+                            
                             let query = LikeProductModel(imageURL: document.data()["imageURL"] as! String,
                                                          pBrand: document.data()["pBrand"] as! String,
                                                          pColor: document.data()["pColor"] as! String,

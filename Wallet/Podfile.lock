@@ -795,6 +795,7 @@ PODS:
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
   - ObjectMapper (4.2.0)
+  - Pageboy (4.0.2)
   - PromisesObjC (2.2.0)
   - Realm (10.37.0):
     - Realm/Headers (= 10.37.0)
@@ -806,6 +807,8 @@ PODS:
   - SDWebImage/Core (5.15.5)
   - SideMenu (6.5.0)
   - SnapKit (5.6.0)
+  - Tabman (3.0.1):
+    - Pageboy (~> 4.0.2)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -821,6 +824,7 @@ DEPENDENCIES:
   - SDWebImage
   - SideMenu
   - SnapKit
+  - Tabman
 
 SPEC REPOS:
   trunk:
@@ -852,12 +856,14 @@ SPEC REPOS:
     - MessageKit
     - nanopb
     - ObjectMapper
+    - Pageboy
     - PromisesObjC
     - Realm
     - RealmSwift
     - SDWebImage
     - SideMenu
     - SnapKit
+    - Tabman
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
@@ -888,13 +894,15 @@ SPEC CHECKSUMS:
   MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  Pageboy: 34ff11e8d1041b81769d5bcde9b19a0cb7218bd9
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   Realm: 9c5fc6f8f5cb70b299f2e3064d2b9f6cb0f1523d
   RealmSwift: 7be7bb45911c16400dd1bfce3a01764ecb4cae7a
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  Tabman: a5880789298f81d3f2cdd6510b54ae637cfd8e09
 
-PODFILE CHECKSUM: 0db80dbce6b84acebdf2a2cc3b353c15b8d3004c
+PODFILE CHECKSUM: 3cd1f2c65da6e6e13dc4426962d395d1d2496d63
 
 COCOAPODS: 1.12.0

@@ -11,8 +11,6 @@ target 'Wallet' do
   pod 'Firebase/Database'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-  pod 'FirebaseFirestoreSwift'
-  pod 'Firebase/Database'
 
   pod 'MessageKit'
   pod 'JGProgressHUD'
@@ -21,4 +19,6 @@ target 'Wallet' do
   pod 'SideMenu'
   pod 'SnapKit'
   pod 'ObjectMapper'
+  pod 'Tabman'
+
 end
