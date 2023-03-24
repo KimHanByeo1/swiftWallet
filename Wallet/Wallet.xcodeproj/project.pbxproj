@@ -10,6 +10,10 @@
 		1610E93029C9A41500824E49 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */; };
 		1610E93229C9A43800824E49 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E93129C9A43800824E49 /* SideMenuViewController.swift */; };
 		1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */; };
+		165D7C9F29CD43A8009EF7B6 /* PayChargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D7C9E29CD43A8009EF7B6 /* PayChargeViewController.swift */; };
+		165D7CA229CD872A009EF7B6 /* PayChargeUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D7CA129CD872A009EF7B6 /* PayChargeUserModel.swift */; };
+		165D7CA529CD8AE8009EF7B6 /* PayChargeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D7CA429CD8AE8009EF7B6 /* PayChargeViewModel.swift */; };
+		165D7CA729CD9CFF009EF7B6 /* PayCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D7CA629CD9CFF009EF7B6 /* PayCompleteViewController.swift */; };
 		16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C6E29C80BAF006887CE /* SearchViewModel.swift */; };
 		16920C7129C80BCE006887CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7029C80BCE006887CE /* MainViewController.swift */; };
 		16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7529C8278D006887CE /* MainTableViewCell.swift */; };
@@ -85,6 +89,10 @@
 		1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSideMenuNavigation.swift; path = Wallet/Main/CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		1610E93129C9A43800824E49 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SideMenuViewController.swift; path = Wallet/Main/SideMenuViewController.swift; sourceTree = "<group>"; };
 		1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		165D7C9E29CD43A8009EF7B6 /* PayChargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayChargeViewController.swift; sourceTree = "<group>"; };
+		165D7CA129CD872A009EF7B6 /* PayChargeUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayChargeUserModel.swift; sourceTree = "<group>"; };
+		165D7CA429CD8AE8009EF7B6 /* PayChargeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayChargeViewModel.swift; sourceTree = "<group>"; };
+		165D7CA629CD9CFF009EF7B6 /* PayCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayCompleteViewController.swift; sourceTree = "<group>"; };
 		16920C6E29C80BAF006887CE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Wallet/Main/MainViewController.swift; sourceTree = "<group>"; };
 		16920C7529C8278D006887CE /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,6 +181,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		165D7C9D29CD4385009EF7B6 /* PayPage */ = {
+			isa = PBXGroup;
+			children = (
+				165D7CA329CD8AAE009EF7B6 /* ViewModel */,
+				165D7CA029CD8705009EF7B6 /* Model */,
+				165D7C9E29CD43A8009EF7B6 /* PayChargeViewController.swift */,
+				165D7CA629CD9CFF009EF7B6 /* PayCompleteViewController.swift */,
+			);
+			path = PayPage;
+			sourceTree = "<group>";
+		};
+		165D7CA029CD8705009EF7B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				165D7CA129CD872A009EF7B6 /* PayChargeUserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		165D7CA329CD8AAE009EF7B6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				165D7CA429CD8AE8009EF7B6 /* PayChargeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		16920C6C29C80B74006887CE /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +475,7 @@
 		E1CCD0F629BEF69200E6DD35 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				165D7C9D29CD4385009EF7B6 /* PayPage */,
 				A0E2888629CD6B3500A32656 /* MyPagePurchase */,
 				2669F79529CC52E3007D3407 /* MyPagesSeller */,
 				260FD37429C95E250085A7F3 /* MyPages */,
@@ -663,6 +699,7 @@
 				1610E93229C9A43800824E49 /* SideMenuViewController.swift in Sources */,
 				263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */,
 				260FD37B29C95EB50085A7F3 /* PayTableViewCell.swift in Sources */,
+				165D7CA529CD8AE8009EF7B6 /* PayChargeViewModel.swift in Sources */,
 				E1CCD19629C80D6600E6DD35 /* ProductDetailModel.swift in Sources */,
 				A0E2888C29CD716700A32656 /* PurchaseDBModel.swift in Sources */,
 				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
@@ -684,6 +721,7 @@
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
 				265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */,
 				A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */,
+				165D7CA729CD9CFF009EF7B6 /* PayCompleteViewController.swift in Sources */,
 				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,
 				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
 				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
@@ -701,11 +739,13 @@
 				BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */,
 				E1CCD17C29C6D52500E6DD35 /* WalletSelectViewModel.swift in Sources */,
 				264512DA29C6964D0088E17A /* RegExModel.swift in Sources */,
+				165D7C9F29CD43A8009EF7B6 /* PayChargeViewController.swift in Sources */,
 				BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */,
 				A0E2888E29CD793000A32656 /* PurchaseProductModel.swift in Sources */,
 				A0F0BBF429CC3FEE00D596BD /* MyPageProfileDBModel.swift in Sources */,
 				BC1E7D8429C84D310093830C /* Sender.swift in Sources */,
 				2669F79D29CC53ED007D3407 /* TabManViewController.swift in Sources */,
+				165D7CA229CD872A009EF7B6 /* PayChargeUserModel.swift in Sources */,
 				A0E2888829CD6BD500A32656 /* MyPagePurchaseTableViewController.swift in Sources */,
 				263A884E29C729BE0011C183 /* SignInViewController.swift in Sources */,
 				264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */,
