@@ -9,12 +9,12 @@ import UIKit
 import MessageKit
 import Firebase
 import FirebaseDatabase
-import InputBarAccessoryView
 
 struct MessageSender:SenderType{
     var senderId: String
     var displayName: String
 }
+
 
 struct Message:MessageType{
     var sender: MessageKit.SenderType
@@ -31,7 +31,7 @@ struct Message:MessageType{
 }
 
 
-class NewChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate, InputBarAccessoryViewDelegate{
+class NewChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate{
     
     var currentUser = Sender(senderId: "self", displayName: "yejin")
     
@@ -39,7 +39,7 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     
     public var destinationUid:String?
     
-    var messages = [Message]()
+    var messages = [MessageType]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,8 +55,6 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate  = self
         messagesCollectionView.messagesDisplayDelegate = self
-        
-        messageInputBar.delegate = self
     }
     
     func currentSender() -> MessageKit.SenderType {
