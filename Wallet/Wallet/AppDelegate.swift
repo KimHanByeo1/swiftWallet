@@ -19,32 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        // Instantiate the window object
-            window = UIWindow(frame: UIScreen.main.bounds)
-            
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if UserDefaults.standard.bool(forKey: "autoLogin") == true {
-                // 자동 로그인 스위치가 켜져 있으면,
-                let mainViewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
-                window?.rootViewController = mainViewController
-            } else {
-                let mainViewController = storyboard.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
-                window?.rootViewController = mainViewController
-            }
-            
-            // Set the key window
-            window?.makeKeyAndVisible()
-        
-        print(window)
-        
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { _, _ in
                     
                 }
                 
                 application.registerForRemoteNotifications()
-        
-        
-        
+
         return true
     }
 
