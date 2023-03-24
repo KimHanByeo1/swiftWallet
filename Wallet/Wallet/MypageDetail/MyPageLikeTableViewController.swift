@@ -149,7 +149,7 @@ class MyPageLikeTableViewController: UITableViewController, UserModelProtocal, S
     @objc func clikeButtonTapped(sender: UIButton) {
         print("\(sender.tag) 버튼의 Tag로 index값을 받아서 데이터 처리")
         if (like == "0") { // no찜 -> yes찜
-            likeButton.setImage(UIImage(named: "clicklike"), for: .normal)
+//            likeButton.setImage(UIImage(named: "clicklike"), for: .normal)
             like = "1"
 
             // Insert (나 찜 했다!)
@@ -159,7 +159,7 @@ class MyPageLikeTableViewController: UITableViewController, UserModelProtocal, S
                     like: like)
 
         } else { // yes찜 -> no찜
-            likeButton.setImage(UIImage(named: "unclicklikc"), for: .normal)
+//            likeButton.setImage(UIImage(named: "unclicklikc"), for: .normal)
             
             like = "0"
 
@@ -230,12 +230,12 @@ class MyPageLikeTableViewController: UITableViewController, UserModelProtocal, S
         
         like = userLikeModel.first?.like ?? "0"
         
-        if (like == "1") { // 1 이면 yes찜
-            likeButton.setImage(UIImage(named: "clicklike"), for: .normal)
-        } else { // 0 이면 no찜
-            likeButton.setImage(UIImage(named: "unclicklike"), for: .normal)
-            
-        }
+//        if (like == "1") { // 1 이면 yes찜
+//            likeButton.setImage(UIImage(named: "clicklike"), for: .normal)
+//        } else { // 0 이면 no찜
+//            likeButton.setImage(UIImage(named: "unclicklike"), for: .normal)
+//
+//        }
         
     }
     
