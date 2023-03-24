@@ -51,11 +51,13 @@
 		BC1E7D8429C84D310093830C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D8329C84D310093830C /* Sender.swift */; };
 		BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9529C853C20093830C /* UsersTableViewController.swift */; };
 		BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9929C856440093830C /* UserTableViewCell.swift */; };
-		BC1E7DAB29CA9D8C0093830C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */; };
 		BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAC29CAAB450093830C /* ChatViewController.swift */; };
 		BC1E7DAF29CAAF5A0093830C /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */; };
 		BC8129A229CBFE4100FD1399 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */; };
 		BC8129A429CC56D200FD1399 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8129A329CC56D200FD1399 /* ChatInfo.swift */; };
+		BC8129A829CD666100FD1399 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8129A729CD666100FD1399 /* Channel.swift */; };
+		BC8129AA29CD68DE00FD1399 /* DatabaseRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8129A929CD68DE00FD1399 /* DatabaseRepresentation.swift */; };
+		BC8129AD29CD8F3900FD1399 /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8129AC29CD8F3900FD1399 /* ChannelViewModel.swift */; };
 		DAE3CA43F2D211997B367A5B /* Pods_Wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */; };
 		E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */; };
 		E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */; };
@@ -129,11 +131,13 @@
 		BC1E7D8329C84D310093830C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		BC1E7D9529C853C20093830C /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		BC1E7D9929C856440093830C /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		BC1E7DAC29CAAB450093830C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		BC8129A329CC56D200FD1399 /* ChatInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
+		BC8129A729CD666100FD1399 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		BC8129A929CD68DE00FD1399 /* DatabaseRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseRepresentation.swift; sourceTree = "<group>"; };
+		BC8129AC29CD8F3900FD1399 /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
 		E1CCD0F429BEF69200E6DD35 /* Wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CCD0F729BEF69200E6DD35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1CCD0F929BEF69200E6DD35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -375,6 +379,7 @@
 		BC1E7D8129C84D0A0093830C /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				BC8129AB29CD8F1D00FD1399 /* ViewModel */,
 				BC1E7D9429C853A60093830C /* Controller */,
 				BC1E7D8529C84E6D0093830C /* Model */,
 				BC1E7D8229C84D1A0093830C /* Resources */,
@@ -394,9 +399,10 @@
 		BC1E7D8529C84E6D0093830C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BC1E7DAA29CA9D8C0093830C /* UserInfo.swift */,
 				BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */,
 				BC8129A329CC56D200FD1399 /* ChatInfo.swift */,
+				BC8129A729CD666100FD1399 /* Channel.swift */,
+				BC8129A929CD68DE00FD1399 /* DatabaseRepresentation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -409,6 +415,14 @@
 				BC8129A129CBFE4100FD1399 /* NewChatViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		BC8129AB29CD8F1D00FD1399 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BC8129AC29CD8F3900FD1399 /* ChannelViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CF37D78A261119C867F7AA41 /* Frameworks */ = {
@@ -677,6 +691,7 @@
 				2669F7A629CD4014007D3407 /* SellIngViewCell.swift in Sources */,
 				16920C7929C828B0006887CE /* MainModel.swift in Sources */,
 				E1CCD1AE29C8D17900E6DD35 /* LikeViewModel.swift in Sources */,
+				BC8129A829CD666100FD1399 /* Channel.swift in Sources */,
 				E1CCD18929C6D59000E6DD35 /* Flask.swift in Sources */,
 				E1CCD1AC29C8D15100E6DD35 /* LikeModel.swift in Sources */,
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
@@ -693,6 +708,7 @@
 				2669F7A129CD3F95007D3407 /* SellIngViewController.swift in Sources */,
 				16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */,
 				E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */,
+				BC8129AA29CD68DE00FD1399 /* DatabaseRepresentation.swift in Sources */,
 				2669F79429CC14F5007D3407 /* FirstViewController.swift in Sources */,
 				BC8129A229CBFE4100FD1399 /* NewChatViewController.swift in Sources */,
 				E1CCD19029C80B6500E6DD35 /* DetailViewController.swift in Sources */,
@@ -716,12 +732,12 @@
 				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
 				260FD37D29C95EC00085A7F3 /* MenuTableViewCell.swift in Sources */,
 				A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */,
+				BC8129AD29CD8F3900FD1399 /* ChannelViewModel.swift in Sources */,
 				265806E929CB2B9F0049703D /* LikeProductModel.swift in Sources */,
 				2669F7A429CD4003007D3407 /* SellFinViewCell.swift in Sources */,
 				BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */,
 				264512D229C694AA0088E17A /* LogInViewController.swift in Sources */,
 				16920C7D29C82B9F006887CE /* MainViewModel.swift in Sources */,
-				BC1E7DAB29CA9D8C0093830C /* UserInfo.swift in Sources */,
 				16920C7129C80BCE006887CE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

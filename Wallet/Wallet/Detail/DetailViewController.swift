@@ -73,20 +73,17 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         
         firebaseDB.collection("chatrooms").getDocuments(completion: {(querySnapShot, err) in
             
-            for doc in querySnapShot!.documents{
-                
-                guard let first = doc.data()["first"] as? String, let second = doc.data()["second"] as? String else{return}
-                
-                print(first, second)
-                print(self.defaults.string(forKey: "email")!)
-                print(self.userEmail!)
-                
-                if (first == self.defaults.string(forKey: "email")! && second == self.userEmail!) ||
-                    (first == self.userEmail!) && second == self.defaults.string(forKey: "email")!{
-                    self.check = 1
-                    break
-                }else{
-                    self.check = 0
+            if err == nil{
+                for doc in querySnapShot!.documents{
+                    
+                    guard let me = doc.data()["me"] as? String, let other = doc.data()["other"] as? String else{return}
+                    
+                    if (me == self.defaults.string(forKey: "email")! && other == self.userEmail) ||
+                        (me == self.userEmail) && other == self.defaults.string(forKey: "email")!{
+                        self.check = 1
+                    }else{
+                        self.check = 0
+                    }
                 }
             }
         })
@@ -97,8 +94,9 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     func createRoom(){
         
         firebaseDB.collection("chatrooms").addDocument(data: [
-            "first" : defaults.string(forKey: "email")!,
-            "second" : userEmail!
+            "me" : defaults.string(forKey: "email")!,
+            "other" : userEmail!,
+            "otherName" : userNickName
         ])
         
 //        let createRoomInfo:Dictionary<String,Any> = [
