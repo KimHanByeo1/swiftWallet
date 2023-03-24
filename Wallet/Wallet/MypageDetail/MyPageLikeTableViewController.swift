@@ -230,12 +230,12 @@ class MyPageLikeTableViewController: UITableViewController, UserModelProtocal, S
         
         like = userLikeModel.first?.like ?? "0"
         
-        if (like == "1") { // 1 이면 yes찜
+//        if (like == "1") { // 1 이면 yes찜
 //            likeButton.setImage(UIImage(named: "clicklike"), for: .normal)
-        } else { // 0 이면 no찜
+//        } else { // 0 이면 no찜
 //            likeButton.setImage(UIImage(named: "unclicklike"), for: .normal)
-            
-        }
+//
+//        }
         
     }
     
