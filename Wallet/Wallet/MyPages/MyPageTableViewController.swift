@@ -54,6 +54,11 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         MyPageTableView.reloadData()
     }
     
+    
+    @IBAction func logout(_ sender: UIBarButtonItem) {
+    }
+    
+    
     func itemDownloaded(items: [ProfileDBModel]) {
         profileDBModel = items
 
@@ -177,20 +182,21 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 2 {
-                if indexPath.row == 0 {
-                    // Instantiate and present the first view controller
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyboard.instantiateViewController(withIdentifier: "MyPageLikeController") as! MyPageLikeTableViewController
-                    navigationController?.pushViewController(vc, animated: true)
-                    print("pop")
-                    print(vc)
-                } else if indexPath.row == 1 {
-                    // Instantiate and present the second view controller
-//                    let vc = SecondViewController()
-//                    navigationController?.pushViewController(vc, animated: true)
-                }
-                // You can add more conditions to handle other cells in this section
+            if indexPath.row == 0 {
+                // Instantiate and present the first view controller
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "MyPageLikeController") as! MyPageLikeTableViewController
+                navigationController?.pushViewController(vc, animated: true)
+                print("pop")
+                print(vc)
+            } else if indexPath.row == 1 {
+                // Instantiate and present the first view controller
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateViewController(withIdentifier: "TabManViewController") as! TabManViewController
+                navigationController?.pushViewController(vc, animated: true)
             }
+                // You can add more conditions to handle other cells in this section
+        }
  
 
         
