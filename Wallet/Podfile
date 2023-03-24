@@ -21,4 +21,6 @@ target 'Wallet' do
   pod 'SideMenu'
   pod 'SnapKit'
   pod 'ObjectMapper'
+  pod 'Tabman'
+
 end

@@ -9,39 +9,57 @@ import UIKit
 import Firebase
 import FirebaseStorage
 
-class MyPageLikeTableViewController: UITableViewController {
+class MyPageLikeTableViewController: UITableViewController, UserModelProtocal, SelectDocIdModelProtocal {
 
     
     @IBOutlet var tvTable: UITableView!
     
     //like collection의 code 담는 곳
     var likeCode: [String] = []
+    // like collection imageURL과 같은 product만 가져옴
     var likeProduct: [LikeProductModel] = []
     
-
+    
     let uid = Auth.auth().currentUser!.uid
     
-    
+    // controller 연결
     let likecodeDB = LikeCodeDB()
     let productModel = LikeCodeDB()
     
+    // --------찜like------------
     let userModel = UserLikeData()
+    
+    var imageURL = "" // MainController에서 넘겨준 imageURL 값 받는 변수
+    var like = "" // 찜 여부 확인 0,1
+    
+    var userLikeModel: [UserLikeModel] = []
+    var likeModel: [LikeModel] = []
+    
+    let likeVM = LikeViewModel() // 여러개의 function에서 사용하기위해 전역변수로 생성
+    var buttonImage = ""
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        
+        
+        
+        userModel.delegate = self
         likecodeDB.delegate = self
         productModel.delegate = self
         
-        //userModel.downloadUser(imageURL: imageURL, uid: uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
-  
+        userModel.downloadUser(imageURL: imageURL, uid: uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
+        
     }
 
     // MARK: - Table view data source
     
     override func viewWillAppear(_ animated: Bool) {
 
+        // like의 imageURL code 가져오기
         productModel.downloadItems(uid: uid)
    
     }
@@ -94,14 +112,64 @@ class MyPageLikeTableViewController: UITableViewController {
             lblStateText = "판매완료"
             cell.lblState.textColor = UIColor.red
         }
-        
-        
+
         cell.lblState.text = lblStateText
         
         
+        cell.likeButton.tag = indexPath.row
+        cell.likeButton.addTarget(self, action: #selector(clikeButtonTapped(sender:)), for: .touchUpInside)
+        
+//        if like == "0" ?? cell.likeButton.setImage(UIImage(named: "like1"), for: .normal) : cell.likeButton.setImage(UIImage(named: "like2"), for: .normal)
+
+//        if like == "0" {
+//            print("0's")
+//            print(like)
+//            cell.likeButton.setImage(UIImage(named: "like2"), for: .normal)
+//            like = "1"
+//            // Insert (나 찜 했다!)
+//            likeVM.insesrtItems(
+//                    uid: uid,
+//                    code: imageURL,
+//                    like: like)
+//
+//        } else {
+//            print("1's")
+//            print(like)
+//            cell.likeButton.setImage(UIImage(named: "like1"), for: .normal)
+//            like = "0"
+//            // 삭제를 위한 Like 컬렉션의 문서ID 가져오는 쿼리
+//            let likeViewModel = LikeViewModel()
+//            likeViewModel.delegate = self
+//            likeViewModel.SelectDocId(imageURL: imageURL, uid: uid)
+//        }
+
         return cell
     }
     
+    @objc func clikeButtonTapped(sender: UIButton) {
+        print("\(sender.tag) 버튼의 Tag로 index값을 받아서 데이터 처리")
+        if (like == "0") { // no찜 -> yes찜
+            likeButton.setImage(UIImage(named: "clicklike"), for: .normal)
+            like = "1"
+
+            // Insert (나 찜 했다!)
+            likeVM.insesrtItems(
+                    uid: uid,
+                    code: imageURL,
+                    like: like)
+
+        } else { // yes찜 -> no찜
+            likeButton.setImage(UIImage(named: "unclicklikc"), for: .normal)
+            
+            like = "0"
+
+            // 삭제를 위한 Like 컬렉션의 문서ID 가져오는 쿼리
+            let likeViewModel = LikeViewModel()
+            likeViewModel.delegate = self
+            likeViewModel.SelectDocId(imageURL: imageURL, uid: uid)
+
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -148,11 +216,42 @@ class MyPageLikeTableViewController: UITableViewController {
     }
     */
     
+    // 각 셀의 높이
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 156
     }
+    
+    
+    //-------찜like-----------
+    // userModel.downloadUser
+    func userItemDownLoaded(items: [UserLikeModel]) {
+        
+        userLikeModel = items
+        
+        like = userLikeModel.first?.like ?? "0"
+        
+        if (like == "1") { // 1 이면 yes찜
+            likeButton.setImage(UIImage(named: "clicklike"), for: .normal)
+        } else { // 0 이면 no찜
+            likeButton.setImage(UIImage(named: "unclicklike"), for: .normal)
+            
+        }
+        
+    }
+    
+    func SelectDocId(items: [LikeModel]) {
+        likeModel = items
+        
+        // 문서ID로 삭제하는 쿼리
+        likeVM.DeleteItems(
+            // likeModel.first?.docId ?? "" << 가져온 문서ID
+            docId: likeModel.first?.docId ?? "",
+            uid: uid)
+    }
+    
 
 }
+
 
 
 extension MyPageLikeTableViewController: LikeCodeDBProtocol{
