@@ -257,4 +257,20 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
             uid: uid)
     }
     
+    // MARK: - Navigation (Segue 처리)
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+       
+        let vc = segue.destination as! NewChatViewController
+    
+        
+        vc.currentUser = Sender(senderId: defaults.string(forKey: "email")!, displayName: defaults.string(forKey: "nickname")!)
+        
+        vc.otherUser = Sender(senderId: userEmail!, displayName: userNickName!)
+    }
+    
+    
 }

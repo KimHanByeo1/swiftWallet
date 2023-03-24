@@ -33,9 +33,9 @@ struct Message:MessageType{
 
 class NewChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate{
     
-    let currentUser = Sender(senderId: "self", displayName: "yejin")
+    var currentUser = Sender(senderId: "self", displayName: "yejin")
     
-    let otherUser = Sender(senderId: "other", displayName: "aa")
+    var otherUser = Sender(senderId: "other", displayName: "aa")
     
     public var destinationUid:String?
     
