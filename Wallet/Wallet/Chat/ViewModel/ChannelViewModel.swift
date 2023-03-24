@@ -27,7 +27,7 @@ class downloadData{
 //            }else{
                 for doc in querySnapShot!.documents {
                     
-                    print(doc.data())
+                    print(doc.data()
                     
                     let chat = Channel(myEmail: doc.data()["me"] as! String, otherEmail: doc.data()["other"] as! String, otherName: doc.data()["otherName"] as! String)
                     
