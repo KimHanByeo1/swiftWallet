@@ -10,6 +10,10 @@
 		1610E93029C9A41500824E49 /* CustomSideMenuNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */; };
 		1610E93229C9A43800824E49 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E93129C9A43800824E49 /* SideMenuViewController.swift */; };
 		1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */; };
+		165D7C9F29CD43A8009EF7B6 /* PayChargeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D7C9E29CD43A8009EF7B6 /* PayChargeViewController.swift */; };
+		165D7CA229CD872A009EF7B6 /* PayChargeUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D7CA129CD872A009EF7B6 /* PayChargeUserModel.swift */; };
+		165D7CA529CD8AE8009EF7B6 /* PayChargeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D7CA429CD8AE8009EF7B6 /* PayChargeViewModel.swift */; };
+		165D7CA729CD9CFF009EF7B6 /* PayCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165D7CA629CD9CFF009EF7B6 /* PayCompleteViewController.swift */; };
 		16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C6E29C80BAF006887CE /* SearchViewModel.swift */; };
 		16920C7129C80BCE006887CE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7029C80BCE006887CE /* MainViewController.swift */; };
 		16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16920C7529C8278D006887CE /* MainTableViewCell.swift */; };
@@ -42,11 +46,10 @@
 		A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E176129CA947300652C22 /* ProfileUpdateModel.swift */; };
 		A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */; };
 		A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */; };
+		A0E2888829CD6BD500A32656 /* MyPagePurchaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888729CD6BD500A32656 /* MyPagePurchaseTableViewController.swift */; };
 		A0E2888C29CD716700A32656 /* PurchaseDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888B29CD716700A32656 /* PurchaseDBModel.swift */; };
 		A0E2888E29CD793000A32656 /* PurchaseProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888D29CD793000A32656 /* PurchaseProductModel.swift */; };
 		A0E2889029CD7B5F00A32656 /* PurchaseCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888F29CD7B5F00A32656 /* PurchaseCodeModel.swift */; };
-		A0E2889529CD956100A32656 /* PurchaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2889429CD956100A32656 /* PurchaseTableViewController.swift */; };
-		A0E2889729CD96BB00A32656 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2889629CD96BB00A32656 /* PurchaseTableViewCell.swift */; };
 		A0F0BBF429CC3FEE00D596BD /* MyPageProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */; };
 		A0F0BBF629CC544B00D596BD /* MyPageProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0BBF529CC544B00D596BD /* MyPageProfileQueryModel.swift */; };
 		BC1E7D8429C84D310093830C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D8329C84D310093830C /* Sender.swift */; };
@@ -86,6 +89,10 @@
 		1610E92F29C9A41500824E49 /* CustomSideMenuNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CustomSideMenuNavigation.swift; path = Wallet/Main/CustomSideMenuNavigation.swift; sourceTree = "<group>"; };
 		1610E93129C9A43800824E49 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SideMenuViewController.swift; path = Wallet/Main/SideMenuViewController.swift; sourceTree = "<group>"; };
 		1610E93529C9AC5000824E49 /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		165D7C9E29CD43A8009EF7B6 /* PayChargeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayChargeViewController.swift; sourceTree = "<group>"; };
+		165D7CA129CD872A009EF7B6 /* PayChargeUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayChargeUserModel.swift; sourceTree = "<group>"; };
+		165D7CA429CD8AE8009EF7B6 /* PayChargeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayChargeViewModel.swift; sourceTree = "<group>"; };
+		165D7CA629CD9CFF009EF7B6 /* PayCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayCompleteViewController.swift; sourceTree = "<group>"; };
 		16920C6E29C80BAF006887CE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		16920C7029C80BCE006887CE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = Wallet/Main/MainViewController.swift; sourceTree = "<group>"; };
 		16920C7529C8278D006887CE /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,11 +127,10 @@
 		A06E176129CA947300652C22 /* ProfileUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateModel.swift; sourceTree = "<group>"; };
 		A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQueryModel.swift; sourceTree = "<group>"; };
 		A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDBModel.swift; sourceTree = "<group>"; };
+		A0E2888729CD6BD500A32656 /* MyPagePurchaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPagePurchaseTableViewController.swift; sourceTree = "<group>"; };
 		A0E2888B29CD716700A32656 /* PurchaseDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDBModel.swift; sourceTree = "<group>"; };
 		A0E2888D29CD793000A32656 /* PurchaseProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseProductModel.swift; sourceTree = "<group>"; };
 		A0E2888F29CD7B5F00A32656 /* PurchaseCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCodeModel.swift; sourceTree = "<group>"; };
-		A0E2889429CD956100A32656 /* PurchaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewController.swift; sourceTree = "<group>"; };
-		A0E2889629CD96BB00A32656 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileDBModel.swift; sourceTree = "<group>"; };
 		A0F0BBF529CC544B00D596BD /* MyPageProfileQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileQueryModel.swift; sourceTree = "<group>"; };
 		ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,6 +181,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		165D7C9D29CD4385009EF7B6 /* PayPage */ = {
+			isa = PBXGroup;
+			children = (
+				165D7CA329CD8AAE009EF7B6 /* ViewModel */,
+				165D7CA029CD8705009EF7B6 /* Model */,
+				165D7C9E29CD43A8009EF7B6 /* PayChargeViewController.swift */,
+				165D7CA629CD9CFF009EF7B6 /* PayCompleteViewController.swift */,
+			);
+			path = PayPage;
+			sourceTree = "<group>";
+		};
+		165D7CA029CD8705009EF7B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				165D7CA129CD872A009EF7B6 /* PayChargeUserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		165D7CA329CD8AAE009EF7B6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				165D7CA429CD8AE8009EF7B6 /* PayChargeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		16920C6C29C80B74006887CE /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,10 +374,9 @@
 		A0E2888629CD6B3500A32656 /* MyPagePurchase */ = {
 			isa = PBXGroup;
 			children = (
-				A0E2889129CD8C4500A32656 /* Cell */,
 				A0E2888A29CD712600A32656 /* ViewModel */,
 				A0E2888929CD710100A32656 /* Model */,
-				A0E2889429CD956100A32656 /* PurchaseTableViewController.swift */,
+				A0E2888729CD6BD500A32656 /* MyPagePurchaseTableViewController.swift */,
 			);
 			path = MyPagePurchase;
 			sourceTree = "<group>";
@@ -364,14 +396,6 @@
 				A0E2888B29CD716700A32656 /* PurchaseDBModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		A0E2889129CD8C4500A32656 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				A0E2889629CD96BB00A32656 /* PurchaseTableViewCell.swift */,
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		A0F0BBF029CC3F6C00D596BD /* Model */ = {
@@ -451,6 +475,7 @@
 		E1CCD0F629BEF69200E6DD35 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				165D7C9D29CD4385009EF7B6 /* PayPage */,
 				A0E2888629CD6B3500A32656 /* MyPagePurchase */,
 				2669F79529CC52E3007D3407 /* MyPagesSeller */,
 				260FD37429C95E250085A7F3 /* MyPages */,
@@ -674,6 +699,7 @@
 				1610E93229C9A43800824E49 /* SideMenuViewController.swift in Sources */,
 				263A884429C6AA3D0011C183 /* TelVerifyViewController.swift in Sources */,
 				260FD37B29C95EB50085A7F3 /* PayTableViewCell.swift in Sources */,
+				165D7CA529CD8AE8009EF7B6 /* PayChargeViewModel.swift in Sources */,
 				E1CCD19629C80D6600E6DD35 /* ProductDetailModel.swift in Sources */,
 				A0E2888C29CD716700A32656 /* PurchaseDBModel.swift in Sources */,
 				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
@@ -685,7 +711,6 @@
 				265806E729CAFBF20049703D /* LikeCodeDB.swift in Sources */,
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
 				1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */,
-				A0E2889529CD956100A32656 /* PurchaseTableViewController.swift in Sources */,
 				2669F7A629CD4014007D3407 /* SellIngViewCell.swift in Sources */,
 				16920C7929C828B0006887CE /* MainModel.swift in Sources */,
 				E1CCD1AE29C8D17900E6DD35 /* LikeViewModel.swift in Sources */,
@@ -696,6 +721,7 @@
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
 				265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */,
 				A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */,
+				165D7CA729CD9CFF009EF7B6 /* PayCompleteViewController.swift in Sources */,
 				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,
 				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
 				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
@@ -713,17 +739,19 @@
 				BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */,
 				E1CCD17C29C6D52500E6DD35 /* WalletSelectViewModel.swift in Sources */,
 				264512DA29C6964D0088E17A /* RegExModel.swift in Sources */,
+				165D7C9F29CD43A8009EF7B6 /* PayChargeViewController.swift in Sources */,
 				BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */,
 				A0E2888E29CD793000A32656 /* PurchaseProductModel.swift in Sources */,
 				A0F0BBF429CC3FEE00D596BD /* MyPageProfileDBModel.swift in Sources */,
 				BC1E7D8429C84D310093830C /* Sender.swift in Sources */,
 				2669F79D29CC53ED007D3407 /* TabManViewController.swift in Sources */,
+				165D7CA229CD872A009EF7B6 /* PayChargeUserModel.swift in Sources */,
+				A0E2888829CD6BD500A32656 /* MyPagePurchaseTableViewController.swift in Sources */,
 				263A884E29C729BE0011C183 /* SignInViewController.swift in Sources */,
 				264512DD29C697A10088E17A /* TabBarViewController.swift in Sources */,
 				A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */,
 				E1CCD1B029C8D18600E6DD35 /* UserViewModel.swift in Sources */,
 				BC8129A429CC56D200FD1399 /* ChatInfo.swift in Sources */,
-				A0E2889729CD96BB00A32656 /* PurchaseTableViewCell.swift in Sources */,
 				E1CCD0FA29BEF69200E6DD35 /* SceneDelegate.swift in Sources */,
 				E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */,
 				260FD37D29C95EC00085A7F3 /* MenuTableViewCell.swift in Sources */,
