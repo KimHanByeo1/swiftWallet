@@ -20,5 +20,6 @@ target 'Wallet' do
   pod 'SnapKit'
   pod 'ObjectMapper'
   pod 'Tabman'
+  pod 'MaterialDesignWidgets'
 
 end

@@ -54,6 +54,13 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         MyPageTableView.reloadData()
     }
     
+    @IBAction func btnPayCharge(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PayChargeViewController") as! PayChargeViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     func itemDownloaded(items: [ProfileDBModel]) {
         profileDBModel = items
 
@@ -77,30 +84,30 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
 
     }
 
-        // MARK: - Table view data source
+    // MARK: - Table view data source
 
-        override func numberOfSections(in tableView: UITableView) -> Int {
-            // #warning Incomplete implementation, return the number of sections
-            return 3
-        }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 3
+    }
 
-        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            if section == 0 {
-                   return 1 // profileCell은 1개의 row
-               } else if section == 1 {
-                   return 1 // payCell은 1개의 row
-               } else {
-                   return 4 // menuCell은 4개의 row
-               }
-        }
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+               return 1 // profileCell은 1개의 row
+           } else if section == 1 {
+               return 1 // payCell은 1개의 row
+           } else {
+               return 4 // menuCell은 4개의 row
+           }
+    }
 
-        
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            if indexPath.section == 0 {
-                    // profileCell 반환
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileTableViewCell
-                    // cell 구성
-                cell.test(email: user!.email!)
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+                // profileCell 반환
+                let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileTableViewCell
+                // cell 구성
+            cell.test(email: user!.email!)
 //                if image == "" {
 //                    cell.profileImage.image = UIImage(named: "face")
 //                } else {
@@ -116,62 +123,62 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
 //                    }
 //                }
 //
+            
+                return cell
+            } else if indexPath.section == 1 {
+                // payCell 반환
+                let cell = tableView.dequeueReusableCell(withIdentifier: "payCell", for: indexPath) as! PayTableViewCell
+                // cell 구성
+                cell.balance.text = "0원"
+//                cell.addBtn
+//                cell.transfer
+//                cell.payGoBtn
                 
-                    return cell
-                } else if indexPath.section == 1 {
-                    // payCell 반환
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "payCell", for: indexPath) as! PayTableViewCell
-                    // cell 구성
-                    cell.balance.text = "0원"
-    //                cell.addBtn
-    //                cell.transfer
-    //                cell.payGoBtn
-                    
-                    return cell
-                } else {
-                    // menuCell 반환
-                    let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
-                    // cell 구성
-                    switch indexPath.row {
-                    case 0:
-                        cell.menuImage.image = UIImage(named: "heart")
-                        cell.menuLabel.text = "관심목록"
-    //                    cell.menuGoBtn
-                    case 1:
-                        cell.menuImage.image = UIImage(named: "list")
-                        cell.menuLabel.text = "판매내역"
-    //                    cell.menuGoBtn
-                    case 2:
-                        cell.menuImage.image = UIImage(named: "shop")
-                        cell.menuLabel.text = "구매내역"
-    //                    cell.menuGoBtn
-                    case 3:
-                        cell.menuImage.image = UIImage(named: "fullheart")
-                        cell.menuLabel.text = "등록된 상품"
-    //                    cell.menuGoBtn
-                    default:
-                        break
-                    }
-                    
-                    return cell
-                }
-        }
-        
-        
-        override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            // 각 indexPath에 맞는 셀 높이를 반환합니다.
-            //indexPath.row로 하면 안됨
-            switch indexPath.section {
+                return cell
+            } else {
+                // menuCell 반환
+                let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
+                // cell 구성
+                switch indexPath.row {
                 case 0:
-                    return 120
+                    cell.menuImage.image = UIImage(named: "heart")
+                    cell.menuLabel.text = "관심목록"
+//                    cell.menuGoBtn
                 case 1:
-                    return 150
+                    cell.menuImage.image = UIImage(named: "list")
+                    cell.menuLabel.text = "판매내역"
+//                    cell.menuGoBtn
                 case 2:
-                    return 65
+                    cell.menuImage.image = UIImage(named: "shop")
+                    cell.menuLabel.text = "구매내역"
+//                    cell.menuGoBtn
+                case 3:
+                    cell.menuImage.image = UIImage(named: "fullheart")
+                    cell.menuLabel.text = "등록된 상품"
+//                    cell.menuGoBtn
                 default:
-                    return UITableView.automaticDimension
+                    break
                 }
-        }
+                
+                return cell
+            }
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // 각 indexPath에 맞는 셀 높이를 반환합니다.
+        //indexPath.row로 하면 안됨
+        switch indexPath.section {
+            case 0:
+                return 120
+            case 1:
+                return 150
+            case 2:
+                return 65
+            default:
+                return UITableView.automaticDimension
+            }
+    }
 
         
     
