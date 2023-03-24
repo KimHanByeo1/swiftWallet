@@ -14,15 +14,24 @@ class ProfileTableViewCell: UITableViewCell {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     
+//    var delegate : ProfileQueryModelProtocol?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
-    }
+//        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+        
+        // imageView Tap
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ProfileViewController())
+//        profileImage.isUserInteractionEnabled = true
+//        profileImage.addGestureRecognizer(tapGestureRecognizer)
 
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
@@ -45,6 +54,37 @@ class ProfileTableViewCell: UITableViewCell {
         profileImage.layer.borderColor = UIColor.clear.cgColor
         // 뷰의 경계에 맞춰준다
         profileImage.clipsToBounds = true
+        
+        
+    }
+    
+    func test(email : String){
+        let profileQueryModel = MyPageProfileQueryModel()
+        profileQueryModel.delegate = self
+        profileQueryModel.downloadItems(email: email)
     }
 
+}
+
+extension ProfileTableViewCell :ProfileQueryModelProtocol{
+    func itemDownloaded(items: [ProfileDBModel]) {
+        let profileDBModel = items
+
+        // url 비동기 통신
+        if let imageURL = URL(string: items.first!.profileimage) {
+            print(imageURL)
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.profileImage.image = image
+                    }
+                }
+            }.resume()
+        }
+
+        nickname.text = profileDBModel.first!.nickname
+        email.text = profileDBModel.first!.email
+    }
+    
+    
 }

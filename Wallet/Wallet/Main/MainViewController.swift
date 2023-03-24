@@ -7,11 +7,13 @@
 
 import UIKit
 import SideMenu
+import JGProgressHUD
 
 class MainViewController: UIViewController {
 
     @IBOutlet weak var mainTV: UITableView!
     
+    let refreshControl = UIRefreshControl()
     var dataSource: [MainModel] = []
     var filteredDataSource: [MainModel] = []
 
@@ -20,6 +22,23 @@ class MainViewController: UIViewController {
         let isActive = searchController?.isActive ?? false
         let isSearchBarHasText = searchController?.searchBar.text?.isEmpty == false
         return isActive && isSearchBarHasText
+    }
+    
+    lazy var hud: JGProgressHUD = {
+        let loader = JGProgressHUD(style: .dark)
+        return loader
+    }()
+
+    func showLoading() {
+        DispatchQueue.main.async {
+            self.hud.show(in: self.view, animated: true)
+        }
+    }
+
+    func hideLoading() {
+        DispatchQueue.main.async {
+            self.hud.dismiss(animated: true)
+        }
     }
 
     override func viewDidLoad() {
@@ -88,6 +107,7 @@ class MainViewController: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
+
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -162,7 +182,20 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 detailView.imageURL = dataSource[indexPath!.row].imageURL
             }
             
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y // frame영역의 origin에 비교했을때의 content view의 현재 origin 위치
+
+        if 0 > currentOffset {
+            showLoading() // 데이터 로딩 중 표시
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                self?.hideLoading()
+                self?.selectData()
+            }
         }
+    }
+    
     
 }
 
@@ -180,23 +213,4 @@ extension MainViewController: QueryModelProtocol {
         self.mainTV.reloadData()
     }
 
-}
-
-extension MainViewController: SideMenuNavigationControllerDelegate {
-    
-    func sideMenuWillAppear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Appearing! (animated: \(animated))")
-    }
-
-    func sideMenuDidAppear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Appeared! (animated: \(animated))")
-    }
-
-    func sideMenuWillDisappear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappearing! (animated: \(animated))")
-    }
-
-    func sideMenuDidDisappear(menu: SideMenuNavigationController, animated: Bool) {
-        print("SideMenu Disappeared! (animated: \(animated))")
-    }
 }

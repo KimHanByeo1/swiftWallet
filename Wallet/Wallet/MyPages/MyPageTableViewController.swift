@@ -7,8 +7,9 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseAuth
 
-class MyPageTableViewController: UITableViewController {
+class MyPageTableViewController: UITableViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
 
     
     @IBOutlet var MyPageTableView: UITableView!
@@ -18,21 +19,63 @@ class MyPageTableViewController: UITableViewController {
     var nickname = ""
     var email = ""
     var image = ""
+    var imageFB:UIImage?
+
+    let picker = UIImagePickerController()
+    var downURL: String = ""
+
+    let user = Auth.auth().currentUser
+    var profileDBModel: [ProfileDBModel] = []
     
     override func viewDidLoad() {
             super.viewDidLoad()
+        
+//        picker.delegate = self
+//
+////             Uncomment the following line to preserve selection between presentations
+////             self.clearsSelectionOnViewWillAppear = false
+//
+//            // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+//            // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//
+//
+//        nickname = defaults.string(forKey: "nickname")!
+//        email = defaults.string(forKey: "email")!
+////        image = defaults.string(forKey: "profileImage") ?? ""
+//        print("image")
+//        print(image)
+//
+//        let profileQueryModel = MyPageProfileQueryModel()
+//        profileQueryModel.delegate = self
+//        profileQueryModel.downloadItems(email: user!.email!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        MyPageTableView.reloadData()
+    }
+    
+    func itemDownloaded(items: [ProfileDBModel]) {
+        profileDBModel = items
 
-            // Uncomment the following line to preserve selection between presentations
-            // self.clearsSelectionOnViewWillAppear = false
-
-            // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-            // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        nickname = defaults.string(forKey: "nickname")!
-        email = defaults.string(forKey: "email")!
-        image = defaults.string(forKey: "profileImage") ?? ""
-        print("image")
-        print(image)
+        // url 비동기 통신
+        if let imageURL = URL(string: items.first!.profileimage) {
+            print(imageURL)
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.imageFB = image
+                    }
+                }
+            }.resume()
         }
+
+        downURL = profileDBModel.first!.profileimage
+
+        nickname = profileDBModel.first!.nickname
+        email = profileDBModel.first!.email
+
+
+    }
 
         // MARK: - Table view data source
 
@@ -57,25 +100,22 @@ class MyPageTableViewController: UITableViewController {
                     // profileCell 반환
                     let cell = tableView.dequeueReusableCell(withIdentifier: "profileCell", for: indexPath) as! ProfileTableViewCell
                     // cell 구성
-                cell.nickname.text = nickname
-                cell.email.text = email
-                
-                
-                if image == "" {
-                    cell.profileImage.image = UIImage(named: "face")
-                } else {
-                    let storage = Storage.storage()
-                    let httpsReference = storage.reference(forURL: image)
-                    
-                    httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
-                        if let error = error {
-                            print("Error : \(error)")
-                        }else {
-                            cell.profileImage.image = UIImage(data: data!)
-                        }
-                    }
-                }
-                
+                cell.test(email: user!.email!)
+//                if image == "" {
+//                    cell.profileImage.image = UIImage(named: "face")
+//                } else {
+//                    let storage = Storage.storage()
+//                    let httpsReference = storage.reference(forURL: image)
+//
+//                    httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
+//                        if let error = error {
+//                            print("Error : \(error)")
+//                        }else {
+//                            cell.profileImage.image = UIImage(data: data!)
+//                        }
+//                    }
+//                }
+//
                 
                     return cell
                 } else if indexPath.section == 1 {
