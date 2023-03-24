@@ -7,36 +7,52 @@
 
 import UIKit
 import SnapKit
+import Firebase
+import FirebaseDatabase
 
-class UsersTableViewController: UITableViewController{
+class UsersTableViewController: UITableViewController {
     
-    var myChannels:[Channel] = []
-    let myEmail = UserDefaults.standard.string(forKey: "email")
+    var array:[UserInfo] = []
     
     @IBOutlet var userTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Database.database().reference().child("users").observe(DataEventType.value, with: {snapshot in
+            
+            self.array.removeAll()
+            
+            let myUid = Auth.auth().currentUser?.uid
+            
+            for child in snapshot.children{
+                let fchild = child as! DataSnapshot
+                let userInfo = UserInfo()
+                userInfo.setValuesForKeys(fchild.value as! [String:Any])
+                
+                if userInfo.uid == myUid{
+                    continue
+                }
+                
+                self.array.append(userInfo)
+                
+                print(fchild.value as! [String:Any])
+            }
+            
+            DispatchQueue.main.async{
+                self.userTableView.reloadData()
+            }
+            
+            print(self.array)
+        })
+        
+        userTableView.rowHeight = 124
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    } // viewDidLoad
-    
-    func viewWillAppear(){
-        readvalue()
-    }
-    
-    func readvalue(){
-        let downData = downloadData()
-        myChannels.removeAll()
-        
-        downData.delegate = self
-        
-        downData.downloadItems(myEmail: myEmail!)
-        userTableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -48,15 +64,15 @@ class UsersTableViewController: UITableViewController{
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return myChannels.count
+        return array.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! UserTableViewCell
-
-        cell.lblUserName.text = myChannels[indexPath.row].otherName
-
+        
+        cell.lblUserName.text = array[indexPath.row].name
+        
         return cell
     }
     
@@ -108,15 +124,8 @@ class UsersTableViewController: UITableViewController{
         let cell = sender as! UserTableViewCell
         let indexpath = userTableView.indexPath(for: cell)
         
-        vc.destinationUid = myChannels[indexpath!.row].otherEmail
+        vc.destinationUid = array[indexpath!.row].uid
     }
     
 
-} // UsersTableViewController
-
-extension UsersTableViewController:ChannelViewModelProtocol{
-    func itemDownLoaded(items: [Channel]) {
-        myChannels = items
-        self.userTableView.reloadData()
-    }
 }
