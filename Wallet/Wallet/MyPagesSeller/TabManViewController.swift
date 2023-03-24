@@ -11,12 +11,63 @@ import Pageboy
 
 class TabManViewController: TabmanViewController {
 
+    
+    @IBOutlet weak var tabView: UIView!
+    
+    
+    
+    private var viewControllers: [UITableViewController] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+//        let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sellFinViewController") as! SellFinViewController
+//        let vc3 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sellingViewcontroller") as! SellIngViewController
+//
+//        viewControllers.append(vc2)
+//        viewControllers.append(vc3)
+//
+//        self.dataSource = self
+//
+//        // Create bar
+//        let bar = TMBar.ButtonBar()
+//
+//        //탭바디자인
+//        settingTabBar(ctBar: bar) //함수 추후 구현
+//
+//        // Add to view
+//        addBar(bar, dataSource: self, at: .top)
+        
+        setupTabMan()
+        
+            
     }
     
+    private func setupTabMan() {
+        let firstVC = storyboard?.instantiateViewController (withIdentifier:
+        "sellingViewcontroller") as! SellIngViewController
+        let secondVC = storyboard?.instantiateViewController (withIdentifier:
+        "sellFinViewController") as! SellFinViewController
+        viewControllers.append (firstVC)
+        viewControllers.append (secondVC)
+        self.dataSource = self
+        let bar = TMBar.ButtonBar ()
+        //배경회색으로나옴->하얀색으로바뀜
+        bar.backgroundView.style = .blur(style: .light)
+        //간격설정
+        bar.layout.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        //버튼글씨커스텀
+        bar.buttons.customize { (button) in
+        button.tintColor = .systemGray4
+            button.selectedTintColor = .black
+            button.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+            button.selectedFont = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        }
+        //밑줄쳐지는부분
+        bar.indicator.weight = .custom (value: 2)
+        bar.indicator.tintColor = .black
+        addBar(bar, dataSource: self, at: .top)
+    }
 
     /*
     // MARK: - Navigation
@@ -27,5 +78,37 @@ class TabManViewController: TabmanViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
 
+}
+
+extension TabManViewController: PageboyViewControllerDataSource, TMBarDataSource {
+
+    
+    
+    func barItem(for bar: TMBar, at index: Int) -> TMBarItemable {
+        switch index {
+        case 0:
+            return TMBarItem(title:"판매중")
+        case 1:
+            return TMBarItem(title:"판매완료")
+        default:
+            let title = "Page \(index)"
+            return TMBarItem(title: title)
+            }
+        }
+    
+    func numberOfViewControllers(in pageboyViewController: PageboyViewController) -> Int {
+        return viewControllers.count
+    }
+
+    func viewController(for pageboyViewController: PageboyViewController,
+                        at index: PageboyViewController.PageIndex) -> UIViewController? {
+        return viewControllers[index]
+    }
+
+    func defaultPage(for pageboyViewController: PageboyViewController) -> PageboyViewController.Page? {
+        return nil
+    }
 }

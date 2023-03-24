@@ -1,17 +1,15 @@
 //
-//  SellFinViewController.swift
+//  MyPagePurchaseTableViewController.swift
 //  Wallet
 //
-//  Created by Anna Kim on 2023/03/24.
+//  Created by 안수빈 on 2023/03/24.
 //
 
 import UIKit
 
-class SellFinViewController: UITableViewController {
+class MyPagePurchaseTableViewController: UITableViewController {
 
-    
-    @IBOutlet var tvFinView: UITableView!
-    
+    @IBOutlet var PurchaseList: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,33 +25,24 @@ class SellFinViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sellFinCell", for: indexPath) as! SellFinViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        
-        cell.sellFinImage.image = UIImage(named: "shop")
-        cell.sellFinName.text = "구찌다팔림"
-        cell.sellFinBrand.text = "구찌"
-        cell.sellFinPrice.text = "너무 비싸 원"
-        cell.sellFinStatus.text = "판매완료"
-        
-        
-        
+        // Configure the cell...
+
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 167
-    }
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
