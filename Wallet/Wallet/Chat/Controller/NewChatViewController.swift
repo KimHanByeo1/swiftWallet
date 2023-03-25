@@ -10,12 +10,6 @@ import MessageKit
 import Firebase
 import FirebaseDatabase
 
-struct MessageSender:SenderType{
-    var senderId: String
-    var displayName: String
-}
-
-
 struct Message:MessageType{
     var sender: MessageKit.SenderType
     var messageId: String = ""
