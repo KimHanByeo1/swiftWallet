@@ -14,44 +14,31 @@ class TabManViewController: TabmanViewController {
     
     @IBOutlet weak var tabView: UIView!
     
-    
-    
+        
     private var viewControllers: [UITableViewController] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        let vc2 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sellFinViewController") as! SellFinViewController
-//        let vc3 = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sellingViewcontroller") as! SellIngViewController
-//
-//        viewControllers.append(vc2)
-//        viewControllers.append(vc3)
-//
-//        self.dataSource = self
-//
-//        // Create bar
-//        let bar = TMBar.ButtonBar()
-//
-//        //탭바디자인
-//        settingTabBar(ctBar: bar) //함수 추후 구현
-//
-//        // Add to view
-//        addBar(bar, dataSource: self, at: .top)
         
         setupTabMan()
         
-            
     }
+    
+    
     
     private func setupTabMan() {
         let firstVC = storyboard?.instantiateViewController (withIdentifier:
         "sellingViewcontroller") as! SellIngViewController
         let secondVC = storyboard?.instantiateViewController (withIdentifier:
         "sellFinViewController") as! SellFinViewController
+                
         viewControllers.append (firstVC)
         viewControllers.append (secondVC)
+        
         self.dataSource = self
-        let bar = TMBar.ButtonBar ()
+        let bar = TMBar.ButtonBar()
+        
         //배경회색으로나옴->하얀색으로바뀜
         bar.backgroundView.style = .blur(style: .light)
         //간격설정
@@ -112,3 +99,5 @@ extension TabManViewController: PageboyViewControllerDataSource, TMBarDataSource
         return nil
     }
 }
+
+

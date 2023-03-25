@@ -54,10 +54,32 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         MyPageTableView.reloadData()
     }
     
+
+    
+    @IBAction func logout(_ sender: UIBarButtonItem) {
+        defaults.removeObject(forKey: "nickname")
+        defaults.removeObject(forKey: "email")
+        defaults.removeObject(forKey: "password")
+        defaults.removeObject(forKey: "autoLogin")
+        UserDefaults.standard.synchronize()
+        
+        let resultAlert = UIAlertController(title: "확인", message: "로그아웃 되었습니다.", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "네 알겠습니다.", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
+        
+        resultAlert.addAction(okAction)
+        self.present(resultAlert, animated: true)
+        
+        
+        // 예시 - login 화면 tabBar화면들로 전환
+        let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "MyPageTableView") as! MyPageTableViewController
+        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController
+        self.transition1(from: vc1, to: vc2)
+
     @IBAction func btnPayCharge(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "PayChargeViewController") as! PayChargeViewController
         navigationController?.pushViewController(vc, animated: true)
+
     }
     
     
@@ -247,7 +269,7 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
             // Pass the selected object to the new view controller.
         }
         */
-    // login에서 회원가입으로 직접 전환하는 함수
+    // 관심목록 페이지로 전환하는 함수
     func transition(from fromViewController: UIViewController, to toViewController: UIViewController) {
         
         let fromVC = self // 현재 View Controller
@@ -260,4 +282,19 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         toVC.didMove(toParent: fromVC)
     }
     
+    // logout후 로그인 페이지로 전환하는 함수
+    func transition1(from fromViewController: UIViewController, to toViewController: UIViewController) {
+        
+        let fromVC = self // 현재 View Controller
+        let toVC = storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController // 전환할 View Controller
+
+        fromVC.addChild(toVC)
+        fromVC.view.addSubview(toVC.view)
+        toVC.view.frame = fromVC.view.bounds
+        toVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        toVC.didMove(toParent: fromVC)
     }
+    
+    
+    
+}

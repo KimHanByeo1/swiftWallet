@@ -6,24 +6,56 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
+
 
 class SellIngViewController: UITableViewController {
+    
+    
 
     
     @IBOutlet var tvView: UITableView!
     
     
+    // userNick이 같은 product만 가져옴
+    var mySellingProduct: [MySellProductModel] = []
+    
+    
+    let uid = Auth.auth().currentUser!.uid
+    
+    // controller 연결
+    let mySellingDB = MySellDB()
+
+    
+    // 유저의 이메일
+    let defaults = UserDefaults.standard
+    var userEmail = ""
+    
+    // 상품 판매중
+    let sellingState = "0"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        mySellingDB.delegate = self
+        print("viewdid")
+        
     }
 
     // MARK: - Table view data source
+    
+    override func viewWillAppear(_ animated: Bool) {
+
+        userEmail = defaults.string(forKey: "email")!
+        // like의 imageURL code 가져오기
+        mySellingDB.sellingData(userEmail: userEmail, pState: sellingState)
+        
+        
+        
+        print("viewwill")
+   
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -32,19 +64,49 @@ class SellIngViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        print(mySellingProduct.count)
+        return mySellingProduct.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sellingCell", for: indexPath) as! SellIngViewCell
 
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        let dateViewModel = DateViewModel()
+        
+        // url 비동기 통신
+        if let imageURL = URL(string: mySellingProduct[indexPath.row].imageURL) {
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.sellingImage.image = image
+                    }
+                }
+            }.resume()
+        }
+        
         
         cell.sellingImage.image = UIImage(named: "shop")
-        cell.sellingName.text = "루이비통나와라"
-        cell.sellingBrand.text = "루이비통"
-        cell.sellingPrice.text = "13000원"
-        cell.sellingStatus.text = "판매중"
+        cell.sellingName.text = mySellingProduct[indexPath.row].pTitle
+        
+        cell.sellingBrand.text = mySellingProduct[indexPath.row].pBrand + " · " + dateViewModel.DateCount(mySellingProduct[indexPath.row].pTime)
+        cell.sellingPrice.text = mySellingProduct[indexPath.row].pPrice
+        
+        var sellingStatus: String = "판매중"
+
+        if mySellingProduct[indexPath.row].pState == "0" {
+            sellingStatus = "판매중"
+            cell.sellingStatus.textColor = UIColor.green
+        } else {
+            sellingStatus = "판매완료"
+            cell.sellingStatus.textColor = UIColor.red
+        }
+
+        cell.sellingStatus.text = sellingStatus
+        //cell.sellingStatus.text = "판매중"
         
 
         return cell
@@ -101,4 +163,16 @@ class SellIngViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 167
     }
+}
+
+
+extension SellIngViewController: MySellDBProtocol{
+   
+    func itemBring(products: [MySellProductModel]) {
+        mySellingProduct = products
+        print(mySellingProduct)
+        self.tvView.reloadData()
+    }
+    
+
 }
