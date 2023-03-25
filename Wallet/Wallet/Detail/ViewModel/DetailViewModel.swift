@@ -44,7 +44,8 @@ class SelectDetailData {
                                                        pState: document.data()["pState"] as! String,
                                                        userEmail: document.data()["userEmail"] as! String,
                                                        userNickName: document.data()["userNickName"] as! String,
-                                                       docId: document.documentID
+                                                       docId: document.documentID,
+                                                       uid: document.data()["userId"] as! String
                                                     )
                             print("query: \(query)")
                         locations.append(query)
@@ -81,7 +82,8 @@ class SelectDetailData {
                                                        pState: querySnapShot!.data()!["pState"] as! String,
                                                        userEmail: querySnapShot!.data()!["userEmail"] as! String,
                                                        userNickName: querySnapShot!.data()!["userNickName"] as! String,
-                                                       docId: querySnapShot!.documentID
+                                                       docId: querySnapShot!.documentID,
+                                                       uid: querySnapShot!.data()!["userId"] as! String
                                                     )
                             print("query: \(query)")
                         locations.append(query)
