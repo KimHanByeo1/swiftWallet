@@ -49,11 +49,12 @@ class ProfileTableViewCell: UITableViewCell {
 //    }
     override func layoutSubviews() {
         super.layoutSubviews()
-        profileImage.layer.cornerRadius = profileImage.frame.height / 2
-        profileImage.layer.borderWidth = 0
-        profileImage.layer.borderColor = UIColor.clear.cgColor
+//        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        profileImage.layer.cornerRadius = profileImage.frame.width / 2
+//        profileImage.layer.borderWidth = 0
+//        profileImage.layer.borderColor = UIColor.clear.cgColor
         // 뷰의 경계에 맞춰준다
-        profileImage.clipsToBounds = true
+        //profileImage.clipsToBounds = true
         
         
     }

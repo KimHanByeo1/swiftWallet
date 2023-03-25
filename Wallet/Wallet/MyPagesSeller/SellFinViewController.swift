@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
+
 
 class SellFinViewController: UITableViewController {
 
@@ -13,18 +16,43 @@ class SellFinViewController: UITableViewController {
     @IBOutlet var tvFinView: UITableView!
     
     
+    // userNick이 같은 product만 가져옴
+    var mySellingProduct: [MySellProductModel] = []
+    
+    
+    let uid = Auth.auth().currentUser!.uid
+    
+    // controller 연결
+    let mySellingDB = MySellDB()
+
+    
+    // 유저의 이메일
+    let defaults = UserDefaults.standard
+    var userEmail = ""
+    
+    // 상품 판매중
+    let sellingState = "1"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        mySellingDB.delegate = self
+        
     }
 
     // MARK: - Table view data source
 
+    override func viewWillAppear(_ animated: Bool) {
+
+        // like의 imageURL code 가져오기
+        userEmail = defaults.string(forKey: "email")!
+        mySellingDB.sellingData(userEmail: userEmail, pState: sellingState)
+        
+        
+   
+    }
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -32,7 +60,7 @@ class SellFinViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return mySellingProduct.count
     }
 
     
@@ -40,14 +68,43 @@ class SellFinViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sellFinCell", for: indexPath) as! SellFinViewCell
 
         
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        
+        let dateViewModel = DateViewModel()
+        
+        // url 비동기 통신
+//        if let imageURL = URL(string: mySellingProduct[indexPath.row].imageURL) {
+//            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+//                if let data = data, let image = UIImage(data: data) {
+//                    DispatchQueue.global(qos: .background).async(qos: .utility) {
+//                        cell.sellFinImage.image = image
+//                    }
+//                }
+//            }.resume()
+//        }
+        
+        
         cell.sellFinImage.image = UIImage(named: "shop")
-        cell.sellFinName.text = "구찌다팔림"
-        cell.sellFinBrand.text = "구찌"
-        cell.sellFinPrice.text = "너무 비싸 원"
-        cell.sellFinStatus.text = "판매완료"
+//        cell.sellFinName.text = mySellingProduct[indexPath.row].pTitle
+        cell.sellFinName.text = "aaa"
+        cell.sellFinBrand.text = mySellingProduct[indexPath.row].pBrand + " · " + dateViewModel.DateCount(mySellingProduct[indexPath.row].pTime)
+        cell.sellFinPrice.text = mySellingProduct[indexPath.row].pPrice
         
+        var sellingStatus: String = "판매중"
+
+        if mySellingProduct[indexPath.row].pState == "0" {
+            sellingStatus = "판매중"
+            cell.sellFinStatus.textColor = UIColor.green
+        } else {
+            sellingStatus = "판매완료"
+            cell.sellFinStatus.textColor = UIColor.red
+        }
+
+        cell.sellFinStatus.text = sellingStatus
+        //cell.sellingStatus.text = "판매중"
         
-        
+        tvFinView.reloadData()
         return cell
     }
     
@@ -98,5 +155,15 @@ class SellFinViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+}
+
+extension SellFinViewController: MySellDBProtocol{
+   
+    func itemBring(products: [MySellProductModel]) {
+        mySellingProduct = products
+        self.tvFinView.reloadData()
+    }
+    
 
 }
