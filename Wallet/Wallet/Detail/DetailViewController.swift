@@ -25,6 +25,10 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     @IBOutlet weak var btnLikeText: UIButton! // 찜 이미지 변경을 위한 변수
     @IBOutlet weak var chat: UIButton!
     
+    @IBOutlet weak var line: UIView!
+    @IBOutlet weak var btnUpdate: UIButton!
+    @IBOutlet weak var btnDelete: UIButton!
+    
     var imageURL = "" // MainController에서 넘겨준 imageURL 값 받는 변수
     var like = "" // 찜 여부 확인 0,1
     
@@ -45,17 +49,44 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     var chatRoomUid:String?
     var check:Int?
     
+    let user = Auth.auth().currentUser! // 로그인 한 유저 정보 가져오기
+    var productDocId: String?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let quertModel = SelectDetailData()
+        let userModel = UserLikeData()
+
+        quertModel.delegate = self
+        userModel.delegate = self
+
+        userModel.downloadUser(imageURL: imageURL, uid: user.uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
+        
+        if ProductStatic.num == 0 {
+            quertModel.downloadItems(imageURL: imageURL) // 유저가 선택한 상품의 상세정보 Select
+        } else {
+            quertModel.downloadItems2(docId: ProductStatic.docId) // 유저가 선택한 상품의 상세정보 Select
+            ProductStatic.num = 0
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let quertModel = SelectDetailData()
-        let userModel = UserLikeData()
+//        let quertModel = SelectDetailData()
+//        let userModel = UserLikeData()
+//
+//        quertModel.delegate = self
+//        userModel.delegate = self
+//
+//        userModel.downloadUser(imageURL: imageURL, uid: uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
+//        quertModel.downloadItems(imageURL: imageURL) // 유저가 선택한 상품의 상세정보 Select
         
-        quertModel.delegate = self
-        userModel.delegate = self
-        
-        userModel.downloadUser(imageURL: imageURL, uid: uid) // 유저가 선택한 상품의 찜 여부 확인을 위한 Select
-        quertModel.downloadItems(imageURL: imageURL) // 유저가 선택한 상품의 상세정보 Select
+        btnDelete.isHidden = true
+        btnUpdate.isHidden = true
+        chat.isHidden = true
+        btnLikeText.isHidden = true
+        line.isHidden = true
+        lblPrice.isHidden = true
         
         // 채팅내역이 있는지 확인
         check = checkChatRoom()
@@ -169,14 +200,15 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     
     // quertModel.downloadItems
     func itemDownLoaded(items: [ProductDetailModel]) {
-        
         productDetailStore = items
+        
+        ProductStatic.docId = productDetailStore.first!.docId
         
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         
         // url 비동기 통신
-        if let imageURL = URL(string: items.first!.pImageURL) {
+        if let imageURL = URL(string: productDetailStore.first!.pImageURL) {
             URLSession.shared.dataTask(with: imageURL) { data, response, error in
                 if let data = data, let image = UIImage(data: data) {
                     DispatchQueue.main.async {
@@ -193,19 +225,30 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         lblTitle.text = productDetailStore.first?.pTitle
         lblBrandNTime.text = "\(productDetailStore.first!.pBrand) · \(dateViewModel.DateCount(productDetailStore.first!.pTime))"
         lblContent.text = productDetailStore.first?.pContent
-        lblPrice.text = "\(numberFormatter.string(from: NSNumber(value: Int(productDetailStore.first!.pPrice)!)) ?? "")원"
         lblDetailContent.text = productDetailStore.first?.pDetailContent
         
         userNickName = productDetailStore.first?.userNickName
         userEmail = productDetailStore.first?.userEmail
+        productDocId = productDetailStore.first?.docId
         
-        if productDetailStore.first?.pState == "1" {
-            chat.titleLabel?.text = "판매완료"
-            chat.isEnabled = false
+        let textSize = lblPrice.intrinsicContentSize
+        
+        if productDetailStore.first?.pState == "1" { // 상품 거래가 완료 되었으면
+            lblPrice.frame.size = textSize
+            lblPrice.text = "판매 완료된 상품입니다."
         } else {
-            chat.titleLabel?.text = "채팅하기"
+            lblPrice.frame.size = textSize
+            lblPrice.text = "\(numberFormatter.string(from: NSNumber(value: Int(productDetailStore.first!.pPrice)!)) ?? "")원"
+            if productDetailStore.first?.userEmail == user.email {
+                btnDelete.isHidden = false // 삭제 버튼 On
+                btnUpdate.isHidden = false // 수정 버튼 On
+            } else {
+                chat.isHidden = false // 채팅하기 버튼 On
+                btnLikeText.isHidden = false // 찜 버튼 On
+                line.isHidden = false
+                lblPrice.isHidden = false
+            }
         }
-        
     }
     
     // userModel.downloadUser
@@ -261,15 +304,60 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-       
-        let vc = segue.destination as! NewChatViewController
+        if segue.identifier == "sgUpdate" {
+            
+            let view = segue.destination as! UpdateViewController
+
+            view.pBrand = productDetailStore.first!.pBrand
+            view.pSize = productDetailStore.first!.pSize
+            view.pColor = productDetailStore.first!.pColor
+            view.pMaterial = productDetailStore.first!.pMaterial
+
+            view.pName = productDetailStore.first!.pName
+            view.pTitle = productDetailStore.first!.pTitle
+            view.pPrice = productDetailStore.first!.pPrice
+
+            view.pContent = productDetailStore.first!.pContent
+            view.pDetailContent = productDetailStore.first!.pDetailContent
+
+            view.imgView = productDetailStore.first!.pImageURL
+            
+            view.docId = productDetailStore.first!.docId
+            
+        } else {
+            // Get the new view controller using segue.destination.
+            // Pass the selected object to the new view controller.
+            let vc = segue.destination as! NewChatViewController
+        
+            
+            vc.currentUser = Sender(senderId: defaults.string(forKey: "email")!, displayName: defaults.string(forKey: "nickname")!)
+            
+            vc.otherUser = Sender(senderId: userEmail!, displayName: userNickName!)
+        }
+        
+        
+    }
     
+    @IBAction func productUpdate(_ sender: UIButton) {
+        performSegue(withIdentifier: "sgUpdate", sender: sender)
+        ProductStatic.num = 1
+    }
+    
+    @IBAction func productDelete(_ sender: UIButton) {
+        let testAlert = UIAlertController(title: "삭제", message: "삭제 하시겠습니까?", preferredStyle: .alert)
         
-        vc.currentUser = Sender(senderId: defaults.string(forKey: "email")!, displayName: defaults.string(forKey: "nickname")!)
+        let actionDefault = UIAlertAction(title: "예", style: .default, handler: {ACTION in
+            Firestore.firestore().collection("product")
+                .document(self.productDocId!)
+                .delete()
+            self.navigationController?.popViewController(animated: true)
+        })
+        let actionDestructive = UIAlertAction(title: "아니오", style: .destructive, handler: nil)
         
-        vc.otherUser = Sender(senderId: userEmail!, displayName: userNickName!)
+        testAlert.addAction(actionDefault)
+        testAlert.addAction(actionDestructive)
+        
+        present(testAlert, animated: true)
     }
     
     

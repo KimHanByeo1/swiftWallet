@@ -1,54 +1,57 @@
 //
-//  AddViewController.swift
+//  UpdateViewController.swift
 //  Wallet
 //
-//  Created by 김한별 on 2023/03/14.
+//  Created by 김한별 on 2023/03/23.
 //
 
-// 앨범에서 이미지 선택하기
-// 선택한 이미지에 관련된 데이터 파이어베이스에서 불러오기
-// 이미지 코드는 0 또는 1
-
-
 import UIKit
+import FirebaseAuth
 import Photos
 import FirebaseStorage
-import MobileCoreServices
-import FirebaseAuth
 
-class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class UpdateViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, QueryModelProtocal {
 
-    @IBOutlet weak var lblBrand: UILabel! // 상품 브랜드
-    @IBOutlet weak var lblMaterial: UILabel! // 상품 소재
-    @IBOutlet weak var lblColor: UILabel! // 상품 색상
-    @IBOutlet weak var lblSize: UILabel! // 상품 사이즈
-    
-    @IBOutlet weak var tfTitle: UITextField! // 제목
-    @IBOutlet weak var tfName: UITextField! // 상품 이름
-    @IBOutlet weak var tfPrice: UITextField! // 상품 가격
-    @IBOutlet weak var tvContent: UITextView! // 상품 설명
-    @IBOutlet weak var imageView: UIImageView! // 상품 이미지
+    @IBOutlet weak var lblBrand: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var lblMaterial: UILabel!
+    @IBOutlet weak var lblColor: UILabel!
+    @IBOutlet weak var lblSize: UILabel!
+    @IBOutlet weak var tfName: UITextField!
+    @IBOutlet weak var tfTitle: UITextField!
+    @IBOutlet weak var tfPrice: UITextField!
+    @IBOutlet weak var tvContent: UITextView!
     @IBOutlet weak var tvDetailContent: UITextView!
-    @IBOutlet weak var indicator: UIActivityIndicatorView! // 예측 데이터 가져올 때 화면 동작 멈추게 할 indicatorView
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
-    var keyHeight: CGFloat? = nil // 키보드 높이를 저장할 변수
+    var pBrand: String?
+    var pMaterial: String?
+    var pColor: String?
+    var pSize: String?
+    var pName: String?
+    var pTitle: String?
+    var pPrice: String?
+    var pContent: String?
+    var pDetailContent: String?
+    var imgView: String?
+    var docId: String?
     
     let currentDate = Date() // Firebase storage에 이미지 등록할 때 '현재 시간.jpg'로 저장하기 위한 생성자
     let formatter = DateFormatter()
     
-    let picker = UIImagePickerController()
+    let email = Auth.auth().currentUser?.email
+    let nickName = UserDefaults.standard.string(forKey: "nickname")
     
+    let picker = UIImagePickerController()
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     var captureImage: UIImage!
     var flagImageSave = false
-    
-    var walletStore: [WalletSelectModel] = []
-    
     var imageData : NSData? = nil
     let photo = UIImagePickerController() // 앨범 이동
     
-    let email = Auth.auth().currentUser?.email
-    let nickName = UserDefaults.standard.string(forKey: "nickname")
+    var walletStore: [WalletSelectModel] = []
+    
+    var ct = AddViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,10 +66,8 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         
         picker.delegate = self
         
-//      화면 터치 시 키보드 내리기
-        self.hideKeyboard()
-        
-        tvContent.delegate = self
+        // 화면 터치 시 키보드 내리기
+        self.hideKeyboard2()
         
 //      Text View Placeholder 설정
         tvContent.text = "상품 설명"
@@ -88,104 +89,123 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         tfTitle.layer.borderColor = UIColor.lightGray.cgColor
         tvDetailContent.layer.borderColor = UIColor.lightGray.cgColor
         
-//      기본 이미지 설정
-        imageView.image = UIImage(named: "basicImage")
-        
 //      tvDetailContent 입력 못하게 막기
         tvDetailContent.isEditable = false
         
-    } // viewDidLoad
+        lblBrand.text = pBrand
+        lblMaterial.text = pMaterial
+        lblColor.text = pColor
+        lblSize.text = pSize
+        
+        tfName.text = pName
+        tfPrice.text = pPrice
+        tfTitle.text = pTitle
+        
+        tvContent.text = pContent
+        tvDetailContent.text = pDetailContent
+        
+        // url 비동기 통신
+        if let imageURL = URL(string: imgView!) {
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
+            }.resume()
+        }
+        
+    }
     
-//  ==================== Button Start ====================
-    // 앨범에서 이미지 가져오기
     @IBAction func imageAddBtn(_ sender: UIButton) {
         showAlert()
     }
-    // 입력한 상세정보들 Firebase에 등록
-    @IBAction func btnProductRegister(_ sender: UIBarButtonItem) {
-        
+    
+    @IBAction func btnProductUpdate(_ sender: UIBarButtonItem) {
+
+        if imageView.image == nil {
+            
+        }
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
         let dateString = formatter.string(from: currentDate)
         let image = imageView.image!
-        let fsFunc = FirebaseStorageFunc()
         
-        // Storage에 이미지 넣고 URL 값 반환받기
-        fsFunc.insertImage(name: dateString, image: image)
+        let storageRef = Storage.storage().reference()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.insertAction()
+        // File located on disk
+        guard let imageData = image.jpegData(compressionQuality: 0.4) else { return }
+        
+        // Create a reference to the file you want to upload
+        let imageRef = storageRef.child("images/\(dateString).jpg")
+
+        // Meta data
+        let metadata = StorageMetadata()
+        metadata.contentType = "image/jpg"
+        
+        // Upload the file to the path "images/rivers.jpg"
+        imageRef.putData(imageData, metadata: metadata) { metadata, error in
+            
+            guard metadata != nil else {
+                print("Error : FirebaseStorageFunc : putfile")
+                return
+            }
+          // You can also access to download URL after upload.
+            imageRef.downloadURL { (url, error) in
+            guard let downloadURL = url else {
+              print("Error : FirebaseStorageFunc : DownloadURL")
+              return
+            }
+            StaticModel.downURL = "\(downloadURL)"
+            self.updateAction()
+          }
         }
+        
+        
     }
     
-//  ==================== Button End ======================
     
-    deinit {
-        // Notification 해제
-        NotificationCenter.default.removeObserver(self)
-    } // deinit
-    
-//  Placeholder 설정
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if tvContent.text.isEmpty {
-            tvContent.text =  "상품설명"
-            tvContent.textColor = UIColor.lightGray
-        }
-    } // textViewDidEndEditing
-//  텍스트 필드 클릭 시 널 값으로 초기화
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if tvContent.textColor == UIColor.lightGray {
-            tvContent.text = nil
-            tvContent.textColor = UIColor.black
-        }
-    } // textViewDidBeginEditing
-    
-    func insertAction() {
-        
+    func updateAction() {
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateString = formatter.string(from: currentDate)
         
-        guard let wBrand = lblBrand.text else {return}
-        guard let wMaterial = lblMaterial.text else {return}
-        guard let wColor = lblColor.text else {return}
-        guard let wSize = lblSize.text else {return}
-        guard let wName = tfName.text else {return}
-        guard let wPrice = tfPrice.text else {return}
-        guard let wContent = tvContent.text else {return}
-        guard let wTitle = tfTitle.text else {return}
-        guard let wDetailContent = tvDetailContent.text else {return}
+        guard let pBrand = lblBrand.text else {return}
+        guard let pMaterial = lblMaterial.text else {return}
+        guard let pColor = lblColor.text else {return}
+        guard let pSize = lblSize.text else {return}
+        guard let pName = tfName.text else {return}
+        guard let pPrice = tfPrice.text else {return}
+        guard let pContent = tvContent.text else {return}
+        guard let pTitle = tfTitle.text else {return}
+        guard let pDetailContent = tvDetailContent.text else {return}
         
-        if !wName.trimmingCharacters(in: .whitespaces).isEmpty{
-            
-            let prModel = ProductRegisterModel()
-            let result = prModel.insesrtItems(
-                wBrand: wBrand,
-                wMaterial: wMaterial,
-                wColor: wColor,
-                wSize: wSize,
-                wName: wName,
-                wPrice: wPrice,
-                wContent: wContent,
-                image: StaticModel.downURL,
-                wTitle: wTitle,
-                wTime: dateString,
-                wDetailContent: wDetailContent,
-                nickName: nickName!,
-                email: email!
+        if !pName.trimmingCharacters(in: .whitespaces).isEmpty{
+            let updateModel = UpdateModel()
+            let result = updateModel.UpdateItems(docId: docId!,
+                                                 pBrand: pBrand,
+                                                 pMaterial: pMaterial,
+                                                 pColor: pColor,
+                                                 pSize: pSize,
+                                                 pName: pName,
+                                                 pPrice: pPrice,
+                                                 pContent: pContent,
+                                                 image: StaticModel.downURL,
+                                                 pTitle: pTitle,
+                                                 pTime: dateString,
+                                                 pDetailContent: pDetailContent,
+                                                 nickName: nickName!,
+                                                 email: email!
             )
-            
             if result{
-                let resultAlert = UIAlertController(title: "완료", message: "입력이 되었습니다.", preferredStyle: .alert)
+                let resultAlert = UIAlertController(title: "완료", message: "수정 되었습니다.", preferredStyle: .alert)
                 let onAction = UIAlertAction(title: "OK", style: .default,handler: {ACTION in
+                    
                     self.navigationController?.popViewController(animated: true)
                 })
                 
                 resultAlert.addAction(onAction)
                 present(resultAlert, animated: true)
-                
-                if let tabbarController = self.tabBarController {
-                    tabbarController.selectedIndex = 0
-                }
-                self.resetField() // 상품 등록 후 텍스트 필드 초기화
+
             }
         } else {
             let resultAlert = UIAlertController(title: "Error", message: "상품 사진을 등록해주세요.", preferredStyle: .alert)
@@ -197,20 +217,6 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
             present(resultAlert, animated: true)
         }
     }
-    
-    // 상품 등록 후 텍스트 필드 초기화
-    func resetField() {
-        lblSize.text = ""
-        lblBrand.text = ""
-        lblColor.text = ""
-        lblMaterial.text = ""
-        tfPrice.text = ""
-        tfTitle.text = ""
-        tfName.text = ""
-        tvContent.text = ""
-        tvDetailContent.text = ""
-        imageView.image = UIImage(named: "basicImage")
-    } // resetField
     
     func showAlert() {
         let alert = UIAlertController(title: "Select One", message: nil, preferredStyle: .actionSheet)
@@ -265,7 +271,6 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
      
     } //openphoto
     
-    // Firebaase에서 가져온 데이터들 각각의 텍스트필드 및 레이블에 값 지정
     func itemDownLoaded(items: [WalletSelectModel]) {
         walletStore = items
         lblBrand.text = walletStore.first?.wBrand
@@ -274,8 +279,7 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         lblColor.text = "색상 : \(walletStore.first!.wColor as String)"
         lblMaterial.text = "소재 : \(walletStore.first!.wMaterial as String)"
         tvDetailContent.text = walletStore.first!.wDetailContent as String
-        
-    } // itemDownLoaded
+    }
     
     @objc func keyboardWillShow(notification: Notification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -295,13 +299,10 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
             self.view.frame.origin.y = 0
         })
     }
-
     
 } // End
 
-// ---------------- extension Start ----------------
-
-extension AddViewController {
+extension UpdateViewController {
     
     // MARK: [사진, 비디오 선택을 했을 때 호출되는 메소드]
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -324,30 +325,14 @@ extension AddViewController {
 
         // flask 연동 코드 작성 해야됨
         let flask = Flask()
-
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let window = windowScene?.windows.last
-
-        self.indicator.isHidden = false
-        indicator.frame = window!.frame
-        self.indicator.startAnimating()
-
+        
         flask.uploadImg(uiImg: self.imageView.image!)
         flask.predict()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            
+        let quertModel = SelectData()
+        quertModel.delegate = self
+        quertModel.downloadItems()
 
-            let quertModel = SelectData()
-            quertModel.delegate = self
-            quertModel.downloadItems()
-
-            self.indicator.isHidden = true
-            self.indicator.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-
-            window!.subviews.filter({ $0 is UIActivityIndicatorView }).forEach { $0.removeFromSuperview() }
-            self.indicator.stopAnimating()
-        }
-        
     }
     
     // MARK: [사진, 비디오 선택을 취소했을 때 호출되는 메소드]
@@ -362,12 +347,12 @@ extension AddViewController {
 
 // 화면 터치 시 키보드 내리는 Function
 extension UIViewController {
-    func hideKeyboard() {
+    func hideKeyboard2() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
             action: #selector(UIViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
-    @objc func dismissKeyboard() {
+    @objc func dismissKeyboard2() {
         view.endEditing(true)
     }
 }

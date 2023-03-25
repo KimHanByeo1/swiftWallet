@@ -43,9 +43,10 @@ class SelectDetailData {
                                                        pDetailContent: document.data()["pDetailContent"] as! String,
                                                        pState: document.data()["pState"] as! String,
                                                        userEmail: document.data()["userEmail"] as! String,
-                                                       userNickName: document.data()["userNickName"] as! String
+                                                       userNickName: document.data()["userNickName"] as! String,
+                                                       docId: document.documentID
                                                     )
-                            
+                            print("query: \(query)")
                         locations.append(query)
                     }
                     self.delegate.itemDownLoaded(items: locations)
@@ -53,4 +54,42 @@ class SelectDetailData {
             })
             
     }
+    
+    func downloadItems2(docId: String) {
+        var locations: [ProductDetailModel] = []
+        
+        db.collection("product")
+            .document(docId)
+            .getDocument(completion: {(querySnapShot, err)in
+                if let err = err{
+                    print("error getting documents : \(err)")
+                }else{
+                    print("Data is downloarded2.")
+//                    for document in querySnapShot!.documents{
+                    
+                    let query = ProductDetailModel(pBrand: querySnapShot!.data()!["pBrand"] as! String,
+                                                   pColor: querySnapShot!.data()!["pColor"] as! String,
+                                                       pName: querySnapShot!.data()!["pName"] as! String,
+                                                       pMaterial: querySnapShot!.data()!["pMaterial"] as! String,
+                                                       pSize: querySnapShot!.data()!["pSize"] as! String,
+                                                       pImageURL: querySnapShot!.data()!["imageURL"] as! String,
+                                                       pContent: querySnapShot!.data()!["pContent"] as! String,
+                                                       pPrice: querySnapShot!.data()!["pPrice"] as! String,
+                                                       pTitle: querySnapShot!.data()!["pTitle"] as! String,
+                                                       pTime: querySnapShot!.data()!["pTime"] as! String,
+                                                       pDetailContent: querySnapShot!.data()!["pDetailContent"] as! String,
+                                                       pState: querySnapShot!.data()!["pState"] as! String,
+                                                       userEmail: querySnapShot!.data()!["userEmail"] as! String,
+                                                       userNickName: querySnapShot!.data()!["userNickName"] as! String,
+                                                       docId: querySnapShot!.documentID
+                                                    )
+                            print("query: \(query)")
+                        locations.append(query)
+//                    }
+                    self.delegate.itemDownLoaded(items: locations)
+                }
+            })
+            
+    }
+    
 }
