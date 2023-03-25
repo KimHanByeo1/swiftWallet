@@ -2,7 +2,7 @@
 //  PurchaseTableViewCell.swift
 //  Wallet
 //
-//  Created by 안수빈 on 2023/03/24.
+//  Created by 안수빈 on 2023/03/25.
 //
 
 import UIKit
