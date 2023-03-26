@@ -45,6 +45,8 @@
 		2669F7A929CD7B33007D3407 /* MySellDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669F7A829CD7B33007D3407 /* MySellDB.swift */; };
 		2669F7AC29CD7B91007D3407 /* MySellProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669F7AB29CD7B91007D3407 /* MySellProductModel.swift */; };
 		269849EF29CF06990065B62F /* LogoutDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269849EE29CF06990065B62F /* LogoutDoneViewController.swift */; };
+		26B35F6F29D0A6D000FD7F88 /* FirstNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B35F6E29D0A6D000FD7F88 /* FirstNavigationController.swift */; };
+		26B35F7129D0A75100FD7F88 /* SignInNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B35F7029D0A75100FD7F88 /* SignInNavigationController.swift */; };
 		A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032A8B529CAA88C006328C9 /* ProfileViewController.swift */; };
 		A06B0E7629CFEA4900D60977 /* PurchaseDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B0E7529CFEA4900D60977 /* PurchaseDBModel.swift */; };
 		A06B0E7829CFEB6A00D60977 /* PurchaseQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B0E7729CFEB6A00D60977 /* PurchaseQueryModel.swift */; };
@@ -135,6 +137,8 @@
 		2669F7A829CD7B33007D3407 /* MySellDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySellDB.swift; sourceTree = "<group>"; };
 		2669F7AB29CD7B91007D3407 /* MySellProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySellProductModel.swift; sourceTree = "<group>"; };
 		269849EE29CF06990065B62F /* LogoutDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutDoneViewController.swift; sourceTree = "<group>"; };
+		26B35F6E29D0A6D000FD7F88 /* FirstNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstNavigationController.swift; sourceTree = "<group>"; };
+		26B35F7029D0A75100FD7F88 /* SignInNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInNavigationController.swift; sourceTree = "<group>"; };
 		4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A032A8B529CAA88C006328C9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A06B0E7529CFEA4900D60977 /* PurchaseDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDBModel.swift; sourceTree = "<group>"; };
@@ -301,6 +305,8 @@
 				263A884329C6AA3D0011C183 /* TelVerifyViewController.swift */,
 				263A884D29C729BE0011C183 /* SignInViewController.swift */,
 				2669F79329CC14F5007D3407 /* FirstViewController.swift */,
+				26B35F6E29D0A6D000FD7F88 /* FirstNavigationController.swift */,
+				26B35F7029D0A75100FD7F88 /* SignInNavigationController.swift */,
 			);
 			path = "Login&SignIn";
 			sourceTree = "<group>";
@@ -809,6 +815,7 @@
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
 				A0E2889E29CEB02700A32656 /* PurchaseTableViewController.swift in Sources */,
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
+				26B35F7129D0A75100FD7F88 /* SignInNavigationController.swift in Sources */,
 				265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */,
 				BC0703C329D0862700B6D66A /* MockMessage.swift in Sources */,
 				269849EF29CF06990065B62F /* LogoutDoneViewController.swift in Sources */,
@@ -821,6 +828,7 @@
 				A0E2889929CEAF6C00A32656 /* PurchaseTableViewCell.swift in Sources */,
 				E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */,
 				2669F79F29CD3F88007D3407 /* SellFinViewController.swift in Sources */,
+				26B35F6F29D0A6D000FD7F88 /* FirstNavigationController.swift in Sources */,
 				2669F7A129CD3F95007D3407 /* SellIngViewController.swift in Sources */,
 				16920C7629C8278D006887CE /* MainTableViewCell.swift in Sources */,
 				E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */,

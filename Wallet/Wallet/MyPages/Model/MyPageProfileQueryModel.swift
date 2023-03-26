@@ -30,7 +30,8 @@ class MyPageProfileQueryModel{
                         let query = ProfileDBModel(documentId: document.documentID,
                                                    nickname: document.data()["nickname"] as! String,
                                                    email: document.data()["email"] as! String,
-                                                   profileimage: document.data()["profileImage"] as! String
+                                                   profileimage: document.data()["profileImage"] as! String,
+                                                   userBalance: document.data()["userBalance"] as! Int
                         )
                         
                         locations.append(query)

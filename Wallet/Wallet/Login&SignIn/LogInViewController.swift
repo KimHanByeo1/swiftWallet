@@ -39,7 +39,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         //lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-        
+//        self.navigationController?.navigationBar.isHidden = true
 
 //
         // 자동 로그인 기능 추가
@@ -220,9 +220,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 }
             }
             
-            
-            
-
+    
         }
         
     }
@@ -234,11 +232,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
      
         guard let navigationController = navigationController else {
                 print("navigationController is nil")
+            print(navigationController)
                 return
             }
-            
+        print(navigationController)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController")
         navigationController.pushViewController(vc, animated: true)
         
 
