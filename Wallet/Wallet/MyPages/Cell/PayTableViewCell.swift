@@ -54,14 +54,15 @@ extension PayTableViewCell :ProfileQueryModelProtocol{
     func itemDownloaded(items: [ProfileDBModel]) {
         let profileDBModel = items
 
-        
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
 
 //        nickname.text = profileDBModel.first!.nickname
 //        email.text = profileDBModel.first!.email
         
-        let balances = profileDBModel.first!.userBalance
+        let balances = numberFormatter.string(from: NSNumber(value: Int(exactly: profileDBModel.first!.userBalance)!))! + " 원"
         
-        balance.text = "\(balances) 원"
+        balance.text = "\(balances)"
         
         print(balances)
     }

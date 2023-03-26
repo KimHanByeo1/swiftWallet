@@ -21,14 +21,14 @@ class SellFinViewController: UITableViewController {
     
     
     let uid = Auth.auth().currentUser!.uid
+    let userEmail = Auth.auth().currentUser!.email
     
     // controller 연결
     let mySellingDB = MySellDB()
 
     
     // 유저의 이메일
-    let defaults = UserDefaults.standard
-    var userEmail = ""
+    
     
     // 상품 판매중
     let sellingState = "1"
@@ -44,9 +44,9 @@ class SellFinViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
 
-        // like의 imageURL code 가져오기
-        userEmail = defaults.string(forKey: "email")!
-        mySellingDB.sellingData(userEmail: userEmail, pState: sellingState)
+        
+//        userEmail = defaults.string(forKey: "email")!
+        mySellingDB.sellingData(userEmail: userEmail!, pState: sellingState)
         
         
    
@@ -60,6 +60,7 @@ class SellFinViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        
         return mySellingProduct.count
     }
 
@@ -68,30 +69,28 @@ class SellFinViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sellFinCell", for: indexPath) as! SellFinViewCell
 
         
+        
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         
         let dateViewModel = DateViewModel()
         
-        // url 비동기 통신
-//        if let imageURL = URL(string: mySellingProduct[indexPath.row].imageURL) {
-//            URLSession.shared.dataTask(with: imageURL) { data, response, error in
-//                if let data = data, let image = UIImage(data: data) {
-//                    DispatchQueue.global(qos: .background).async(qos: .utility) {
-//                        cell.sellFinImage.image = image
-//                    }
-//                }
-//            }.resume()
-//        }
+//         url 비동기 통신
+        if let imageURL = URL(string: mySellingProduct[indexPath.row].imageURL) {
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.sellFinImage.image = image
+                    }
+                }
+            }.resume()
+        }
         
-        
-        cell.sellFinImage.image = UIImage(named: "shop")
-//        cell.sellFinName.text = mySellingProduct[indexPath.row].pTitle
-        cell.sellFinName.text = "aaa"
+        cell.sellFinName.text = mySellingProduct[indexPath.row].pTitle
         cell.sellFinBrand.text = mySellingProduct[indexPath.row].pBrand + " · " + dateViewModel.DateCount(mySellingProduct[indexPath.row].pTime)
-        cell.sellFinPrice.text = mySellingProduct[indexPath.row].pPrice
+        cell.sellFinPrice.text = numberFormatter.string(from: NSNumber(value: Int(mySellingProduct[indexPath.row].pPrice)!))! + " 원"
         
-        var sellingStatus: String = "판매중"
+        var sellingStatus: String = "판매완료"
 
         if mySellingProduct[indexPath.row].pState == "0" {
             sellingStatus = "판매중"
@@ -104,7 +103,7 @@ class SellFinViewController: UITableViewController {
         cell.sellFinStatus.text = sellingStatus
         //cell.sellingStatus.text = "판매중"
         
-        tvFinView.reloadData()
+        
         return cell
     }
     
@@ -156,6 +155,16 @@ class SellFinViewController: UITableViewController {
     }
     */
 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SgSellFin"{
+                let cell = sender as! UITableViewCell
+                let indexPath = self.tvFinView.indexPath(for: cell)
+                let detailView = segue.destination as! DetailViewController
+                
+                detailView.imageURL = mySellingProduct[indexPath!.row].imageURL
+            }
+    }
 }
 
 extension SellFinViewController: MySellDBProtocol{
