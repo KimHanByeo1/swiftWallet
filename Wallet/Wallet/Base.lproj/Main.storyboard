@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fnd-pR-Lbl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OQO-8P-oKY">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -155,7 +155,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szy-pO-J2A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7199.2366412213742" y="22.535211267605636"/>
+            <point key="canvasLocation" x="10906.106870229007" y="22.535211267605636"/>
         </scene>
         <!--Side Menu View Controller-->
         <scene sceneID="dtl-c8-THw">
@@ -597,7 +597,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yw-uf-lWK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7" y="312"/>
+            <point key="canvasLocation" x="3713.740458015267" y="311.97183098591552"/>
         </scene>
         <!--홈-->
         <scene sceneID="NDB-AY-0PO">
@@ -636,7 +636,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mzc-0e-5qn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3667.9389312977096" y="93.661971830985919"/>
+            <point key="canvasLocation" x="7374.8091603053435" y="93.661971830985919"/>
         </scene>
         <!--채팅-->
         <scene sceneID="kWf-gP-mYm">
@@ -655,7 +655,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4sD-gX-iio" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4594.6564885496182" y="772.53521126760563"/>
+            <point key="canvasLocation" x="8301.5267175572517" y="772.53521126760563"/>
         </scene>
         <!--Users Table View Controller-->
         <scene sceneID="Tvl-tu-ghp">
@@ -708,7 +708,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Op-QP-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5521.3740458015263" y="772.53521126760563"/>
+            <point key="canvasLocation" x="9228.2442748091598" y="772.53521126760563"/>
         </scene>
         <!--New Chat View Controller-->
         <scene sceneID="ggh-GP-koD">
@@ -724,7 +724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbO-n4-7M0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6460.3053435114498" y="772.53521126760563"/>
+            <point key="canvasLocation" x="10167.175572519083" y="772.53521126760563"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="ibs-ev-6xP">
@@ -843,7 +843,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZE5-1m-Dyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7756.4885496183206" y="772.53521126760563"/>
+            <point key="canvasLocation" x="11458.778625954197" y="772.53521126760563"/>
         </scene>
         <!--내정보-->
         <scene sceneID="nWH-HC-S2C">
@@ -1486,12 +1486,13 @@
                         <viewLayoutGuide key="safeArea" id="0rX-3B-WHi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4YA-Sy-fBs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNp-XJ-fTH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2384" y="330"/>
+            <point key="canvasLocation" x="1399" y="330"/>
         </scene>
-        <!--Log In View Controller-->
+        <!--로그인-->
         <scene sceneID="MWa-6V-0ec">
             <objects>
                 <viewController storyboardIdentifier="LoginController" hidesBottomBarWhenPushed="YES" id="I6y-NL-9jX" customClass="LogInViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
@@ -1568,6 +1569,7 @@
                         <viewLayoutGuide key="safeArea" id="TSy-O0-4Pe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="로그인" id="80o-We-Ghc"/>
                     <connections>
                         <outlet property="autoLogin" destination="AG7-eI-NML" id="kyP-hK-aae"/>
                         <outlet property="emailCheck" destination="G1x-xQ-T2w" id="vx0-MT-jJK"/>
@@ -1579,7 +1581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MHu-gO-O1D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1529.0076335877861" y="329.57746478873241"/>
+            <point key="canvasLocation" x="2177.8625954198474" y="329.57746478873241"/>
         </scene>
         <!--Tel Verify View Controller-->
         <scene sceneID="2jB-YO-B35">
@@ -1647,7 +1649,7 @@
             </objects>
             <point key="canvasLocation" x="-949" y="1061"/>
         </scene>
-        <!--Sign In View Controller-->
+        <!--회원가입-->
         <scene sceneID="0dZ-M6-tRn">
             <objects>
                 <viewController storyboardIdentifier="SignUpViewController" id="VtI-yn-Bwb" customClass="SignInViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
@@ -1656,25 +1658,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T0O-oo-m5h">
-                                <rect key="frame" x="14" y="235" width="274" height="35"/>
+                                <rect key="frame" x="16" y="154" width="270" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAd-Nn-ydI">
-                                <rect key="frame" x="16" y="291" width="361" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Password (영문, 숫자를 혼용하여 6자리 이상)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAd-Nn-ydI">
+                                <rect key="frame" x="16" y="233" width="361" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Password Check" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1TX-cL-aAX">
-                                <rect key="frame" x="14" y="340" width="361" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Password Check (영문, 숫자를 혼용하여 6자리 이상)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1TX-cL-aAX">
+                                <rect key="frame" x="16" y="275" width="361" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbU-rC-E7w">
-                                <rect key="frame" x="296" y="235" width="83" height="35"/>
+                                <rect key="frame" x="294" y="154" width="83" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="중복확인"/>
@@ -1682,22 +1684,15 @@
                                     <action selector="emailCheck:" destination="VtI-yn-Bwb" eventType="touchUpInside" id="laE-UN-Fww"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이메일을 입력하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0D-9h-d9f">
-                                <rect key="frame" x="16" y="278" width="284" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                                <color key="textColor" systemColor="systemPinkColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="StatusBar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWj-qJ-l0t">
-                                <rect key="frame" x="16" y="381" width="284" height="12"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="비밀번호를 입력하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWj-qJ-l0t">
+                                <rect key="frame" x="16" y="317" width="361" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjH-mN-x53">
-                                <rect key="frame" x="153" y="642" width="83" height="35"/>
+                                <rect key="frame" x="16" y="411" width="361" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="회원가입"/>
@@ -1706,16 +1701,23 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder=" Nickname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WXf-Fy-leP">
-                                <rect key="frame" x="14" y="429" width="361" height="34"/>
+                                <rect key="frame" x="16" y="350" width="361" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이메일을 입력하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0D-9h-d9f">
+                                <rect key="frame" x="16" y="197" width="361" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                                <color key="textColor" systemColor="systemPinkColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nF7-Wq-KeV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zVb-xx-hPI"/>
+                    <navigationItem key="navigationItem" title="회원가입" id="zVb-xx-hPI"/>
                     <connections>
                         <outlet property="emailStatusBar" destination="f0D-9h-d9f" id="oDG-wm-vUO"/>
                         <outlet property="emailTextField" destination="T0O-oo-m5h" id="u2q-tj-8Ka"/>
@@ -1728,7 +1730,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Gq-pS-iMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="680" y="1051"/>
+            <point key="canvasLocation" x="672.51908396946567" y="1050"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="g0K-kA-Feb">
@@ -2322,7 +2324,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKD-p2-GQk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-19.083969465648853" y="1050"/>
+            <point key="canvasLocation" x="-163" y="1051"/>
         </scene>
         <!--Update View Controller-->
         <scene sceneID="aSC-bR-V8d">
@@ -2463,6 +2465,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmJ-tn-iO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4565.6488549618316" y="-569.0140845070423"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="pma-Fr-jny">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OQO-8P-oKY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="We3-Ex-eX4">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Fnd-pR-Lbl" kind="relationship" relationship="rootViewController" id="Ed1-0m-PWO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ut-db-30X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="473" y="330"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -40,6 +40,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         //lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         
+
 //
         // 자동 로그인 기능 추가
             if let email = defaults.string(forKey: "email"), let password = defaults.string(forKey: "password") {
@@ -230,20 +231,17 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func SinginButton(_ sender: UIButton) {
         
-        
-        print("sign")
+     
+        guard let navigationController = navigationController else {
+                print("navigationController is nil")
+                return
+            }
+            
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: true)
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
-//
-//        let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
-//        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
-//        self.transition2(from: vc1, to: vc2)
-        
+
     }
     
     // 자동로그인 스위치
