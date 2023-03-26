@@ -16,4 +16,14 @@ struct PurchaseDBModel{
     var pTitle:String
     var pPrice:String
     
+    init(documentId: String, userEmail: String, puchaseEmail: String, userId: String, imageURL: String, pTitle: String, pPrice: String) {
+        self.documentId = documentId
+        self.userEmail = userEmail
+        self.puchaseEmail = puchaseEmail
+        self.userId = userId
+        self.imageURL = imageURL
+        self.pTitle = pTitle
+        self.pPrice = pPrice
+    }
+    
 }

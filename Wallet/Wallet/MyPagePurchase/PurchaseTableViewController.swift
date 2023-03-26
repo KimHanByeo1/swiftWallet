@@ -10,10 +10,19 @@ import Firebase
 import FirebaseStorage
 
 class PurchaseTableViewController: UITableViewController {
+
+    
     
     @IBOutlet var PurchaseViewList: UITableView!
     
     var purchaseStore: [PurchaseDBModel] = []
+    
+    let picker = UIImagePickerController()
+    var downURL: String = ""
+    
+    let defaults = UserDefaults.standard
+
+    let user = Auth.auth().currentUser
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +64,10 @@ class PurchaseTableViewController: UITableViewController {
         // Configure the cell...
         cell.lblTitle.text = purchaseStore[indexPath.row].pTitle
         cell.lblPrice.text = purchaseStore[indexPath.row].pPrice
-        
+
         let storage = Storage.storage()
         let httpsReference = storage.reference(forURL: purchaseStore[indexPath.row].imageURL)
-        
+
         httpsReference.getData(maxSize: 1 * 1024 * 1024) { data, error in
           if let error = error {
               print("Error : \(error)")
