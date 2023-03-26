@@ -20,7 +20,7 @@ class PurchaseQueryModel{
         var locations: [PurchaseDBModel] = []
 
         db.collection("product")
-            .whereField("puchaseEmail", isEqualTo: <#Any#>)
+//            .whereField("puchaseEmail", isEqualTo: puchaseEmail)
             .getDocuments(completion: {(querySnapshot, err) in
                 if let err = err{
                     print("Error getting documents : \(err)")
