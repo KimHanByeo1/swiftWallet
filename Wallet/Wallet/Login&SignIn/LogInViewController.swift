@@ -37,7 +37,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        //lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         
 //
@@ -46,12 +46,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 login(email: email, password: password)
             }
         
-        emailField.text = "aaa@aaa.aaa"
-        passwordField.text = "aaaaaa"
+        
         
         autoLogin.isOn = false
         
     }
+    
     
     private func login(email: String, password: String) {
         authViewModel.logIn(email: email, password: password) { [self] (success) in
@@ -75,17 +75,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                             }else{
                                 dbModel.saveUserInfo(email: email, nickname: nickname, profileImage: profileImage)
                             }
-                            
-                            
-                           
-
-                            
-                            // 예시 - login 화면 tabBar화면들로 전환
-//                            let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
-//                            let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
-//                            self.transition(from: vc1, to: vc2)
-//
-                            print(nickname)
+   
                             
                         } else {
                             // Handle error
@@ -99,33 +89,33 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 print("로그인 실패")
                 shakeTextField(textField: emailField)
                 shakeTextField(textField: passwordField)
-                let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 610, width: 279, height: 45))
-                loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
-                loginFailLabel.textColor = UIColor.red
-                loginFailLabel.tag = 102
+                //let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 610, width: 279, height: 45))
+                passwordCheck.text = "아이디나 비밀번호가 다릅니다."
+//                passwordCheck.textColor = UIColor.red
+//                passwordCheck.tag = 102
                 
-                self.view.addSubview(loginFailLabel)
+                //self.view.addSubview(loginFailLabel)
             }
         }
     }
     
-    @objc private func loginButtonTapped(){
-        guard let email = emailField.text, let password = passwordField.text else{return}
-        
-        // Firebase Login
-        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {[weak self] authResult, error in
-            guard let strongSelf = self else{
-                return
-            }
-            guard let result = authResult, error == nil else{
-                print("Failed to login user with email : \(email)")
-                return
-            }
-            
-            let user = result.user
-            print("Logged in User : \(user)")
-        })
-    }
+//    @objc private func loginButtonTapped(){
+//        guard let email = emailField.text, let password = passwordField.text else{return}
+//
+//        // Firebase Login
+//        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {[weak self] authResult, error in
+//            guard let strongSelf = self else{
+//                return
+//            }
+//            guard let result = authResult, error == nil else{
+//                print("Failed to login user with email : \(email)")
+//                return
+//            }
+//
+//            let user = result.user
+//            print("Logged in User : \(user)")
+//        })
+//    }
     
     @IBAction func loginButton(_ sender: UIButton) {
         
@@ -137,10 +127,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
 
         
         if regExModel.isValidEmail(id: email) {
-            if let removable = self.view.viewWithTag(100) {
-                removable.removeFromSuperview()
-            }
-            emailField.text = ""
+//            if let removable = self.view.viewWithTag(100) {
+//                removable.removeFromSuperview()
+//            }
+            emailCheck.text = ""
         }else {
             shakeTextField(textField: emailField)
             
@@ -155,9 +145,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         
         if regExModel.isValidPassword(pwd: password){
-            if let removable = self.view.viewWithTag(101) {
-                removable.removeFromSuperview()
-            }
+//            if let removable = self.view.viewWithTag(101) {
+//                removable.removeFromSuperview()
+//            }
+            passwordCheck.text = ""
             passwordCheck.text = ""
         }
         else{
@@ -177,25 +168,23 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                 if success {
                     // Handle successful login
                     print("로그인 성공")
-                    print(email)
+                    passwordCheck.text = ""
                     let uid = Auth.auth().currentUser?.uid ?? ""
                     
                         Firestore.firestore().collection("users").document(uid).getDocument { [self] (snapshot, error) in
                             if let data = snapshot?.data() {
                                 let nickname = data["nickname"] as? String ?? ""
                                 let profileImage = data["profileImage"] as? String ?? ""
-                                
-                                
-                                
-                                
+                 
                                 if profileImage.isEmpty{
-                                    //UserDefaults를 위한 세팅(alike sharedPreferences)
+                                    // 프로필 이미지 없을 때
                                     dbModel.saveUserInfo(email: email, nickname: nickname, profileImage: nil)
                                 }else{
+                                    // 프로필 이미지 있을 때
                                     dbModel.saveUserInfo(email: email, nickname: nickname, profileImage: profileImage)
                                 }
                                 
-                                
+                                // 자동로그인 static 저장
                                 if autoLogin.isOn == true {
                                     let dataSave = UserDefaults.standard
                                     dataSave.setValue(email, forKey: "email")
@@ -223,12 +212,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
                     print("로그인 실패")
                     shakeTextField(textField: emailField)
                     shakeTextField(textField: passwordField)
-                    let loginFailLabel = UILabel(frame: CGRect(x: 68, y: 610, width: 279, height: 45))
-                    loginFailLabel.text = "아이디나 비밀번호가 다릅니다."
-                    loginFailLabel.textColor = UIColor.red
-                    loginFailLabel.tag = 102
                     
-                    self.view.addSubview(loginFailLabel)
+                    passwordCheck.text = "아이디나 비밀번호가 다릅니다."
+                    //passwordCheck.textColor = UIColor.red
+                    
                 }
             }
             
@@ -243,20 +230,23 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func SinginButton(_ sender: UIButton) {
         
-        // 예시 - login 화면 tabBar화면들로 전환
-        let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
-        self.transition2(from: vc1, to: vc2)
         
-//        if let viewController = storyboard?.instantiateViewController(withIdentifier: "TelVerifyViewController") {
-//            self.navigationController?.pushViewController(viewController, animated: true)
-//        }
+        print("sign")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
+        navigationController?.pushViewController(vc, animated: true)
         
-     
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
+//
+//        let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
+//        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
+//        self.transition2(from: vc1, to: vc2)
         
     }
     
-    
+    // 자동로그인 스위치
     @IBAction func autoLoginSwitchValueChanged(_ sender: UISwitch) {
         
         print(autoLogin.isOn)
