@@ -11,7 +11,9 @@ import Firebase // <<<<<
 
 protocol LikeCodeDBProtocol{
     func itemDownloaded(items: [String])
+    func itemLike(items: [String])
     func itemBring(products: [LikeProductModel])
+    
 }
 
 class LikeCodeDB{
@@ -21,6 +23,8 @@ class LikeCodeDB{
     
     func downloadItems(uid: String){
         var locations: [String] = []
+        
+        
         
         db.collection("users")
             .document(uid)
@@ -34,16 +38,52 @@ class LikeCodeDB{
                         guard let data = document.data()["code"] else { return }
                         
                         let query = document.data()["code"] as! String
+                        
                         locations.append(query)
+                        
                     }
                     DispatchQueue.main.async {
                         self.delegate.itemDownloaded(items: locations)
+                        
                     }
                     
                 }
             })
         
     }// downloadItems
+    
+    
+    func downloadLikes(uid: String){
+        var items: [String] = []
+        
+        
+        
+        db.collection("users")
+            .document(uid)
+            .collection("like")
+            .getDocuments(completion: {(querySnapshot, err) in
+                if let err = err{
+                    print("Error getting documents : \(err)")
+                }else{
+                    
+                    for document in querySnapshot!.documents{
+                        guard let data = document.data()["code"] else { return }
+                        
+                        let query = document.data()["like"] as! String
+                        
+                        items.append(query)
+                        
+                    }
+                    DispatchQueue.main.async {
+                        
+                        self.delegate.itemLike(items: items)
+                    }
+                    
+                }
+            })
+        
+    }// downloadItems
+    
     
     
     func bringProducts(code: [String]) {
@@ -84,6 +124,55 @@ class LikeCodeDB{
                 })
         }
     }
+    
+    
+    func DeleteItems(imageCode: String, uid: String) {
+        db.collection("users")
+                    .document(uid)
+                    .collection("like")
+                    .whereField("imageURL", isEqualTo: imageCode)
+                    .whereField("like", isEqualTo: "0")
+                    .getDocuments { (querySnapshot, error) in
+                        if let error = error {
+                            print("Error deleting documents: \(error.localizedDescription)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                document.reference.delete()
+                            }
+                        }
+                    }
+
+        
+    }
+    
+    func updateItems(uid: String, imageCode:String, like: String) -> Bool{
+            
+        var status: Bool = true
+        
+        db.collection("users")
+                    .document(uid)
+                    .collection("like")
+                    .whereField("imageURL", isEqualTo: imageCode)
+                    .getDocuments { (querySnapshot, error) in
+                        if let error = error {
+                            print("Error updating documents: \(error.localizedDescription)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                document.reference.updateData([
+                                    "like": like
+                                ]) { error in
+                                    if let error = error {
+                                        print("Error updating document: \(error.localizedDescription)")
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+            
+            return status
+
+        }
     
 } // QueryModel
 
