@@ -76,7 +76,6 @@
 		E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD17D29C6D54000E6DD35 /* WalletSelectModel.swift */; };
 		E1CCD18029C6D55200E6DD35 /* ProductRegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD17F29C6D55200E6DD35 /* ProductRegisterModel.swift */; };
 		E1CCD18229C6D55F00E6DD35 /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18129C6D55F00E6DD35 /* JsonModel.swift */; };
-		E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18329C6D56A00E6DD35 /* DBModel.swift */; };
 		E1CCD18729C6D58500E6DD35 /* FirebaseStorageFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18629C6D58500E6DD35 /* FirebaseStorageFunc.swift */; };
 		E1CCD18929C6D59000E6DD35 /* Flask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18829C6D59000E6DD35 /* Flask.swift */; };
 		E1CCD18B29C6D5A400E6DD35 /* staticModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CCD18A29C6D5A400E6DD35 /* staticModel.swift */; };
@@ -167,7 +166,6 @@
 		E1CCD17D29C6D54000E6DD35 /* WalletSelectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSelectModel.swift; sourceTree = "<group>"; };
 		E1CCD17F29C6D55200E6DD35 /* ProductRegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRegisterModel.swift; sourceTree = "<group>"; };
 		E1CCD18129C6D55F00E6DD35 /* JsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
-		E1CCD18329C6D56A00E6DD35 /* DBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBModel.swift; sourceTree = "<group>"; };
 		E1CCD18629C6D58500E6DD35 /* FirebaseStorageFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageFunc.swift; sourceTree = "<group>"; };
 		E1CCD18829C6D59000E6DD35 /* Flask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flask.swift; sourceTree = "<group>"; };
 		E1CCD18A29C6D5A400E6DD35 /* staticModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = staticModel.swift; sourceTree = "<group>"; };
@@ -578,7 +576,6 @@
 				E1CCD17D29C6D54000E6DD35 /* WalletSelectModel.swift */,
 				E1CCD17F29C6D55200E6DD35 /* ProductRegisterModel.swift */,
 				E1CCD18129C6D55F00E6DD35 /* JsonModel.swift */,
-				E1CCD18329C6D56A00E6DD35 /* DBModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -808,7 +805,6 @@
 				165D7CA729CD9CFF009EF7B6 /* PayCompleteViewController.swift in Sources */,
 				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,
 				A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */,
-				E1CCD18429C6D56A00E6DD35 /* DBModel.swift in Sources */,
 				260FD37F29C95ED20085A7F3 /* MyPageTableViewController.swift in Sources */,
 				A0E2889929CEAF6C00A32656 /* PurchaseTableViewCell.swift in Sources */,
 				E1CCD18D29C6D60100E6DD35 /* AddViewController.swift in Sources */,

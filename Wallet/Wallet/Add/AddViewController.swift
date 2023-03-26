@@ -47,8 +47,9 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     var imageData : NSData? = nil
     let photo = UIImagePickerController() // 앨범 이동
     
-    let email = Auth.auth().currentUser?.email
+    let email = UserDefaults.standard.string(forKey: "email")
     let nickName = UserDefaults.standard.string(forKey: "nickname")
+    let userId = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,17 +105,56 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     // 입력한 상세정보들 Firebase에 등록
     @IBAction func btnProductRegister(_ sender: UIBarButtonItem) {
         
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let dateString = formatter.string(from: currentDate)
-        let image = imageView.image!
-        let fsFunc = FirebaseStorageFunc()
-        
-        // Storage에 이미지 넣고 URL 값 반환받기
-        fsFunc.insertImage(name: dateString, image: image)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.insertAction()
+        if tfName.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+            showErrorAlert(result: "사진을 등록해주세요.")
+        } else if tfTitle.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+            showErrorAlert(result: "제목을 입력해주세요.")
+        } else if tfPrice.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+            showErrorAlert(result: "가격을 입력해주세요.")
+        } else if tvContent.text!.trimmingCharacters(in: .whitespaces) == "상품 설명" {
+            showErrorAlert(result: "내용을 입력해주세요.")
+        } else {
+            
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let dateString = formatter.string(from: currentDate)
+            let image = imageView.image!
+            
+            // Storage에 이미지 넣고 URL 값 반환받기
+//            fsFunc.insertImage(name: dateString, image: image)
+            let storageRef = Storage.storage().reference()
+            
+            // File located on disk
+            guard let imageData = image.jpegData(compressionQuality: 0.4) else { return }
+            
+            // Create a reference to the file you want to upload
+            let imageRef = storageRef.child("images/\(dateString).jpg")
+
+            // Meta data
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpg"
+            
+            // Upload the file to the path "images/rivers.jpg"
+            imageRef.putData(imageData, metadata: metadata) { metadata, error in
+                
+                guard metadata != nil else {
+                    print("Error : AddController putfile")
+                    return
+                }
+              // You can also access to download URL after upload.
+                imageRef.downloadURL { (url, error) in
+                guard let downloadURL = url else {
+                  print("Error : FirebaseStorageFunc : DownloadURL")
+                  return
+                }
+                StaticModel.downURL = "\(downloadURL)"
+                self.insertAction()
+              }
+            }
+            
+            
+            
         }
+        
     }
     
 //  ==================== Button End ======================
@@ -154,8 +194,15 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         guard let wTitle = tfTitle.text else {return}
         guard let wDetailContent = tvDetailContent.text else {return}
         
-        if !wName.trimmingCharacters(in: .whitespaces).isEmpty{
-            
+//        if wName.trimmingCharacters(in: .whitespaces).isEmpty {
+//            showErrorAlert(result: "사진을 등록해주세요.")
+//        } else if wTitle.trimmingCharacters(in: .whitespaces).isEmpty {
+//            showErrorAlert(result: "제목을 입력해주세요.")
+//        } else if wPrice.trimmingCharacters(in: .whitespaces).isEmpty {
+//            showErrorAlert(result: "가격을 입력해주세요.")
+//        } else if wContent.trimmingCharacters(in: .whitespaces).isEmpty {
+//            showErrorAlert(result: "내용을 입력해주세요.")
+//        } else {
             let prModel = ProductRegisterModel()
             let result = prModel.insesrtItems(
                 wBrand: wBrand,
@@ -170,7 +217,8 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 wTime: dateString,
                 wDetailContent: wDetailContent,
                 nickName: nickName!,
-                email: email!
+                email: email!,
+                userId: userId!
             )
             
             if result{
@@ -187,15 +235,18 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 }
                 self.resetField() // 상품 등록 후 텍스트 필드 초기화
             }
-        } else {
-            let resultAlert = UIAlertController(title: "Error", message: "상품 사진을 등록해주세요.", preferredStyle: .alert)
-            let onAction = UIAlertAction(title: "OK", style: .cancel)
-            
-            resultAlert.addAction(onAction)
-            
-            //위에 정의한 것 최종적으로 show
-            present(resultAlert, animated: true)
-        }
+//        }
+        
+    }
+    
+    func showErrorAlert(result: String) {
+        let resultAlert = UIAlertController(title: "Error", message: result, preferredStyle: .alert)
+        let onAction = UIAlertAction(title: "OK", style: .cancel)
+        
+        resultAlert.addAction(onAction)
+        
+        //위에 정의한 것 최종적으로 show
+        present(resultAlert, animated: true)
     }
     
     // 상품 등록 후 텍스트 필드 초기화
@@ -335,8 +386,7 @@ extension AddViewController {
         flask.uploadImg(uiImg: self.imageView.image!)
         flask.predict()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             let quertModel = SelectData()
             quertModel.delegate = self
             quertModel.downloadItems()
