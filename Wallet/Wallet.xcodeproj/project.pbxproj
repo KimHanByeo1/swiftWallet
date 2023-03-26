@@ -57,6 +57,9 @@
 		A0F0BBF629CC544B00D596BD /* MyPageProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0BBF529CC544B00D596BD /* MyPageProfileQueryModel.swift */; };
 		BC02504429CDA4F400B06F01 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC02504329CDA4F400B06F01 /* Channel.swift */; };
 		BC02504629CDA52C00B06F01 /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC02504529CDA52C00B06F01 /* ChannelViewModel.swift */; };
+		BC0703C329D0862700B6D66A /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0703C229D0862700B6D66A /* MockMessage.swift */; };
+		BC0703C529D0868700B6D66A /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0703C429D0868700B6D66A /* MockSocket.swift */; };
+		BC0703C729D0869C00B6D66A /* StreamError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0703C629D0869C00B6D66A /* StreamError.swift */; };
 		BC1E7D8429C84D310093830C /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D8329C84D310093830C /* Sender.swift */; };
 		BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9529C853C20093830C /* UsersTableViewController.swift */; };
 		BC1E7D9A29C856440093830C /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1E7D9929C856440093830C /* UserTableViewCell.swift */; };
@@ -146,6 +149,9 @@
 		ACF2BDC1637C04A3586F7FAA /* Pods-Wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wallet.release.xcconfig"; path = "Target Support Files/Pods-Wallet/Pods-Wallet.release.xcconfig"; sourceTree = "<group>"; };
 		BC02504329CDA4F400B06F01 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		BC02504529CDA52C00B06F01 /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
+		BC0703C229D0862700B6D66A /* MockMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		BC0703C429D0868700B6D66A /* MockSocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
+		BC0703C629D0869C00B6D66A /* StreamError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamError.swift; sourceTree = "<group>"; };
 		BC1E7D8329C84D310093830C /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		BC1E7D9529C853C20093830C /* UsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersTableViewController.swift; sourceTree = "<group>"; };
 		BC1E7D9929C856440093830C /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -483,6 +489,9 @@
 				BC1E7DAE29CAAF5A0093830C /* ChatModel.swift */,
 				BC8129A329CC56D200FD1399 /* ChatInfo.swift */,
 				BC02504329CDA4F400B06F01 /* Channel.swift */,
+				BC0703C229D0862700B6D66A /* MockMessage.swift */,
+				BC0703C429D0868700B6D66A /* MockSocket.swift */,
+				BC0703C629D0869C00B6D66A /* StreamError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -783,6 +792,7 @@
 				E1CCD19329C80B8500E6DD35 /* DetailViewModel.swift in Sources */,
 				BC1E7DAF29CAAF5A0093830C /* ChatModel.swift in Sources */,
 				E1CCD18B29C6D5A400E6DD35 /* staticModel.swift in Sources */,
+				BC0703C529D0868700B6D66A /* MockSocket.swift in Sources */,
 				265806E029CAF9AD0049703D /* MyPageLikeTableViewController.swift in Sources */,
 				16920C6F29C80BAF006887CE /* SearchViewModel.swift in Sources */,
 				BC02504629CDA52C00B06F01 /* ChannelViewModel.swift in Sources */,
@@ -800,7 +810,9 @@
 				A0E2889E29CEB02700A32656 /* PurchaseTableViewController.swift in Sources */,
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
 				265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */,
+				BC0703C329D0862700B6D66A /* MockMessage.swift in Sources */,
 				269849EF29CF06990065B62F /* LogoutDoneViewController.swift in Sources */,
+				BC0703C729D0869C00B6D66A /* StreamError.swift in Sources */,
 				A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */,
 				165D7CA729CD9CFF009EF7B6 /* PayCompleteViewController.swift in Sources */,
 				260FD37729C95E920085A7F3 /* ProfileTableViewCell.swift in Sources */,

@@ -8,22 +8,8 @@
 import UIKit
 import MessageKit
 import Firebase
-import FirebaseDatabase
-
-struct Message:MessageType{
-    var sender: MessageKit.SenderType
-    var messageId: String = ""
-    var sentDate: Date
-    var kind: MessageKit.MessageKind
-    
-    init(sender: MessageKit.SenderType, messageId: String, sentDate: Date, kind: MessageKit.MessageKind) {
-        self.sender = sender
-        self.messageId = messageId
-        self.sentDate = sentDate
-        self.kind = kind
-    }
-}
-
+import FirebaseFirestore
+import InputBarAccessoryView
 
 class NewChatViewController: MessagesViewController, MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate{
     
@@ -31,24 +17,91 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     
     var otherUser = Sender(senderId: "other", displayName: "aa")
     
+    lazy var messageList: [MockMessage] = []
+    
     public var destinationUid:String?
     
-    var messages = [MessageType]()
+    let firebaseDB = Firestore.firestore()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+         readMessages()
 
-        messages.append(Message(sender: currentUser, messageId: "1", sentDate: Date().addingTimeInterval(-86400), kind: .text("Hello World")))
-        messages.append(Message(sender: otherUser, messageId: "2", sentDate: Date().addingTimeInterval(-76400), kind: .text("a")))
-        messages.append(Message(sender: currentUser, messageId: "3", sentDate: Date().addingTimeInterval(-66400), kind: .text("b")))
-        messages.append(Message(sender: otherUser, messageId: "4", sentDate: Date().addingTimeInterval(-56400), kind: .text("c")))
-        messages.append(Message(sender: currentUser, messageId: "5", sentDate: Date().addingTimeInterval(-46400), kind: .text("d")))
-        messages.append(Message(sender: otherUser, messageId: "6", sentDate: Date().addingTimeInterval(-26400), kind: .text("e")))
-       
+
+//        messageList.append(MockMessage(text: "asd", user: Sender(senderId: "asd", displayName: "asd"), messageId: "asd", date: Date(timeIntervalSinceNow: 11111)))
+//        messages.append(Message(sender: otherUser, messageId: "2", sentDate: Date().addingTimeInterval(-76400), kind: .text("a")))
+//        messages.append(Message(sender: currentUser, messageId: "3", sentDate: Date().addingTimeInterval(-66400), kind: .text("b")))
+//        messages.append(Message(sender: otherUser, messageId: "4", sentDate: Date().addingTimeInterval(-56400), kind: .text("c")))
+//        messages.append(Message(sender: currentUser, messageId: "5", sentDate: Date().addingTimeInterval(-46400), kind: .text("d")))
+//        messages.append(Message(sender: otherUser, messageId: "6", sentDate: Date().addingTimeInterval(-26400), kind: .text("e")))
        
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate  = self
         messagesCollectionView.messagesDisplayDelegate = self
+        
+        configureMessageInputBar()
+        
+    } // viewDidLoad
+
+    func readMessages(){
+        firebaseDB.collection("chatrooms").document(self.currentUser.senderId).collection("you").document(otherUser.displayName).collection("Messages").order(by: "sentDate", descending: true).addSnapshotListener({ [self](querySnapShot, err) in
+            guard let querySnapShot = querySnapShot else { return }
+
+            querySnapShot.documentChanges.forEach { change in
+                switch change.type {
+                case .added:
+                    print("added")
+                    let text = change.document.data()["message"] as! String
+                    let user = Sender(senderId: change.document.data()["sender"] as! String, displayName: change.document.data()["senderName"] as! String)
+                    let messageId = change.document.data()["sender"] as! String
+                    let timestamp = change.document.data()["sentDate"] as! Timestamp
+
+                    let date =  Date(timeIntervalSince1970: TimeInterval(timestamp.seconds))
+
+                    //                               print(date1)
+
+                    self.messageList.append(MockMessage(text: text, user: user, messageId: messageId, date: date))
+                    messagesCollectionView.reloadData()
+//                    print(self.messageList)
+
+//                    print(change.document.data()["message"] as! String)
+                case .modified:
+                    print("modified")
+                case .removed:
+                    print("removed")
+                }
+            }
+
+        })
+        
+    }
+    
+    //MockMessage(messageId: "01B56FA0-870A-4612-A0A9-8805BDD6E770", sentDate: 2023-03-26 06:45:39 +0000, kind: MessageKit.MessageKind.text("Qwewq"), user: Wallet.Sender(senderId: "aaa@aaa.aaa", displayName: "aaa"))
+    
+    func insertMessage(_ message: MockMessage, _ realMessage : String) {
+    
+        firebaseDB.collection("chatrooms").document(currentUser.senderId).collection("you").document(otherUser.displayName).collection("Messages").document().setData(["sender":message.sender.senderId, "senderName":currentUser.displayName, "sentDate":message.sentDate, "message":realMessage])
+        firebaseDB.collection("chatrooms").document(otherUser.senderId).collection("you").document(currentUser.displayName).collection("Messages").document().setData(["sender":message.sender.senderId, "senderName":otherUser.displayName, "sentDate":message.sentDate, "message":realMessage])
+        self.messagesCollectionView.reloadData()
+
+    }
+    
+    func isLastSectionVisible() -> Bool {
+      guard !messageList.isEmpty else { return false }
+
+      let lastIndexPath = IndexPath(item: 0, section: messageList.count - 1)
+
+      return messagesCollectionView.indexPathsForVisibleItems.contains(lastIndexPath)
+    }
+
+    
+    func configureMessageInputBar(){
+        messageInputBar.delegate = self
+        messageInputBar.inputTextView.tintColor = .purple
+        messageInputBar.sendButton.setTitleColor(.purple, for: .normal)
+        messageInputBar.sendButton.setTitleColor(
+            UIColor.purple.withAlphaComponent(0.3),
+          for: .highlighted)
     }
     
     // MessagesDatasource
@@ -57,11 +110,12 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessageKit.MessagesCollectionView) -> MessageKit.MessageType {
-        messages[indexPath.section]
+        messageList[indexPath.section]
     }
     
     func numberOfSections(in messagesCollectionView: MessageKit.MessagesCollectionView) -> Int {
-        return messages.count
+        print(messageList)
+        return messageList.count
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
@@ -94,13 +148,12 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
         }
 
     //
-    private func insertNewMessage(_ message: Message) {
-            messages.append(message)
+    private func insertNewMessage(_ message: MockMessage) {
+            messageList.append(message)
 //            messages.sort()
             
             messagesCollectionView.reloadData()
         }
-    
 
     /*
     // MARK: - Navigation
@@ -112,4 +165,54 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     }
     */
 
+}
+
+extension NewChatViewController: InputBarAccessoryViewDelegate{
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        processInputBar(messageInputBar)
+    }
+    
+    func processInputBar(_ inputBar: InputBarAccessoryView){
+        let attributedText = inputBar.inputTextView.attributedText!
+        let range = NSRange(location: 0, length: attributedText.length)
+        attributedText.enumerateAttribute(.autocompleted, in: range, options: []) { _, range, _ in
+
+          let substring = attributedText.attributedSubstring(from: range)
+          let context = substring.attribute(.autocompletedContext, at: 0, effectiveRange: nil)
+//          print("Autocompleted: `", substring, "` with context: ", context ?? [])
+        }
+
+        let components = inputBar.inputTextView.components
+        inputBar.inputTextView.text = String()
+        inputBar.invalidatePlugins()
+        // Send button activity animation
+        inputBar.sendButton.startAnimating()
+        inputBar.inputTextView.placeholder = "Sending..."
+        // Resign first responder for iPad split view
+        inputBar.inputTextView.resignFirstResponder()
+        DispatchQueue.global(qos: .default).async {
+          // fake send request task
+//          sleep(1)
+          DispatchQueue.main.async { [weak self] in
+            inputBar.sendButton.stopAnimating()
+            inputBar.inputTextView.placeholder = "Aa"
+            self?.insertMessages(components)
+
+            self?.messagesCollectionView.scrollToLastItem(animated: true)
+          }
+        }
+    }
+    
+    private func insertMessages(_ data: [Any]) {
+      for component in data {
+        let user = currentUser
+          if let str = component as? String {
+              let message = MockMessage(text: str, user: user, messageId: UUID().uuidString, date: Date())
+              insertMessage(message,str)
+              print(self.messageList)
+          }
+      }
+    }
+    
+    
 }
