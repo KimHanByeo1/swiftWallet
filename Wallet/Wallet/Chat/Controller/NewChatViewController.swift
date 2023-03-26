@@ -51,6 +51,7 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
         messagesCollectionView.messagesDisplayDelegate = self
     }
     
+    // MessagesDatasource
     func currentSender() -> MessageKit.SenderType {
         return currentUser
     }
@@ -62,6 +63,44 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     func numberOfSections(in messagesCollectionView: MessageKit.MessagesCollectionView) -> Int {
         return messages.count
     }
+    
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+            let name = message.sender.displayName
+            return NSAttributedString(string: name, attributes: [.font: UIFont.preferredFont(forTextStyle: .caption1),
+                                                                 .foregroundColor: UIColor(white: 0.3, alpha: 1)])
+        }
+
+    // MessagesLayoutDelegate
+    // 말풍선 위 이름 나오는 곳의 height
+       func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+           return 20
+       }
+    
+    // MessagesDisplayDelegate
+    // 상대방이 보낸 메시지, 내가 보낸 메시지를 구분하여 색상과 모양 지정
+        // 말풍선의 배경 색상
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? .systemPurple : .systemGray6
+    }
+
+        func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+            return isFromCurrentSender(message: message) ? .white : .black
+        }
+
+        // 말풍선의 꼬리 모양 방향
+        func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+            let cornerDirection: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+            return .bubbleTail(cornerDirection, .curved)
+        }
+
+    //
+    private func insertNewMessage(_ message: Message) {
+            messages.append(message)
+//            messages.sort()
+            
+            messagesCollectionView.reloadData()
+        }
+    
 
     /*
     // MARK: - Navigation

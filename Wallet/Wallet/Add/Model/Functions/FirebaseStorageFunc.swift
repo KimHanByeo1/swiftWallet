@@ -11,6 +11,7 @@ import FirebaseStorage
 
 class FirebaseStorageFunc {
     
+    let uvc = UpdateViewController()
     var downURL: String = "" // storage에서 받아온 URL값 저장할 변수
     
     func insertImage(name: String, image: UIImage) {
@@ -30,18 +31,18 @@ class FirebaseStorageFunc {
         imageRef.putData(imageData, metadata: metadata) { metadata, error in
             
             guard metadata != nil else {
-                print("Error : putfile")
+                print("Error : FirebaseStorageFunc : putfile")
                 return
             }
           // You can also access to download URL after upload.
             imageRef.downloadURL { (url, error) in
             guard let downloadURL = url else {
-              print("Error : DownloadURL")
+              print("Error : FirebaseStorageFunc : DownloadURL")
               return
             }
             StaticModel.downURL = "\(downloadURL)"
           }
         }
-        print("--- Completed to insert a image ----")
+        print("FirebaseStorageFunc --- Completed to insert a image ----")
     }
 }
