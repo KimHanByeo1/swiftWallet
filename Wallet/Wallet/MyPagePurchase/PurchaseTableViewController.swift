@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseStorage
 
 class PurchaseTableViewController: UITableViewController {
-
+    
+    @IBOutlet var PurchaseViewList: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

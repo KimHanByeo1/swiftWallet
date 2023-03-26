@@ -50,7 +50,6 @@
 		A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */; };
 		A0E2888C29CD716700A32656 /* PurchaseDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888B29CD716700A32656 /* PurchaseDBModel.swift */; };
 		A0E2888E29CD793000A32656 /* PurchaseProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888D29CD793000A32656 /* PurchaseProductModel.swift */; };
-		A0E2889029CD7B5F00A32656 /* PurchaseCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888F29CD7B5F00A32656 /* PurchaseCodeModel.swift */; };
 		A0E2889929CEAF6C00A32656 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2889829CEAF6C00A32656 /* PurchaseTableViewCell.swift */; };
 		A0E2889E29CEB02700A32656 /* PurchaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2889D29CEB02700A32656 /* PurchaseTableViewController.swift */; };
 		A0F0BBF429CC3FEE00D596BD /* MyPageProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */; };
@@ -139,7 +138,6 @@
 		A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDBModel.swift; sourceTree = "<group>"; };
 		A0E2888B29CD716700A32656 /* PurchaseDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDBModel.swift; sourceTree = "<group>"; };
 		A0E2888D29CD793000A32656 /* PurchaseProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseProductModel.swift; sourceTree = "<group>"; };
-		A0E2888F29CD7B5F00A32656 /* PurchaseCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseCodeModel.swift; sourceTree = "<group>"; };
 		A0E2889829CEAF6C00A32656 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		A0E2889D29CEB02700A32656 /* PurchaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewController.swift; sourceTree = "<group>"; };
 		A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileDBModel.swift; sourceTree = "<group>"; };
@@ -420,7 +418,6 @@
 			isa = PBXGroup;
 			children = (
 				A0E2888D29CD793000A32656 /* PurchaseProductModel.swift */,
-				A0E2888F29CD7B5F00A32656 /* PurchaseCodeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -800,7 +797,6 @@
 				E1CCD18929C6D59000E6DD35 /* Flask.swift in Sources */,
 				E1CCD1AC29C8D15100E6DD35 /* LikeModel.swift in Sources */,
 				E1CCD17E29C6D54000E6DD35 /* WalletSelectModel.swift in Sources */,
-				A0E2889029CD7B5F00A32656 /* PurchaseCodeModel.swift in Sources */,
 				A0E2889E29CEB02700A32656 /* PurchaseTableViewController.swift in Sources */,
 				E1CCD1AA29C8D14500E6DD35 /* userLikeModel.swift in Sources */,
 				265806D629CAA97F0049703D /* MyPageLikeTableViewCell.swift in Sources */,
