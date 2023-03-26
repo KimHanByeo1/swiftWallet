@@ -96,9 +96,9 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     }
     
     @IBAction func goChating(_ sender: UIButton) {
-        if check == 0 {
-            createRoom()
-        }
+//        if check == 0 {
+//            createRoom()
+//        }
     }
     
     // 채팅 여부 확인
@@ -260,9 +260,9 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
             let vc = segue.destination as! NewChatViewController
         
             
-            vc.currentUser = Sender(senderId: defaults.string(forKey: "email")!, displayName: defaults.string(forKey: "nickname")!)
+            vc.currentUser = Sender(senderId: uid, displayName: defaults.string(forKey: "nickname")!)
             
-            vc.otherUser = Sender(senderId: userEmail!, displayName: userNickName!)
+            vc.otherUser = Sender(senderId: userId!, displayName: userNickName!)
         }
         
         
