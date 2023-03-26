@@ -46,11 +46,11 @@
 		2669F7AC29CD7B91007D3407 /* MySellProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2669F7AB29CD7B91007D3407 /* MySellProductModel.swift */; };
 		269849EF29CF06990065B62F /* LogoutDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269849EE29CF06990065B62F /* LogoutDoneViewController.swift */; };
 		A032A8B629CAA88C006328C9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A032A8B529CAA88C006328C9 /* ProfileViewController.swift */; };
+		A06B0E7629CFEA4900D60977 /* PurchaseDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B0E7529CFEA4900D60977 /* PurchaseDBModel.swift */; };
+		A06B0E7829CFEB6A00D60977 /* PurchaseQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06B0E7729CFEB6A00D60977 /* PurchaseQueryModel.swift */; };
 		A06E176229CA947300652C22 /* ProfileUpdateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06E176129CA947300652C22 /* ProfileUpdateModel.swift */; };
 		A08A51EA29C9523900D995A9 /* ProfileQueryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */; };
 		A08A51EC29C952BD00D995A9 /* ProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */; };
-		A0E2888C29CD716700A32656 /* PurchaseDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888B29CD716700A32656 /* PurchaseDBModel.swift */; };
-		A0E2888E29CD793000A32656 /* PurchaseProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2888D29CD793000A32656 /* PurchaseProductModel.swift */; };
 		A0E2889929CEAF6C00A32656 /* PurchaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2889829CEAF6C00A32656 /* PurchaseTableViewCell.swift */; };
 		A0E2889E29CEB02700A32656 /* PurchaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E2889D29CEB02700A32656 /* PurchaseTableViewController.swift */; };
 		A0F0BBF429CC3FEE00D596BD /* MyPageProfileDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */; };
@@ -135,11 +135,11 @@
 		269849EE29CF06990065B62F /* LogoutDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutDoneViewController.swift; sourceTree = "<group>"; };
 		4E23AAEA2211F1F0CC3BE166 /* Pods_Wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A032A8B529CAA88C006328C9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A06B0E7529CFEA4900D60977 /* PurchaseDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDBModel.swift; sourceTree = "<group>"; };
+		A06B0E7729CFEB6A00D60977 /* PurchaseQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseQueryModel.swift; sourceTree = "<group>"; };
 		A06E176129CA947300652C22 /* ProfileUpdateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateModel.swift; sourceTree = "<group>"; };
 		A08A51E929C9523900D995A9 /* ProfileQueryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQueryModel.swift; sourceTree = "<group>"; };
 		A08A51EB29C952BD00D995A9 /* ProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDBModel.swift; sourceTree = "<group>"; };
-		A0E2888B29CD716700A32656 /* PurchaseDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDBModel.swift; sourceTree = "<group>"; };
-		A0E2888D29CD793000A32656 /* PurchaseProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseProductModel.swift; sourceTree = "<group>"; };
 		A0E2889829CEAF6C00A32656 /* PurchaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewCell.swift; sourceTree = "<group>"; };
 		A0E2889D29CEB02700A32656 /* PurchaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseTableViewController.swift; sourceTree = "<group>"; };
 		A0F0BBF329CC3FEE00D596BD /* MyPageProfileDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileDBModel.swift; sourceTree = "<group>"; };
@@ -420,7 +420,7 @@
 		A0E2888929CD710100A32656 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A0E2888D29CD793000A32656 /* PurchaseProductModel.swift */,
+				A06B0E7529CFEA4900D60977 /* PurchaseDBModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -428,7 +428,7 @@
 		A0E2888A29CD712600A32656 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				A0E2888B29CD716700A32656 /* PurchaseDBModel.swift */,
+				A06B0E7729CFEB6A00D60977 /* PurchaseQueryModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -782,7 +782,6 @@
 				260FD37B29C95EB50085A7F3 /* PayTableViewCell.swift in Sources */,
 				165D7CA529CD8AE8009EF7B6 /* PayChargeViewModel.swift in Sources */,
 				E1CCD19629C80D6600E6DD35 /* ProductDetailModel.swift in Sources */,
-				A0E2888C29CD716700A32656 /* PurchaseDBModel.swift in Sources */,
 				264512D829C695E80088E17A /* DBViewModel.swift in Sources */,
 				E1CCD19329C80B8500E6DD35 /* DetailViewModel.swift in Sources */,
 				BC1E7DAF29CAAF5A0093830C /* ChatModel.swift in Sources */,
@@ -794,6 +793,7 @@
 				E1CCD0F829BEF69200E6DD35 /* AppDelegate.swift in Sources */,
 				1610E93629C9AC5000824E49 /* SideMenuTableViewCell.swift in Sources */,
 				2669F7A629CD4014007D3407 /* SellIngViewCell.swift in Sources */,
+				A06B0E7629CFEA4900D60977 /* PurchaseDBModel.swift in Sources */,
 				16920C7929C828B0006887CE /* MainModel.swift in Sources */,
 				E1CCD1AE29C8D17900E6DD35 /* LikeViewModel.swift in Sources */,
 				BC02504429CDA4F400B06F01 /* Channel.swift in Sources */,
@@ -826,7 +826,6 @@
 				264512DA29C6964D0088E17A /* RegExModel.swift in Sources */,
 				165D7C9F29CD43A8009EF7B6 /* PayChargeViewController.swift in Sources */,
 				BC1E7DAD29CAAB450093830C /* ChatViewController.swift in Sources */,
-				A0E2888E29CD793000A32656 /* PurchaseProductModel.swift in Sources */,
 				A0F0BBF429CC3FEE00D596BD /* MyPageProfileDBModel.swift in Sources */,
 				E1DE84FD29CEFFB80044D5A4 /* updateViewModel.swift in Sources */,
 				BC1E7D8429C84D310093830C /* Sender.swift in Sources */,
@@ -847,6 +846,7 @@
 				265806E929CB2B9F0049703D /* LikeProductModel.swift in Sources */,
 				2669F7A429CD4003007D3407 /* SellFinViewCell.swift in Sources */,
 				BC1E7D9629C853C20093830C /* UsersTableViewController.swift in Sources */,
+				A06B0E7829CFEB6A00D60977 /* PurchaseQueryModel.swift in Sources */,
 				264512D229C694AA0088E17A /* LogInViewController.swift in Sources */,
 				16920C7D29C82B9F006887CE /* MainViewModel.swift in Sources */,
 				BC1E7DAB29CA9D8C0093830C /* UserInfo.swift in Sources */,

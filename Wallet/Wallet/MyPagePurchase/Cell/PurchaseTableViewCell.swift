@@ -10,9 +10,8 @@ import UIKit
 class PurchaseTableViewCell: UITableViewCell {
 
     @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var pTitle: UILabel!
-    @IBOutlet weak var pPrice: UILabel!
-    @IBOutlet weak var usersLike: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var lblPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,10 +22,6 @@ class PurchaseTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    override func layoutSubviews(){
-        
     }
 
 }
