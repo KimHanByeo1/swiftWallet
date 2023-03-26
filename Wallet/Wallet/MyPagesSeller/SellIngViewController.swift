@@ -29,8 +29,8 @@ class SellIngViewController: UITableViewController {
 
     
     // 유저의 이메일
-    let defaults = UserDefaults.standard
-    var userEmail = ""
+    
+    var userEmail = Auth.auth().currentUser!.email
     
     // 상품 판매중
     let sellingState = "0"
@@ -47,9 +47,9 @@ class SellIngViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
 
-        userEmail = defaults.string(forKey: "email")!
+        
         // like의 imageURL code 가져오기
-        mySellingDB.sellingData(userEmail: userEmail, pState: sellingState)
+        mySellingDB.sellingData(userEmail: userEmail!, pState: sellingState)
         
         
         
@@ -89,11 +89,11 @@ class SellIngViewController: UITableViewController {
         }
         
         
-        cell.sellingImage.image = UIImage(named: "shop")
+//        cell.sellingImage.image = UIImage(named: "shop")
         cell.sellingName.text = mySellingProduct[indexPath.row].pTitle
         
         cell.sellingBrand.text = mySellingProduct[indexPath.row].pBrand + " · " + dateViewModel.DateCount(mySellingProduct[indexPath.row].pTime)
-        cell.sellingPrice.text = mySellingProduct[indexPath.row].pPrice
+        cell.sellingPrice.text = numberFormatter.string(from: NSNumber(value: Int(mySellingProduct[indexPath.row].pPrice)!))! + " 원"
         
         var sellingStatus: String = "판매중"
 
@@ -106,10 +106,18 @@ class SellIngViewController: UITableViewController {
         }
 
         cell.sellingStatus.text = sellingStatus
-        //cell.sellingStatus.text = "판매중"
         
-
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SgSelling"{
+                let cell = sender as! UITableViewCell
+                let indexPath = self.tvView.indexPath(for: cell)
+                let detailView = segue.destination as! DetailViewController
+                
+                detailView.imageURL = mySellingProduct[indexPath!.row].imageURL
+            }
     }
     
 
@@ -163,6 +171,7 @@ class SellIngViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 167
     }
+
 }
 
 
@@ -170,7 +179,7 @@ extension SellIngViewController: MySellDBProtocol{
    
     func itemBring(products: [MySellProductModel]) {
         mySellingProduct = products
-        print(mySellingProduct)
+        
         self.tvView.reloadData()
     }
     
