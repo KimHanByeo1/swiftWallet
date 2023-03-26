@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PurchaseTableViewCell: UITableViewCell {
+class PurchaseTableViewCell: UITableViewCell{
 
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
@@ -23,5 +23,18 @@ class PurchaseTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func test(email : String){
+        let profileQueryModel = PurchaseQueryModel()
+        profileQueryModel.delegate = self
+//        profileQueryModel.downloadItems(purchaseEmail: purchaseEmail)
+    }
 
+}
+
+extension PurchaseTableViewCell:PurchaseQueryModelProtocol{
+    func itemDownloaded(items: [PurchaseDBModel]) {
+        
+    }
+    
 }

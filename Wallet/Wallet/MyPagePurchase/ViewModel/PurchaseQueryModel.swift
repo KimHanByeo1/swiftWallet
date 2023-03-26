@@ -18,33 +18,38 @@ class PurchaseQueryModel{
     
     func downloadItems(){
         var locations: [PurchaseDBModel] = []
-
+        let defaults = UserDefaults.standard
+        let email : String = defaults.string(forKey: "email") ?? ""
+        
         db.collection("product")
-//            .whereField("puchaseEmail", isEqualTo: puchaseEmail)
+//            .whereField("email", isEqualTo: puchaseEmail)
+//            .getDocuments(completion: {(querySnapshot, err) in
             .getDocuments(completion: {(querySnapshot, err) in
                 if let err = err{
                     print("Error getting documents : \(err)")
                 }else{
                     print("Data is downloaded.")
                     for document in querySnapshot!.documents{
-                        let query = PurchaseDBModel(documentId: document.documentID,
-                                                    userEmail: document.data()["userEmail"] as! String,
-                                                    puchaseEmail: document.data()["puchaseEmail"] as! String,
-                                                    userId: document.data()["userId"] as! String,
-                                                    imageURL: document.data()["imageURL"] as! String,
-                                                    pTitle: document.data()["pTitle"] as! String,
-                                                    pPrice: document.data()["pPrice"] as! String)
+                        let data = document.data()
                         
-                        locations.append(query)
+                        if let field = data["puchaseEmail"]{
+                            if(field as! String == email){
+                                let query = PurchaseDBModel(documentId: document.documentID,
+                                                            userEmail: document.data()["userEmail"] as! String,
+                                                            puchaseEmail: document.data()["puchaseEmail"] as! String,
+                                                            userId: document.data()["userId"] as! String,
+                                                            imageURL: document.data()["imageURL"] as! String,
+                                                            pTitle: document.data()["pTitle"] as! String,
+                                                            pPrice: document.data()["pPrice"] as! String)
+                                locations.append(query)
+                                print(query.puchaseEmail)
+                            }
+                        }
                     }
-                    DispatchQueue.main.async {
-                        self.delegate.itemDownloaded(items: locations)
-                    }
-                    
-//
-//                    DispatchQueue.main.async(execute: {() -> Void in
-//                        self.delegate.itemDownloaded(items: locations)
-//                    })
+
+                }
+                DispatchQueue.main.async {
+                    self.delegate.itemDownloaded(items: locations)
                 }
             })
     }

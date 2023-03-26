@@ -248,10 +248,10 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
                     navigationController?.pushViewController(vc, animated: true)
                     
                 } else if indexPath.row == 2{
-                    // 구매내역
-//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                    let vc = storyboard.instantiateViewController(withIdentifier: "여기다가 스토리 보드 이름") as! TabManViewController
-//                    navigationController?.pushViewController(vc, animated: true)
+//                     구매내역
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "PurchaseTableViewController") as! PurchaseTableViewController
+                    navigationController?.pushViewController(vc, animated: true)
                 }
                 // You can add more conditions to handle other cells in this section
             }
