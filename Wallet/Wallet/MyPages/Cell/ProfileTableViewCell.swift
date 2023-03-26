@@ -49,7 +49,8 @@ class ProfileTableViewCell: UITableViewCell {
 //    }
     override func layoutSubviews() {
         super.layoutSubviews()
-//        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+//        userProfile.layer.cornerRadius = userProfile.frame.height / 2
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
 //        profileImage.layer.borderWidth = 0
 //        profileImage.layer.borderColor = UIColor.clear.cgColor

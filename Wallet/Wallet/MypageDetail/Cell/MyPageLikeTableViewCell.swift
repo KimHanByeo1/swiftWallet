@@ -18,7 +18,8 @@ class MyPageLikeTableViewCell: UITableViewCell {
     @IBOutlet weak var pBrand: UILabel!
     @IBOutlet weak var pPrice: UILabel!
     
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var btnLikeText: UIButton!
+    
     
     @IBOutlet weak var lblState: UILabel!
     
@@ -30,6 +31,10 @@ class MyPageLikeTableViewCell: UITableViewCell {
         
     }
 
+    
+    
+    
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -47,11 +52,9 @@ class MyPageLikeTableViewCell: UITableViewCell {
         
     }
     
-    
-
-    @IBAction func likeButton(_ sender: UIButton) {
-        
-        
+    func updateLike(uid: String, imageCode: String, like: String){
+        let dbModel = LikeCodeDB()
+        dbModel.updateItems(uid: uid, imageCode: imageCode, like: like)
     }
     
     
