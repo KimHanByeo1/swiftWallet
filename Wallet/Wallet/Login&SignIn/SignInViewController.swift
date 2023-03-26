@@ -53,27 +53,50 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     // UITextFieldDelegate 메서드
         func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            guard let password = passwordTextField.text, let _ = passwordConfirmTextField.text else {
+            guard let password = passwordTextField.text, let passwordCheck = passwordConfirmTextField.text else {
                 return true
             }
             
-//            let newString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-//            let isEqual = password == confirmPassword
+//            if textField == passwordConfirmTextField {
+//                // 이전에 실행되던 타이머가 있다면, 취소
+//                passwordTimer?.invalidate()
+//
+//                // 대기 시간 후 비밀번호 확인 실행
+//                passwordTimer = Timer.scheduledTimer(withTimeInterval: passwordCheckDelay, repeats: false) { [weak self] _ in
+//                    if self!.passwordTextField.text != self!.passwordConfirmTextField.text {
+//                        self?.passwordStatusBar.text = "비밀번호가 일치하지 않습니다"
+//                    } else {
+//                        self?.passwordStatusBar.text = "비밀번호가 일치합니다"
+//                    }
+//                }
+//            } else if userModel.isValidPassword(pwd: password) {
+//                passwordStatusBar.text = "6자리 이상 입력해 주세요"
+//            } else {
+//                passwordStatusBar.text = "비밀번호를 입력하세요"
+//            }
             
-            if textField == passwordConfirmTextField {
-                // 이전에 실행되던 타이머가 있다면, 취소
-                passwordTimer?.invalidate()
-                
-                // 대기 시간 후 비밀번호 확인 실행
-                passwordTimer = Timer.scheduledTimer(withTimeInterval: passwordCheckDelay, repeats: false) { [weak self] _ in
-                    if self!.passwordTextField.text != self!.passwordConfirmTextField.text {
-                        self?.passwordStatusBar.text = "비밀번호가 일치하지 않습니다"
-                    } else {
-                        self?.passwordStatusBar.text = "비밀번호가 일치합니다"
+            
+            if userModel.isValidPassword(pwd: password) {
+                passwordStatusBar.text = "6자리 이상 입력해 주세요"
+
+                if textField == passwordConfirmTextField {
+                    // 이전에 실행되던 타이머가 있다면, 취소
+                    passwordTimer?.invalidate()
+
+                    // 대기 시간 후 비밀번호 확인 실행
+                    passwordTimer = Timer.scheduledTimer(withTimeInterval: passwordCheckDelay, repeats: false) { [weak self] _ in
+                        if self!.passwordTextField.text != self!.passwordConfirmTextField.text {
+                            self?.passwordStatusBar.text = "비밀번호가 일치하지 않습니다"
+                        } else {
+                            self?.passwordStatusBar.text = "비밀번호가 일치합니다"
+                        }
                     }
                 }
-            } else if userModel.isValidPassword(pwd: password) {
-                passwordStatusBar.text = "6자리 이상 입력해 주세요"
+
+            } else if password.isEmpty {
+                passwordStatusBar.text = "비밀번호를 입력하세요"
+            } else if passwordCheck.isEmpty {
+                passwordStatusBar.text = "비밀번호를 한번 더 입력해 주세요"
             } else {
                 passwordStatusBar.text = "비밀번호를 입력하세요"
             }
@@ -174,59 +197,101 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         let nickname = nicknameTextField.text!
         
         
-        if emailTextField.text!.isEmpty {
-            let resultAlert = UIAlertController(title: "빈칸 확인", message: "이메일을 확인해주세요", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "네 알겠습니다.", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
+        if emailTextField.text!.isEmpty || !userModel.isValidEmail(id: email) || emailStatusBar.text != "사용할 수 있는 이메일입니다." {
+            let resultAlert = UIAlertController(title: "빈칸 확인", message: "이메일 중복체크 하세요", preferredStyle: .alert)
+            let actionCancel = UIAlertAction(title: "네 알겠습니다.", style: .cancel)
             
-            resultAlert.addAction(okAction)
-            present(resultAlert, animated: true)
-        }else if nicknameTextField.text!.isEmpty{
-            let resultAlert = UIAlertController(title: "빈칸 확인", message: "닉네임 확인해주세요", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "네 알겠습니다.", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
-            
-            resultAlert.addAction(okAction)
+            resultAlert.addAction(actionCancel)
             present(resultAlert, animated: true)
         }else if passwordTextField.text!.isEmpty || passwordConfirmTextField.text!.isEmpty {
             let resultAlert = UIAlertController(title: "빈칸 확인", message: "비밀번호를 확인해주세요", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "네 알겠습니다.", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
+            let actionCancel = UIAlertAction(title: "네 알겠습니다.", style: .cancel)
             
-            resultAlert.addAction(okAction)
+            resultAlert.addAction(actionCancel)
             present(resultAlert, animated: true)
-        }else{
-            // Create new user account
-            self.authViewModel.signIn(email: email, password: password) { user, error in
-                if let user = user {
-                    
-                    self.dismiss(animated: true)
-                    print("Sign In Success!")
-                    self.dbViewModel.createUser(uid: user.user.uid, email: email, nickname: nickname, image: nil)
-                    
-                    let resultAlert = UIAlertController(title: "알림", message: "회원가입 성공!", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "네 알겠습니다.", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
-                    
-                    resultAlert.addAction(okAction)
-                    self.present(resultAlert, animated: true)
-                    
-                    let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
-                    let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
-                    
-                    self.transition(from: vc1, to: vc2)
-                    
-                    // Firebase Real-time 연동 소스
-                    self.firebaseDB = Database.database().reference()
-                    self.firebaseDB.child("users").child(user.user.uid).setValue(["email": self.emailTextField.text?.trimmingCharacters(in: .whitespaces) , "name": self.nicknameTextField.text!.trimmingCharacters(in: .whitespaces), "uid":Auth.auth().currentUser?.uid])
-                } else {
-                    
-                    print("Sign In Failed. \(error.debugDescription)")
-                    let resultAlert = UIAlertController(title: "에러", message: "회원가입에 실패했습니다.", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "네 알겠습니다.", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
-                    
-                    resultAlert.addAction(okAction)
-                    self.present(resultAlert, animated: true)
-                    
-                    
-                }
-            }
+        }else if !userModel.isValidPassword(pwd: password) && !userModel.isValidPassword(pwd: passwordCheck) {
+            let resultAlert = UIAlertController(title: "확인", message: "비밀번호를 6자리 이상 입력해 주세요", preferredStyle: .alert)
+            let actionCancel = UIAlertAction(title: "네 알겠습니다.", style: .cancel)
+            
+            resultAlert.addAction(actionCancel)
+            present(resultAlert, animated: true)
+        }else if password != passwordCheck {
+            let resultAlert = UIAlertController(title: "확인", message: "비밀번호가 다릅니다", preferredStyle: .alert)
+            let actionCancel = UIAlertAction(title: "네 알겠습니다.", style: .cancel)
+            
+            resultAlert.addAction(actionCancel)
+            present(resultAlert, animated: true)
+        }else if nicknameTextField.text!.isEmpty{
+            let resultAlert = UIAlertController(title: "빈칸 확인", message: "닉네임 확인해주세요", preferredStyle: .alert)
+            let actionCancel = UIAlertAction(title: "네 알겠습니다.", style: .cancel)
+            
+            resultAlert.addAction(actionCancel)
+            present(resultAlert, animated: true)
+        } else {
+            
+            
+            //모든 조건을 충족하면 나오는 알림 메시지
+            let testAlert = UIAlertController(title: "회원가입", message: "정말 회원가입 하시겠습니까?", preferredStyle: .alert)
+            
+            
+            
+            let actionDestructive = UIAlertAction(title: "회원가입", style: .default, handler: {ACTION in do {
+                // Create new user account
+                self.authViewModel.signIn(email: email, password: password) { user, error in
+                    if let user = user {
+                        
+                        self.dismiss(animated: true)
+                        print("Sign In Success!")
+                        self.dbViewModel.createUser(uid: user.user.uid, email: email, nickname: nickname, image: nil, userBalance: nil)
+                        
+                        let resultAlert = UIAlertController(title: "알림", message: "회원가입 성공!", preferredStyle: .alert)
+                        let actionCancel = UIAlertAction(title: "네 알겠습니다.", style: .cancel)
+                        
+                        resultAlert.addAction(actionCancel)
+                        self.present(resultAlert, animated: true)
+                        
+                        let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
+                        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
+                        
+                        self.transition(from: vc1, to: vc2)
+                        
+                        // Firebase Real-time 연동 소스
+                        self.firebaseDB = Database.database().reference()
+                        self.firebaseDB.child("users").child(user.user.uid).setValue(["email": self.emailTextField.text?.trimmingCharacters(in: .whitespaces) , "name": self.nicknameTextField.text!.trimmingCharacters(in: .whitespaces), "uid":Auth.auth().currentUser?.uid])
+                    } else {
+                        
+                        print("Sign In Failed. \(error.debugDescription)")
+                        let resultAlert = UIAlertController(title: "에러", message: "회원가입에 실패했습니다.", preferredStyle: .alert)
+                        let actionCancel = UIAlertAction(title: "네 알겠습니다.", style: .cancel)
+                        
+                        resultAlert.addAction(actionCancel)
+                        self.present(resultAlert, animated: true)
+                        
+                        
+                    }
+                }// Create new user account
+                
+          
+                        } catch let error {
+                            print("Error signing out: \(error.localizedDescription)")
+                        }
+ 
+                
+            })
+            
+            
+            
+            let actionCancel = UIAlertAction(title: "닫기", style: .cancel)
+            
+            //UIAlertController에 UIAlertAction
+            testAlert.addAction(actionDestructive)
+            testAlert.addAction(actionCancel)
+            
+            //위에 정의한 것 최종적으로 show
+            present(testAlert, animated: true)
+            
+            
+            
             }
         
        

@@ -25,12 +25,17 @@ class DBViewModel : NSObject {
 //        }
 //    }
     
-    func createUser(uid: String, email: String, nickname: String, image: String?) {
+    func createUser(uid: String, email: String, nickname: String, image: String?, userBalance: Int?) {
     var data: [String: Any] = ["email": email, "nickname": nickname]
     if let image = image {
         data["profileImage"] = image
     } else {
         data["profileImage"] = ""
+    }
+    if let userBalance = userBalance {
+        data["userBalance"] = userBalance
+    } else {
+        data["userBalance"] = 0
     }
     db.collection("users").document(uid).setData(data) { err in
         if let err = err {
