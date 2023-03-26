@@ -146,6 +146,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @IBAction func backButton(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
+
+        self.view.window?.rootViewController = vc
+        
+    }
+    
     
     // TextField 흔들기 애니메이션
         func shakeTextField(textField: UITextField) -> Void{

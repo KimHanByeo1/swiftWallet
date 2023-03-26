@@ -43,4 +43,30 @@ class PayTableViewCell: UITableViewCell {
 //        backView.backgroundColor = .white
         
     }
+    func test1(email : String){
+        let profileQueryModel = MyPageProfileQueryModel()
+        profileQueryModel.delegate = self
+        profileQueryModel.downloadItems(email: email)
+    }
 }
+
+extension PayTableViewCell :ProfileQueryModelProtocol{
+    func itemDownloaded(items: [ProfileDBModel]) {
+        let profileDBModel = items
+
+        
+
+//        nickname.text = profileDBModel.first!.nickname
+//        email.text = profileDBModel.first!.email
+        
+        let balances = profileDBModel.first!.userBalance
+        
+        balance.text = "\(balances) 원"
+        
+        print(balances)
+    }
+    
+    
+}
+
+

@@ -19,38 +19,24 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
     var nickname = ""
     var email = ""
     var image = ""
+    var balance = 0
     var imageFB:UIImage?
     
     let picker = UIImagePickerController()
     var downURL: String = ""
     
     let user = Auth.auth().currentUser
-    var profileDBModel: [ProfileDBModel] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //        picker.delegate = self
-        //
-        ////             Uncomment the following line to preserve selection between presentations
-        ////             self.clearsSelectionOnViewWillAppear = false
-        //
-        //            // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        //            // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        //
-        //
-        //        nickname = defaults.string(forKey: "nickname")!
-        //        email = defaults.string(forKey: "email")!
-        ////        image = defaults.string(forKey: "profileImage") ?? ""
-        //        print("image")
-        //        print(image)
-        //
-        //        let profileQueryModel = MyPageProfileQueryModel()
-        //        profileQueryModel.delegate = self
-        //        profileQueryModel.downloadItems(email: user!.email!)
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
+       
+        // 내역 수정한 후 db에서 다시 불러오기
         MyPageTableView.reloadData()
     }
     
@@ -62,16 +48,7 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         defaults.removeObject(forKey: "password")
         defaults.removeObject(forKey: "autoLogin")
         UserDefaults.standard.synchronize()
-        
-       
-        
-//        //취소 확인
-//        let resultAlert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
-//        let okAction = UIAlertAction(title: "로그아웃", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
-//
-//        resultAlert.addAction(okAction)
-//        self.present(resultAlert, animated: true)
-        
+
         // UIAlertController 초기화
         let testAlert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
         
@@ -80,16 +57,15 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
             do {
                         try Auth.auth().signOut()
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "LogoutDone") as! LogoutDoneViewController
+                        let vc = storyboard.instantiateViewController(withIdentifier: "controllers") as! FirstNavigationController
+                
                         self.view.window?.rootViewController = vc
                     } catch let error {
                         print("Error signing out: \(error.localizedDescription)")
                     }
             
             
-//            let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "MyPageTableView") as! MyPageTableViewController
-//            let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "LogoutDone") as! LogoutDoneViewController
-//            self.transition1(from: vc1, to: vc2)
+
         })
         let actionCancel = UIAlertAction(title: "닫기", style: .cancel)
         
@@ -112,28 +88,7 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         }
         
         
-        func itemDownloaded(items: [ProfileDBModel]) {
-            profileDBModel = items
-            
-            // url 비동기 통신
-            if let imageURL = URL(string: items.first!.profileimage) {
-                print(imageURL)
-                URLSession.shared.dataTask(with: imageURL) { data, response, error in
-                    if let data = data, let image = UIImage(data: data) {
-                        DispatchQueue.main.async {
-                            self.imageFB = image
-                        }
-                    }
-                }.resume()
-            }
-            
-            downURL = profileDBModel.first!.profileimage
-            
-            nickname = profileDBModel.first!.nickname
-            email = profileDBModel.first!.email
-            
-            
-        }
+
         
         // MARK: - Table view data source
         
@@ -148,7 +103,7 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
             } else if section == 1 {
                 return 1 // payCell은 1개의 row
             } else {
-                return 4 // menuCell은 4개의 row
+                return 3 // menuCell은 4개의 row
             }
         }
         
@@ -180,7 +135,9 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
                 // payCell 반환
                 let cell = tableView.dequeueReusableCell(withIdentifier: "payCell", for: indexPath) as! PayTableViewCell
                 // cell 구성
-                cell.balance.text = "0원"
+                cell.test1(email: user!.email!)
+//                balance = profileDBModel.first!.userBalance
+                //cell.balance.text = "\(balance)"
                 //                cell.addBtn
                 //                cell.transfer
                 //                cell.payGoBtn
@@ -202,10 +159,6 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
                 case 2:
                     cell.menuImage.image = UIImage(named: "shop")
                     cell.menuLabel.text = "구매내역"
-                    //                    cell.menuGoBtn
-                case 3:
-                    cell.menuImage.image = UIImage(named: "fullheart")
-                    cell.menuLabel.text = "등록된 상품"
                     //                    cell.menuGoBtn
                 default:
                     break
@@ -303,32 +256,6 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
          // Pass the selected object to the new view controller.
          }
          */
-        // 관심목록 페이지로 전환하는 함수
-        func transition(from fromViewController: UIViewController, to toViewController: UIViewController) {
-            
-            let fromVC = self // 현재 View Controller
-            let toVC = storyboard?.instantiateViewController(withIdentifier: "MyPageLikeController") as! MyPageLikeTableViewController // 전환할 View Controller
-            
-            fromVC.addChild(toVC)
-            fromVC.view.addSubview(toVC.view)
-            toVC.view.frame = fromVC.view.bounds
-            toVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            toVC.didMove(toParent: fromVC)
-        }
-        
-        // logout후 로그인 페이지로 전환하는 함수
-        func transition1(from fromViewController: UIViewController, to toViewController: UIViewController) {
-            
-            let fromVC = self // 현재 View Controller
-            let toVC = storyboard?.instantiateViewController(withIdentifier: "LogoutDone") as! LogoutDoneViewController // 전환할 View Controller
-            
-            fromVC.addChild(toVC)
-            fromVC.view.addSubview(toVC.view)
-            toVC.view.frame = fromVC.view.bounds
-            toVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            toVC.didMove(toParent: fromVC)
-        }
-        
         
         
     }

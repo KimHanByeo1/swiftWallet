@@ -14,30 +14,34 @@ class FirstViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        self.navigationController?.navigationBar.isHidden = true;
-       
+        
+        self.navigationController?.navigationBar.isHidden = true
+        
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
+
+        
         if UserDefaults.standard.bool(forKey: "autoLogin") == true {
             // 자동 로그인 스위치가 켜져 있으면,
             let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController
             let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! TabBarViewController
+            
             self.transition(from: vc1, to: vc2)
-            
-            
+
             
         } else {
             let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController
-            let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
+            let vc2 = storyboard?.instantiateViewController(withIdentifier: "LoginController") as! LogInViewController
+            navigationController?.popToViewController(vc2, animated: true)
             self.transition2(from: vc1, to: vc2)
-            
-            
+
         }
         
         // Set the key window
     }
+    
     
     // first에서 main로 직접 전환하는 함수(if자동로그인)
     func transition(from fromViewController: UIViewController, to toViewController: UITabBarController) {
@@ -64,9 +68,13 @@ class FirstViewController: UIViewController {
         fromVC.view.addSubview(toVC.view)
         toVC.view.frame = fromVC.view.bounds
         toVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
         toVC.didMove(toParent: fromVC)
+        
     }
 
+    
+    
 
     /*
     // MARK: - Navigation
