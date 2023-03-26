@@ -63,17 +63,45 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         defaults.removeObject(forKey: "autoLogin")
         UserDefaults.standard.synchronize()
         
-        let resultAlert = UIAlertController(title: "확인", message: "로그아웃 되었습니다.", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "네 알겠습니다.", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
+       
         
-        resultAlert.addAction(okAction)
-        self.present(resultAlert, animated: true)
+//        //취소 확인
+//        let resultAlert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "로그아웃", style: .default, handler: {ACTION in self.navigationController?.popViewController(animated: true)})
+//
+//        resultAlert.addAction(okAction)
+//        self.present(resultAlert, animated: true)
+        
+        // UIAlertController 초기화
+        let testAlert = UIAlertController(title: "로그아웃", message: "정말 로그아웃 하시겠습니까?", preferredStyle: .alert)
         
         
-        // 예시 - login 화면 tabBar화면들로 전환
-        let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "MyPageTableView") as! MyPageTableViewController
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController
-        self.transition1(from: vc1, to: vc2)
+        let actionDestructive = UIAlertAction(title: "로그아웃", style: .destructive, handler: {ACTION in// 예시 - login 화면 tabBar화면들로 전환
+            do {
+                        try Auth.auth().signOut()
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "LogoutDone") as! LogoutDoneViewController
+                        self.view.window?.rootViewController = vc
+                    } catch let error {
+                        print("Error signing out: \(error.localizedDescription)")
+                    }
+            
+            
+//            let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "MyPageTableView") as! MyPageTableViewController
+//            let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "LogoutDone") as! LogoutDoneViewController
+//            self.transition1(from: vc1, to: vc2)
+        })
+        let actionCancel = UIAlertAction(title: "닫기", style: .cancel)
+        
+        //UIAlertController에 UIAlertAction
+        testAlert.addAction(actionDestructive)
+        testAlert.addAction(actionCancel)
+        
+        //위에 정의한 것 최종적으로 show
+        present(testAlert, animated: true)
+        
+        
+        
     }
         
         @IBAction func btnPayCharge(_ sender: UIButton) {
@@ -204,7 +232,7 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         }
         
         
-        
+        // 관심목록, 구매목록, 판매목록 페이지 이동
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             if indexPath.section == 2 {
                 if indexPath.row == 0 {
@@ -212,13 +240,18 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "MyPageLikeController") as! MyPageLikeTableViewController
                     navigationController?.pushViewController(vc, animated: true)
-                    print("pop")
-                    print(vc)
+                    
                 } else if indexPath.row == 1 {
                     // Instantiate and present the first view controller
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "TabManViewController") as! TabManViewController
                     navigationController?.pushViewController(vc, animated: true)
+                    
+                } else if indexPath.row == 2{
+                    // 구매내역
+//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let vc = storyboard.instantiateViewController(withIdentifier: "여기다가 스토리 보드 이름") as! TabManViewController
+//                    navigationController?.pushViewController(vc, animated: true)
                 }
                 // You can add more conditions to handle other cells in this section
             }
@@ -287,7 +320,7 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
         func transition1(from fromViewController: UIViewController, to toViewController: UIViewController) {
             
             let fromVC = self // 현재 View Controller
-            let toVC = storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController // 전환할 View Controller
+            let toVC = storyboard?.instantiateViewController(withIdentifier: "LogoutDone") as! LogoutDoneViewController // 전환할 View Controller
             
             fromVC.addChild(toVC)
             fromVC.view.addSubview(toVC.view)
