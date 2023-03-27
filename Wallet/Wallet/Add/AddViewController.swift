@@ -49,6 +49,7 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
     
     let email = UserDefaults.standard.string(forKey: "email")
     let nickName = UserDefaults.standard.string(forKey: "nickname")
+    var profileImg = UserDefaults.standard.string(forKey: "profileImage")
     let userId = Auth.auth().currentUser?.uid
     
     override func viewDidLoad() {
@@ -194,15 +195,6 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
         guard let wTitle = tfTitle.text else {return}
         guard let wDetailContent = tvDetailContent.text else {return}
         
-//        if wName.trimmingCharacters(in: .whitespaces).isEmpty {
-//            showErrorAlert(result: "사진을 등록해주세요.")
-//        } else if wTitle.trimmingCharacters(in: .whitespaces).isEmpty {
-//            showErrorAlert(result: "제목을 입력해주세요.")
-//        } else if wPrice.trimmingCharacters(in: .whitespaces).isEmpty {
-//            showErrorAlert(result: "가격을 입력해주세요.")
-//        } else if wContent.trimmingCharacters(in: .whitespaces).isEmpty {
-//            showErrorAlert(result: "내용을 입력해주세요.")
-//        } else {
             let prModel = ProductRegisterModel()
             let result = prModel.insesrtItems(
                 wBrand: wBrand,
@@ -218,7 +210,8 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 wDetailContent: wDetailContent,
                 nickName: nickName!,
                 email: email!,
-                userId: userId!
+                userId: userId!,
+                profileImg: profileImg!
             )
             
             if result{
@@ -235,7 +228,6 @@ class AddViewController: UIViewController, QueryModelProtocal, UITextViewDelegat
                 }
                 self.resetField() // 상품 등록 후 텍스트 필드 초기화
             }
-//        }
         
     }
     

@@ -45,7 +45,8 @@ class SelectDetailData {
                                                        userEmail: document.data()["userEmail"] as! String,
                                                        userNickName: document.data()["userNickName"] as! String,
                                                        docId: document.documentID,
-                                                       uid: document.data()["userId"] as! String
+                                                       uid: document.data()["userId"] as! String,
+                                                       profileImg: document.data()["profileImg"] as! String
                                                     )
                             print("query: \(query)")
                         locations.append(query)
@@ -70,21 +71,22 @@ class SelectDetailData {
                     
                     let query = ProductDetailModel(pBrand: querySnapShot!.data()!["pBrand"] as! String,
                                                    pColor: querySnapShot!.data()!["pColor"] as! String,
-                                                       pName: querySnapShot!.data()!["pName"] as! String,
-                                                       pMaterial: querySnapShot!.data()!["pMaterial"] as! String,
-                                                       pSize: querySnapShot!.data()!["pSize"] as! String,
-                                                       pImageURL: querySnapShot!.data()!["imageURL"] as! String,
-                                                       pContent: querySnapShot!.data()!["pContent"] as! String,
-                                                       pPrice: querySnapShot!.data()!["pPrice"] as! String,
-                                                       pTitle: querySnapShot!.data()!["pTitle"] as! String,
-                                                       pTime: querySnapShot!.data()!["pTime"] as! String,
-                                                       pDetailContent: querySnapShot!.data()!["pDetailContent"] as! String,
-                                                       pState: querySnapShot!.data()!["pState"] as! String,
-                                                       userEmail: querySnapShot!.data()!["userEmail"] as! String,
-                                                       userNickName: querySnapShot!.data()!["userNickName"] as! String,
-                                                       docId: querySnapShot!.documentID,
-                                                       uid: querySnapShot!.data()!["userId"] as! String
-                                                    )
+                                                   pName: querySnapShot!.data()!["pName"] as! String,
+                                                   pMaterial: querySnapShot!.data()!["pMaterial"] as! String,
+                                                   pSize: querySnapShot!.data()!["pSize"] as! String,
+                                                   pImageURL: querySnapShot!.data()!["imageURL"] as! String,
+                                                   pContent: querySnapShot!.data()!["pContent"] as! String,
+                                                   pPrice: querySnapShot!.data()!["pPrice"] as! String,
+                                                   pTitle: querySnapShot!.data()!["pTitle"] as! String,
+                                                   pTime: querySnapShot!.data()!["pTime"] as! String,
+                                                   pDetailContent: querySnapShot!.data()!["pDetailContent"] as! String,
+                                                   pState: querySnapShot!.data()!["pState"] as! String,
+                                                   userEmail: querySnapShot!.data()!["userEmail"] as! String,
+                                                   userNickName: querySnapShot!.data()!["userNickName"] as! String,
+                                                   docId: querySnapShot!.documentID,
+                                                   uid: querySnapShot!.data()!["userId"] as! String,
+                                                   profileImg: querySnapShot!.data()!["profileImg"] as! String
+                                                )
                             print("query: \(query)")
                         locations.append(query)
 //                    }
