@@ -29,6 +29,12 @@ class PurchaseTableViewCell: UITableViewCell{
         profileQueryModel.delegate = self
 //        profileQueryModel.downloadItems(purchaseEmail: purchaseEmail)
     }
+    
+//    func test(email : String){
+//        let profileQueryModel = PurchaseQueryModel()
+//        profileQueryModel.delegate = self
+//        profileQueryModel.downloadItems(email: email)
+//    }
 
 }
 

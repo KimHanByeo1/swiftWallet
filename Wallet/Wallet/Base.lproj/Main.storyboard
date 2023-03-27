@@ -343,11 +343,11 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="q6t-D8-jLh" customClass="DetailViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a60-L8-sII">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="1032"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1101"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dk-lb-biB">
-                                <rect key="frame" x="0.0" y="59" width="393" height="913"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="904"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMO-QK-ee7">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="947"/>
@@ -461,10 +461,10 @@
                                 </constraints>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LsU-WA-1DH">
-                                <rect key="frame" x="0.0" y="952" width="393" height="80"/>
+                                <rect key="frame" x="0.0" y="987" width="393" height="114"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzG-xf-Yjq">
-                                        <rect key="frame" x="8" y="7" width="74" height="26"/>
+                                        <rect key="frame" x="8" y="9" width="74" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="74" id="CqD-rM-ybJ"/>
                                         </constraints>
@@ -476,17 +476,17 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yj-t2-oCK">
-                                        <rect key="frame" x="75" y="18" width="1" height="4"/>
+                                        <rect key="frame" x="75" y="18" width="1" height="40"/>
                                         <color key="backgroundColor" systemColor="systemGray4Color"/>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJu-ah-e3B">
-                                        <rect key="frame" x="90" y="2.6666666666666288" width="154" height="35"/>
+                                        <rect key="frame" x="90" y="20.666666666666629" width="154" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCJ-ha-9eX">
-                                        <rect key="frame" x="289" y="2.6666666666666288" width="85" height="35"/>
+                                        <rect key="frame" x="289" y="20.666666666666629" width="85" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="85" id="ozj-KN-YOC"/>
                                         </constraints>
@@ -498,7 +498,7 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YFf-jT-Vbx">
-                                        <rect key="frame" x="0.0" y="-5" width="393" height="0.0"/>
+                                        <rect key="frame" x="0.0" y="-5" width="393" height="2"/>
                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3B-Ec-R7M">
@@ -765,12 +765,21 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBw-bq-hRR">
                                                     <rect key="frame" x="331.66666666666669" y="11.000000000000002" width="41.333333333333314" height="20.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ur3-C5-Wyt" id="hlN-SJ-wJr">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBw-bq-hRR">
+                                                    <rect key="frame" x="331.66666666666669" y="11" width="41.333333333333314" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_blue" translatesAutoresizingMaskIntoConstraints="NO" id="lnc-yE-Dbq">
                                                     <rect key="frame" x="321.66666666666669" y="1" width="61.333333333333314" height="40.666666666666664"/>
+                                                    <rect key="frame" x="321.66666666666669" y="1" width="61.333333333333314" height="41"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -794,12 +803,21 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXQ-l7-CTC">
                                                     <rect key="frame" x="70" y="11" width="41.333333333333343" height="21"/>
+                                        <rect key="frame" x="0.0" y="93.666667938232422" width="393" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wdx-BM-SbJ" id="s2g-UG-2Ix">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXQ-l7-CTC">
+                                                    <rect key="frame" x="70" y="10.999999999999998" width="41.333333333333343" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_gray" translatesAutoresizingMaskIntoConstraints="NO" id="zDU-c6-4A9">
                                                     <rect key="frame" x="60" y="1" width="61.333333333333343" height="41"/>
+                                                    <rect key="frame" x="60" y="1" width="61.333333333333343" height="41.333333333333336"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1183,7 +1201,7 @@
         <!--관심 목록-->
         <scene sceneID="kA0-RB-KlV">
             <objects>
-                <tableViewController storyboardIdentifier="MyPageLikeController" hidesBottomBarWhenPushed="YES" id="U1c-hK-y4m" customClass="MyPageLikeTableViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MyPageLikeController" id="U1c-hK-y4m" customClass="MyPageLikeTableViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="in4-z1-y8W">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1245,6 +1263,7 @@
                                     <outlet property="pImage" destination="RPL-8a-Sya" id="ztY-62-eLh"/>
                                     <outlet property="pPrice" destination="hcy-gs-lRe" id="2qE-O2-U2r"/>
                                     <outlet property="pTitle" destination="b39-9I-jNv" id="EQO-C7-oaz"/>
+                                    <segue destination="q6t-D8-jLh" kind="show" identifier="sgLike" id="soo-jl-KGF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1265,7 +1284,7 @@
         <!--나의 판매내역-->
         <scene sceneID="ow5-zy-wrO">
             <objects>
-                <viewController storyboardIdentifier="TabManViewController" hidesBottomBarWhenPushed="YES" id="jQW-Kj-ege" customClass="TabManViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TabManViewController" id="jQW-Kj-ege" customClass="TabManViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFk-fG-CqU">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1281,7 +1300,7 @@
         <!--Sell Ing View Controller-->
         <scene sceneID="L36-dk-oSe">
             <objects>
-                <tableViewController storyboardIdentifier="sellingViewcontroller" hidesBottomBarWhenPushed="YES" id="Wf3-8s-pFW" customClass="SellIngViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="sellingViewcontroller" id="Wf3-8s-pFW" customClass="SellIngViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="yOE-DL-0K2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1377,7 +1396,7 @@
         <!--Sell Fin View Controller-->
         <scene sceneID="eu0-ct-kwh">
             <objects>
-                <tableViewController storyboardIdentifier="sellFinViewController" hidesBottomBarWhenPushed="YES" id="JbI-9o-1t8" customClass="SellFinViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="sellFinViewController" id="JbI-9o-1t8" customClass="SellFinViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="g1R-nI-whc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2313,7 +2332,7 @@
             <objects>
                 <viewController wantsFullScreenLayout="YES" hidesBottomBarWhenPushed="YES" id="4Vk-ba-ne3" customClass="UpdateViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DJ5-Fi-heN">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="950"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jGs-CP-tVP">
@@ -2446,7 +2465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmJ-tn-iO5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4565.6488549618316" y="-569.0140845070423"/>
+            <point key="canvasLocation" x="4650" y="-535"/>
         </scene>
         <!--First Navigation Controller-->
         <scene sceneID="pma-Fr-jny">
@@ -2506,6 +2525,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="c2b-8j-tkh"/>
         <segue reference="awS-CZ-xc7"/>
+        <segue reference="Hdq-u6-igC"/>
+        <segue reference="soo-jl-KGF"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="systemPurpleColor"/>
     <resources>
