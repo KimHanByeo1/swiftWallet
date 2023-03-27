@@ -52,10 +52,33 @@ class MyPageLikeTableViewCell: UITableViewCell {
         
     }
     
-    func updateLike(uid: String, imageCode: String, like: String){
-        let dbModel = LikeCodeDB()
-        dbModel.updateItems(uid: uid, imageCode: imageCode, like: like)
+    
+    
+    
+    @IBAction func btnLike(_ sender: UIButton) {
+        
+        
     }
     
-    
+//    func updateLike(uid: String, imageCode: String, like: String) {
+//        let likeUpdate = LikeCodeDB()
+//        likeUpdate.delegate = self
+//        var likes = like
+//
+//
+//        if like == "1" {
+//            likes = "0"
+//            btnLikeText?.setImage(UIImage(named: "like1"))
+//            likeUpdate.updateItems(uid: uid, imageCode: imageCode, like: likes)
+//        } else{
+//            likes = "1"
+//            btnLikeText?.setImage(UIImage(named: "like2"))
+//            likeUpdate.updateItems(uid: uid, imageCode: imageCode, like: likes)
+//        }
+//
+//
+//
+//        print("Rb??")
+//    }
 }
+

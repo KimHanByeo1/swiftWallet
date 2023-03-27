@@ -237,7 +237,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
             }
         print(navigationController)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController")
+        let vc = storyboard.instantiateViewController(withIdentifier: "SignUpViewController") as! SignInViewController
         navigationController.pushViewController(vc, animated: true)
         
 
