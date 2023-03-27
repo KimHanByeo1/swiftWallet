@@ -58,15 +58,18 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
 
                     let date =  Date(timeIntervalSince1970: TimeInterval(timestamp.seconds))
 
-                    //                               print(date1)
+                    print(user.senderId)
 
                     self.messageList.append(MockMessage(text: text, user: user, messageId: messageId, date: date))
+                    print(user)
                     messagesCollectionView.reloadData()
 //                    print(self.messageList)
 
 //                    print(change.document.data()["message"] as! String)
                 case .modified:
+                    
                     print("modified")
+                    
                 case .removed:
                     print("removed")
                 }
@@ -114,7 +117,7 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     }
     
     func numberOfSections(in messagesCollectionView: MessageKit.MessagesCollectionView) -> Int {
-        print(messageList)
+//        print(messageList)
         return messageList.count
     }
     
@@ -144,6 +147,8 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
         // 말풍선의 꼬리 모양 방향
         func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
             let cornerDirection: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+           
+            
             return .bubbleTail(cornerDirection, .curved)
         }
 
@@ -209,7 +214,7 @@ extension NewChatViewController: InputBarAccessoryViewDelegate{
           if let str = component as? String {
               let message = MockMessage(text: str, user: user, messageId: UUID().uuidString, date: Date())
               insertMessage(message,str)
-              print(self.messageList)
+//              print(self.messageList)
           }
       }
     }
