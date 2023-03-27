@@ -655,7 +655,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4sD-gX-iio" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12008.396946564884" y="772.53521126760563"/>
+            <point key="canvasLocation" x="12933.587786259541" y="772.53521126760563"/>
         </scene>
         <!--Users Table View Controller-->
         <scene sceneID="Tvl-tu-ghp">
@@ -708,7 +708,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Op-QP-wyg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12933.587786259541" y="772.53521126760563"/>
+            <point key="canvasLocation" x="13860.305343511451" y="772.53521126760563"/>
         </scene>
         <!--New Chat View Controller-->
         <scene sceneID="ggh-GP-koD">
@@ -724,7 +724,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbO-n4-7M0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13874.045801526718" y="772.53521126760563"/>
+            <point key="canvasLocation" x="14800.763358778626" y="772.53521126760563"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="ibs-ev-6xP">
@@ -756,20 +756,20 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="myMessageCell" id="Ur3-C5-Wyt" customClass="MyMessageCell" customModule="Wallet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="393" height="44.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ur3-C5-Wyt" id="hlN-SJ-wJr">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBw-bq-hRR">
-                                                    <rect key="frame" x="331.66666666666669" y="11" width="41.333333333333314" height="21"/>
+                                                    <rect key="frame" x="331.66666666666669" y="11.000000000000002" width="41.333333333333314" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_blue" translatesAutoresizingMaskIntoConstraints="NO" id="lnc-yE-Dbq">
-                                                    <rect key="frame" x="321.66666666666669" y="1" width="61.333333333333314" height="41"/>
+                                                    <rect key="frame" x="321.66666666666669" y="1" width="61.333333333333314" height="41.666666666666664"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -785,20 +785,20 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="destinationMessageCell" id="wdx-BM-SbJ" customClass="DestinationMessageCell" customModule="Wallet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93.666667938232422" width="393" height="44"/>
+                                        <rect key="frame" x="0.0" y="94.333332061767578" width="393" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wdx-BM-SbJ" id="s2g-UG-2Ix">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXQ-l7-CTC">
-                                                    <rect key="frame" x="70" y="10.999999999999998" width="41.333333333333343" height="21.333333333333329"/>
+                                                    <rect key="frame" x="70" y="11.000000000000002" width="41.333333333333343" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_gray" translatesAutoresizingMaskIntoConstraints="NO" id="zDU-c6-4A9">
-                                                    <rect key="frame" x="60" y="1" width="61.333333333333343" height="41.333333333333336"/>
+                                                    <rect key="frame" x="60" y="1" width="61.333333333333343" height="40.666666666666664"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -843,7 +843,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZE5-1m-Dyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="15162.595419847328" y="772.53521126760563"/>
+            <point key="canvasLocation" x="16089.312977099236" y="772.53521126760563"/>
         </scene>
         <!--내정보-->
         <scene sceneID="nWH-HC-S2C">
@@ -862,7 +862,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUd-e7-B9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4594.6564885496182" y="1452.8169014084508"/>
+            <point key="canvasLocation" x="5521.3740458015263" y="1452.8169014084508"/>
         </scene>
         <!--My Page Table View Controller-->
         <scene sceneID="ke9-Bh-PJf">
@@ -1177,7 +1177,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5521.3740458015263" y="1452.8169014084508"/>
+            <point key="canvasLocation" x="6448.0916030534345" y="1452.8169014084508"/>
         </scene>
         <!--관심 목록-->
         <scene sceneID="kA0-RB-KlV">
@@ -1469,7 +1469,7 @@
             </objects>
             <point key="canvasLocation" x="7515.2671755725187" y="2833.8028169014087"/>
         </scene>
-        <!--firstController-->
+        <!--로그인-->
         <scene sceneID="UJ8-LK-CCZ">
             <objects>
                 <viewController storyboardIdentifier="firstController" hidesBottomBarWhenPushed="YES" id="Fnd-pR-Lbl" customClass="FirstViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
@@ -1479,7 +1479,7 @@
                         <viewLayoutGuide key="safeArea" id="0rX-3B-WHi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="firstController" id="4YA-Sy-fBs"/>
+                    <navigationItem key="navigationItem" title="로그인" id="4YA-Sy-fBs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YNp-XJ-fTH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1710,22 +1710,6 @@
                                 <color key="textColor" systemColor="systemPinkColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RNQ-K8-uFY">
-                                <rect key="frame" x="0.0" y="68" width="62" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Back"/>
-                                <connections>
-                                    <action selector="backButton:" destination="VtI-yn-Bwb" eventType="touchUpInside" id="vwC-Cd-Rgo"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="회원가입" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWz-SN-c20">
-                                <rect key="frame" x="167" y="74" width="59" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nF7-Wq-KeV"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1745,7 +1729,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Gq-pS-iMd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="672.51908396946567" y="1050"/>
+            <point key="canvasLocation" x="1599.2366412213739" y="1050"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="g0K-kA-Feb">
@@ -1815,7 +1799,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YHZ-El-TQi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6460.3053435114498" y="1452.8169014084508"/>
+            <point key="canvasLocation" x="7387.0229007633588" y="1452.8169014084508"/>
         </scene>
         <!--충전하기-->
         <scene sceneID="58y-hU-bMb">
@@ -2075,7 +2059,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xTw-dS-Jef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8347.3282442748095" y="1452.8169014084508"/>
+            <point key="canvasLocation" x="9274.0458015267177" y="1452.8169014084508"/>
         </scene>
         <!--Pay Complete View Controller-->
         <scene sceneID="PEh-Oh-frO">
@@ -2133,7 +2117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pak-iv-Ch5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9127.480916030534" y="1452.8169014084508"/>
+            <point key="canvasLocation" x="10054.198473282442" y="1452.8169014084508"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Aq7-Qt-cvc">
@@ -2272,7 +2256,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bma-Hr-Aty" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7420.6106870229005" y="1452.8169014084508"/>
+            <point key="canvasLocation" x="8347.3282442748095" y="1452.8169014084508"/>
         </scene>
         <!--Logout Done View Controller-->
         <scene sceneID="d1G-6c-1xp">
@@ -2463,10 +2447,10 @@
             </objects>
             <point key="canvasLocation" x="4565.6488549618316" y="-569.0140845070423"/>
         </scene>
-        <!--First Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="pma-Fr-jny">
             <objects>
-                <navigationController storyboardIdentifier="controllers" automaticallyAdjustsScrollViewInsets="NO" id="OQO-8P-oKY" customClass="FirstNavigationController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="controllers" automaticallyAdjustsScrollViewInsets="NO" id="OQO-8P-oKY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="We3-Ex-eX4">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -2498,6 +2482,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1P9-Mv-dLm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3359.5419847328244" y="329.57746478873241"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NS2-xS-OaT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v6i-Ci-zlp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UD5-dA-COw">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VtI-yn-Bwb" kind="relationship" relationship="rootViewController" id="oni-49-DUe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="klO-x3-N4V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="672.51908396946567" y="1050"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

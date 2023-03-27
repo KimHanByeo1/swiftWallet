@@ -43,6 +43,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        self.navigationController?.navigationBar.isHidden = false;
         // UITextFieldDelegate 설정
         passwordTextField.delegate = self
         passwordConfirmTextField.delegate = self
