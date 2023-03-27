@@ -30,7 +30,8 @@ class ProductRegisterModel {
             "userNickName": nickName,
             "userEmail": email,
             "userId": userId,
-            "profileImg": profileImg
+            "profileImg": profileImg,
+            "puchaseEmail": ""
         ]){error in
             if error != nil{
                 status = false
