@@ -16,10 +16,10 @@ class PurchaseQueryModel{
     var delegate: PurchaseQueryModelProtocol!
     let db = Firestore.firestore()
     
-    func downloadItems(){
+    func downloadItems(email: String){
         var locations: [PurchaseDBModel] = []
-        let defaults = UserDefaults.standard
-        let email : String = defaults.string(forKey: "email") ?? ""
+//        let defaults = UserDefaults.standard
+//        let email : String = defaults.string(forKey: "email") ?? ""
         
         db.collection("product")
 //            .whereField("email", isEqualTo: puchaseEmail)
@@ -34,6 +34,7 @@ class PurchaseQueryModel{
                         
                         if let field = data["puchaseEmail"]{
                             if(field as! String == email){
+                                print("PurchaseQueryModel : \(email)")
                                 let query = PurchaseDBModel(documentId: document.documentID,
                                                             userEmail: document.data()["userEmail"] as! String,
                                                             puchaseEmail: document.data()["puchaseEmail"] as! String,
@@ -42,6 +43,7 @@ class PurchaseQueryModel{
                                                             pTitle: document.data()["pTitle"] as! String,
                                                             pPrice: document.data()["pPrice"] as! String)
                                 locations.append(query)
+                                print("hohoho")
                                 print(query.puchaseEmail)
                             }
                         }
