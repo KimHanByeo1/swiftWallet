@@ -83,9 +83,13 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     
     func insertMessage(_ message: MockMessage, _ realMessage : String) {
     
+        firebaseDB.collection("chatrooms").document(currentUser.senderId).collection("you").document(otherUser.displayName).setData(["yourId":otherUser.senderId])
+        firebaseDB.collection("chatrooms").document(otherUser.senderId).collection("you").document(currentUser.displayName).setData(["yourId":currentUser.senderId])
+    
         firebaseDB.collection("chatrooms").document(currentUser.senderId).collection("you").document(otherUser.displayName).collection("Messages").document().setData(["sender":message.sender.senderId, "senderName":currentUser.displayName, "sentDate":message.sentDate, "message":realMessage])
         firebaseDB.collection("chatrooms").document(otherUser.senderId).collection("you").document(currentUser.displayName).collection("Messages").document().setData(["sender":message.sender.senderId, "senderName":otherUser.displayName, "sentDate":message.sentDate, "message":realMessage])
         self.messagesCollectionView.reloadData()
+
 
     }
     

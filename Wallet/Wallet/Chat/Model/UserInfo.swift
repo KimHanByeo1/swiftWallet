@@ -10,9 +10,11 @@ import UIKit
 class UserInfo {
     var name:String
     var lastMessage:String
+    var userId: String
     
-    init(name: String, lastMessage: String) {
+    init(name: String, lastMessage: String, userId:String) {
         self.name = name
         self.lastMessage = lastMessage
+        self.userId = userId
     }
 }
