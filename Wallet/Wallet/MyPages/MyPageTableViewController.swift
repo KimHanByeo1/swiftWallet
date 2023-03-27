@@ -57,7 +57,7 @@ class MyPageTableViewController: UITableViewController, UIImagePickerControllerD
             do {
                         try Auth.auth().signOut()
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = storyboard.instantiateViewController(withIdentifier: "controllers") as! FirstNavigationController
+                        let vc = storyboard.instantiateViewController(withIdentifier: "LogoutDone") as! LogoutDoneViewController
                 
                         self.view.window?.rootViewController = vc
                     } catch let error {

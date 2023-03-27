@@ -1485,7 +1485,7 @@
             </objects>
             <point key="canvasLocation" x="1399" y="330"/>
         </scene>
-        <!--로그인-->
+        <!--Log In View Controller-->
         <scene sceneID="MWa-6V-0ec">
             <objects>
                 <viewController storyboardIdentifier="LoginController" hidesBottomBarWhenPushed="YES" id="I6y-NL-9jX" customClass="LogInViewController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
@@ -1566,7 +1566,7 @@
                         <viewLayoutGuide key="safeArea" id="TSy-O0-4Pe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="로그인" id="80o-We-Ghc"/>
+                    <navigationItem key="navigationItem" id="80o-We-Ghc"/>
                     <connections>
                         <outlet property="autoLogin" destination="AG7-eI-NML" id="kyP-hK-aae"/>
                         <outlet property="emailCheck" destination="G1x-xQ-T2w" id="vx0-MT-jJK"/>
@@ -2447,10 +2447,10 @@
             </objects>
             <point key="canvasLocation" x="4565.6488549618316" y="-569.0140845070423"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--First Navigation Controller-->
         <scene sceneID="pma-Fr-jny">
             <objects>
-                <navigationController storyboardIdentifier="controllers" automaticallyAdjustsScrollViewInsets="NO" id="OQO-8P-oKY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="controllers" automaticallyAdjustsScrollViewInsets="NO" id="OQO-8P-oKY" customClass="FirstNavigationController" customModule="Wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="We3-Ex-eX4">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
