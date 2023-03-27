@@ -37,7 +37,7 @@ class MyPageLikeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.isHidden = false;
 
         
         likecodeDB.delegate = self

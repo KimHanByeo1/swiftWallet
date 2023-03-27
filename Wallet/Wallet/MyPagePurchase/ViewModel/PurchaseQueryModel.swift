@@ -16,10 +16,10 @@ class PurchaseQueryModel{
     var delegate: PurchaseQueryModelProtocol!
     let db = Firestore.firestore()
     
-    func downloadItems(){
+    func downloadItems(email: String){
         var locations: [PurchaseDBModel] = []
-        let defaults = UserDefaults.standard
-        let email : String = defaults.string(forKey: "email") ?? ""
+//        let defaults = UserDefaults.standard
+//        let email : String = defaults.string(forKey: "email") ?? ""
         
         db.collection("product")
 //            .whereField("email", isEqualTo: puchaseEmail)
@@ -34,14 +34,27 @@ class PurchaseQueryModel{
                         
                         if let field = data["puchaseEmail"]{
                             if(field as! String == email){
+                                print("PurchaseQueryModel : \(email)")
                                 let query = PurchaseDBModel(documentId: document.documentID,
-                                                            userEmail: document.data()["userEmail"] as! String,
                                                             puchaseEmail: document.data()["puchaseEmail"] as! String,
-                                                            userId: document.data()["userId"] as! String,
                                                             imageURL: document.data()["imageURL"] as! String,
+                                                            pBrand: document.data()["pBrand"] as! String,
+                                                            pColor: document.data()["pColor"] as! String,
+                                                            pContent: document.data()["pContent"] as! String,
+                                                            pDetailContent: document.data()["pDetailContent"] as! String,
+                                                            pMaterial: document.data()["pMaterial"] as! String,
+                                                            pName: document.data()["pName"] as! String,
+                                                            pPrice: document.data()["pPrice"] as! String,
+                                                            pSize: document.data()["pSize"] as! String,
+                                                            pState: document.data()["pState"] as! String,
+                                                            pTime: document.data()["pTime"] as! String,
                                                             pTitle: document.data()["pTitle"] as! String,
-                                                            pPrice: document.data()["pPrice"] as! String)
+                                                            userEmail: document.data()["userEmail"] as! String,
+                                                            userId: document.data()["userId"] as! String,
+                                                            userNickName: document.data()["userNickName"] as! String
+                                )
                                 locations.append(query)
+                                print("hohoho")
                                 print(query.puchaseEmail)
                             }
                         }
