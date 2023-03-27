@@ -44,7 +44,7 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     } // viewDidLoad
 
     func readMessages(){
-        firebaseDB.collection("chatrooms").document(self.currentUser.senderId).collection("you").document(otherUser.displayName).collection("Messages").order(by: "sentDate", descending: true).addSnapshotListener({ [self](querySnapShot, err) in
+        firebaseDB.collection("chatrooms").document(self.currentUser.senderId).collection("you").document(otherUser.displayName).collection("Messages").order(by: "sentDate", descending: true).addSnapshotListener({(querySnapShot, err) in
             guard let querySnapShot = querySnapShot else { return }
 
             querySnapShot.documentChanges.forEach { change in
@@ -62,7 +62,7 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
 
                     self.messageList.append(MockMessage(text: text, user: user, messageId: messageId, date: date))
                     print(user)
-                    messagesCollectionView.reloadData()
+                    self.messagesCollectionView.reloadData()
 //                    print(self.messageList)
 
 //                    print(change.document.data()["message"] as! String)

@@ -53,22 +53,28 @@ class UsersTableViewController: UITableViewController {
     }
     
     func readData(){
+//        print(firebaseDB.collection("chatrooms").document(myUid).collection("you").document().documentID)
+        
+//        print(firebaseDB.collection("chatrooms").document(myUid).collection("you").document().collection("Messages").order(by: "sentDate", descending: true))
+        
+        
         firebaseDB.collection("chatrooms").document(myUid).collection("you").getDocuments(completion: {(querySnapShot, err) in
-            if let err = err{
-                print("error getting documents : \(err)")
-            }else{
+//            if let err = err{
+//                print("error getting documents : \(err)")
+//            }else{
                 print(querySnapShot?.documents)
 //                for document in querySnapShot!.documents{
+//                    print(querySnapShot!.documents)
 //                    print("==================")
 //                    print("\(document.documentID) => \(document.data())")
 ////
 //                }
                 
-            }
-//            DispatchQueue.main.async {
-//
-//                self.userTableView.reloadData()
 //            }
+            DispatchQueue.main.async {
+
+                self.userTableView.reloadData()
+            }
         })
         
         
