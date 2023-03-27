@@ -8,51 +8,70 @@
 import UIKit
 import SnapKit
 import Firebase
-import FirebaseDatabase
+import FirebaseFirestore
 
 class UsersTableViewController: UITableViewController {
     
     var array:[UserInfo] = []
     
+    var userName:[String] = []
+    
+    let firebaseDB = Firestore.firestore()
+    let myUid = Auth.auth().currentUser!.uid
+    
     @IBOutlet var userTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//
+//        firebaseDB.collection("chatrooms").document(myUid).collection("you").getDocuments(completion: {(querySnapShot, err) in
+//            if let err = err{
+//                print("error getting documents : \(err)")
+//            }else{
+//                for doc in querySnapShot!.documents{
+//                    print("\(doc.documentID)")
+//                }
+//
+//            }
+//            DispatchQueue.main.async {
+//                self.userTableView.reloadData()
+//            }
+//        })
+//
         
-        Database.database().reference().child("users").observe(DataEventType.value, with: {snapshot in
-            
-            self.array.removeAll()
-            
-            let myUid = Auth.auth().currentUser?.uid
-            
-            for child in snapshot.children{
-                let fchild = child as! DataSnapshot
-                let userInfo = UserInfo()
-                userInfo.setValuesForKeys(fchild.value as! [String:Any])
-                
-                if userInfo.uid == myUid{
-                    continue
-                }
-                
-                self.array.append(userInfo)
-                
-                print(fchild.value as! [String:Any])
-            }
-            
-            DispatchQueue.main.async{
-                self.userTableView.reloadData()
-            }
-            
-            print(self.array)
-        })
-        
-        userTableView.rowHeight = 124
+        readData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        readData()
+    }
+    
+    func readData(){
+        firebaseDB.collection("chatrooms").document(myUid).collection("you").getDocuments(completion: {(querySnapShot, err) in
+            if let err = err{
+                print("error getting documents : \(err)")
+            }else{
+                print(querySnapShot?.documents)
+//                for document in querySnapShot!.documents{
+//                    print("==================")
+//                    print("\(document.documentID) => \(document.data())")
+////
+//                }
+                
+            }
+//            DispatchQueue.main.async {
+//
+//                self.userTableView.reloadData()
+//            }
+        })
+        
+        
     }
     
     // MARK: - Table view data source
@@ -124,7 +143,7 @@ class UsersTableViewController: UITableViewController {
         let cell = sender as! UserTableViewCell
         let indexpath = userTableView.indexPath(for: cell)
         
-        vc.destinationUid = array[indexpath!.row].uid
+//        vc.destinationUid = array[indexpath!.row].uid
     }
     
 

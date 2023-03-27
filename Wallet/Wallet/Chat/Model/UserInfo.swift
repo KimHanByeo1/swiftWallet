@@ -7,9 +7,12 @@
 
 import UIKit
 
-@objcMembers
-class UserInfo: NSObject {
-    var name:String?
-    var email:String?
-    var uid:String?
+class UserInfo {
+    var name:String
+    var lastMessage:String
+    
+    init(name: String, lastMessage: String) {
+        self.name = name
+        self.lastMessage = lastMessage
+    }
 }

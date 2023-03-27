@@ -16,22 +16,17 @@ protocol ChannelViewModelProtocol{
 class DownloadItems{
     var delegate: ChannelViewModelProtocol!
     let db = Firestore.firestore()
-    let myemail = UserDefaults.standard.string(forKey: "email")
+    let myUid = Auth.auth().currentUser!.uid
     
     func downloadItems(myEmail:String){
-        var channels : [Channel] = []
+        var userInfo : [UserInfo] = []
         
-        db.collection("chatrooms").getDocuments(completion: {(querySnapShot, err) in
+        db.collection("chatrooms").document(myUid).collection("you").getDocuments(completion: {(querySnapShot, err) in
             for doc in querySnapShot!.documents{
-                guard let my = doc.data()["me"] as? String, let other = doc.data()["other"] as? String, let name = doc.data()["otherName"] as? String else{return}
-                
-                let channel = Channel(myEmail: my, otherEmail: other, otherName: name)
-                
-                if my == myEmail || other == myEmail{
-                    channels.append(channel)
-                }
+                let yourName = doc.documentID
+                print(yourName)
             }
-            self.delegate.itemDownLoaded(items: channels)
+//            self.delegate.itemDownLoaded(items: channels)
         })
         
     }
