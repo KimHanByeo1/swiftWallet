@@ -78,8 +78,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 //            }
             
             
-            if !userModel.isValidPassword(pwd: password) && !userModel.isValidPassword(pwd: passwordCheck){
-                passwordStatusBar.text = "6자리 이상 입력해 주세요"
+            if userModel.isValidPassword(pwd: password) {
+                //passwordStatusBar.text = "6자리 이상 입력해 주세요"
 
                 if textField == passwordConfirmTextField {
                     // 이전에 실행되던 타이머가 있다면, 취소
@@ -95,7 +95,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     }
                 }
 
-            } else if password.isEmpty {
+            } else if !userModel.isValidPassword(pwd: password) && !userModel.isValidPassword(pwd: passwordCheck){
+                passwordStatusBar.text = "비밀번호 형식을 확인해 주세요"
+            }else if password.isEmpty {
                 passwordStatusBar.text = "비밀번호를 입력하세요"
             } else if passwordCheck.isEmpty {
                 passwordStatusBar.text = "비밀번호를 한번 더 입력해 주세요"
