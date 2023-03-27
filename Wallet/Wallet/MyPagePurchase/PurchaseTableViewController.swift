@@ -15,6 +15,8 @@ class PurchaseTableViewController: UITableViewController {
     
     @IBOutlet var PurchaseViewList: UITableView!
     
+    
+    let user = Auth.auth().currentUser
     var purchaseStore: [PurchaseDBModel] = []
     
     let purchasequeryModel = PurchaseQueryModel()
@@ -24,7 +26,7 @@ class PurchaseTableViewController: UITableViewController {
     
     let defaults = UserDefaults.standard
 
-    let user = Auth.auth().currentUser
+    
     
     
     
