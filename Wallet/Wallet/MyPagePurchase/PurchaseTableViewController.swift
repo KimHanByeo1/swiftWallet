@@ -17,6 +17,8 @@ class PurchaseTableViewController: UITableViewController {
     
     var purchaseStore: [PurchaseDBModel] = []
     
+    let purchasequeryModel = PurchaseQueryModel()
+    
     let picker = UIImagePickerController()
     var downURL: String = ""
     
@@ -24,14 +26,13 @@ class PurchaseTableViewController: UITableViewController {
 
     let user = Auth.auth().currentUser
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        purchasequeryModel.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,9 +40,10 @@ class PurchaseTableViewController: UITableViewController {
     }
     
     func reloadAction(){
-        let purchasequeryModel = PurchaseQueryModel()
-        purchasequeryModel.delegate = self
-        purchasequeryModel.downloadItems()
+        
+        
+        purchasequeryModel.downloadItems(email: user!.email!)
+//        PurchaseViewList.reloadData()
         print("*******")
     }
 
@@ -60,6 +62,7 @@ class PurchaseTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PurchaseCell", for: indexPath) as! PurchaseTableViewCell
+        print("PurchaseTableViewController")
 
         // Configure the cell...
         cell.lblTitle.text = purchaseStore[indexPath.row].pTitle
@@ -96,7 +99,7 @@ class PurchaseTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 
@@ -129,6 +132,8 @@ class PurchaseTableViewController: UITableViewController {
 extension PurchaseTableViewController: PurchaseQueryModelProtocol{
     func itemDownloaded(items: [PurchaseDBModel]) {
         purchaseStore = items
+        print("extensionpurchase")
+        print(items)
         self.PurchaseViewList.reloadData()
     }
 }
