@@ -20,6 +20,7 @@ class TabBarViewController: UITabBarController {
 
         let email = defaults.string(forKey: "email")
         let nickname = defaults.string(forKey: "nickname")
+        let profileImage = defaults.string(forKey: "profileImage")
         
         
         

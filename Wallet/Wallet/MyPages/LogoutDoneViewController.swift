@@ -16,7 +16,7 @@ class LogoutDoneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.isHidden = true;
+//        self.navigationController?.navigationBar.isHidden = false;
         self.tabBarController?.tabBar.isHidden = true;
         // Do any additional setup after loading the view.
     }
@@ -27,7 +27,7 @@ class LogoutDoneViewController: UIViewController {
     @IBAction func loginBtn(_ sender: UIButton) {
         
         let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "LogoutDone") as! LogoutDoneViewController
-        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController
+        let vc2 = self.storyboard?.instantiateViewController(withIdentifier: "controllers") as! FirstNavigationController
         self.transition1(from: vc1, to: vc2)
         
     }
@@ -48,7 +48,7 @@ class LogoutDoneViewController: UIViewController {
     func transition1(from fromViewController: UIViewController, to toViewController: UIViewController) {
         
         let fromVC = self // 현재 View Controller
-        let toVC = storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController // 전환할 View Controller
+        let toVC = storyboard?.instantiateViewController(withIdentifier: "controllers") as! FirstNavigationController // 전환할 View Controller
         
         fromVC.addChild(toVC)
         fromVC.view.addSubview(toVC.view)
