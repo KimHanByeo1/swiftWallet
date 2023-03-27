@@ -82,6 +82,9 @@ class NewChatViewController: MessagesViewController, MessagesDataSource, Message
     //MockMessage(messageId: "01B56FA0-870A-4612-A0A9-8805BDD6E770", sentDate: 2023-03-26 06:45:39 +0000, kind: MessageKit.MessageKind.text("Qwewq"), user: Wallet.Sender(senderId: "aaa@aaa.aaa", displayName: "aaa"))
     
     func insertMessage(_ message: MockMessage, _ realMessage : String) {
+        
+        firebaseDB.collection("chatrooms").document(currentUser.senderId).collection("you").document(otherUser.displayName).setData(["yourId":otherUser.senderId])
+        firebaseDB.collection("chatrooms").document(otherUser.senderId).collection("you").document(currentUser.displayName).setData(["yourId":currentUser.senderId])
     
         firebaseDB.collection("chatrooms").document(currentUser.senderId).collection("you").document(otherUser.displayName).collection("Messages").document().setData(["sender":message.sender.senderId, "senderName":currentUser.displayName, "sentDate":message.sentDate, "message":realMessage])
         firebaseDB.collection("chatrooms").document(otherUser.senderId).collection("you").document(currentUser.displayName).collection("Messages").document().setData(["sender":message.sender.senderId, "senderName":otherUser.displayName, "sentDate":message.sentDate, "message":realMessage])
