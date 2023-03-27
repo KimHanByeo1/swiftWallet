@@ -15,14 +15,14 @@ class FirstViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        self.navigationController?.navigationBar.isHidden = true
+        
         
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
 
-        
+        self.navigationController?.navigationBar.isHidden = true;
         if UserDefaults.standard.bool(forKey: "autoLogin") == true {
             // 자동 로그인 스위치가 켜져 있으면,
             let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "firstController") as! FirstViewController

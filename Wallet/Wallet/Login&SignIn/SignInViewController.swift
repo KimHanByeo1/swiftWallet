@@ -43,6 +43,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        self.navigationController?.navigationBar.isHidden = false;
         // UITextFieldDelegate 설정
         passwordTextField.delegate = self
         passwordConfirmTextField.delegate = self
@@ -76,7 +78,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
 //            }
             
             
-            if userModel.isValidPassword(pwd: password) {
+            if !userModel.isValidPassword(pwd: password) && !userModel.isValidPassword(pwd: passwordCheck){
                 passwordStatusBar.text = "6자리 이상 입력해 주세요"
 
                 if textField == passwordConfirmTextField {

@@ -39,7 +39,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         //lblLoginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
-//        self.navigationController?.navigationBar.isHidden = true
+
 
 //
         // 자동 로그인 기능 추가
@@ -53,6 +53,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true;
+    }
     
     private func login(email: String, password: String) {
         authViewModel.logIn(email: email, password: password) { [self] (success) in
