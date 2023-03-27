@@ -53,6 +53,7 @@ class MyPageLikeTableViewController: UITableViewController {
         // like의 imageURL code 가져오기
         productModel.downloadItems(uid: uid)
         
+        productModel.downloadLikes(uid: uid)
    
     }
     
@@ -62,7 +63,8 @@ class MyPageLikeTableViewController: UITableViewController {
     
     @IBAction func likeButton(_ sender: UIButton) {
         
-        //updateModel.updateItems(uid: uid, imageCode: imageCode, like: like)
+        let cells = MyPageLikeTableViewCell()
+//        cells.updateLike(uid: uid, imageCode: likeCode[indexNum], like: like[indexNum])
     }
     
     
@@ -124,22 +126,36 @@ class MyPageLikeTableViewController: UITableViewController {
         cell.lblState.text = lblStateText
         
         
-//        if like[indexPath.row] == "1" {
-//            like[indexPath.row] = "0"
-//            cell.updateLike(uid: uid, imageCode: likeProduct[indexPath.row].imageURL, like: "0")
-//            cell.btnLikeText.setImage(UIImage(named: "like1"))
-//        } else {
-//            like[indexPath.row] = "1"
-//            cell.updateLike(uid: uid, imageCode: likeProduct[indexPath.row].imageURL, like: "1")
-//            cell.btnLikeText.setImage(UIImage(named: "like2"))
-//        }
-        
+        cell.btnLikeText.addTarget(self, action: #selector(buttonTapped(_:)), for: .touchUpInside)
+        cell.btnLikeText.tag = indexPath.row // 버튼의 tag에 indexPath.row를 저장합니다.
+        print(cell.btnLikeText.tag)
 
-        
 
         return cell
     }
     
+    @objc func buttonTapped(_ sender: UIButton) {
+      let index = sender.tag // 눌린 버튼의 인덱스 번호를 가져옵니다.
+      print(index)
+        let cell = tableView.cellForRow(at: IndexPath(row: sender.tag, section: 0)) as! MyPageLikeTableViewCell
+        
+
+        if like[index] == "1" {
+            like[index] = "0"
+            cell.btnLikeText.setImage(UIImage(named: "like1"), for: .normal)
+            updateModel.updateItems(uid: uid, imageCode: likeCode[index], like: like[index])
+
+        } else{
+            like[index] = "1"
+            cell.btnLikeText.setImage(UIImage(named: "like2"), for: .normal)
+
+            updateModel.updateItems(uid: uid, imageCode: likeCode[index], like: like[index])
+        }
+        
+
+        print(likeCode[index] ?? "없어")
+        print(like[index] ?? "shsh")
+    }
     
     /*
     // Override to support conditional editing of the table view.
@@ -203,8 +219,9 @@ extension MyPageLikeTableViewController: LikeCodeDBProtocol{
         self.tvTable.reloadData()
         likecodeDB.bringProducts(code: likeCode)
     }
-    func itemLike(items: [String]) {
-        like = items
+    func itemLike(itemss: [String]) {
+        like = itemss
+        print(like)
         self.tvTable.reloadData()
     }
     func itemBring(products: [LikeProductModel]) {

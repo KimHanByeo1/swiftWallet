@@ -11,7 +11,7 @@ import Firebase // <<<<<
 
 protocol LikeCodeDBProtocol{
     func itemDownloaded(items: [String])
-    func itemLike(items: [String])
+    func itemLike(itemss: [String])
     func itemBring(products: [LikeProductModel])
     
 }
@@ -76,7 +76,7 @@ class LikeCodeDB{
                     }
                     DispatchQueue.main.async {
                         
-                        self.delegate.itemLike(items: items)
+                        self.delegate.itemLike(itemss: items)
                     }
                     
                 }
@@ -145,34 +145,34 @@ class LikeCodeDB{
         
     }
     
-    func updateItems(uid: String, imageCode:String, like: String) -> Bool{
-            
+    func updateItems(uid: String, imageCode: String, like: String) -> Bool{
         var status: Bool = true
-        
+            
+        print("update??")
         db.collection("users")
-                    .document(uid)
-                    .collection("like")
-                    .whereField("imageURL", isEqualTo: imageCode)
-                    .getDocuments { (querySnapshot, error) in
-                        if let error = error {
-                            print("Error updating documents: \(error.localizedDescription)")
-                        } else {
-                            for document in querySnapshot!.documents {
-                                document.reference.updateData([
-                                    "like": like
-                                ]) { error in
-                                    if let error = error {
-                                        print("Error updating document: \(error.localizedDescription)")
-                                    }
-                                }
+            .document(uid)
+            .collection("like")
+            .whereField("imageURL", isEqualTo: imageCode)
+            .getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error updating documents: \(error.localizedDescription)")
+                } else {
+                    print("uuppdate")
+                    for document in querySnapshot!.documents {
+                        print("updateupdateupdateupdateupdate")
+                        print("Updating document: \(document.reference)")
+                        document.reference.updateData(["like": like]) { error in
+                            if let error = error {
+                                print("Error updating document: \(error.localizedDescription)")
+                            } else {
+                                print("Document updated successfully")
                             }
                         }
                     }
+                }
+            }
+        return status
+    }
 
-            
-            return status
-
-        }
-    
 } // QueryModel
 
