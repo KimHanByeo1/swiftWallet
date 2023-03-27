@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import FirebaseStorage
 
-class PurchaseTableViewController: UITableViewController {
+class PurchaseTableViewController: UITableViewController , UIImagePickerControllerDelegate {
 
     
     
@@ -24,21 +24,22 @@ class PurchaseTableViewController: UITableViewController {
     let picker = UIImagePickerController()
     var downURL: String = ""
     
+    var Pemail = ""
+    var email = ""
+    
     let defaults = UserDefaults.standard
-
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        purchasequeryModel.delegate = self
+        email = defaults.string(forKey: "email")!
+        Pemail = email
+//        purchasequeryModel.delegate = self
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        reloadAction()
+//        reloadAction()
+//        PurchaseTableViewController.reloadData()
     }
     
     func reloadAction(){
@@ -65,6 +66,7 @@ class PurchaseTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PurchaseCell", for: indexPath) as! PurchaseTableViewCell
         print("PurchaseTableViewController")
+//        cell.test(email: user.email!)
 
         // Configure the cell...
         cell.lblTitle.text = purchaseStore[indexPath.row].pTitle
@@ -136,6 +138,7 @@ extension PurchaseTableViewController: PurchaseQueryModelProtocol{
         purchaseStore = items
         print("extensionpurchase")
         print(items)
+        
         self.PurchaseViewList.reloadData()
     }
 }
