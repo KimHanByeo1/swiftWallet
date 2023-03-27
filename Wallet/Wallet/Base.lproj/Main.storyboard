@@ -392,8 +392,8 @@
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-ru-QhC">
-                                                <rect key="frame" x="8" y="684" width="377" height="1"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p4R-ru-QhC">
+                                                <rect key="frame" x="8" y="710" width="377" height="1"/>
                                                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GpH-ZC-R9X">
@@ -403,12 +403,12 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face" translatesAutoresizingMaskIntoConstraints="NO" id="xOq-b7-ibb">
                                                 <rect key="frame" x="8" y="410" width="35" height="35"/>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="sgProductDetail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYU-8K-cqy">
-                                                <rect key="frame" x="8" y="532" width="377" height="144"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="sgProductDetail" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYU-8K-cqy">
+                                                <rect key="frame" x="8" y="540" width="377" height="162"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="144" id="i8g-qT-ddk"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -571,12 +571,13 @@
                         <outlet property="lblProductName" destination="YW9-UJ-HrP" id="DQc-Mt-TmG"/>
                         <outlet property="lblTitle" destination="iQ7-IH-azY" id="FR9-LS-gTc"/>
                         <outlet property="line" destination="2Yj-t2-oCK" id="3Fi-vT-ju7"/>
+                        <outlet property="profileImage" destination="xOq-b7-ibb" id="dQ1-3F-trI"/>
                         <segue destination="4Vk-ba-ne3" kind="show" identifier="sgUpdate" id="kLU-qX-lLx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RXS-lJ-CN8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5591.6030534351139" y="-568.66197183098598"/>
+            <point key="canvasLocation" x="5590.0763358778622" y="-568.66197183098598"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="tF5-5F-OBC">

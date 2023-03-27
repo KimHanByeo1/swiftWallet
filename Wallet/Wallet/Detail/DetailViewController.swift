@@ -14,6 +14,7 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
     
     let defaults = UserDefaults.standard
     
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var imageView: UIImageView! // 이미지
     @IBOutlet weak var lblNickName: UILabel! // 유저 닉네임
     @IBOutlet weak var lblTitle: UILabel! // 선택한 상품 제목
@@ -146,6 +147,16 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
                 }
             }.resume()
         }
+        // url 비동기 통신
+        if let imageURL = URL(string: productDetailStore.first!.profileImg) {
+            URLSession.shared.dataTask(with: imageURL) { data, response, error in
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self.profileImage.image = image
+                    }
+                }
+            }.resume()
+        }
         
         let dateViewModel = DateViewModel()
         
@@ -179,6 +190,9 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
                 lblPrice.isHidden = false
             }
         }
+        
+        
+        
     }
     
     // userModel.downloadUser
