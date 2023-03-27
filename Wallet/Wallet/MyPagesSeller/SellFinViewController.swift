@@ -35,7 +35,7 @@ class SellFinViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.isHidden = false;
         mySellingDB.delegate = self
         
     }

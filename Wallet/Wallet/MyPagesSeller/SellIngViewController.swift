@@ -37,7 +37,7 @@ class SellIngViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.navigationBar.isHidden = false;
         mySellingDB.delegate = self
         print("viewdid")
         
