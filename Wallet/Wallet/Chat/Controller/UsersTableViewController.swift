@@ -14,20 +14,32 @@ class UsersTableViewController: UITableViewController {
     
     var array:[UserInfo] = []
     
-    var chattingUser:String?
-    var lastMessage:String = ""
-    var chatUserId:String = ""
+    var userName:[String] = []
     
     let firebaseDB = Firestore.firestore()
     let myUid = Auth.auth().currentUser!.uid
-    let myName = UserDefaults.standard.string(forKey: "nickname")
     
     @IBOutlet var userTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//
+//        firebaseDB.collection("chatrooms").document(myUid).collection("you").getDocuments(completion: {(querySnapShot, err) in
+//            if let err = err{
+//                print("error getting documents : \(err)")
+//            }else{
+//                for doc in querySnapShot!.documents{
+//                    print("\(doc.documentID)")
+//                }
+//
+//            }
+//            DispatchQueue.main.async {
+//                self.userTableView.reloadData()
+//            }
+//        })
+//
         
-        tableView.rowHeight = 120
+        readData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -37,47 +49,20 @@ class UsersTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        array.removeAll()
         readData()
     }
     
     func readData(){
-//        array.removeAll()
-        
-        firebaseDB.collection("chatrooms").document(myUid).collection("you").getDocuments(completion: {(snapShot, err) in
-            for doc in snapShot!.documents{
-                self.chattingUser = doc.documentID
-                print(self.chattingUser as! String)
-            }
-            
-            self.firebaseDB.collection("chatrooms").document(self.myUid).collection("you").getDocuments(completion: {(snapShot, err) in
-                for doc in snapShot!.documents{
-                    self.chatUserId = doc.data()["yourId"] as! String
-                }
-            })
-            
-            self.firebaseDB.collection("chatrooms").document(self.myUid).collection("you").document(self.chattingUser!).collection("Messages").order(by: "sentDate", descending: true).limit(to: 1).getDocuments(completion: {(querySnapShot, err) in
-                guard let querySnapShot = querySnapShot else { return }
-                for doc in querySnapShot.documents{
-                    self.lastMessage = doc.data()["message"] as! String
-                    print(self.lastMessage)
-                }
-                DispatchQueue.main.async {
-                    self.array.append(UserInfo(name: self.chattingUser!, lastMessage: self.lastMessage, userId: self.chatUserId))
-                    self.userTableView.reloadData()
-                }
-            })
-        })
-        print(self.array)
+//        print(firebaseDB.collection("chatrooms").document(myUid).collection("you").document().documentID)
         
 //        print(firebaseDB.collection("chatrooms").document(myUid).collection("you").document().collection("Messages").order(by: "sentDate", descending: true))
         
         
-//        firebaseDB.collection("chatrooms").document(myUid).collection("you").getDocuments(completion: {(querySnapShot, err) in
+        firebaseDB.collection("chatrooms").document(myUid).collection("you").getDocuments(completion: {(querySnapShot, err) in
 //            if let err = err{
 //                print("error getting documents : \(err)")
 //            }else{
-//                print(querySnapShot?.documents)
+                print(querySnapShot?.documents)
 //                for document in querySnapShot!.documents{
 //                    print(querySnapShot!.documents)
 //                    print("==================")
@@ -86,11 +71,11 @@ class UsersTableViewController: UITableViewController {
 //                }
                 
 //            }
-//            DispatchQueue.main.async {
-//
-//                self.userTableView.reloadData()
-//            }
-//        })
+            DispatchQueue.main.async {
+
+                self.userTableView.reloadData()
+            }
+        })
         
         
     }
@@ -112,7 +97,6 @@ class UsersTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! UserTableViewCell
         
         cell.lblUserName.text = array[indexPath.row].name
-        cell.lblLastMessage.text = array[indexPath.row].lastMessage
         
         return cell
     }
@@ -166,8 +150,7 @@ class UsersTableViewController: UITableViewController {
         let indexpath = userTableView.indexPath(for: cell)
         
 //        vc.destinationUid = array[indexpath!.row].uid
-        vc.currentUser = Sender(senderId: myUid, displayName: myName!)
-        vc.otherUser = Sender(senderId: array[indexpath!.row].userId, displayName: array[indexpath!.row].name)
     }
+    
 
 }
