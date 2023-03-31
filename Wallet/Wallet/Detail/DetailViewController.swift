@@ -172,13 +172,14 @@ class DetailViewController: UIViewController, DetailModelProtocal, UserModelProt
         userId = productDetailStore.first?.uid
         productDocId = productDetailStore.first?.docId
         
-        let textSize = lblPrice.intrinsicContentSize
+//        let textSize = lblPrice.intrinsicContentSize
         
         if productDetailStore.first?.pState == "1" { // 상품 거래가 완료 되었으면
-            lblPrice.frame.size = textSize
+//            lblPrice.frame.size = textSize
+            lblPrice.isHidden = false
             lblPrice.text = "판매 완료된 상품입니다."
         } else {
-            lblPrice.frame.size = textSize
+//            lblPrice.frame.size = textSize
             lblPrice.text = "\(numberFormatter.string(from: NSNumber(value: Int(productDetailStore.first!.pPrice)!)) ?? "")원"
             if productDetailStore.first?.userEmail == user.email {
                 btnDelete.isHidden = false // 삭제 버튼 On
